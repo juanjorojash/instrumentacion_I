@@ -1,0 +1,457 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Bruno}
+\input{comunes/preamble}
+\title{Electricidad I: \\ \emph{Teoremas de Thevenin, Norton y } \\ \emph{Máxima transferencia} \\ \emph{de potencia}}
+\author{
+    Juan J. Rojas
+}
+\institute{Instituto Tecnológico de Costa Rica}
+\date{\today}
+\background{fig/background.jpg}
+\begin{document}
+\input{comunes/postamble}
+\maketitle
+
+\begin{frame}{Teorema de Thevenin}
+        \vspace{0.2cm}
+        Cualquier circuito lineal de dos terminales puede reemplazarse por un circuito equivalente compuesto de una fuente de voltaje $v_{Th}$ en serie con un resistor $R_{Th}$
+        \vskip0pt plus 1filll
+        \centering
+        \begin{circuitikz} [scale=0.8]
+            \draw [white](0.5,-1) rectangle (18,5);
+            \draw 
+            (1,-0.5)
+                rectangle node[align=center] {\small Circuito\\\small lineal}
+            (3,4.5)
+            (3,4)	
+                to[short,-o]
+            (4,4)node[above]{$a$}
+                to[short]
+            (6,4)
+                to[generic, l=\small{Carga}, i>^=$i$]
+            (6,0)
+                to[short, -o]
+                node[below]{$b$}
+            (4,0)
+                to[short]
+            (3,0)
+            (4,4)
+                to[open, v^=$v$]
+            (4,0)
+            (11,0)
+                to[V,l=$v_{Th}$]
+            (11,4)
+                to[R,l=$R_{Th}$,-o]
+                node[above]{$a$}
+            (14,4)
+                to[short]
+            (16,4)
+                to[generic, l=\small{Carga}, i>^=$i$]
+            (16,0)
+                to[short,-o]
+                node[below]{$b$}
+            (14,0)
+                to[short]
+            (11,0)
+            (14,4)
+                to[open, v^=$v$]
+            (14,0)
+            ;
+            \draw[thick, >=triangle 45, ->] (8,2) -- (9.5,2);
+        \end{circuitikz}
+\end{frame}
+
+\begin{frame}{Teorema de Thevenin}
+        \vspace{0.2cm}
+        Se elimina la carga y podemos encontrar $v_{Th}$ 
+        \vskip0pt plus 1filll
+        \centering
+        \begin{circuitikz} [scale=0.8]
+            \draw [white](0.5,-1) rectangle (18,5);
+            \draw
+            (1,-0.5)
+                rectangle node[align=center] {\small Circuito\\\small lineal}
+            (3,4.5)
+            (3,4)	
+                to[short,-o]
+            (4,4)node[above]{$a$}
+            (4,0)node[below]{$b$}
+                to[short,o-]
+            (3,0)
+            (4,4)
+                to[open, v^=$v_{Th}$]
+            (4,0)
+            (11,0)
+                to[V,l=$v_{Th}$]
+            (11,4)
+                to[R,l=$R_{Th}$,-o]
+            (14,4)node[above]{$a$}
+                to[open, v^=$v_{Th}$]
+            (14,0)node[below]{$b$}
+                to[short,o-]
+            (11,0)
+            ;
+        \end{circuitikz}
+\end{frame}
+
+\begin{frame}{Teorema de Thevenin}
+        \vspace{0.2cm}
+        Si no hay fuentes dependientes, se apagan las fuentes independientes y podemos encontrar $R_{Th}$
+        \vskip0pt plus 1filll
+        \centering
+        \begin{circuitikz} [scale=0.8]
+            \draw [white](0.5,-1) rectangle (18,5);
+            \draw
+            (1,-0.5)
+                rectangle node[align=center] {\small Circuito\\\small lineal\\\small con\\\small fuentes\\\small indep.\\\small apagadas}
+            (3,4.5)
+            (3,4)	
+                to[short,-o]
+            (4,4)node[above]{$a$}
+            (4,0)node[below]{$b$}
+                to[short,o-]
+            (3,0)
+            (4,4)
+                to[open, l=$R_{Th}$]
+            (4,0)
+            (11,0)
+                to[short]
+            (11,4)
+                to[R,l=$R_{Th}$,-o]
+            (14,4)node[above]{$a$}
+                to[open, l=$R_{Th}$]
+            (14,0)node[below]{$b$}
+                to[short,o-]
+            (11,0)
+            ;
+            \draw[thick, >=triangle 45, <-] (4,1.6) -- (5,1.6);
+            \draw[thick, >=triangle 45, <-] (14,1.6) -- (15,1.6);
+        \end{circuitikz}
+\end{frame}
+
+\begin{frame}{Teorema de Thevenin}
+        \vspace{0.2cm}
+        Si hay fuentes dependientes, se apagan las fuentes independientes y usamos una fuente de prueba para encontrar $R_{Th}$
+        \vskip0pt plus 1filll
+        \begin{tabularx}{\linewidth}{X X}
+            \centering
+            \begin{circuitikz} [scale=0.8]
+                \draw [white](0.5,-1) rectangle (18,5);
+                \draw
+                (1,-0.5)
+                    rectangle node[align=center] {\small Circuito\\\small lineal\\\small con\\\small fuentes\\\small indep.\\\small apagadas}
+                (3,4.5)
+                (3,4)	
+                    to[short,-o]
+                (4,4)node[above]{$a$}
+                    to[short]
+                (6,4)
+                    to[V, l=$v_{o}$, i<^=$i_o$, invert]
+                (6,0)
+                    to[short, -o]
+                (4,0)node[below]{$b$}
+                    to[short,o-]
+                (3,0)
+                (6.5,4)node[right]{$R_{Th} = \frac{v_o}{i_o}$}
+                ;
+            \end{circuitikz}
+            &
+            \centering
+            \begin{circuitikz} [scale=0.8]\draw
+                (1,-0.5)
+                    rectangle node[align=center] {\small Circuito\\\small lineal\\\small con\\\small fuentes\\\small indep.\\\small apagadas}
+                (3,4.5)
+                (3,4)	
+                    to[short,-o]
+                (4,4)node[above]{$a$}
+                    to[short]
+                (6,4)
+                    to[I, l=$i_{o}$, invert]
+                (6,0)
+                    to[short, -o]
+                (4,0)node[below]{$b$}
+                    to[short,o-]
+                (3,0)
+                (6.5,4)node[right]{$R_{Th} = \frac{v_o}{i_o}$}
+                (4,4)
+                    to[open, v^=$v_o$]
+                (4,0)
+                ;
+            \end{circuitikz}
+        \end{tabularx}
+\end{frame}
+
+\begin{frame}{Teorema de Norton}
+        \vspace{0.2cm}
+        Cualquier circuito lineal de dos terminales puede reemplazarse por un circuito equivalente compuesto de una fuente de corriente $i_{N}$ en paralelo con un resistor $R_{N}$
+        \vskip0pt plus 1filll
+        \centering
+        \begin{circuitikz} [scale=0.8]
+            \draw [white](0.5,-1) rectangle (18,5);
+            \draw
+            (1,-0.5)
+                rectangle node[align=center] {\small Circuito\\\small lineal}
+            (3,4.5)
+            (3,4)	
+                to[short,-o]
+            (4,4)node[above]{$a$}
+                to[short]
+            (6,4)
+                to[generic, l=\small{Carga}, i>^=$i$]
+            (6,0)
+                to[short, -o]
+                node[below]{$b$}
+            (4,0)
+                to[short]
+            (3,0)
+            (4,4)
+                to[open, v^=$v$]
+            (4,0)
+            (11,0)
+                to[I,l=$i_{N}$]
+            (11,4)
+                to[short,-o]
+                node[above]{$a$}
+            (14,4)
+                to[short]
+            (16,4)
+                to[generic, l=\small{Carga}, i>^=$i$]
+            (16,0)
+                to[short,-o]
+                node[below]{$b$}
+            (14,0)
+                to[short]
+            (11,0)
+            (13,4)
+                to[R, l_=$R_N$]
+            (13,0)
+            (14,4)
+                to[open, v^=$v$]
+            (14,0)
+            ;
+            \draw[thick, >=triangle 45, ->] (8,2) -- (9.5,2);
+        \end{circuitikz}
+\end{frame}
+
+\begin{frame}{Teorema de Norton}
+        \vspace{0.2cm}
+        La carga se pone en cortocircuito y podemos encontrar $i_N$ 
+        \vskip0pt plus 1filll
+        \centering
+        \begin{circuitikz} [scale=0.8]
+            \draw [white](0.5,-1) rectangle (18,5);
+            \draw
+            (1,-0.5)
+                rectangle node[align=center] {\small Circuito\\\small lineal}
+            (3,4.5)
+            (3,4)	
+                to[short,-o]
+            (4,4)node[above]{$a$}
+                to[short]
+            (6,4)
+                to[short, i>^=$i_N$]
+            (6,0)
+                to[short, -o]
+                node[below]{$b$}
+            (4,0)
+                to[short,o-]
+            (3,0)
+            (11,0)
+                to[I,l=$i_{N}$]
+            (11,4)
+                to[short,-o]
+                node[above]{$a$}
+            (14,4)
+                to[short]
+            (16,4)
+                to[short, i>^=$i_N$]
+            (16,0)
+                to[short,-o]
+                node[below]{$b$}
+            (14,0)
+                to[short]
+            (11,0)
+            (13,4)
+                to[R, l_=$R_N$]
+            (13,0)
+            ;
+        \end{circuitikz}
+\end{frame}
+
+\begin{frame}{Teorema de Norton}
+    La resistencia equivalente de Norton es igual a la de Thevenin y se puede encontrar usando el mismo método.\\
+    \begin{equation*}
+        R_{Th} = R_N
+    \end{equation*}
+    Luego se pueden relacionar por medio de la Ley de Ohm:
+    \begin{equation*}
+        i_N = \frac{v_{Th}}{R_{Th}}
+    \end{equation*}
+    \begin{equation*}
+        v_{th} = i_N \cdot R_N
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Teorema de máxima transferencia de potencia}
+    Para transferir la máxima potencia a una carga, esta debe tener una resistencia igual a la resistencia de Thevenin.\\
+    \vfill
+    \centering
+    \begin{circuitikz}[scale=0.8]\draw
+        (0,0)
+            to[V,l=$v_{Th}$]
+        (0,4)
+            to[R,l=$R_{Th}$,-o]
+            node[above]{$a$}
+        (3,4)
+            to[short]
+        (5,4)
+            to[vR, mirror, l=$R_c$]
+        (5,0)
+            to[short,-o]
+            node[below]{$b$}
+        (3,0)
+            to[short]
+        (0,0)
+        (3,4)
+            to[open, v^=$v$]
+        (3,0)
+        (8,4)node[right]{$p=\left(\frac{v_{Th}}{R_{Th} + R_c}\right)^2 \cdot R_c$}
+        (8,2)node[right]{$p_{max} \rightarrow R_c = R_{Th}$}
+        (8,0)node[right]{$p_{max}=\frac{v_{Th}^2}{4\cdot R_{Th}}$}
+        ;
+    \end{circuitikz}
+\end{frame}
+
+\begin{frame}{Puente de Wheatstone}
+    \vskip0pt plus 1filll
+    \begin{columns}
+    \begin{column}{0.5\textwidth}
+    \only<1>{Si no fluye corriente por el instrumento de medición: 
+        \begin{gather*}
+            R_x = \frac{R_3}{R_1} R_2
+        \end{gather*}
+    se puede usar una resistencia calibrada en $R_2$ para medir $R_x$
+    }\only<2>{Si las resistencias son fijas y no se  cumple que: 
+        \begin{gather*}
+            R_4 = \frac{R_3}{R_1} R_2
+        \end{gather*}
+    entonces el puente esta desequilibrado y existe una corriente fluyendo por el instrumento de medición
+    }\only<3>{para medir la corriente que fluye por el instrumento se obtiene el equivalente de Thevenin entre $a$ y $b$, así la corriente será
+        \begin{gather*}
+            i = \frac{v_{Th}}{R_{Th} + R_{sh}}
+        \end{gather*}
+    donde $R_{sh}$ es la resistencia interna del instrumento de medición
+    }
+    % \only<4>{en instrumentación moderna se utiliza un amplificador operacional que amplifica el valor del voltaje que cae en $R_{sh}$, estos resitores se conocen como shunts y son de alta precisión.\\[4pt]
+    % Por ejemplo un shunt de \SI{2}{\milli\ohm} podria usarse en conjunto con un {\color{blue}\href{https://www.ti.com/product/INA210}{INA210}} de Texas Instruments ($v_{cc}=\SI{5}{\volt}$, $k=200$, $v_{ref}=\SI{2.5}{\volt}$)
+    % }\only<5>{si en nuestro microcontrolador medimos que $v_s=\SI{4}{\volt}$ entonces tenemos que:
+    %     \begin{gather*}
+    %         V_{ref} + k \cdot i_s \cdot R_{sh} = v_s\\[4pt]
+    %         i_s = \frac{v_s-v{ref}}{k\cdot R_{sh}}\\[4pt]
+    %         i_s = \frac{4-2,5}{200 \cdot \num{2e-3}}\\[4pt]
+    %         i_s = \SI{3.75}{\ampere}
+    %     \end{gather*}
+    % }
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \centering
+        \begin{circuitikz} [scale=0.8,transform shape]
+        \draw[white](-1,-1) rectangle (7,7);
+        \draw <1>
+            (0,0)
+                to[V,l=$v_1$]
+            (0,6)
+                --
+            (2,6)
+                to[R,l=$R_1$]
+            (2,3)
+                to[vR,l=$R_2$]
+            (2,0)
+                to[short]
+            (0,0)
+            (2,6)
+                to[short]
+            (6,6)
+                to[R,l=$R_3$]
+            (6,3)
+                to[R,l=$R_x$]
+            (6,0)
+                to[short]
+            (2,0)
+            (2,3)
+                to[short,-o]node[above]{$a$}
+            (3,3)
+                to[qiprobe, l=\SI{0}{\ampere}]
+            (5,3)
+                node[above]{$b$}to[short,o-]
+            (6,3)
+            ;
+        \draw <2-3>
+            (0,0)
+                to[V,l=$v_1$]
+            (0,6)
+                --
+            (2,6)
+                to[R,l=$R_1$]
+            (2,3)
+                to[R,l=$R_2$]
+            (2,0)
+                to[short]
+            (0,0)
+            (2,6)
+                to[short]
+            (6,6)
+                to[R,l=$R_3$]
+            (6,3)
+                to[R,l=$R_4$]
+            (6,0)
+                to[short]
+            (2,0)
+            (2,3)
+                to[short,-o]node[above]{$a$}
+            (3,3)
+                to[qiprobe, l=$\neq \SI{0}{\ampere}$]
+            (5,3)
+                node[above]{$b$}to[short,o-]
+            (6,3)
+            ;
+        % \draw <4-5>
+        %     (0,0)
+        %         to[V,l=$v_1$]
+        %     (0,6)
+        %         --
+        %     (2,6)
+        %         to[R,l=$R_1$]
+        %     (2,3)
+        %         to[R,l=$R_2$]
+        %     (2,0)
+        %         to[short]
+        %     (0,0)
+        %     (2,6)
+        %         to[short]
+        %     (6,6)
+        %         to[R,l=$R_3$]
+        %     (6,3)
+        %         to[R,l=$R_4$]
+        %     (6,0)
+        %         to[short]
+        %     (2,0)
+        %     (2,3)
+        %         to[short,-o,i=$i_s$]node[below]{$a$}
+        %     (3,3)node(a){}
+        %         to[R, l=$R_{sh}$]
+        %     (5,3)node(b){}
+        %         node[below]{$b$}to[short,o-]
+        %     (6,3)
+        %     ;
+        % \draw<4-5>
+        %     (4,4.5) node[op amp, scale=0.6, rotate=90, yscale=-1] (opamp) {}
+        %     (opamp.+) -| (a.center)
+        %     (opamp.-) -| (b.center)
+        %     (opamp.out) -- ++ (0,1) node[above]{$v_s=v_{ref} + k\cdot v_{ab}$}
+        %     ;
+        \end{circuitikz}
+    \end{column}
+    \end{columns}
+\end{frame}
+\end{document}
