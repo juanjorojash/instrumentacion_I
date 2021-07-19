@@ -102,114 +102,56 @@ Algunos ejemplos de estímulos:
 \begin{frame}{Sistemas}
     \begin{columns}[onlytextwidth]
         \begin{column}{0.5\textwidth}
-        Cantidad física que varia con una o mas variables independientes y que porta información relevante.\\[8pt]
-        Características: 
-            \begin{itemize}
-                \item Escalar o vectorial 
-                \item Discreta o continua
-                \item Determinista o aleatoria
-            \end{itemize}    
+        Un sistema es una construcción o colección de diferentes elementos que juntos producen resultados que no pueden obtenerse con los elementos por separado\cite{INCOSE}.\\[8pt]
+        Un sistema es un objeto o conjunto de objetos cuyas propiedades queremos estudiar\cite{modelica}.
         \end{column}
         \begin{column}{0.5\textwidth}
             \begin{center}
-               \includegraphics[scale=0.5]{fig/tostadora.jpg}
+               \includegraphics[width=\textwidth]{fig/tostadora.jpg}
                \scalebox{0.3}{\url{https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design\%3Asystem_diagram}}
             \end{center}
         \end{column}
     \end{columns}
 \end{frame}
 
+\begin{frame}{Señales de entrada y salida}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{0.5\textwidth}
+             \begin{itemize}
+                \item Entradas: son las variables que afectan el comportamiento del sistema
+                \item Salidas: son las variables que son definidas por el sistema
+             \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{center}
+               \includegraphics[width=\textwidth]{fig/tostadora.jpg}
+               \scalebox{0.3}{\url{https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design\%3Asystem_diagram}}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
 
-% \begin{frame}{Estructura atómica}
-%     \begin{columns}[onlytextwidth]
-%     \begin{column}{0.6\textwidth}
-%         \textbf{\elementname{Cu}}\\[8pt]
-%         Número atómico: \atomicnumber{Cu}\\[8pt]
-%         Configuración electrónica:\\[8pt] 
-%         \elconf{Cu}\\[8pt]  
-%         \end{column}
-%     \begin{column}{0.4\textwidth}
-%     \begin{center}
-%         Modelo de Bohr:\\[8pt]
-%         \bohr{}{Cu}
-%     \end{center}
-% \end{column}
-% \end{columns}
-% \end{frame}
+\begin{frame}{Modelos}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{0.5\textwidth}
+        Un modelo es una abstracción matemática de un sistema.\\[8pt]
+        \begin{itemize}
+            \item Se modela el sistema en base a ecuaciones
+            \item Es una simplificación del sistema real
+            \item Solo es valido en ciertas condiciones y/o rangos
+        \end{itemize}
+        
+        
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{center}
+               \includegraphics[width=\textwidth]{fig/tostadora.jpg}
+               \scalebox{0.3}{\url{https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design\%3Asystem_diagram}}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
 
-% \begin{frame}{Estructura atómica}
-%     \begin{columns}[onlytextwidth]
-%     \begin{column}{0.6\textwidth}
-%         \textbf{\elementname{Si}}\\[8pt]
-%         Número atómico: \atomicnumber{Si}\\[8pt]
-%         Configuración electrónica:\\[8pt] 
-%         \elconf{Si}\\[8pt]  
-%         \end{column}
-%     \begin{column}{0.4\textwidth}
-%     \begin{center}
-%         Modelo de Bohr:\\[8pt]
-%         \bohr{}{Si}
-%     \end{center}
-% \end{column}
-% \end{columns}
-% \end{frame}
-
-% \begin{frame}{Materiales aislantes, semiconductores y conductores}
-%     \begin{center}
-%         \begin{tikzpicture}[scale=0.9, transform shape]
-%             \begin{scope}
-%                 \fill[green!30] (0,3) rectangle +(4,1) node[black,midway]{Banda de conducción}; 
-%                 \fill[red!30] (0,0) rectangle +(4,1) node[black,midway]{Banda de valencia}; 
-%                 \draw[dashed,thick,red] (0,2)node[above]{\scriptsize$E_f$} --++ (4,0);
-%                 \draw[latex-latex] (4.2,1) --++ (0,2) node[midway,right]{$E_g$};
-%                 \fill[blue!30] (0,-1.5) rectangle +(4,1) node[black,midway]{Bandas llenas};
-%                 \fill[white] (0,-2.5) rectangle +(4,1) node[black,midway]{\textbf{Aislante}};
-%             \end{scope}
-%             \begin{scope}[xshift=5.2cm]
-%                 \fill[green!30] (0,2) rectangle +(4,1) node[black,midway]{Banda de conducción}; 
-%                 \fill[red!30] (0,0) rectangle +(4,1) node[black,midway]{Banda de valencia};
-%                 \draw[dashed,thick,red] (0,1.5)node[above]{\scriptsize$E_f$} --++ (4,0);
-%                 \draw[latex-latex] (4.2,1) --++ (0,1) node[midway,right]{$E_g$};
-%                 \fill[blue!30] (0,-1.5) rectangle +(4,1) node[black,midway]{Bandas llenas};
-%                 \fill[white] (0,-2.5) rectangle +(4,1) node[black,midway]{\textbf{Semiconductor}};
-%             \end{scope}
-%             \begin{scope}[xshift=10.4cm]
-%                 \shade[top color=green!30,bottom color=red!30] (0,0) rectangle +(4,1.8);
-%                 \draw (2,1.35) node[black]{Banda de conducción};
-%                 \draw (2,0.45) node[black]{Banda de valencia};
-%                 %\fill[red!30] (0,0) rectangle +(4,1) node[black,midway]{Banda de valencia};
-%                 \fill[blue!30] (0,-1.5) rectangle +(4,1) node[black,midway]{Bandas llenas};
-%                 \fill[white] (0,-2.5) rectangle +(4,1) node[black,midway]{\textbf{Conductor}};
-%             \end{scope}
-%         \end{tikzpicture}
-%     \end{center}
-% \end{frame}
-
-% \begin{frame}{Densidad de estados}
-%     \begin{center}
-%         \includegraphics[width=0.7\linewidth]{fig/band_structure.png}
-%     \end{center}
-% \end{frame}
-
-% \begin{frame}{Carga eléctrica} 
-%     \begin{columns}[onlytextwidth]
-%     \begin{column}{0.6\textwidth}
-%         La carga eléctrica es una propiedad de las particulas atómicas de las que se compone la materia, se mide en coulombs (\si{\coulomb})\\[4pt]
-%         La carga elemental es la que presenta un solo electrón y equivale a \SI{-1.602e-19}{C}
-%     \end{column}
-%     \begin{column}{0.4\textwidth}
-%         \begin{center}
-%             \begin{tikzpicture}[scale=1]
-%                 \clip (-2.5,-3) rectangle (2.5,3);
-%                 \coordinate (e) at (-2,0);
-%                 \coordinate (p) at (2,0);
-%                 \shade[ball color=gray!10!] (e) circle (.35) node{\Large$-$};
-%                 \shade[ball color=gray!10!] (p) circle (3) node{\Large$+$};
-%             \end{tikzpicture}
-%         \end{center}
-%     \end{column}
-%     \end{columns}
-% \end{frame}
 
 % \begin{frame}{Fuerza eléctrica} 
 %     \begin{columns}[onlytextwidth]
@@ -248,30 +190,13 @@ Algunos ejemplos de estímulos:
 %     \end{columns}
 % \end{frame}
 
-% \begin{frame}{Campo eléctrico} 
-%     \begin{columns}[onlytextwidth]
-%     \begin{column}{0.55\textwidth}
-%         El campo eléctrico es la región del espacio en el que un cuerpo o partícula cargada tiene influencia, dentro de esta regíon se ejercería una fuerza sobre otros cuerpos o partículas cargadas.  
-%         \begin{equation*}
-%             E = k\dfrac{q}{r^2}
-%         \end{equation*}
-%         donde $E$ es el campo eléctrico en newtons por coulomb (\si{\newton/\coulomb}) o voltios por metro (\si{\volt/\meter}), $k$ es la constante de Coulomb ($\SI{9e9}{\newton \meter\squared / \coulomb \squared}$), $q$ es la carga en coulombs (\si{\coulomb}), y $r$ es la distancia entre el punto en el que se mide el campo y la carga en (\si{\meter})   
-%     \end{column}
-%     \begin{column}{0.45\textwidth}
-%         \begin{center}
-%             \includegraphics[scale=0.55]{fig/campo_unados.png}
-%             \includegraphics[scale=0.55]{fig/campo_iguales.png}
-%         \end{center}
-%     \end{column}
-%     \end{columns}
-% \end{frame}
 
-% \begin{frame}{Referencias}
+\begin{frame}{Referencias}
 
-% \bibliographystyle{ieeetr}
+\bibliographystyle{ieeetr}
+\footnotesize
+\bibliography{comunes/referencias}
 
-% \bibliography{referencias}
-
-% \end{frame}
+\end{frame}
 
 \end{document}
