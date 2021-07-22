@@ -140,13 +140,44 @@ Algunos ejemplos de estímulos:
             \item Es una simplificación del sistema real
             \item Solo es valido en ciertas condiciones y/o rangos
         \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{center}
+                \begin{circuitikz}
+                    \draw 
+                    (0,0)
+                        to[cV, l=$OCV(z)$]
+                    (0,3)
+                        to[R, l=$R_0$,i=$i(t)$,-o]
+                    (3,3)
+                        to[open,v^=$v(t)$]
+                    (3,0)
+                        to[short,o-]
+                    (0,0)
+                    ;
+                \end{circuitikz}\\[8pt]
+                \footnotesize{Modelo Rint de una celda electroquímica}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Transductor}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{0.5\textwidth}
+        Es un dispositivo que convierte un tipo de energía en otro tipo de energía.\\[8pt]
+        \begin{itemize}
+            \item Se modela el sistema en base a ecuaciones
+            \item Es una simplificación del sistema real
+            \item Solo es valido en ciertas condiciones y/o rangos
+        \end{itemize}
         
         
         \end{column}
         \begin{column}{0.5\textwidth}
             \begin{center}
                \includegraphics[width=\textwidth]{fig/tostadora.jpg}
-               \scalebox{0.3}{\url{https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design\%3Asystem_diagram}}
+               \scalebox{0.3}{\url{https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/MAXIMATOR-High-Pressure-Manometer-01a.jpg/1200px-MAXIMATOR-High-Pressure-Manometer-01a.jpg}}
             \end{center}
         \end{column}
     \end{columns}
