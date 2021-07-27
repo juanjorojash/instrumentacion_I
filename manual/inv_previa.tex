@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,activeacute]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage{siunitx}
+\usepackage[american,RPvoltages]{circuitikz} %Este se usa para hacer circuitos
+\usepackage{float}
+\usepackage{hyperref}
+\usetikzlibrary{babel}
+\usepackage{tabularx}
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\usepackage{graphicx}
+\graphicspath{{../pdf/}{../png/}}
+\DeclareGraphicsExtensions{.pdf,.jpg,.png}
+\usepackage{subfigure}
+
+
+
+% Cambio de nombre de cuadro a Tabla
+\renewcommand{\listtablename}{Índice de tablas}
+\renewcommand{\tablename}{Tabla}
+
+\begin{document}
+\noindent
+\begin{tabularx}{\linewidth}{Xr}
+\textbf{Ingeniería en Mantenimiento Industrial}& \textbf{Investigación previa} \\
+\textbf{Escuela de Ingeniería Electromecánica}& \textbf{Laboratorio \# 1}\\
+\textbf{Tecnológico de Costa Rica}& \textbf{Lab. de Electricidad I} \\
+\end{tabularx}\\
+
+\noindent\rule[2ex]{\textwidth}{2pt}
+\begin{tabularx}{\linewidth}{Xr}
+\textbf{Integrantes:} & \\
+Nombre Apellido & Carné
+\end{tabularx}
+
+\noindent\rule[2ex]{\textwidth}{2pt}
+
+\begin{enumerate}
+\item ¿Cómo se debe conectar un multímetro para medir la corriente en una carga?\\
+Se debe blablabla
+\item	¿Cómo se debe conectar un multímetro para medir el voltaje en una carga?
+\item	Según las especificaciones de su multímetro y para los distintos rangos de medición, defina cuál es el porcentaje de error en las lecturas de voltaje y corriente.
+\item	¿Qué significa la linealidad de un dispositivo eléctrico? ¿Qué consecuencias tiene esta?
+\end{enumerate}
+
+\end{document}

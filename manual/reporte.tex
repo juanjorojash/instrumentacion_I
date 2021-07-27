@@ -1,0 +1,343 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tecnologico de Costa Rica/Instructivo de Laboratorio de Electricidad I
+% LaTeX Template
+% Version 3.1 (25/3/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Linux and Unix Users Group at Virginia Tech Wiki 
+% (https://vtluug.org/wiki/Example_LaTeX_chem_lab_report)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt,letterpaper]{article}
+\usepackage{url}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,activeacute]{babel} %Permite la escritura intiutiva en español
+\usepackage[version=3]{mhchem} % Package for chemical equation typesetting
+\usepackage{siunitx} % Provides the \SI{}{} and \si{} command for typesetting SI units
+\usepackage{graphicx} % Required for the inclusion of images
+\usepackage[siunitx,RPvoltages,american]{circuitikz} %Este se usa para hacer circuitos
+%\usepackage{natbib} % Required to change bibliography style to APA
+\usepackage{amsmath} % Required for some math elements 
+\usepackage{array}
+\usepackage{tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\usepackage{booktabs}
+\usepackage{geometry}                         
+\geometry{left=18mm,right=18mm,top=21mm,bottom=21mm,headheight=15pt} % Tamaño del área de escritura de la página
+\usepackage{lastpage}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=blue,
+    pdfpagemode=FullScreen,
+}
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+\renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Laboratorio de Electricidad I}
+\rhead{Laboratorio 1}
+\lfoot{Escuela de Ingeniería Electromecánica}
+\cfoot{\thepage\ de \pageref{LastPage}}
+
+\rfoot{\begin{picture}(0,0) \put(-60,0){\includegraphics[width=25mm]{logo}} \end{picture}}
+
+
+%\usepackage{times} % Uncomment to use the Times New Roman font
+\newcommand{\obj}{Objetivos}
+\newcommand{\inv}{Investigación previa}
+\newcommand{\mat}{Materiales y equipo}
+\newcommand{\pro}{Procedimiento}
+\newcommand{\capacidad}{Al finalizar este laboratorio el estudiante estará en capacidad de:}
+\newcommand{\antesde}{Antes de empezar el laboratorio presente el siguiente cuestionario lleno.}
+%----------------------------------------------------------------------------------------
+%	DOCUMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\addto\captionsspanish{\renewcommand{\chaptername}{Laboratorio}}
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+\begin{document}
+
+
+\begin{titlepage}
+
+\begin{center}
+\vspace*{-0.5in}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=11cm]{logo}
+\end{center}
+\end{figure}
+\vspace*{0.4in}
+\begin{Large}
+ESCUELA DE INGENIERIA ELECTROMECANICA\\
+\vspace*{0.15in}
+AREA ELECTRICA\\
+\vspace*{0.8in}
+\end{Large}
+\vspace*{0.2in}
+\begin{Large}
+\textbf{Reporte: Laboratorio I} \\
+\end{Large}
+\textbf{Empleo y lectura de instrumentos de medición eléctrica para corriente y voltaje}
+\vspace*{0.3in}\\
+\begin{center}
+    \begin{tabular}{c|c}
+        Nombre Apellido & Carné  \\
+        Nombre Apellido & Carné
+    \end{tabular}
+\end{center}
+\vspace*{2.5in}
+\begin{Large}
+\textbf{\today}\\
+\end{Large}
+\rule{80mm}{0.1mm}\\
+\vspace*{0.1in}
+\end{center}
+
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{\obj}
+\begin{itemize}
+\item Comprender las limitaciones de lectura en los voltímetros y amperímetros de corriente continua en varias escalas.
+\item Calcular la resistencia equivalente de un elemento utilizando el método indirecto de la Ley de Ohm.
+\item	Comprobar experimentalmente la Ley de Ohm.
+\item	Demostrar el concepto de linealidad en una resistencia.
+\end{itemize}
+
+\section{\inv}
+\antesde
+\begin{enumerate}
+\item	¿Cómo se debe conectar un multímetro para medir la corriente en una carga? 
+\item	¿Cómo se debe conectar un multímetro para medir el voltaje en una carga?
+\item	Según las especificaciones de su multímetro y para los distintos rangos de medición, defina cuál es el porcentaje de error en las lecturas de voltaje y corriente.
+\item	¿Qué significa la linealidad de un dispositivo eléctrico? ¿Qué consecuencias tiene esta?
+\end{enumerate}
+
+\section{\mat}
+\textbf{A suministrar por la Escuela:}
+\begin{itemize}
+\item 1 multímetro digital
+\item 1 socket para bombillo incandescente
+\item 1 bombillo incandescente
+\item 1 resistencia de potencia de 100 \si{\ohm} en 12 \si{\watt}
+\item 10 cables conectores medianos
+\item 1 fuente variable de voltaje DC
+\end{itemize}
+\textbf{A suministrar por el estudiante:}
+\begin{itemize}
+\item 1 multímetro digital
+\item 1 protoboard
+\item Cable de interconexión macho-macho
+\item 3 resistencias de carbón con valores entre \SI{1}{\kilo\ohm} y \SI{10}{\kilo\ohm}
+\end{itemize}
+\section{\pro}
+\begin{enumerate}
+\item Realice las conexiones del circuito tal y como se indica en la Figura \ref{fig:L1F1}.
+\begin{figure}[H]
+\centering
+\begin{circuitikz} 
+\draw
+(0,0) 	
+    to[V, l=$V_f$] 
+(0,3)
+	to[ammeter] 
+(3,3)
+	to[lamp, l_=B, *-*] 
+(3,0) -- (0,0)
+(3,3) -- (5,3)
+    to[voltmeter] 
+(5,0) -- (3,0)
+		
+;
+\end{circuitikz}
+\caption{Medición de corriente y voltaje en un circuito.}
+\label{fig:L1F1}
+\end{figure}
+
+\item Encienda la fuente con un voltaje de \SI{32}{\volt} y espere unos minutos mientras el bombillo se calienta. 
+\item Una vez que el bombillo calentó mida la corriente que circula por el bombillo y el voltaje que cae en este, anote el resultado en la Tabla \ref{tab:L1T1}.
+\item	Repita las mediciones utilizando los valores de voltaje que indica la Tabla \ref{fig:L1F1} y complete la misma. Calcule indirectamente para cada caso el valor de la resistencia interna del bombillo.
+\item	Grafique el comportamiento de la resistencia interna del bombillo y analice el comportamiento. 
+\item	Cambie ahora el bombillo por una resistencia de \SI{100}{\ohm} (\SI{12}{\watt}), repita los pasos anteriores empezando con cero voltios en la fuente, llene la Tabla \ref{tab:L1T2}.
+\item  Grafique el comportamiento de la resistencia y analice el comportamiento. 
+\item Realice las conexiones del circuito tal y como se indica en la Figura \ref{fig:L1F2}.
+\item Encienda la fuente con un voltaje de \SI{30}{\volt}.
+\item Realice las mediciones de $I$, $V_{R1}$, $V_{R2}$, $V_{R3}$.
+\item Averigüe los valores teóricos de las resistencias usando el código de colores. 
+\item Llene la Tabla \ref{tab:L1T3}
+\item Realice las conexiones del circuito tal y como se indica en la Figura \ref{fig:L1F3}.
+\item Encienda la fuente con un voltaje de \SI{10}{\volt}.
+\item Realice las mediciones de $V$, $I_{R1}$, $I_{R2}$, $I_{R3}$.
+\item Averigüe los valores teóricos de las resistencias usando el código de colores. 
+\item Llene la Tabla \ref{tab:L1T4}
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz} 
+\draw
+(0,0) 	
+    to[V, l=\SI{30}{\volt}, i=$I$] 
+(0,3)
+	to[R, l=$R_1$, v=$V_{R1}$] 
+(3,3)
+	to[R, l=$R_2$, v=$V_{R2}$] 
+(6,3) 
+    to[R, l=$R_3$, v=$V_{R3}$] 
+(9,3) -- (9,0) -- (0,0)
+;
+\end{circuitikz}
+\caption{Circuito en serie con tres resistencias}
+\label{fig:L1F2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz} 
+\draw
+(0,0) 	
+    to[V, l=\SI{10}{\volt}] 
+(0,3)
+	to[short] 
+(2,3)
+	to[R, l=$R_1$, i=$I_{R1}$] 
+(2,0)
+    --
+(0,0)
+(2,3)
+    --
+(4,3)
+    to[R, l=$R_2$, i=$I_{R2}$] 
+(4,0)
+    --
+(2,0)
+(4,3)
+    --
+(6,3)
+    to[R, l=$R_3$, i=$I_{R3}$]
+(6,0)
+    --
+(4,0)
+;
+\end{circuitikz}
+\caption{Circuito en paralelo con tres resistencias}
+\label{fig:L1F3}
+\end{figure}
+
+\section{Resultados}
+
+\begin{table}[H]
+	\caption{Valores experimentales de corriente y voltaje del bombillo}
+	\label{tab:L1T1}
+	\centering
+	\vspace{0.5cm}
+	\begin{tabularx}{6cm}{CCC}
+		\toprule
+		$V_B$ (\si{V}) & $I_B$(\si{\ampere}) & $R_B$($\Omega$)\\
+		\midrule
+		0 & & \\
+		4 & & \\
+		8 & & \\
+		12 & & \\
+		16 & & \\
+		20 & & \\
+		24 & & \\
+		28 & & \\
+		32 & & \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+\begin{table}[H]
+	\caption{Valores experimentales de corriente y voltaje en la resistencia}
+	\label{tab:L1T2}
+	\centering
+	\vspace{0.5cm}
+    \begin{tabularx}{6cm}{CCC}
+		\toprule
+		$V_R$ (\si{V}) & $I_R$(\si{\ampere}) & R($\Omega$)\\
+		\midrule
+		0 & & \\
+		4 & & \\
+		8 & & \\
+		12 & & \\
+		16 & & \\
+		20 & & \\
+		24 & & \\
+		28 & & \\
+		32 & & \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\caption{Método indirecto de la ley de Ohm aplicado en un circuito con tres resistencias en serie}
+	\label{tab:L1T3}
+	\centering
+	\vspace{0.5cm}
+    \begin{tabularx}{14cm}{CCCCCC}
+		\toprule
+		& $V$ (\si{V}) & $I$(\si{\milli\ampere}) & $R_{teor}$(\si{\ohm}) & $R_{exp}$(\si{\ohm}) & error (\%)\\
+		\midrule
+		$R_1$ & & & & & \\
+		$R_2$ & & & & & \\
+		$R_3$ & & & & & \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\caption{Método indirecto de la ley de Ohm aplicado en un circuito con tres resistencias en paralelo}
+	\label{tab:L1T4}
+	\centering
+	\vspace{0.5cm}
+    \begin{tabularx}{14cm}{CCCCCC}
+		\toprule
+		&$V$ (\si{V}) & $I$(\si{\milli\ampere}) & $R_{teor}$(\si{\ohm}) & $R_{exp}$(\si{\ohm}) & error (\%)\\
+		\midrule
+		$R_1$ & & & & & \\
+		$R_2$ & & & & & \\
+		$R_3$ & & & & & \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\section{Análisis de resultados}
+
+\section{Conclusiones}
+
+Si desea citar algo lo puede hacer así \cite{alexander2006fundamentos}
+
+
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\bibliographystyle{ieeetr}
+
+\bibliography{referencias}
+
+%----------------------------------------------------------------------------------------
+
+
+\end{document}

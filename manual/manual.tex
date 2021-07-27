@@ -1,0 +1,1800 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tecnológico de Costa Rica/Instructivo de Laboratorio de Electricidad I
+% LaTeX Template
+% Version 3.1 (25/3/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Linux and Unix Users Group at Virginia Tech Wiki 
+% (https://vtluug.org/wiki/Example_LaTeX_chem_lab_report)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt,letterpaper]{report}
+\usepackage{url}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,activeacute]{babel} %Permite la escritura intuitiva en español
+\usepackage{siunitx} % Provides the \SI{}{} and \si{} command for typesetting SI units
+\sisetup{output-decimal-marker = {,}}
+\usepackage{graphicx} % Required for the inclusion of images
+\usepackage[siunitx,american,RPvoltages]{circuitikz} %Este se usa para hacer circuitos
+%\usepackage{natbib} % Required to change bibliography style to APA
+\usepackage{amsmath} % Required for some math elements 
+\usepackage{array}
+\usepackage{geometry}  
+\usepackage{booktabs}
+\usepackage{tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\geometry{left=18mm,right=18mm,top=21mm,bottom=21mm,headheight=15pt} % Tamaño del área de escritura de la página
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=blue,
+}
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+\renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Instructivo de Laboratorio de Electricidad I}
+\rhead{\begin{picture}(0,0) \put(-60,0){\includegraphics[width=20mm]{logo}} \end{picture}}
+
+%\usepackage{times} % Uncomment to use the Times New Roman font
+\newcommand{\obj}{Objetivos}
+\newcommand{\inv}{Investigación previa}
+\newcommand{\mat}{Materiales y equipo}
+\newcommand{\pro}{Procedimiento}
+\newcommand{\capacidad}{Al finalizar este laboratorio el estudiante estará en capacidad de:}
+\newcommand{\antesde}{Antes de empezar el laboratorio presente el siguiente cuestionario lleno.}
+%----------------------------------------------------------------------------------------
+%	DOCUMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+
+\addto\captionsspanish{\renewcommand{\chaptername}{Laboratorio}}
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+\begin{document}
+
+
+\begin{titlepage}
+
+\begin{center}
+\vspace*{1in}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=11cm]{logo}
+\end{center}
+\end{figure}
+\vspace*{0.4in}
+\begin{Large}
+ESCUELA DE INGENIERÍA ELECTROMECÁNICA\\
+\vspace*{0.15in}
+ÁREA ELÉCTRICA\\
+\vspace*{0.8in}
+\end{Large}
+\vspace*{0.2in}
+\begin{Large}
+\textbf{MANUAL DE PRÁCTICAS DE LABORATORIO} \\
+\end{Large}
+\vspace*{0.3in}
+\begin{large}
+LABORATORIO DE ELECTRICIDAD I\\
+\end{large}
+\vspace*{2.5in}
+\begin{Large}
+\textbf{\today}\\
+Versión: 1.3\\
+\end{Large}
+\rule{80mm}{0.1mm}\\
+\vspace*{0.1in}
+\begin{large}
+Realizado por: Juan J. Rojas, \\
+Lisandro Araya y Nicolas Vaquerano\\
+\end{large}
+\end{center}
+
+\end{titlepage}
+
+\tableofcontents
+
+\chapter{Empleo y lectura de instrumentos de medición eléctrica para corriente y voltaje}
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Comprender las limitaciones de lectura en los voltímetros y amperímetros de corriente continua mediante la plataforma Labvolt (LVSIM- EMS).
+\item Calcular la resistencia equivalente de un elemento utilizando el método indirecto de la Ley de Ohm.
+\item	Comprobar experimentalmente la Ley de Ohm.
+\item	Demostrar el concepto de linealidad en una resistencia.
+\end{itemize}
+
+\section{\inv}
+\antesde
+\begin{enumerate}
+\item	¿Cómo se debe conectar un multímetro para medir la corriente en una carga? 
+\item	¿Cómo se debe conectar un multímetro para medir el voltaje en una carga?
+\item	Según las especificaciones de su multímetro y para los distintos rangos de medición, defina cuál es el porcentaje de error en las lecturas de voltaje y corriente.
+\item	¿Qué significa la linealidad de un dispositivo eléctrico? ¿Qué consecuencias tiene ésta?
+\item ¿Qué significa el código de colores? ¿La importancia para obtener el valor de una resistencia?
+
+\end{enumerate}
+
+\section{\mat}
+\textbf{Mediante la plataforma Labvolt-LVSIM https://lvsim.labvolt.com/:}
+\begin{itemize}
+\item 2 multímetros digitales
+\item 1 módulo de resistencia N 8311
+\item 1 fuente variable N 8821
+\item cables conectores
+\end{itemize}
+
+
+\section{\pro}
+\begin{enumerate}
+\item Realice las conexiones del circuito tal y como se indica en la Figura \ref{fig:L1F1}.
+\begin{figure}[H]
+\centering
+\begin{circuitikz} 
+\draw
+(0,0) 	
+    to[V, l=$V_f$] 
+(0,3)
+	to[ammeter] 
+(3,3)
+	to[lamp, l_=B, *-*] 
+(3,0) -- (0,0)
+(3,3) -- (5,3)
+    to[voltmeter] 
+(5,0) -- (3,0)
+;
+\end{circuitikz}
+\caption{Medición de corriente y voltaje en un circuito.}
+\label{fig:L1F1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics{FUENTE-RESISTENCIA.JPG}
+\caption{Circuito en Labvolt}
+\end{figure}
+
+
+\item Encienda el interruptor principal de la fuente y gire la perilla principal que permite un voltaje de \SI{10}{\volt}. 
+\item La resistencia posee 3 interruptores, accionar el interruptor del centro (600 ohmios). Medir la corriente que circula por la  resistencia y el voltaje que cae en éste, anote el resultado en la Tabla \ref{tab:L1T1}.
+\item	Repita las mediciones utilizando los valores de voltaje que indica la Tabla \ref{fig:L1F1} y complete la misma, una vez finalizado la toma de todos los datos, colocar en interruptor principal en OFF. 
+\item Calcule indirectamente (Ley de Ohm) para cada caso el valor de la resistencia interna.
+\item	Grafique el comportamiento de la resistencia interna y analice los datos obtenidos. 
+\item	Cambie ahora el interruptor de la resistencia (300 ohmios), repita los pasos anteriores empezando con cero voltios en la fuente, llene la Tabla \ref{tab:L1T2}.
+\item  Grafique el comportamiento de la resistencia y analice el datos obtenidos. 
+\item Realice las conexiones del circuito tal y como se indica en la Figura \ref{fig:L1F2}.
+\item Encienda el interruptor principal de la fuente y ajuste la tensión a un valor de \SI{100}{\volt}.
+\item Realice las mediciones de $I$, $V_{R1}$, $V_{R2}$, $V_{R3}$. Usar un solo amperímetro para medir la corriente, cambiar el otro tester para medir cada tensión. Antes de cambiar la ubicación del medidor de voltaje, colocar el interruptor principal de la fuente en OFF.
+\item Tomar como referencia y valores teóricos cada resistencia (1200 ohmios, 600 ohmios y 300 ohmios) según se muestra en el módulo N 8311.
+\item Llene la Tabla \ref{tab:L1T3}
+\item Realice las conexiones del circuito tal y como se indica en la Figura \ref{fig:L1F3}.
+
+\begin{figure}[H]
+\centering
+\includegraphics{circ serie LVSim.JPG}
+\caption{Circuito en Labvolt}
+\end{figure}
+
+\item Encienda el interruptor principal de la fuente y ajustar la tensión con un voltaje de \SI{100}{\volt}.
+\item Realice las mediciones de $V$, $I_{R1}$, $I_{R2}$, $I_{R3}$.
+\item Averigüe los valores teóricos de las resistencias usando el código de colores. 
+\item Llene la Tabla \ref{tab:L1T4}
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz} 
+\draw
+(0,0) 	
+    to[V, l=\SI{100}{\volt}, i=$I$] 
+(0,3)
+	to[R, l=$R_1$, v=$V_{R1}$] 
+(3,3)
+	to[R, l=$R_2$, v=$V_{R2}$] 
+(6,3) 
+    to[R, l=$R_3$, v=$V_{R3}$] 
+(9,3) -- (9,0) -- (0,0)
+;
+\end{circuitikz}
+\caption{Circuito en serie con tres resistencias}
+\label{fig:L1F2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz} 
+\draw
+(0,0) 	
+    to[V, l=\SI{100}{\volt}] 
+(0,3)
+	to[short] 
+(2,3)
+	to[R, l=$R_1$, i=$I_{R1}$] 
+(2,0)
+    --
+(0,0)
+(2,3)
+    --
+(4,3)
+    to[R, l=$R_2$, i=$I_{R2}$] 
+(4,0)
+    --
+(2,0)
+(4,3)
+    --
+(6,3)
+    to[R, l=$R_3$, i=$I_{R3}$]
+(6,0)
+    --
+(4,0)
+;
+\end{circuitikz}
+\caption{Circuito en paralelo con tres resistencias}
+\label{fig:L1F3}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Valores experimentales de corriente y voltaje 600 ohmios}
+	\label{tab:L1T1}
+	\centering
+	\vspace{0.5cm}
+	\begin{tabularx}{6cm}{CCC}
+		\toprule
+		$V_B$ (\si{V}) & $I_B$(\si{\ampere}) & $R_B$($\Omega$)\\
+		\midrule
+		0 & & \\
+		10 & & \\
+		20 & & \\
+		30 & & \\
+		40 & & \\
+		50 & & \\
+		60 & & \\
+		70 & & \\
+		80 & & \\
+		90 & & \\
+		100 & & \\	
+		
+		\bottomrule
+	\end{tabularx}
+\end{table}
+\begin{table}[H]
+	\caption{Valores experimentales de corriente y voltaje 300 ohmios}
+	\label{tab:L1T2}
+	\centering
+	\vspace{0.5cm}
+    \begin{tabularx}{6cm}{CCC}
+		\toprule
+		$V_R$ (\si{V}) & $I_R$(\si{\ampere}) & R($\Omega$)\\
+		\midrule
+		0 & & \\
+		10 & & \\
+		20 & & \\
+		30 & & \\
+		40 & & \\
+		50 & & \\
+		60 & & \\
+		70 & & \\
+		80 & & \\
+		90 & & \\
+		100 & & \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\caption{Método indirecto de la ley de Ohm aplicado en un circuito con tres resistencias en serie}
+	\label{tab:L1T3}
+	\centering
+	\vspace{0.5cm}
+    \begin{tabularx}{14cm}{CCCCCC}
+		\toprule
+		& $V$ (\si{V}) & $I$(\si{\milli\ampere}) & $R_{teor}$(\si{\ohm}) & $R_{exp}$(\si{\ohm}) & error (\%)\\
+		\midrule
+		$R_1$ & & &1200 & & \\
+		$R_2$ & & &600 & & \\
+		$R_3$ & & &300 & & \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\caption{Método indirecto de la ley de Ohm aplicado en un circuito con tres resistencias en paralelo}
+	\label{tab:L1T4}
+	\centering
+	\vspace{0.5cm}
+    \begin{tabularx}{14cm}{CCCCCC}
+		\toprule
+		&$V$ (\si{V}) & $I$(\si{\milli\ampere}) & $R_{teor}$(\si{\ohm}) & $R_{exp}$(\si{\ohm}) & error (\%)\\
+		\midrule
+	    $R_1$ & & &1200 & & \\
+		$R_2$ & & &600 & & \\
+		$R_3$ & & &300 & & \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\chapter{Resistencia y resistividad}
+\section{\obj}
+Al finalizar la práctica de laboratorio el estudiante estará en capacidad de:
+\begin{itemize}
+\item Verificar cómo influye la longitud y el área transversal de un conductor eléctrico, en la resistencia del mismo.
+\item	Comprobar que el valor de resistividad solo depende del tipo de material y no de su longitud o área transversal.
+\item	Utilizar el ohmímetro para medir diversos valores de resistencia y comparar los datos con sus magnitudes nominales.
+\end{itemize}
+\section{\inv}
+\antesde
+\begin{enumerate}
+\item	Liste el código de colores utilizado para definir el valor de resistencia y su tolerancia.
+\item	Investigue sobre los distintos materiales y técnicas empleadas en la fabricación de resistencias.
+\item Liste los valores comerciales más comunes para resistencias de \SI{0,25}{\watt}.
+\item	¿Cuál es la resistencia mínima capaz de medir el multímetro empleado y cómo incide ésta en las lecturas de muy baja y de alta impedancia?
+\item	¿Qué significan los conceptos de resistividad y conductividad? ¿Cómo se diferencian de resistencia y conductancia?
+\item	¿Cómo afecta la frecuencia la capacidad de conducción de un metal?
+\item	Investigue sobre la conductividad eléctrica del agua destilada. ¿Es un medio conductor o aislante?
+\item	Liste la resistividad eléctrica del oro, cobre, hierro, plomo, estaño, zinc y nicromo. Compare éstos datos con sus respectivas conductividades. ¿Analice qué relación existe entre ambos parámetros?
+\item	Investigue que es un dieléctrico y describa las características de cinco tipos distintos. ¿Por qué la forma constructiva incide en la capacidad de aislamiento?
+\item	¿En qué unidades se mide el calibre de los conductores eléctricos?
+\item	¿En qué consiste el proceso de galvanizado del hierro y cuál es su función? Investigue cómo afecta este proceso a la capacidad de conducción del hierro.
+\item	Describa las propiedades eléctricas del óxido de hierro.
+\item	Investigue por qué no hay que tocar ambas puntas con las manos cuando se mide una resistencia eléctrica ¿Esta restricción es válida para altos o bajos valores de resistencia? Explique.
+\item	¿Cuál es la diferencia que existe entre un ohmímetro, un mili ohmímetro y un mega ohmímetro? Investigue qué otro nombre comercial tiene este último.
+\end{enumerate}
+\section{\mat}
+\textbf{A suministrar por la Escuela:}
+\begin{itemize}
+\item	1 Mili ohmímetro digital
+\item	6 Tablas de alambre de diversos materiales
+\item	Cables conectores pequeños y medianos
+\end{itemize}
+\textbf{A suministrar por el estudiante:}
+\begin{itemize}
+\item	1 multímetro digital
+\item	5 resistencias de \SI{0,25}{\watt} de distintos valores
+\end{itemize}
+\section{\pro}
+\subsection{Resistividad}
+\begin{enumerate}
+\item	Utilizando alambres de diferentes materiales, según se indica, proceda a medir la resistencia para cada uno de los diámetros y longitudes indicadas, utilizando para ello el mili ohmímetro.
+\item	Para diámetros de igual material, se debe medir el valor de la resistencia para longitudes de 1 m, 2 m, 3 m, 4 m, 5 m y 10 m. Anote los resultados en la Tabla \ref{tab:L2T1}.
+\begin{table}[H]
+	\caption{Valores de resistencia de diversos materiales según longitud y área transversal}
+	\label{tab:L2T1}
+	\centering
+	\vspace{0.5cm}
+	\begin{tabularx}{14cm}{lcCCCCCC}
+		\toprule
+		\multicolumn{2}{c}{}&\multicolumn{6}{c}{Resistencia (\si{\ohm})}\\
+		\midrule
+		Material & Diametro & 1m & 2m & 3m & 4m & 5m & 10m\\
+		\midrule
+		Nicromo & \SI{0,72}{\milli\meter} & & & & & &\\
+		Nicromo & \SI{1,00}{\milli\meter} & & & & & &\\
+		Hierro Galv. & \SI{0,75}{\milli\meter} & & & & & &\\
+		Hierro Galv. & \SI{1,19}{\milli\meter} & & & & & &\\
+		Cobre & \SI{0,77}{\milli\meter} & & & & & &\\
+		Cobre & \SI{1,19}{\milli\meter} & & & & & &\\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+\item Calcule los valores de la constante del conductor como un promedio de los valores que se obtuvieron, para cada uno de los materiales. Anote sus cálculos en la  Tabla \ref{tab:L2T2}.
+\begin{table}[H]
+	\caption{Valores de resistividad de diversos materiales}
+	\label{tab:L2T2}
+	\centering
+	\vspace{0.5cm}
+	\begin{tabularx}{16cm}{lcCCCCCCC}
+		\toprule
+		\multicolumn{2}{c}{}&\multicolumn{7}{c}{Resistividad (\si{\ohm\meter})}\\
+		Material & Diametro & 1m & 2m & 3m & 4m & 5m & 10m & $\overline{\rho}$\\
+		\midrule
+		Nicromo & \SI{0,72}{\milli\meter} & & & & & & &\\
+		Nicromo & \SI{1,00}{\milli\meter} & & & & & & &\\
+		Hierro Galv. & \SI{0,75}{\milli\meter} & & & & & & &\\
+		Hierro Galv. & \SI{1,19}{\milli\meter} & & & & & & &\\
+		Cobre & \SI{0,77}{\milli\meter} & & & & & & &\\
+		Cobre & \SI{1,19}{\milli\meter} & & & & & & &\\
+		
+	\end{tabularx}
+\end{table}
+\item Por medio de métodos estadísticos demuestre que la resistividad es constante para cada material y es independiente de la longitud o del área transversal.
+\item Demuestre que la resistencia es proporcional a la distancia e inversamente proporcional al área transversal.
+\end{enumerate}
+\subsection{Resistencia}
+\begin{enumerate}
+\item	Escoja 5 resistencias de \SI{0,25}{\watt}, lea el valor de cada una de ellas utilizando el código de colores y confirme sus magnitudes con el multímetro. En cada caso, tabule las tolerancias definidas en ellas y el porcentaje de error propio del medidor para los rangos empleados. Llene la Tabla \ref{tab:L2T3}
+\item	Explique por qué cambia la lectura en el multímetro al tocar con sus manos los extremos de una resistencia de alto valor.
+\end{enumerate}
+
+\begin{table}[H]
+	\caption{Medición de directa de resistencias}
+	\label{tab:L2T3}
+	\centering
+	\vspace{0.5cm}
+    \begin{tabularx}{14cm}{CCCCC}
+		\toprule
+		& $R_{teor}$(\si{\ohm}) & $R_{exp}$(\si{\ohm}) & tol. (\%) & error (\%)\\
+		\midrule
+		$R_1$ & & & &\\
+		$R_2$ & & & &\\
+		$R_3$ & & & &\\
+		$R_4$ & & & &\\
+		$R_5$ & & & &\\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+
+\chapter{Circuitos en serie, paralelo y mixtos}
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item	Verificar las características eléctricas de los circuitos en serie, en paralelo y mixtos.
+\item	Realizar conexiones eléctricas de circuitos con configuraciones en serie, en paralelo y mixtos.
+\item	Conocer el funcionamiento de la plataforma de Tinkercad en la simulación de circuitos básicos.
+\end{itemize}
+
+\section{\inv}
+\antesde
+\begin{enumerate}
+\item	¿Cómo se calcula el valor equivalente de varias resistencias en paralelo?
+\item	¿Cómo se calcula el valor equivalente de varias resistencias en serie?
+\item	¿Qué es un divisor de tensión? ¿Cómo se calcula? ¿Para qué tipo de configuraciones sirve?
+\item	¿Qué es un divisor de corriente? ¿Cómo se calcula? ¿Para qué tipo de configuraciones sirve?
+\item	¿Cuales son los enunciados de las leyes de Kirchhoff?
+\item	¿Qué es un valor nominal de un dispositivo? Cuando se calculan los valores teóricos ¿se deben utilizar siempre los valores nominales de los dispositivos?
+\item	¿Qué es un potenciómetro? ¿Como se puede utilizar un potenciómetro como resistencia variable?
+\item	Resuelva teóricamente el laboratorio para los valores nominales de los dispositivos, para ello utilice por aparte tanto la ley de Ohm, leyes de Kirchhoff y también las reglas de división de voltaje y corriente donde corresponda
+\end{enumerate}
+
+\section{\mat}
+\textbf{A suministrar por la Escuela:}
+\begin{itemize}
+\item	1 fuente variable de voltaje DC
+\item   cables conectores
+\end{itemize}
+\textbf{A suministrar por el estudiante(comparar con uso de Tinkercad):}
+\begin{itemize}
+\item   1 protoboard
+\item   Cables de interconexión macho-macho
+\item   1 multímetro digital
+\item   3 potenciometros lineales de \SI{2}{\kilo\ohm}
+\item   6 resistencias de \SI{0,25}{\watt}: 2 x \SI{1}{\kilo\ohm}; 2 x \SI{2,2}{\kilo\ohm}; y 2 x \SI{4,7}{\kilo\ohm}.
+\end{itemize}
+
+
+\section{\pro}
+\subsection{Circuitos en serie}
+\begin{enumerate}
+\item	Coloque en cada uno de los potenciómetros el valor solicitado según la Figura \ref{fig:L3F1}.
+\begin{figure}[H]
+\centering
+\begin{circuitikz} \draw
+(0,0) 	
+    to[american voltage source, l=30\si{\volt}, i=$i$]
+(0,3)
+    to[R, l=\SI{600}{\ohm},v=$v_1$] 
+(2,3)
+    to[R, l=\SI{400}{\ohm},v=$v_2$] 
+(4,3)
+    to[R, l=\SI{240}{\ohm},v=$v_3$] 
+(6,3) -- (6,0) -- (0,0)
+;
+\end{circuitikz}
+\caption{Circuito serie.}
+\label{fig:L3F1}
+\end{figure}
+
+\item	Arme el circuito de la Figura \ref{fig:L3F1} sin la fuente de voltaje; utilizado un multímetro mida la resistencia equivalente que vería la fuente y compárela con la calculada.
+\item	Añada la fuente del voltaje al circuito.
+\item	Realice las mediciones solicitadas y anote los valores en la Tabla \ref{tab:L3T1}.
+\item	Calcule los valores teóricos de los voltajes y corrientes solicitados; compruebe con ellos la validez de la ley de voltajes de Kirchhoff y la regla del divisor de voltaje.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{circuito serie tinkercad-2.JPG}
+\caption{Circuito serie con amperímetro en Tinkercad}
+\end{figure}
+
+
+\begin{table}[H]
+	\caption{Mediciones realizadas en el circuito serie}
+	\label{tab:L3T1}
+	\centering
+	\vspace{0.5cm}
+    \begin{tabularx}{12cm}{CCCC}
+		\toprule
+		Variable & Teórico & Experimental & error (\%)\\
+		\midrule
+        $i$ & & & \\
+        $v_1$ & & & \\
+        $v_2$ & & & \\
+		$v_3$ & & & \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+
+\subsection{Circuitos en paralelo}
+\begin{enumerate}
+\item	Revise cada uno de los potenciómetros para comprobar el valor solicitado según la Figura \ref{fig:L3F2}.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz} \draw
+(-1,0) 	
+    to[american voltage source, l=30\si{\volt}] 
+(-1,3) -- (1,3)
+    to[R, l=\SI{600}{\ohm}, i>^=$i_1$, v=$v$] 
+(1,0)-- (3,0)
+(1,3) -- (3,3)
+    to[R, l=\SI{400}{\ohm}, i>^=$i_2$]
+(3,0) -- (5,0)
+(3,3) -- (5,3)
+    to[R, l=\SI{240}{\ohm}, i>^=$i_3$] 
+(5,0)
+(-1,0) -- (1,0)
+;
+\end{circuitikz}
+\caption{Circuito paralelo.}
+\label{fig:L3F2}
+\end{figure}
+
+\item	Arme el circuito de la Figura \ref{fig:L3F2}. sin la fuente de voltaje; utilizado un multímetro mida la resistencia equivalente que vería la fuente y compárela con la calculada.
+\item	Añada la fuente del voltaje al circuito.
+\item	Realice las mediciones solicitadas y anote los valores en la Tabla \ref{tab:L3T2}.
+\item	Calcule los valores teóricos de los voltajes y corrientes solicitados; compruebe con ellos la validez de la ley de corrientes de Kirchhoff y la regla del divisor de corriente.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{tinkercad paralelo2.JPG}
+\caption{Circuito paralelo con amperímetro en Tinkercad}
+\end{figure}
+
+\begin{table}[H]
+	\caption{Mediciones realizadas en el circuito paralelo}
+	\label{tab:L3T2}
+	\centering
+	\vspace{0.5cm}
+    \begin{tabularx}{12cm}{CCCC}
+		\toprule
+		Variable & Teórico & Experimental & error (\%)\\
+		\midrule
+        $v$ & & & \\
+        $i_1$ & & & \\
+        $i_2$ & & & \\
+		$i_3$ & & & \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\subsection{Circuitos mixtos}
+
+\begin{enumerate}
+\item	Arme el circuito de la Figura \ref{fig:L3F2}. sin la fuente de voltaje.
+\item Usando el multímetro, mida los valores reales de las resistencias y sustitúyalos a la hora de realizar el reporte.
+\item Utilizado un multímetro, mida la resistencia equivalente que vería la fuente y compárela con la calculada.
+\begin{figure}[H]
+\centering
+\begin{circuitikz} [scale=1]\draw
+    (0,0)
+        to[american voltage source, l=\SI{30}{\volt}] 
+    (0,4)
+		to[resistor,l=\SI{2,2}{\kilo\ohm},i>^=$i_3$, v=$v_3$] 
+	(4,4)
+		to[resistor,l=\SI{2,2}{\kilo\ohm},i>^=$i_4$, v=$v_4$] 
+	(8,4)
+	    -- 
+	(8,0)
+		to[resistor,l_=\SI{1}{\kilo\ohm},i>_=$i_6$,v^=$v_6$]
+	(0,0)
+    (0,4) 
+        -- 
+    (0,6)
+		to[resistor,l=\SI{1}{\kilo\ohm},i>^=$i_1$,v=$v_1$] 
+	(4,6) 
+		to[resistor, l=\SI{4,7}{\kilo\ohm},i>^=$i_2$,v=$v_2$]
+	(8,6) 
+	    -- 
+	(8,3)
+    (4,4)
+        --
+    (4,2)
+		to[resistor,l=\SI{4,7}{\kilo\ohm},i>^=$i_5$,v=$v_5$] 
+	(8,2)
+;
+\end{circuitikz}
+\caption{Circuito mixto serie-paralelo.}
+\label{fig:L3F3}
+\end{figure}
+\item	Añada la fuente del voltaje al circuito.
+\item	Realice las mediciones solicitadas y anote los valores en la Tabla \ref{tab:L3T3}.
+\item	Calcule los valores teóricos de los voltajes y corrientes solicitados; compruebe con ellos la validez de la leyes de Kirchhoff.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{Circuito mixto tinkercad2.JPG}
+\caption{Circuito mixto en Tinkercad}
+\end{figure}
+
+
+\begin{table}[H]
+	\caption{Mediciones realizadas en el circuito mixto}
+	\label{tab:L3T3}
+	\centering
+	\vspace{0.5cm}
+	\begin{tabularx}{12cm}{CCCC}
+		\toprule
+		Variable & Teórico & Experimental &  error (\%)\\
+        \midrule
+		$i_1$ & & & \\
+		$i_2$ & & & \\
+		$i_3$ & & & \\
+		$i_4$ & & & \\
+		$i_5$ & & & \\
+		$i_6$ & & & \\
+		$v_1$ & & & \\
+		$v_2$ & & & \\
+		$v_3$ & & & \\
+		$v_4$ & & & \\
+		$v_5$ & & & \\
+		$v_6$ & & & \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\chapter{Taller de simulación de circuitos}
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item	Instalar un software de simulación por computadora enfocando su uso a circuitos de corriente directa, tanto con fuentes dependientes como independientes.
+\item	Comprender el efecto del cambio de magnitud en un elemento sobre el resto de un sistema eléctrico.
+\item	Simular circuitos eléctricos en un programa adecuado.
+\end{itemize}
+\section{\inv}
+\antesde
+\begin{enumerate}
+\item ¿Que es un modelo de un sistema? 
+\item ¿Que es un experimento? 
+\item ¿Que es una simulación? ¿Es toda simulación un experimento? 
+\item ¿Que es un modelo Spice? 
+\item Lleve simulado el circuito de la Figura \ref{fig:T1F1} de este taller en LTSpice (recomendado), TINA TI o Multisim.
+\end{enumerate}
+\section{\mat}
+\textbf{A suministrar por el estudiante:}
+\begin{itemize}
+\item 1 equipo de cómputo portátil adecuado para realizar el taller; este equipo debe tener previamente cargado el simulador a utilizar, se recomienda el uso de LTSpice. 
+\end{itemize}
+\section{\pro}
+Realice lo siguiente:
+\begin{enumerate}
+\item Para el circuito de la Figura \ref{fig:T1F1} obtenga la potencia de la fuente de \SI{3}{\volt}, la corriente en la fuente de \SI{4}{\volt} y el voltaje en la resistencia de \SI{6}{\ohm}; para cada uno de los siguientes valores de la resistencia $R$:
+
+\begin{tabularx}{\linewidth}{XXXX}
+\textbullet{Un corto} & \textbullet{Un abierto} & \textbullet{\SI{1}{\ohm}} & \textbullet{\SI{10}{\ohm}}
+\end{tabularx}
+
+Directivas Spice a utilizar: \verb!.tran!; \verb!.step! y \verb!.meas!.
+
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[scale=1.2] \draw
+(0,0) 	to[american voltage source, l=3\si{\volt}] (0,2)
+		to[resistor, l=2\si{\ohm}] (2,2) -- (6,2)
+		to[resistor, l_=5\si{\ohm}] (6,0) 
+		to[resistor, l_=2\si{\ohm}] (4,0)
+		to[resistor, l=1\si{\ohm}] (4,2)
+(0,0)   to[resistor, l=4\si{\ohm},i<_=$I_x$] (2,0)
+		to[american current source, l={0,2}\si{\ampere}] (2,2)
+(4,0)	to[american voltage source, l_=5\si{\volt}] (2,0)
+(6,2)	to[american controlled current source, l=$I_x$] (8,2)
+		to[resistor, l_=1\si{\ohm}] (8,0)
+		to[resistor, l_=3\si{\ohm}] (6,0)
+(8,2) 	to[resistor, l=3\si{\ohm}] (10,2) -- (10,-2)
+		to[resistor, l_=$R$] (6,-2)
+		to[resistor, l_=4\si{\ohm}] (4,-2)
+(2,-2)	to[american voltage source, l=4\si{\volt}] (4,-2)
+(6,-2) -- (6,0)
+(0,0)	to[resistor, l=6\si{\ohm}] (0,-4)
+(2,0)	-- (2,-4) -- (0,-4)
+(2,-4) 	to[resistor, l=2\si{\ohm}] (8,-4)
+(8,0)
+		to[resistor, l=5\si{\ohm}] (10,0)
+(10,-2) to[short] (10,-4) -- (8,-4)
+;
+\end{circuitikz}
+\caption{Primer ejercicio de simulación}
+\label{fig:T1F1}
+\end{figure}
+
+\item Para el circuito de la Figura \ref{fig:T1F2} encuentre $V_a$. Directivas Spice a utilizar: \verb!.op! y \verb!.meas!.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[scale=1] \draw
+(0,0)
+    to[V,l=\SI{5}{\volt}]
+(0,2)
+    to[cV,l=$5 V_a$]
+(0,4)
+    to[R,l=\SI{5}{\ohm}]
+(3,4)
+    to[R,l=\SI{5}{\ohm},v=$V_a$]
+(6,4)
+    to[R,l=\SI{5}{\ohm}]
+(6,2)
+    to[V, invert, l=\SI{10}{\volt}]
+(6,0)
+    to[short]
+(0,0)
+(3,0)
+    to[I,l=\SI{1}{\ampere}]
+(3,4)
+;
+\end{circuitikz}
+\caption{Segundo ejercicio de simulación}
+\label{fig:T1F2}
+\end{figure}
+
+\item Para el circuito de la Figura \ref{fig:T1F3} encuentre el valor de $R$ que consuma la máxima potencia. Directivas Spice a utilizar: \verb!.op!; \verb!.step! y \verb!.meas!.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[scale=1] \draw
+(0,0)
+    to[V,l=\SI{20}{\volt}]
+(0,4)
+    to[R,l=\SI{30}{\ohm}]
+(3,4)
+    to[R,l=$R$]
+(6,4)
+    to[R,l=\SI{40}{\ohm}]
+(6,2)
+    to[V, invert, l=\SI{10}{\volt}]
+(6,0)
+    to[short]
+(0,0)
+(3,0)
+    to[I,l=\SI{0.5}{\ampere}]
+(3,4)
+;
+\end{circuitikz}
+\caption{Tercer ejercicio de simulación}
+\label{fig:T1F3}
+\end{figure}
+
+\item Para el circuito de la Figura \ref{fig:T1F4} encuentre el valor de la fuente $V_e$ de tal forma que $V_x$ sea \SI{15}{\volt} y encuentre la resistencia equivalente del circuito visto desde $V_e$. Directivas Spice a utilizar: \verb!.op!; \verb!.step! y \verb!.meas!.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[scale=1.2] \draw
+(0,0)
+    to[V,l=$V_e$]
+(0,2)
+    to[R,l=\SI{30}{\ohm}]
+(2,2)
+    to[R,l=\SI{20}{\ohm}]
+(4,2)
+    to[R,l=\SI{50}{\ohm}]
+(6,2)
+    to[R,l=\SI{25}{\ohm}]
+(6,0)
+    to[R,l_=\SI{35}{\ohm}]
+(4,0)
+    to[R,l=\SI{30}{\ohm}]
+(2,0)
+    to[short]
+(0,0)
+(2,2)
+    to[R,l_=\SI{10}{\ohm},v^=$V_x$]
+(2,0)
+(4,0)
+    to[R,l=\SI{70}{\ohm}]
+(4,2)
+(4,0)
+    to[R,l=\SI{30}{\ohm}]
+(6,2)
+(2,2)
+    to[short]
+(2,4)
+    to[short]
+(4,4)
+    to[R,l=\SI{16}{\ohm}]
+(8,4)
+    to[short]
+(8,-2)
+    to[R,l_=\SI{40}{\ohm}]
+(4,-2)
+    to[R,l_=\SI{15}{\ohm}]
+(2,-2)
+    to[short]
+(2,0)
+(4,2)
+    to[R,l=\SI{30}{\ohm}]
+(4,4)
+(4,-2)
+    to[short]
+(4,0)
+(4,-1) 
+    to[R,l=\SI{60}{\ohm}]
+(8,-1)
+;
+\end{circuitikz}
+\caption{Cuarto ejercicio de simulación}
+\label{fig:T1F4}
+\end{figure}
+
+
+\end{enumerate}
+
+\chapter{Teorema de Superposición}
+
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Implementar un circuito que valide el método de superposición para análisis
+de circuitos y comparar los resultados con el método de análisis de mallas.
+\end{itemize}
+
+\section{\inv}
+\antesde
+\begin{enumerate}
+\item Calcule $V_{ab}$ en el circuito que se muestra en la Figura \ref{fig:L5F1} empleando los métodos de superposición y mallas. Incluya todos los pasos necesarios.
+\item Compruebe sus cálculos usando una simulación en LTSpice; incluya capturas de pantalla del circuito. Obtenga $V_{ab}$ usando una directiva \verb!.meas! e incluya el contenido del \emph{SPICE Error Log}. 
+\end{enumerate}
+
+\section{\mat}
+\textbf{A suministrar por la Escuela:}
+\begin{itemize}
+\item 1 fuente variable de voltaje DC con dos salidas.
+\item 10 cables conectores medianos.
+\end{itemize}
+\textbf{A suministrar por el estudiante:}
+\begin{itemize} 
+\item   1 protoboard
+\item   1 multímetro digital
+\item 5 Resistencias de \SI{0.25}{\watt}, con valores de \SI{1}{\kilo\ohm}; \SI{10}{\kilo\ohm}; \SI{4.7}{\kilo\ohm}; \SI{4.7}{\kilo\ohm}; y \SI{2.2}{\kilo\ohm} (una de cada una)
+\item   Cables de interconexión macho-macho
+\end{itemize}
+
+\section{\pro}
+\begin{enumerate}
+\item Haga las conexiones necesarias para armar en una protoboard el circuito de
+la Figura \ref{fig:L5F1}.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz} [scale=1]\draw
+(0,0) 	
+    to[V, l=\SI{10}{\volt}]
+(0,3)
+    to[resistor, l=\SI{1}{\kilo\ohm}, -*] 
+(3,3) node[above]{a}
+    to[resistor, l=\SI{4.7}{\kilo\ohm}, -*] 
+(6,3) node[above]{b}
+    to[resistor, l=\SI{2.2}{\kilo\ohm}] 
+(9,3)
+(0,0)
+    to[short]
+(9,0)
+    to[american voltage source, l=\SI{20}{\volt}] 
+(9,3)
+(3,3)
+    to[resistor, l_=\SI{10}{\kilo\ohm}, -*] 
+(3,0)
+(6,3)
+    to[resistor, l_=\SI{4.7}{\kilo\ohm}, -*] 
+(6,0)
+;
+\end{circuitikz}
+\caption{Circuito para el análisis de mallas y superposición.}
+\label{fig:L5F1}
+\end{figure}
+
+\item Con ambas fuentes de tensión funcionando, tome los datos de la corriente y
+voltaje de la rama \emph{ab}, tal como se indica en el circuito y anótelos en la Tabla \ref{tab:L6T1}.
+\item Cortocircuite\footnote{No se debe cortocircuitar la fuente como tal, la forma correcta de hacerlo es quitar los cables de la fuente y unirlos físicamente.} la fuente de 10 \si{\volt}. Ajuste la fuente de tensión de 20 \si{\volt} y vuelva a tomar los datos en la rama \emph{ab}.
+\item Cortocircuite la fuente de 20 \si{\volt}. Ajuste la fuente de tensión de 10 \si{\volt} y vuelva a tomar los datos en la rama \emph{ab}.
+
+\begin{table}[H]
+	\caption{Valores de $V_{ab}$ obtenidos con una fuente a la vez}
+	\label{tab:L6T1}
+	\centering
+	\vspace{0.5cm}
+	\begin{tabularx}{14cm}{lXXX}
+	    \toprule
+		& Teórico & Experimental & error (\%) \\
+		\midrule
+		Ambas fuentes & & & \\
+		Solo la de 10\si{\volt} & & & \\
+		Solo la de 20\si{\volt} & & & \\
+		\midrule
+		$\sum$ ambas fuentes & & & \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	\caption{Valores de $I_{ab}$ obtenidos con una fuente a la vez}
+	\label{tab:L6T2}
+	\centering
+	\vspace{0.5cm}
+	\begin{tabularx}{14cm}{lXXX}
+	    \toprule
+        & Teórico & Experimental & \% de error\\
+        \midrule
+		Ambas fuentes & & & \\
+		Solo la de 10\si{\volt} & & & \\
+		Solo la de 20\si{\volt} & & & \\
+		\midrule
+		$\sum$ ambas fuentes & & & \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+\item Compare los datos teóricos con los resultados obtenidos en el laboratorio y
+analícelos.
+\end{enumerate}
+
+\chapter{Teoremas de Thévenin, Norton y Máxima transferencia de potencia}
+
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Comprobar de manera experimental los teoremas de Thévenin, Norton y Máxima
+transferencia de potencia.
+\item Comparar dos formas de medición experimental de la resistencia de
+Thévenin.
+\end{itemize}
+
+\section{\inv}
+\antesde
+\begin{enumerate}
+\item Enuncie el Teorema de Thévenin, incluya un dibujo.
+\item Enuncie el Teorema de Norton, incluya un dibujo.
+\item Enuncie el Teorema de Máxima Transferencia de Potencia, incluya un dibujo.
+\item Obtenga el equivalente de Thévenin y Norton entre las terminales $a$ y $b$ del circuito del
+laboratorio.
+\item Investigue y explique cuáles formas existen para encontrar experimentalmente los equivalentes de Thévenin y Norton.
+\end{enumerate}
+
+\section{\mat}
+\textbf{A suministrar por la Escuela:}
+\begin{itemize}
+\item 1 fuente variable de voltaje DC con dos salidas.
+\item 10 cables conectores medianos.
+\end{itemize}
+\textbf{A suministrar por el estudiante:}
+\begin{itemize} 
+\item   1 protoboard
+\item   1 multímetro digital
+\item 7 Resistencias de \SI{0.25}{\watt}, con valores de \SI{1}{\kilo\ohm}; \SI{1}{\kilo\ohm}; \SI{4.7}{\kilo\ohm}; \SI{4.7}{\kilo\ohm}; \SI{2.2}{\kilo\ohm};
+\SI{2.2}{\kilo\ohm};
+\SI{10}{\kilo\ohm};
+\item 2 potenciómetros de 10 \si{\kilo\ohm}
+\item   Cables de interconexión macho-macho
+\end{itemize}
+
+\section{\pro}
+Previamente al inicio del laboratorio prepare las tablas adecuadas para anotar los
+datos obtenidos.
+\begin{enumerate}
+\item Mida el valor real de cada una de las resistencias que se van a utilizar en el
+laboratorio, tabule estos valores adecuadamente. Cuando realice los cálculos
+teóricos utilice estos valores en lugar de los nominales.
+\item Realice en una protoboard las conexiones del circuito tal y como se indica en
+la Figura \ref{fig:L8F1}. Más adelante entre los puntos \emph{a} y \emph{b} se colocará la carga, que será un potenciómetro de 10 \si{\kilo\ohm}.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz} [scale=1]\draw
+(0,0)	to[resistor, l_={2,2}\si{\kilo\ohm}, -*] (0,3) 
+		to[short, -o] (0.5,3) node[right]{$a$} 
+(0,3)	to[resistor, l_={1}\si{\kilo\ohm}, -*] (0,6)
+		to[resistor, l={4,7}\si{\kilo\ohm}, -*] (3,6) -- (9,6)
+		to[resistor, l_={10}\si{\kilo\ohm}] (9,0) -- (0,0)
+(6,3)   node[right]{+15V}	
+		to[resistor, l_={1}\si{\kilo\ohm}, o-*] (3,3)
+		to[short, -o] (2.5,3) node[left]{$b$}
+(3,0)	node[ground]{} 
+		to[resistor, l_={4,7}\si{\kilo\ohm}] (3,3)
+		to[resistor, l_={2,2}\si{\kilo\ohm}] (3,6)
+(0,6)	to[short, -o] (-1,6) node[left]{+20V}
+;
+\end{circuitikz}
+\caption{Circuito para teoremas de Thevenin y máxima transferencia de potencia.}
+\label{fig:L8F1}
+\end{figure}
+
+\item Dejando un abierto en la carga, mida el voltaje que habría entre \emph{a} y \emph{b}; ese es el voltaje a circuito abierto $V_{OC}$; anótelo en la tabla correspondiente.
+\item Colocando un amperímetro entre los puntos \emph{a} y \emph{b} (de tal forma que se forme un corto circuito). Tabule adecuadamente este valor como la corriente de
+corto circuito $I_{SC}$.
+\item Coloque el potenciómetro de carga entre los puntos \emph{a} y \emph{b}. Varíe el valor del
+potenciómetro hasta que el voltaje en este sea la mitad del valor $V_{OC}$. 
+\item Mida el valor de la resistencia en el potenciómetro.
+\item Coloque en corto ambas fuentes y mida directamente la resistencia $R_{TH}$ entre
+los puntos \emph{a} y \emph{b}.
+\item Construya los equivalentes de Thevenin y Norton utilizando los resultados obtenidos, inclúyalos en el informe de este laboratorio.  
+\item Calcule el valor de la máxima potencia utilizando los resultados obtenidos.
+\end{enumerate}
+
+\chapter{Taller sobre el osciloscopio y el generador de señales}
+
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Utilizar un osciloscopio para analizar señales en el dominio del tiempo, incluyendo mediciones de amplitud, período y frecuencia.
+\end{itemize}
+
+\section{\inv}
+Lea el Apéndice \ref{ap:osc} y responda las siguientes preguntas:
+\begin{enumerate}
+\item ¿Qué estímulos físicos pueden estudiarse en un osciloscopio?
+\item ¿Qué es un osciloscopio?¿Qué variables representan los ejes X, Y y Z?
+\item ¿Qué tipo de información puede proporcionar un osciloscopio? Mencione ejemplos.
+\item ¿Cuál es la clasificación típica de los osciloscopios?
+\item ¿Cuál es la diferencia entre un osciloscopio analógico y uno digital? Mencione una virtud de los osciloscopios digitales.
+\item Investigue y explique con sus propias palabras sobre: Amplitud, desfase, frecuencia, periodo, tipos de onda, señales analógicas y señales digitales.
+\item ¿Qué es la integridad de la señal?¿Cómo se puede definir o evaluar? y ¿Cuál es su importancia?
+\item ¿Cuáles son los sistemas básicos que componen los osciloscopios? ¿Cómo se relacionan con la integridad de la señal?
+\item Mencione buenas prácticas al iniciar una medición con un osciloscopio.
+\item En el sistema vertical ¿Cuales son las funciones de los controles de posición, volts/div y límite de ancho de banda?
+\item ¿Cuál es la función de los modos de adquisición y cuáles son los tipos? Explique cada uno.
+\item ¿Cuál es la diferencia entre el muestreo de tiempo real y el muestreo de tiempo equivalente?
+\item En el sistema horizontal ¿Cuáles son las funciones de los controles de posición, secs/div y modos XY?
+\item ¿Cuáles son las funciones del sistema de disparo (Trigger)? Explique los diferentes tipos.
+\item Mencione y explique las funciones matemáticas que poseen la mayoría de osciloscopios digitales.
+\end{enumerate}
+
+\section{\mat}
+\begin{itemize}
+\item 1 Osciloscopio digital
+\item 1 Generador de señales BK
+\end{itemize}
+
+\section{\pro}
+Antes de empezar la práctica asegúrese de haber leído y comprendido el apéndice
+del osciloscopio al final de este documento.
+
+\begin{enumerate}
+\item Familiarícese con el osciloscopio con el que va a trabajar, busque en él cada
+uno de los controles que se presentan en el apéndice.
+\item Encienda el osciloscopio y establezca en él valores adecuados de enfoque,
+intensidad, pendiente de la gráfica, ajuste de cero y calibración.
+\item En el generador de señales establezca una onda sinusoidal sin offset.
+\item Conecte la salida del generador de señales al canal uno del osciloscopio.
+\item Obtenga del generador una señal de 1 kHz, 5 V de amplitud y sin offset, si
+tiene problemas viendo la señal en la pantalla utilice el control del ‘trigger’.
+\item Cambie el ‘trigger’ y observe cómo afecta este a la señal mostrada.
+\item A continuación el profesor le solicitará que haga varias pruebas con el oscilloscopio
+y el generador de señales, sigas las instrucciones e incluya detalles en el reporte.
+\end{enumerate}
+
+
+\chapter{Circuitos RL y RC}
+
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Entender la dinámica y características del condensador e inductor.
+\item Comprobar experimentalmente el comportamiento de circuitos RC y RL serie
+en régimen DC.
+\end{itemize}
+
+\section{\inv}
+\antesde
+\begin{enumerate}
+\item Investigue sobre los distintos tipos de dieléctricos empleados en la
+fabricación de condensadores y sus campos de aplicación.
+\item Investigue cuál es la inductancia de una bobina de 100 vueltas, 10 cm de
+largo; 2,5 cm de diámetro y núcleo de aire. Defina su fórmula de cálculo.
+\item ¿Qué efecto tiene la permeabilidad ($\mu$) del núcleo de esta misma bobina en
+el valor de la inductancia?
+\item ¿Qué son las figuras de Lissajous y cómo se mide el desfase de dos señales
+de igual frecuencia?
+\item Simule la respuesta en el tiempo que obtendrá en este laboratorio.
+\end{enumerate}
+
+\section{\mat}
+\begin{itemize}
+\item 1 generador de señales BK
+\item 1 osciloscopio
+\item 1 caja de inductancias variables de baja potencia
+\item 1 caja de condensadores variables de baja potencia
+\item 1 caja de resistencias variables de baja potencia
+\item Cables conectores
+\end{itemize}
+
+\section{\pro}
+\subsection{Circuito transitorio RC}
+\begin{enumerate}
+\item Arme el circuito de la Figura \ref{fig:L9F1} y conecte el osciloscopio digital tal como se indica. El voltaje del generador debe ser mayor a \SI{5}{\volt}.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz} [scale=1]\draw
+(0,0)	to[resistor, l={2,2}\si{\kilo\ohm}] (3,0)
+		to[capacitor, l={0,1}\si{\micro\farad}] (3,-3) -- (0,-3)
+		to[square voltage source, l=$V_F$] (0,0)
+;
+		\draw 
+		[-latex, line width=3pt] (0,1) node[above] {\textbf{CH1}} -- (0,0.2)
+;		 
+		\draw
+		[-latex, line width=3pt] (3,1) node[above] {\textbf{REF}} -- (3,0.2)
+;
+		\draw
+		[-latex, line width=3pt] (4,-3) node[right] {\textbf{CH2}} -- (3.2,-3)
+;
+\end{circuitikz}
+\caption{Circuito de carga y descarga de un capacitor.}
+\label{fig:L9F1}
+\end{figure}
+
+\item Observe los gráficos de $\mathrm{V_C}$ e $\mathrm{I_C}$ contra la variable temporal.
+\item Mida la constante de tiempo ($\tau$) usando la función de cursores.
+\item Varíe el generador de señales a una onda senoidal.
+\item Calcule el ángulo de fase usando la función de cursores. 
+\item Compruebe el ángulo de fase mediante las figuras de Lissajous.
+\end{enumerate}
+
+\subsection{Circuito transitorio RL}
+
+\begin{enumerate}
+\item Arme el circuito de la Figura \ref{fig:L9F2} y conecte el osciloscopio digital tal como se indica. El voltaje del generador debe ser mayor a \SI{5}{\volt}.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz} [scale=1]\draw
+(0,0)	to[resistor, l={470}\si{\ohm}] (3,0)
+		to[inductor, l={2.35}\si{\milli\henry}] (3,-3) -- (0,-3)
+		to[square voltage source, l=$V_F$] (0,0)
+;
+		\draw 
+		[-latex, line width=3pt] (0,1) node[above] {\textbf{CH1}} -- (0,0.2)
+;		 
+		\draw
+		[-latex, line width=3pt] (3,1) node[above] {\textbf{REF}} -- (3,0.2)
+;
+		\draw
+		[-latex, line width=3pt] (4,-3) node[right] {\textbf{CH2}} -- (3.2,-3)
+;
+\end{circuitikz}
+\caption{Circuito de carga y descarga de un inductor.}
+\label{fig:L9F2}
+\end{figure}
+
+\item Observe los gráficos de $\mathrm{V_L}$ e $\mathrm{I_L}$ contra la variable temporal.
+\item Mida la constante de tiempo ($\tau$) usando la función de cursores.
+\item Varíe el generador de señales a una onda senoidal.
+\item Calcule el ángulo de fase usando la función de cursores. 
+\item Compruebe el ángulo de fase mediante las figuras de Lissajous.
+\end{enumerate}
+
+\chapter{Valores eficaces}
+
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Comprobar en forma práctica los valores eficaces de la corriente alterna
+\end{itemize}
+
+\section{\inv}
+\antesde
+\begin{enumerate}
+\item Explique qué son y cómo se calculan el valor eficaz, el valor medio de una
+señal alterna. ¿Por qué una señal alterna se representa con su valor eficaz
+en lugar del valor medio?
+\item ¿Qué es el valor raíz media cuadrática (RMS)? ¿Cómo se calcula y cómo se
+relaciona con el valor eficaz? ¿Depende el valor RMS de la frecuencia de la
+señal?
+\item Indique cuáles son las fórmulas para calcular el valor RMS de las siguientes
+señales alternas sin offset (a menos que se indique lo contrario)
+
+\begin{itemize}
+\item Sinusoidal.
+\item Sinusoidal con offset.
+\item Triangular.
+\item Diente de sierra.
+\item Cuadrada.
+\item Tren de pulsos.
+\item ¿Cómo afecta el offset al valor RMS?
+\item ¿Qué significa que un instrumento de medición eléctrica sea “True RMS”?
+\end{itemize}
+
+\item ¿En qué casos afectaría que el instrumento no tenga esta característica?
+\end{enumerate}
+
+\section{\mat}
+\begin{itemize}
+\item 1 Osciloscopio de rayos catódicos
+\item 1 Generador de señales BK
+\item 1 Multímetro True RMS
+\item Cables conectores
+\end{itemize}
+
+\section{\pro}
+\begin{enumerate}
+\item Conecte la salida del generador de señales directamente al osciloscopio. Con
+ayuda de este haga que la señal de salida sea una onda sinusoidal de una frecuencia cercana a los \SI{200}{\hertz}, y una amplitud de \SI{4}{\volt} con cero voltios de offset. 
+\item Usando un multímetro ``True RMS'' mida la componente en DC y AC del voltaje a la salida del generador.
+\item Complete la Tabla \ref{tab:L10T1} para diferentes valores de ondas y compare con
+los valores esperados. Para todos los casos la señal de salida será de una  frecuencia cercana a los \SI{200}{\hertz} y una amplitud de \SI{4}{\volt}.
+\begin{table}[H]
+	\caption{Valores eficaces de diferentes ondas}
+	\label{tab:L10T1}
+	\vspace{0.5cm}
+	\centering
+		\begin{tabularx}{15cm}{lXXXX}
+	    \toprule
+		& DC & $\mathrm{V_{RMS}}$ &$\mathrm{V_{RMS}}$ & Error\\
+		Tipo de onda & offset (V) & teor. (V) & exp.(V) & (\%)\\
+		\midrule
+		Sinusoidal & 0 & & & \\
+		Sinusoidal (off=2V) & 2 & & & \\
+		Triangular & 0 & & & \\
+		Diente de sierra & 0 & & & \\
+		Cuadrada & 0 & & & \\
+		Tren de pulsos pos. & 0 & & & \\
+		Tren de pulsos neg. & 0 & & & \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\end{enumerate}
+
+\chapter{Circuito mixto RLC en corriente alterna}
+
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Comprobar en forma práctica los valores eficaces de la corriente alterna
+\end{itemize}
+
+\section{\inv}
+\antesde
+\begin{enumerate}
+\item ¿Qué significa la medida de un voltímetro o amperímetro en corriente alterna,
+es esta el valor medio, pico, eficaz o algún otro?
+\item ¿Cómo se relaciona este valor medido por el instrumento con los fasores?
+\item ¿Cómo se puede medir experimentalmente el ángulo de fase en un circuito
+CA?
+\item ¿Qué es impedancia? ¿Cómo se calcula? ¿Cuál es la relación que tiene con
+el concepto de resistencia? ¿Qué significan admitancia, reactancia y
+suceptancia?
+\item ¿Cómo es la relación entre el voltaje y la corriente en un circuito inductivo?
+¿Cómo sería en uno capacitivo?
+\item Simule la respuesta del circuito a utilizar en este laboratorio.
+\end{enumerate}
+
+\section{\mat}
+
+\begin{itemize}
+\item 1 multímetro digital (a proveer por el grupo)
+\item 1 generador de señales
+\item 1 inductor radial de \SI{100}{\micro\henry}
+\item 1 capacitor de \SI{10}{\micro\farad}
+\item 1 resistencia de \SI{470}{\ohm}
+\item Cables de conexión
+\end{itemize}
+
+\section{\pro}
+
+\begin{enumerate}
+\item Arme el siguiente circuito mixto RLC en una protoboard, realice las mediciones de los elementos para realizar sus cálculos teóricos del informe. Recuerde medir la resistencia interna del inductor ($R_L$) e incluirla en sus cálculos.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz} [scale=1]\draw
+(0,0)	to[sV, l=$\SI{4}{\volt} @ \SI{100}{\hertz}$] (0,4)
+		to[resistor, l=$R$, v=$V_R$, i>^=$i_t$] (3,4) -- (6,4)
+		to[capacitor, l=$C$, i>^=$i_C$] (6,0) -- (0,0)
+(3,4)  	to[L, l=$L$, v=$V_{LC}$, i>^=$i_L$] (3,0)
+;
+\end{circuitikz}
+\caption{Circuito RLC en corriente alterna}
+\end{figure}
+
+\emph{Nota:} Para los cálculos teóricos de la investigación previa se deben considerar los valores teóricos incluidos en la Tabla \ref{tab:L11T1}.
+
+\item Mida y anote los valores reales de los elementos y parametros del circuito incluyendo la
+resistencia interna del inductor y exluyendo el la inductancia del inductor. Anote
+los valores en la Tabla \ref{tab:L11T1}.
+
+\begin{table}[H]
+	\caption{Valores teóricos y experimentales.}
+	\label{tab:L11T1}
+	\vspace{0.5cm}
+	\centering
+	\begin{tabularx}{10cm}{lXX}
+		\toprule
+		 & Valor teórico & Valor experimental \\
+		 \midrule
+		$V$ & \SI{4}{\volt} & \\
+		$f$ & \SI{100}{\hertz} & \\
+		$R$ & \SI{470}{\ohm} & \\
+		$C$ & \SI{10}{\micro\farad} & \\
+		$L$ & \SI{100}{\micro\henry} & \\
+		$R_L$ & \SI{330}{\ohm} & \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+\item Encienda la fuente y lleve lentamente el generador de audio a un voltaje de \SI{4}{V} a \SI{100}{\hertz}.
+\item Ubicando apropiadamente el multímetro digital según sea el caso, proceda a medir la corriente que pasa por la resistencia, el inductor y el capacitor.\par
+
+\emph{Nota:} Asegúrese de apagar el generador de audio cada vez que cambie la ubicación del multímetro digital.
+\item Proceda a medir el voltaje a través de la resistencia, del inductor y del capacitor y anótelos también en la Tabla \ref{tab:L11T2}.
+\item Compare los valores experimentales con aquellos calculados teóricamente, y obtenga las conclusiones correspondientes.
+
+\begin{table}[H]
+	\caption{Valores teóricos y experimentales para el circuito RLC.}
+	\label{tab:L11T2}
+	\centering
+	\begin{tabularx}{14cm}{lXXX}
+		\toprule
+		& Valor teórico & Valor experimental & \% de error \\
+		\midrule
+		$I_{t}$(mA) & & & \\
+		$I_{L}$(mA) & & & \\
+		$I_{C}$(mA) & & & \\
+		$V_{R}$(V) & & & \\
+		$V_{LC}$(V) & & & \\
+		\bottomrule
+	\end{tabularx}
+    
+\end{table}
+\end{enumerate}
+
+\chapter{Mejoramiento del factor de potencia}
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Calcular el valor del condensador requerido para mejorar el factor de potencia de una carga, y comprobar experimentalmente los resultados.
+\end{itemize}
+\section{\inv}
+\antesde
+\begin{enumerate}
+\item ¿Qué significa el factor de potencia, por qué es importante en la industria?
+\item ¿Qué significa que el factor de potencia sea en atraso o adelanto?
+\item Investigue algunos ejemplos del monto de la multa por tener un factor de potencia inadecuado.
+\end{enumerate}
+\section{\mat}
+\begin{itemize}
+\item 1 osciloscopio de rayos catódicos
+\item 1 generador de audio BK
+\item 1 inductor de \SI{20}{\milli\henry}
+\item 1 capacitor variable
+\item 1 resistencia de \SI{22}{\ohm}
+\item Cables de conexión
+\end{itemize}
+\section{\pro}
+\begin{enumerate}
+\item Mida y anote en la Tabla \ref{tab:L12T1} los valores reales de la resistencia R del circuito y de la resistencia interna del inductor, a efecto de comparar su concordancia.
+
+\begin{table}[H]
+	\caption{Valores Teóricos y experimentales de las resistencias.}
+	\label{tab:L12T1}
+	\centering
+	\begin{tabular}[h]{|c|c|c|}
+		\cline{2-3}
+		\multicolumn{1}{c|}{} &
+		\multicolumn{1}{c|}{Valor teórico} &
+		\multicolumn{1}{c|}{Valor experimental} \\
+		
+		$R$ & \SI{150}{\ohm} & {} \\
+		
+		$R_L$ & \SI{60}{\ohm} & {} \\
+		
+	\end{tabular}
+\end{table}
+\item Realizar los cálculos necesarios para obtener el valor del capacitor requerido
+para cambiar el factor de potencia a 0,83 utilizando una frecuencia de \SI{5}{\kilo\hertz}. Con esta información, asegúrese de seleccionar adecuadamente las
+escalas de medición de los instrumentos.
+\begin{figure}[H]
+\centering
+\begin{circuitikz} [scale=1]\draw
+(0,0)	to[resistor, l=\SI{150}{\ohm}] (3,0)
+		to[inductor, l=\SI{20}{\milli\henry}] (3,-3) -- (0,-3)
+		to[sV, l=5 V] (0,0)
+;
+		\draw 
+		[-latex, line width=3pt] (0,1) node[above] {\textbf{REF}} -- (0,0.2)
+;		 
+		\draw
+		[-latex, line width=3pt] (3,1) node[above] {\textbf{CH2}} -- (3,0.2)
+;
+		\draw
+		[-latex, line width=3pt] (-1,-3) node[left] {\textbf{CH1}} -- (-0.2,-3)
+;
+\end{circuitikz}
+\caption{Medición del desfase en una bobina.}
+\label{fig:L12F1}
+\end{figure}
+\item Una vez instalado el equipo según la Figura 1, ajuste el generador de audio
+a la tensión y a la frecuencia indicadas.
+\item Conecte el osciloscopio de rayos catódicos con especial cuidado, verificando
+que las terminales se conecten bien.
+\item Obtenga las señales del voltaje de la bobina y la corriente total del circuito. Mida el período de las ondas y el desfase existente entre ambas. Obtenga el ángulo de desfase entre ambas y calcule el factor de potencia experimental inicial del circuito. Anote los resultados en la Tabla \ref{tab:L12T2}.
+\item Conecte el capacitor con el valor calculado al circuito tal y como se muestra en la Figura \ref{fig:L12F2}.
+\begin{figure}[H]
+\centering
+\begin{circuitikz} [scale=1]\draw
+(0,0)	to[resistor, l=\SI{150}{\ohm}] (3,0)
+		to[inductor, l=\SI{20}{\milli\henry}, *-*] (3,-3) -- (0,-3)
+		to[sV, l=5 V] (0,0)
+(3,0) -- (6,0) 
+		to[C, l=C] (6,-3) -- (3,-3)
+		
+;
+		\draw 
+		[-latex, line width=3pt] (0,1) node[above] {\textbf{REF}} -- (0,0.2)
+;		 
+		\draw
+		[-latex, line width=3pt] (3,1) node[above] {\textbf{CH2}} -- (3,0.2)
+;
+		\draw
+		[-latex, line width=3pt] (-1,-3) node[left] {\textbf{CH1}} -- (-0.2,-3)
+;
+\end{circuitikz}
+\caption{Corrección del factor de potencia.}
+\label{fig:L12F2}
+\end{figure}
+\item Nuevamente obtenga las señales de voltaje de la bobina y la corriente total del circuito. Mida el período de las ondas y el desfase existente entre ambas. Obtenga el ángulo de desfase entre ambas y calcule el factor de potencia experimental final del circuito. Anote el valor obtenido en la Tabla \ref{tab:L12T2}.
+\begin{table}[H]
+	\caption{Valores teóricos y experimentales.}
+	\label{tab:L12T2}
+	\centering
+	\begin{tabular}[h]{|c|c|c|c|}
+		\cline{2-4}
+		\multicolumn{1}{c|}{} &
+		\multicolumn{1}{c|}{Valor teórico} &
+		\multicolumn{1}{c|}{Valor experimental} &
+		\multicolumn{1}{c|}{\% de error}\\
+		
+		Factor de potencia inicial & {} & {} & {} \\
+		
+		Factor de potencia final & {} & {} & {} \\
+		
+	\end{tabular}
+\end{table}
+\item Con el factor de potencia teórico y experimental, obtenga el porcentaje de error.
+\end{enumerate}
+
+
+\appendix
+\chapter{El osciloscopio digital}
+\label{ap:osc}
+\section{Introducción.} La naturaleza se mueve de manera sinusoidal; véase el movimiento de las olas, los terremotos, el sonido a través de aire o la frecuencia natural de un cuerpo en movimiento. Incluso la luz (parte partícula, parte onda) tiene una frecuencia fundamental, la cual se puede observar a través del color. Los sensores pueden convertir estas fuerzas en señales eléctricas que se pueden observar y estudiar con el osciloscopio.\\
+Es por esto que el osciloscopio es una herramienta indispensable para cualquiera que esté diseñando, manufacturando o reparando algún dispositivo electrónico, es la clave para conocer los retos demandantes de la medición en la actualidad. Con el sensor correcto, un osciloscopio puede medir todo tipo de fenómenos debido a que un sensor crea una señal eléctrica en respuesta de un estímulo físico, como el sonido, esfuerzo mecánico, presión, luz, o calor.\\
+Los conceptos presentados en este apéndice darán una línea base para entender operaciones y funciones básicas del osciloscopio.
+\section{El osciloscopio.} El osciloscopio básicamente es un dispositivo de gráfica y muestra de datos, este proyecta un gráfico de una señal eléctrica. En la mayoría de las aplicaciones este gráfico demuestra como las señales cambian en el tiempo: el eje de las ordenadas (Y) representa el voltaje y el eje de las abscisas (X) representa el tiempo. Además, se dice que el eje Z representa la intensidad o el brillo del monitor.\\
+Este simple gráfico puede dar muchísima información valiosa, por ejemplo: los valores de voltaje y tiempo de la señal, la frecuencia de oscilación, las partes móviles de un circuito representados en una señal, la frecuencia a la cual una porción de la señal está ocurriendo relativa a otras porciones, si un componente está o no distorsionando la señal, que tanto una señal es de corriente directa o que tanto es de corriente alterna, que porción de la señal es ruido o como cambia el ruido en función del tiempo.\\
+Los osciloscopios se pueden clasificar en dos: analógicos y digitales. A su vez los osciloscopios digitales pueden ser de almacenamiento digital (DSO), de fósforo digital (DPO) u osciloscopios de muestreo.
+\subsection{El osciloscopio de almacenamiento digital.} El osciloscopio digital, a diferencia del analógico, utiliza un convertidor analógico-digital (ADC) el cual convierte las mediciones de voltaje en señales digitales de información. Este adquiere la forma de la señal como una serie de muestreos y los guarda hasta acumular los suficientes para poder describir la forma de onda.\\
+Los osciloscopios de almacenamiento digital tienen la cualidad de que pueden capturar y ver eventos que posiblemente solo ocurren una vez, comúnmente llamados transientes. Esto debido a que la información de la onda existe de manera digital, como una serie de valores binarios, lo cual permite que sean analizados, impresos, procesados y archivados.
+\subsection{Señales eléctricas.} Debido a que lo que el propósito principal el osciloscopio es de proyectar señales eléctricas, es importante entender los conceptos básicos de las mismas.
+\begin{itemize}
+\item \textbf{Amplitud.} Las dos definiciones comúnmente utilizadas por los ingenieros son la amplitud pico y la amplitud RMS. El valor pico es la magnitud máxima de la señal, el valor RMS se calcula elevando al cuadrado la señal, se encuentra su valor promedio y se le saca la raíz cuadrada a este valor.
+\item \textbf{Desfase} Se refiera a la cantidad de translación horizontal entre dos señales, se mide en grados o en radianes. Para una forma de onda sinusoidal, un ciclo se presenta como 360$^{\circ}$, por lo tanto, si dos señales sinusoidales se difieren por medio ciclo, su desfase es de 180$^{\circ}$.
+\item \textbf{Periodo} Es el tiempo en el cual la forma de onda se repite, el tiempo en el que cumple un ciclo, se mide en segundos.
+\item \textbf{Frecuencia.} Es el número de veces que una onda se repite en un segundo, es el recíproco del periodo y se mide en Hertz.
+\item \textbf{Tipos de onda.} Existe varios tipos de onda, las más comunes son las sinusoidales, rectangulares o cuadradas, triangulares o diente sierra y los pulsos.
+\item\textbf{Señales analógicas y digitales} Las señales analógicas son capaces de tener cualquier valor dentro de un rango en el tiempo, las señales digitales son discretas, típicamente tienen solo dos posibles valores (High o Low, 1 o 0, 5V o 0V)
+\end{itemize}
+\subsection{Integridad de la señal.} La integridad de la señal es la habilidad del osciloscopio para reconstruir la forma de onda de manera precisa. Para definir la integridad de la señal es necesario responder las siguientes preguntas: ¿es la señal proyectada, verdaderamente la señal que ocurre? ¿La forma de onda está clara o se ve distorsionada? ¿Cuántas tomas de señal se pueden obtener por segundo? La integridad de la señal es de suma importancia ya que es inútil desarrollar una prueba donde la forma de onda en el osciloscopio no posee la misma forma o características de la verdadera señal.
+\subsection{Sistemas y controles de un osciloscopio.} La mayoría de los osciloscopios están compuestos por cuatros sistemas. El sistema vertical, el sistema horizontal, el sistema de disparo y el sistema de visualización. Conocer el funcionamiento de cada uno de estos sistemas y controles le permitirán reconstruir de manera precisa la señal estudiada manteniendo así la integridad de esta.\\
+Cuanto se utiliza un osciloscopio, es necesario ajustar tres comandos básicos para acomodar la señal de entrada: Primero la atenuación o amplitud de la señal, utilizando el control volts/div para ajustar la amplitud de la señal al rango deseado. Segundo la base del tiempo, para esto se utiliza el control sec/div, esto permite ajustar la cantidad de tiempo por división representada en el eje horizontal de la pantalla. Tercero, el “trigger” o disparo del osciloscopio el cual tiene la función de estabilizar una señal repetitiva.\\
+Buenas prácticas, antes de iniciar las mediciones, son: Verificar que el canal de entrada que se está utilizando está encendido. Presionar, si se posee, el botón [Default Settings] esto ajustará el osciloscopio a su configuración predeterminada. Seguidamente presionar, si se posee, el botón [Autoscale] esto va a ajustar automáticamente la escala vertical y horizontal para que la señal se pueda ver de una manera clara en la pantalla. Estas recomendaciones también son útiles cuando se ha perdido la señal de la onda y no se puede proyectar bien en el osciloscopio.
+
+\subsubsection{Sistema vertical y controles.} Se utiliza para posicionar y escalar la forma de onda verticalmente, además se utiliza para ajustar el acoplamiento de entrada y otras condiciones de la señal.
+\begin{itemize}
+\item \textbf{Posición y volts/div: } El control de posición vertical permite mover la forma de onda hacia arriba y abajo justo donde se desee en la pantalla. El control volt/div varía el tamaño de la forma de onda en la pantalla. Se puede ver como un factor de escala por lo tanto el máximo voltaje que se puede proyectar es los volts/div multiplicado por el número de divisiones verticales.
+\item \textbf{Límite de ancho de banda:} La mayoría de los osciloscopios tienen un circuito que limita el ancho de banda. Esto permite reducir el ruido que algunas veces puede aparecer en la forma de onda, produciendo así una señal más clara.
+\end{itemize}
+\subsubsection{Sistema horizontal y controles.} Este sistema está más relacionado con la adquisición de la señal de entrada y la frecuencia de muestreo. Los controles se utilizan para posicionar y escalar la forma de onda de manera horizontal.
+\begin{itemize}
+\item \textbf{Modos de adquisición:} Los modos de adquisición controlan como se producen los puntos de muestreo de la forma de onda. Estos puntos son los valores digitales que derivan directamente del convertidor ADC. El intervalo de muestreo se refiere al tiempo entre cada punto de muestreo. Puntos de la forma de onda son los valores digitales que son guardados en la memoria y proyectados para construir la señal. Los tipos de modos de adquisición son: Modo de muestreo, modo de detección pico, modo de alta resolución, modo envolvente, modo promedio.
+\item \textbf{Métodos de muestreo:} Existen diferentes métodos de implementar tecnologías de muestreo, sin embargo, en la actualidad los métodos más utilizados son el muestreo de tiempo real y el muestreo de tiempo equivalente.\\
+El muestreo de tiempo real es ideal para señales cuyo rango de frecuencia es menos que la mitad de la frecuencia de muestreo máxima del osciloscopio. Aquí el osciloscopio puede adquirir suficientes puntos en el barrido de la forma de onda, construyendo así una imagen clara y manteniendo la integridad de la señal. Esta es la única forma de capturar transientes rápidos en la señal con un osciloscopio digital.\\
+El muestro de tiempo equivalente es utilizado cuando la frecuencia de la señal es mayor a la mitad de la frecuencia de muestreo del osciloscopio. Esto debido a que, a frecuencias altas, el osciloscopio puede no estar habilitado para recolectar suficientes muestras en un barrido. Este método toma ventaja del hecho de que la mayoría de las ocurrencias, naturales y creadas por el humano, son eventos repetitivos; por lo tanto, construye una imagen de una señal repetitiva capturando un poco de información de cada repetición.
+\item \textbf{Posición y sec/div:} La posición horizontal mueve la forma de onda hacia la izquierda o derecha, exactamente donde se desee. Ajustar los sec/divs permite seleccionar la velocidad a la cual la forma de onda se proyectará a lo largo de la pantalla. Esto es un factor de escala y cambiar los sec/div permite observar mayores o menores intervalos de tiempo de la señal de entrada.
+\item \textbf{Modos XY:} La mayoría de los osciloscopios tiene el modo XY, este permite proyectar, en el eje horizontal, una señal de entrada en lugar de una basada en el tiempo. Esto tiene varias aplicaciones prácticas.
+\end{itemize}
+\subsubsection{Sistemas y controles de disparo.} Esta función ayuda a sincronizar el barrido horizontal al punto correcto de la señal, esencialmente para aclarar las características de esta. Ayuda a estabilizar las formas de onda repetitivas y capturar así una señal estática, esto es posible por la proyección repetida de la misma porción de la señal. Esta función es importante ya que permite que esta porción de la señal sea utilizable, analizable y entendible. Los tipos de disparo más comunes son:
+\begin{itemize}
+\item \textbf{Disparo de flanco:} Es el modo de disparo más utilizado. El disparo ocurre cuando el voltaje sobrepasa un valor umbral establecido. Se puede escoger el disparo en el flanco positivo o en el flanco negativo
+\item \textbf{Disparo por falla:} Este modo permite que se dispare en un evento o pulso cuyo ancho es mayor o menor que un período de tiempo especificado. Esta capacidad es muy útil para encontrar fallas o errores aleatorios.
+\item \textbf{Disparo por ancho de pulso:} Es similar al disparo por falla, sin embargo, es más general en el sentido de que se puede disparar los pulsos en un ancho específico y se puede escoger la polaridad (positiva o negativa) de los pulsos a disparar. Además se puede ajustar la posición horizontal del disparo.
+\end{itemize}
+\section{Funciones matemáticas básicas.} Adicionalmente a las funciones anteriormente descritas, la mayoría de los osciloscopios digitales incluyen las siguientes funciones matemáticas.
+\begin{itemize}
+\item \textbf{Transformada de Fourier.} Permite ver las frecuencias que componen la señal.
+\item \textbf{Valor Absoluto.} Esta función matemática muestra el valor absoluto (refiriéndose al voltaje) de la forma de onda.
+\item \textbf{Integración.} Esta función matemática calcula el valor de la integral de la forma de onda.
+\item \textbf{Suma y resta.} Esta función es útil ya que permite sumar o restar múltiple formas de onda y proyectar el resultado de la forma de onda de la operación. 
+\end{itemize}
+\textbf{Referencias.} Este apéndice está inspirado en los siguientes documentos:
+\begin{itemize}
+    \item[[1]] K. Technologies, “Basic Oscilloscope Fundamentals,” 2017 [Online]. Available: www.keysi\\ght.com 
+    \item[[2]] Tektronix, “Oscilloscope Fundamentals,” 2009 [Online]. Available: www.tektronix.com
+\end{itemize}
+
+\chapter{Seguridad en laboratorios de electricidad, instructivo para el estudiante}
+Cuando se trabaja con electricidad es imprescindible que se tenga claro los
+riesgos que conlleva el trabajar con corriente eléctrica. Esta, aunque no es la
+principal causa de accidentes, cuando ocurren son graves y en muchos casos
+mortales.
+
+Las consideraciones que se citan a continuación deben ser acatadas por el
+estudiante cuando trabaje en los laboratorios, pero más importante aún, cuando
+en su vida profesional se vea expuesto a situaciones en donde exista corriente
+eléctrica.
+
+\begin{itemize}
+\item \textbf{Riesgo de incendio}\\
+Los incendios provocados por causas eléctricas ocurren principalmente por:
+\begin{itemize}
+\item Sobrecarga de conductores que provoca calentamiento en cables y equipo.
+\item Sobrecalentamiento debido a fallas de equipo de control
+\item Fallas en el aislante de conductores.
+\item Combustión de materiales inflamables por cercanía a equipos de baja
+tensión (papel, madera)
+\item Combustión de materiales inflamables por chispas o arcos (thinner,
+pinturas, etc.)
+\end{itemize}
+\item \textbf{Shock electrico}\\
+El shock eléctrico, dependiendo de su intensidad, puede causar desde una
+sensación de cosquilleo, hasta estímulos musculares dolorosos que podrían
+provocar la pérdida total del control muscular y llegar hasta la muerte.
+Los mecanismos de muerte por electricidad son:
+\begin{itemize}
+\item Fibrilación ventricular. Se denomina fibrilación ventricular al trastorno del
+ritmo cardiaco que presenta un ritmo ventricular rápido (>250 latidos por
+minuto), irregular, de morfología caótica y que lleva irremediablemente a la
+pérdida total de la contracción cardiaca, con una falta total del bombeo
+sanguíneo y por tanto a la muerte del paciente.
+\item Tetanización. Es un proceso por el cual un músculo deja de responder a los
+estímulos que lo hacen contraer voluntariamente y por lo tanto moverse,
+demostrando que estamos vivos y respiramos. Se manifiesta por la
+contracción de los músculos de las extremidades, lo que trae como
+consecuencia que la víctima quede prendida al conductor.
+\item Doble acción. Tetanización y fibrilación a la vez
+\item Parálisis bulbar. Afecta predominantemente de los nervios que controlan la
+masticación, la deglución y el habla.
+\item Parálisis cardio circulatoria y respiratoria.
+\end{itemize}
+\item \textbf{Factores a considerar para evitar accidentes}
+\begin{enumerate}
+\item \textbf{Intensidad de la corriente}
+\begin{itemize}
+\item En corriente alterna, el umbral mínimo de percepción es 1,1 mA.
+\item El umbral mínimo de contracción muscular ocurre con 9 mA,
+pudiendo ocurrir contracción de los músculos, que expele al
+accidentado lejos del conductor. De no ser así, se podría llegar a la
+asfixia por contracción de los músculos respiratorios.
+\item En corriente alterna el umbral de corriente peligroso corresponde a
+80 mA, donde se puede llegar a fibrilación ventricular.
+\item Entre 3 o 4 amperios de corriente puede llegar a causar depresión
+del sistema nervioso central
+\end{itemize}
+Esto se puede resumir de la siguiente manera:
+\begin{table}[H]
+	\caption{Prueba del corto circuito.}
+	\label{tab:ACT1}
+	\centering
+	\begin{tabularx}{12cm}{CC}
+		\textbf{Intensidad} & \textbf{Posible efecto en el cuerpo} \\
+		De 2 a 4 mA & Temblor de los nervios en los dedos hasta el antebrazo. \\
+		De 5 a 7 mA & Leve sensación de choque, no doloroso aunque incómodo.
+		La persona promedio puede soltar la fuente que proporciona
+		corriente. Reacciones involuntarias al choque pueden
+		resultar en lesiones \\
+		De 10 a 15 mA & Sensación desagradable, pero todavía es posible soltarse \\
+		De 19 a 22 mA & Fuertes dolores de brazo. Ya no es posible soltarse
+		voluntariamente. \\
+		De 25 a 50 mA mA & Irregularidades cardiacas, aumento de presión arterial,
+		efecto de tetanización, inconsciencia y fibrilación ventricular. \\
+		De 50 a 200 mA mA & Menos de medio ciclo cardiaco: No se da fibrilación.
+		Fuerte contracción muscular.
+		Menos de un ciclo cardiaco: Fibrilación, inconsistencia.
+		Marcas visibles. Paro cardiaco reversible.
+		Más de un ciclo cardiaco: Quemaduras \\
+		Mayor a 4 A & Parálisis cardiaca y respiratoria. Quemaduras graves. Con
+		toda probabilidad, puede causar la muerte. \\
+		10 A & Paro cardiaco, quemaduras severas y con toda probabilidad,
+		puede causar la muerte. \\
+		\end{tabularx}
+\end{table}
+\item \textbf{Resistencia eléctrica del cuerpo}
+Esta depende de muchos factores, por lo que es difícil de determinar. El elemento
+principal en la resistencia del cuerpo humano es la resistencia de la piel, la cual
+varía de persona a persona. Esta disminuye si se está enfermo, se tienen lesiones
+en la piel y si el ambiente circundante es húmedo.\\
+La resistencia entre 2 partes opuestas del cuerpo puede estar en el orden de los
+kilo ohmios, aunque puede ser de apenas unas decenas de ohmios entre partes
+cercanas, sobre todo si la piel está humedecida.\\
+Bajo condiciones secas la piel humana es muy resistente. Si la piel está húmeda,
+la resistencia del cuerpo baja considerablemente.
+\begin{itemize}
+\item Condiciones secas: $I=\frac{V}{R}=\frac{120 V}{100000 \Omega}=1,2 \ mA$
+\item Condiciones húmedas: $I=\frac{V}{R}=\frac{120 V}{1000 \Omega}=120 \ mA$
+\item La intensidad de la corriente (amperes) es el factor fundamental para poder
+predecir el tipo de daño que la electricidad puede causar al cuerpo.
+\item Voltajes menores a 20 o 30 voltios son inofensivos excepto en ciertos lugares muy
+sensibles del cuerpo tales como la boca, labios, lengua, genitales, etc. Por encima
+de esos voltajes, la corriente que circula puede llegar a provocar daños graves e
+incluso la muerte.
+\end{itemize}
+\item \textbf{Factores en que cuenta el tiempo de contacto}\\
+Para que se produzca fibrilación en el corazón se requiere que el contacto sea de
+al menos del orden de un período cardiaco medio, que es del orden de 0,75 s.
+Tiempos de contacto menores a eso no producen fibrilación.\\
+Esto es muy importante desde el punto de vista de la protección que suministran
+los disyuntores diferenciales, ya que el corte de corriente en ellos se produce en
+tiempos aproximados de 200 milisegundos, a efecto de que el organismo no sea
+atravesado por corrientes peligrosas.
+\item \textbf{Formas de corriente}
+\begin{itemize}
+\item Tanto en corriente alterna como en continua se aplica la Ley de
+Ohm.
+\item La corriente continua puede producir electrólisis pero teniendo en
+cuenta el tiempo de exposición y la tensión
+\item La corriente alterna, en igualdad de condiciones, es de 3 a 4 veces
+menos peligrosa que la corriente continua.
+\item No obstante, en términos generales, 100 mA, tanto la corriente
+continua como la alterna, son peligrosamente mortales.
+\end{itemize}
+\item \textbf{Otras consideraciones}
+\begin{itemize}
+\item La susceptibilidad es mayor si la persona está haciendo un buen
+contacto con tierra, tal como cuando está apoyada a superficies
+húmedas o majadas.
+\item Ambientes con alta temperatura, en donde la transpiración de las
+personas se incrementa, presentan un riesgo adicional, porque el
+aislamiento que proporciona la ropa se ve reducida debido a la
+humedad.
+Se pueden producir quemaduras al pasar corriente eléctrica por el
+cuerpo, en especial en los puntos de contacto con los conductores
+eléctricos.
+\item Descargas eléctricas tales como chispas o arcos, pueden encender
+vapores inflamables, causando explosiones y fuego.
+\item En el laboratorio, el shock eléctrico es posible que sea leve, pero
+puede generar otros riesgos por la reacción refleja de sobresalto,
+que puede hacer que el afectado o sus compañeros pierdan el
+control de materiales y equipo que se esté manipulando, causando
+otro tipo de accidentes.
+\end{itemize}
+\end{enumerate}
+\end{itemize}
+
+\chapter{Normas de seguridad en el laboratorio}
+
+\begin{itemize}
+\item \textbf{Hábitos de conducta}
+\begin{itemize}
+\item No fumar en los laboratorios por seguridad e higiene.
+\item No consumir alimentos ni bebidas dentro del laboratorio.
+\end{itemize}
+
+\item \textbf{Mantener el puesto de trabajo limpio}
+\begin{itemize}
+\item La mesa de trabajo debe estar libre de abrigos, bolsos, libros, etc.
+\item No dejar bultos u otros objetos en los lugares de circulación, en especial
+entre los pupitres.
+\end{itemize}
+
+\item \textbf{Salud}
+\begin{itemize}
+\item Si tiene algún padecimiento, o si se usa algún medicamento que
+considere relevante para el curso normal de la práctica, esta debe
+informarse al profesor antes de realizar la práctica.
+\item No ingresar al laboratorio bajo los efectos de drogas o alcohol.
+\end{itemize}
+
+\item \textbf{Vestimenta}
+\begin{itemize}
+\item En trabajos con máquinas o en sus inmediaciones, no se debe vestir
+con prendas sueltas o con partes que cuelguen, como por ejemplo,
+corbatas, flecos, etc.
+\item No se deben usar sandalias, zapatos abiertos o tacón alto en el
+laboratorio.
+\item Usar camisas de manga larga de algodón. Materiales sintéticos pueden
+provocar que en un accidente de quemadura esta se adhiera a la piel.
+Se sugiere el uso de gabacha, que no sea larga ni floja, de algodón o
+con un porcentaje alto de este
+\item Usar pantalón largo.
+\item No se debe, al realizar la práctica, llevar anillos, relojes de pulsera,
+collares u otros accesorios que puedan engancharse, tales como
+“piercings” en cualquier parte del cuerpo.
+\item En caso de que se tenga pelo largo, se debe llevar recogido con el fin de
+evitar riesgos.
+\item Realizar los laboratorios con ropa seca y en superficies secas.
+\end{itemize}
+
+\item \textbf{En general}
+\begin{itemize}
+\item En los laboratorios no se deben gastar bromas, ni jugar, ni comunicarse
+con gritos.
+\item Estudiar atentamente la guía del laboratorio a realizar.
+\item Seguir en todo momento las instrucciones del profesor. Ante cualquier
+duda, consultar al profesor.
+En prácticas de laboratorio supervisadas, no se debe energizar ningún
+panel o fuente de voltaje sin que el profesor haya revisado la instalación
+correspondiente.
+\item No se pueden realizar experimentos que no estén autorizados por el
+profesor.
+\item Mantener el debido respeto hacia el profesor, los compañeros y
+compañeras.
+\item No utilizar el celular durante las sesiones de laboratorio. Mantenerlo
+apagado.
+\end{itemize}
+
+\item \textbf{Equipo de proteccion}\\
+De manera particular, y según sea la naturaleza del laboratorio, será indispensable
+utilizar equipo de protección.
+Esto será indicado por el profesor en cada laboratorio en particular, teniendo en
+consideración los riesgos que tenga el mismo.
+Esto incluye:
+\begin{itemize}
+\item Uso de anteojos o pantallas de protección en operaciones donde exista
+riesgo de salpicadura.
+\item Uso de guantes aislantes o protectores cuando se trabaja con piezas
+cortantes
+\item Uso de cascos, mascarillas y calzado especial cuando estos se
+requieran.
+\end{itemize}
+\item \textbf{Maquinas}\\
+En algunas ocasiones no se puede eliminar el riesgo en el origen y por tanto es
+necesario utilizar medios de protección colectiva, tales como resguardos o
+dispositivos de seguridad.
+El resguardo es un componente de una máquina que se utiliza como barrera
+material para garantizar la protección.
+Un dispositivo de protección es aquel que impide que se inicie o se mantenga una
+fase peligrosa de la máquina, mientras se detecta o sea posible la presencia
+humana en la zona de peligro.\\
+Por tanto:
+\begin{itemize}
+\item No ponga fuera de servicio los dispositivos de seguridad existentes.
+\item Utilice correctamente los elementos de seguridad.
+\item No utilice equipos y maquinaria sin conocer su funcionamiento.
+\item Antes de realizar cualquier tarea en una máquina, siga atentamente
+las instrucciones. En caso de duda, pregunte al profesor(as).
+Desconectar de la red eléctrica las herramientas y equipos antes de
+proceder al ajuste.
+\item No reparar, desatascar o limpiar equipo. Notificar la anomalía para
+que el personal capacitado realice la tarea.
+\item No bloquear sistemas electrónicos, eléctricos, mecánicos, etc.
+\end{itemize}
+\end{itemize}
+
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\bibliographystyle{ieeetr}
+
+\bibliography{referencias}
+
+%----------------------------------------------------------------------------------------
+
+
+\end{document}
