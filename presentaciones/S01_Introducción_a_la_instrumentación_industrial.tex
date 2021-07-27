@@ -15,7 +15,7 @@
 \newcommand{\blackandwhite}{black} %change this at the end
 
 \begin{frame}{Señales}
-    \begin{columns}[onlytextwidth]
+    \begin{columns}[c, onlytextwidth]
         \begin{column}{0.6\textwidth}
         Cantidad física que varia con una o mas variables independientes y que porta información relevante.\\[8pt]
         Características: 
@@ -100,22 +100,22 @@ Algunos ejemplos de estímulos:
 \end{frame}
 
 \begin{frame}{Sistemas}
-    \begin{columns}[onlytextwidth]
+    \begin{columns}[c, onlytextwidth]
         \begin{column}{0.5\textwidth}
         Un sistema es una construcción o colección de diferentes elementos que juntos producen resultados que no pueden obtenerse con los elementos por separado\cite{INCOSE}.\\[8pt]
         Un sistema es un objeto o conjunto de objetos cuyas propiedades queremos estudiar\cite{modelica}.
         \end{column}
         \begin{column}{0.5\textwidth}
             \begin{center}
-               \includegraphics[width=\textwidth]{fig/tostadora.jpg}
-               \scalebox{0.3}{\url{https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design\%3Asystem_diagram}}
+               \includegraphics[width=\textwidth]{fig/tostadora.jpg}\\
+               \tiny{Tomado de \href{https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design\%3Asystem_diagram}{aquí}}
             \end{center}
         \end{column}
     \end{columns}
 \end{frame}
 
 \begin{frame}{Señales de entrada y salida}
-    \begin{columns}[onlytextwidth]
+    \begin{columns}[c, onlytextwidth]
         \begin{column}{0.5\textwidth}
              \begin{itemize}
                 \item Entradas: son las variables que afectan el comportamiento del sistema
@@ -124,15 +124,15 @@ Algunos ejemplos de estímulos:
         \end{column}
         \begin{column}{0.5\textwidth}
             \begin{center}
-               \includegraphics[width=\textwidth]{fig/tostadora.jpg}
-               \scalebox{0.3}{\url{https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design\%3Asystem_diagram}}
+               \includegraphics[width=\textwidth]{fig/tostadora.jpg}\\
+               \tiny{Tomado de \href{https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design\%3Asystem_diagram}{aquí}}
             \end{center}
         \end{column}
     \end{columns}
 \end{frame}
 
 \begin{frame}{Modelos}
-    \begin{columns}[onlytextwidth]
+    \begin{columns}[c, onlytextwidth]
         \begin{column}{0.5\textwidth}
         Un modelo es una abstracción matemática de un sistema.\\[8pt]
         \begin{itemize}
@@ -162,64 +162,67 @@ Algunos ejemplos de estímulos:
     \end{columns}
 \end{frame}
 
-\begin{frame}{Transductor}
-    \begin{columns}[onlytextwidth]
-        \begin{column}{0.5\textwidth}
-        Es un dispositivo que convierte un tipo de energía en otro tipo de energía.\\[8pt]
+\begin{frame}{Transductores, sensores y actuadores}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.6\textwidth}
+        Para los efectos de este curso...\\[8pt]
         \begin{itemize}
-            \item Se modela el sistema en base a ecuaciones
-            \item Es una simplificación del sistema real
-            \item Solo es valido en ciertas condiciones y/o rangos
+            \item \textbf{Transductor:} dispositivo que convierte una señal de un tipo de energía a una
+            una señal correspondiente pero con un tipo de energía diferente.
+            \item \textbf{Sensor:} transductor que convierte una señal física a un señal eléctrica
+            \item \textbf{Actuador:} transductor que convierte una señal eléctrica a un señal física
         \end{itemize}
-        
-        
         \end{column}
-        \begin{column}{0.5\textwidth}
+        \begin{column}{0.4\textwidth}
             \begin{center}
-               \includegraphics[width=\textwidth]{fig/tostadora.jpg}
-               \scalebox{0.3}{\url{https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/MAXIMATOR-High-Pressure-Manometer-01a.jpg/1200px-MAXIMATOR-High-Pressure-Manometer-01a.jpg}}
+               \includegraphics[width=0.8\textwidth]{fig/bourdon.jpg}\\
+               \tiny{Tomado de \href{https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/MAXIMATOR-High-Pressure-Manometer-01a.jpg/1200px-MAXIMATOR-High-Pressure-Manometer-01a.jpg}{aquí}}
             \end{center}
         \end{column}
     \end{columns}
 \end{frame}
 
+\begin{frame}{Sensores y actuadores}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.6\textwidth}
+        Es un dispositivo que convierte una señal de un tipo de energía a una
+        una señal correspondiente pero con un tipo de energía diferente.\\[8pt]
+        \begin{itemize}
+            \item Es un convertidor de energía
+            \item Si convierte una señal física a un señal eléctrica se le llama \textbf{sensor}
+            \item Si convierte una señal eléctrica a un señal física se le llama \textbf{actuador}
+        \end{itemize}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{center}
+               \includegraphics[width=0.8\textwidth]{fig/bourdon.jpg}\\
+               \tiny{Tomado de \href{https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/MAXIMATOR-High-Pressure-Manometer-01a.jpg/1200px-MAXIMATOR-High-Pressure-Manometer-01a.jpg}{aquí}}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
 
-% \begin{frame}{Fuerza eléctrica} 
-%     \begin{columns}[onlytextwidth]
-%     \begin{column}{0.6\textwidth}
-%         La fuerza eléctrica es la fuerza de atracción o repulsión entre dos cuerpos o partículas cargadas 
-%         \begin{equation*}
-%             F = k\dfrac{q_1q_2}{r^2}
-%         \end{equation*}
-%         donde $F$ es la fuerza eléctrica en newtons (\si{\newton}), $k$ es la constante de Coulomb ($\SI{9e9}{\newton \meter\squared / \coulomb \squared}$), $q_1$ y $q_2$ son dos cargas en coulombs (\si{\coulomb}), y $r$ es la distancia que separa a las cargas en metros (\si{\meter})   
-%     \end{column}
-%     \begin{column}{0.4\textwidth}
-%         \begin{center}
-%             \begin{tikzpicture}[scale=1]
-%                 \shade[ball color=gray!10!] (0,0) coordinate(q1) circle (.4) node{$+q_1$};
-%                 \shade[ball color=gray!10!] (2.5,0) coordinate(q2) circle (.4) node{$+q_2$};
-%                 \draw[-latex,thick] (q1)++(-0.4,0)--+(-0.5,0);
-%                 \draw[-latex,thick] (q2)++(0.4,0)--++(0.5,0);
-%                 \draw[latex-,thick] (q1)++(0,1)--++(1,0);
-%                 \draw[latex-,thick] (q2)++(0,1)--++(-1,0);
-%                 \draw (q1)++(0,1)++(1.25,0)node{$r$};
-%             \end{tikzpicture}\\[4pt]
-%             \begin{tikzpicture}[scale=1]
-%                 \shade[ball color=gray!10!] (0,0) coordinate(q1) circle (.4) node{$+q_1$};
-%                 \shade[ball color=gray!10!] (2.5,0) coordinate(q2) circle (.4) node{$-q_2$};
-%                 \draw[-latex,thick] (q1)++(0.4,0)--+(0.5,0);
-%                 \draw[-latex,thick] (q2)++(-0.4,0)--++(-0.5,0);
-%             \end{tikzpicture}\\[4pt]
-%             \begin{tikzpicture}[scale=1]
-%                 \shade[ball color=gray!10!] (0,0) coordinate(q1) circle (.4) node{$-q_1$};
-%                 \shade[ball color=gray!10!] (2.5,0) coordinate(q2) circle (.4) node{$-q_2$};
-%                 \draw[-latex,thick] (q1)++(-0.4,0)--+(-0.5,0);
-%                 \draw[-latex,thick] (q2)++(0.4,0)--++(0.5,0);
-%             \end{tikzpicture}
-%         \end{center}
-%     \end{column}
-%     \end{columns}
-% \end{frame}
+\begin{frame}{Sensores y actuadores}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.6\textwidth}
+        Es un dispositivo que convierte una señal de un tipo de energía a una
+        una señal correspondiente pero con un tipo de energía diferente.\\[8pt]
+        \begin{itemize}
+            \item Transductor: dispositivo que convierte una señal de un tipo de energía a una
+            una señal correspondiente pero con un tipo de energía diferente.
+            \item \textbf{Sensor}: transductor que convierte una señal física a un señal eléctrica
+            \item \textbf{Actuador}Si convierte una señal eléctrica a un señal física se le llama 
+        \end{itemize}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{center}
+               \includegraphics[width=0.8\textwidth]{fig/bourdon.jpg}\\
+               \tiny{Tomado de \href{https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/MAXIMATOR-High-Pressure-Manometer-01a.jpg/1200px-MAXIMATOR-High-Pressure-Manometer-01a.jpg}{aquí}}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
+
 
 
 \begin{frame}{Referencias}
