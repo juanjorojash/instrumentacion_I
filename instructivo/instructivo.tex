@@ -138,19 +138,18 @@ Realizado por: Juan J. Rojas y Hugo Sanchez Ortiz\\
     \centering
     \caption{Mediciones tomadas a una frecuencia de \SI{1}{\hertz}}
     \vspace{0.5cm}
-    \begin{tabular}{ccc}%
+    \begin{tabular}{ccccccc}%
     \toprule
-    \bfseries &  \multicolumn{2}{c}{\textbf{corrida 1}} \\
-    \bfseries tiempo & \bfseries corriente & \bfseries voltaje \\
-    {[\si{\second}]} & [\si{\ampere}] & [\si{\volt}]\\
-    %\[\si{\second}\] & \[\si{\ampere}\] & \[\si{\volt}\] \\
+    \bfseries &  \multicolumn{2}{c}{\textbf{corrida 1}} & \multicolumn{2}{c}{\textbf{corrida 2}} & \multicolumn{2}{c}{\textbf{corrida 3}}\\
+    \bfseries tiempo & \bfseries corriente & \bfseries voltaje & \bfseries corriente & \bfseries voltaje & \bfseries corriente & \bfseries voltaje\\
+    {[\si{\second}]} & [\si{\ampere}] & [\si{\volt}] & [\si{\ampere}] & [\si{\volt}] & [\si{\ampere}] & [\si{\volt}]\\
     \midrule
     \csvreader[
         late after line=\\,
         late after last line=,
         before reading={\catcode`\#=12},
         after reading={\catcode`\#=6}]%
-        {data.csv}{1=\time1,2=\current1,3=\voltage1}{\time1 &\current1 & \voltage1}\\
+        {data.csv}{1=\t,2=\ci,3=\vi,4=\cii,5=\vii,6=\ciii,7=\viii}{\time1 &\ci & \vi &\cii & \vii &\ciii & \viii}\\
         \bottomrule
     \end{tabular}
     \label{tab:datos}
