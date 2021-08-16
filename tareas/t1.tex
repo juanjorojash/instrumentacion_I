@@ -3,80 +3,122 @@
 \input{comunes/preamble}
 \usepackage{lastpage}
 \usepackage{fancyhdr}
+\usepackage{csvsimple,booktabs}
 \pagestyle{fancy}
 \setlength{\headheight}{42pt}
 
  
 \begin{document}
-\lhead{Ingeniería en Mantenimiento Industrial \\ Escuela de Ingeniería Electromecánica \\ Tecnológico de Costa Rica} 
-\rhead{Electricidad I \\ Tarea \#1  \\ Entrega: Semana 4} 
+\lhead{Ingeniería Física \\ Escuela de Física \\ Tecnológico de Costa Rica} 
+\rhead{Instrumentación I \\ Tarea \#1  \\ Entrega: Semana 4} 
 \cfoot{\thepage\ de \pageref{LastPage}}
-\noindent En la Tabla \ref{tab:houses} se muestra la potencia promedio por hora de un hogar Australiano según \cite{houses}, la primera columna es un usuario promedio y la segunda es un usuario atípico por su alto consumo. La potencia promedio corresponde a la última hora, por ejemplo, en la hora 14 el usuario normal reporta un promedio de \SI{0.654}{\kilo\watt}, esto corresponde a la potencia promedio registrada en el periodo comprendido entre las 13 y las 14 horas de ese día.
-\begin{table}[H]
-    \centering
-    \caption{Potencia promedio diaria de un hogar Australiano}
-    \vspace{0.3cm}
-    \begin{tabularx}{10cm}{C C C}
-        \toprule
-        & Normal  & Atípico\\
-        Hora & (\si{\kilo\watt}) & (\si{\kilo\watt})\\
-        \midrule
-        0 & 0.775 & 1.960\\
-        1 & 0.459 & 0.834\\
-        2 & 0.421 & 0.732\\
-        3 & 0.368 & 0.587\\
-        4 & 0.359 & 0.557\\
-        5 & 0.392 & 0.590\\
-        6 & 0.490 & 0.960\\
-        7 & 0.573 & 1.152\\
-        8 & 0.600 & 1.245\\
-        9 & 0.571 & 1.185\\
-        10 & 0.575 & 1.194\\
-        11 & 0.702 & 1.504\\
-        12 & 0.695 & 1.430\\
-        13 & 0.647 & 1.308\\
-        14 & 0.654 & 1.308\\
-        15 & 0.690 & 1.320\\
-        16 & 0.785 & 1.504\\
-        17 & 0.919 & 1.748\\
-        18 & 1.028 & 2.131\\
-        19 & 1.107 & 2.308\\
-        20 & 1.068 & 2.152\\
-        21 & 0.947 & 1.870\\
-        22 & 0.770 & 1.554\\
-        23 & 0.877 & 2.230\\
-        \bottomrule
-    \end{tabularx}  
-    \label{tab:houses}
-\end{table}
+\setlength{\parindent}{0em}
 
-
-\noindent\textbf{Instrucciones}
+Asuma que cuenta con los siguientes equipos
 \begin{itemize}
-    \item Cree un archivo de valores separados por comas (csv) llamado ``casa.csv'' que contenga las tres columnas de la Tabla \ref{tab:houses}.
-    \item Usando Python cree un \emph{script} llamado ``calculos'' que le permita realizar lo siguiente:
-    \begin{itemize}
-        \item leer los datos del archivo ``casa.csv'' y generar una gráfica que en las abscisas tenga los valores horarios, y en las ordenadas tenga dos series, una para representar el usuario normal y otra para el usuario atípico. Se debe incluir una leyenda que permita identificar las curvas.
-        \item asumiendo un mes de 30 días y tarifa \textbf{residencial} del ICE, calcule el costo mensual para ambos usuarios.
-        \item asumiendo un mes de 30 días y tarifa \textbf{residencial} de la CNFL, calcule el costo mensual para ambos usuarios.
-        \item asumiendo un mes de 30 días y tarifa \textbf{residencial horaria} de la CNFL, calcule el costo mensual para ambos usuarios.
-        \item para todos los costos las tarifas deben ser las vigentes a partir del 1ero de enero de 2021 y se debe incluir el IVA según corresponda (Ley 9635).
-        \item imprima todos los datos en la terminal del programa con descripciones adecuadas de forma que se puedan ver los resultados de los cálculos anteriores.
-    \end{itemize}
-    \item Si un usuario normal en la zona de la CNFL decide comprar un BEV (Battery electric vehicle), asumiendo que por el uso que le dará al vehículo debe realizar una carga semanal por 12 horas (no necesariamente consecutivas) conectado a un receptáculo de \SI{240}{\volt} y con una corriente promedio de \SI{24}{\ampere}. Asuma que el usuario gastaba 42000 CRC semanales en gasolina antes de adquirir el BEV. Usando Python cree un \emph{script} llamado ``BEV'' que le permita realizar lo siguiente:
-    \begin{itemize}
-        \item leer los datos del archivo ``casa.csv''
-        \item asumiendo un mes de 30 días y tarifa \textbf{residencial} de la CNFL, calcule el costo mensual antes y después de usar el BEV.
-        \item asumiendo un mes de 30 días y tarifa \textbf{residencial horaria} de la CNFL, distribuya la carga del BEV de manera que pueda obtener el menor costo posible y calcule el costo mensual antes y después de usar el BEV.
-        \item compare el aumento en el recibo eléctrico con el costo de la gasolina y calcule el monto del ahorro para cada tarifa. 
-        \item para todos los costos las tarifas deben ser las vigentes a partir del 1ero de enero de 2021 y se debe incluir el IVA según corresponda (Ley 9635).
-        \item imprima todos los datos en la terminal del programa con descripciones adecuadas de forma que se puedan ver los resultados de los cálculos anteriores.
-    \end{itemize}
-    \item Realice un resumen llamado ``Resumen.tex'' usando \LaTeX e incluya todos los cálculos y las gráficas solicitadas y algún texto complementario que ayude a entender el procedimiento realizado. Un machote se puede encontrar \href{https://www.overleaf.com/read/phnwtckqwqwc}{acá}
-    \item Comprima todo en un solo archivo .zip y suba al TecDigital. Cualquier entrega tardía se califica con base en 70. 
+    \item Una fuente de corriente directa configurable para entregar voltaje constante o corriente constante según se requiera. 
+    \item Un equipo registrador de mediciones con conexiones para varios tipos de sensores
+    \item Un sensor de corriente con resistencia interna $R_{sh}$ conectado al equipo registrador
+    \item Un sensor de voltaje conectado al equipo registrador
+\end{itemize}
+El \href{https://www.ee.iitb.ac.in/~spilab/Tips/ansii_graphic_symbols_for_electrical_and_electronics_daigrams_1993.pdf}{IEEE Std 315-1975} define la forma en que se representan los diagramas eléctricos, en base a ese estándar se diagrama el circuito tal como se muestra en la Figura \ref{fig:circuito}. Este diagrama contiene varias inexactitudes, entre ellas:
+\begin{itemize}
+    \item No existe una representación de un registrador de mediciones
+    \item El sensor de corriente se representa como un amperímetro y no hay nada que indique su conexión con el registrador
+    \item El sensor de voltaje se representa como un voltímetro y no hay nada que indique su conexión con el registrador
 \end{itemize}
 
-\bibliographystyle{IEEEtran}
-\bibliography{ref_tareas}
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz} 
+        \draw
+        (0,0) 	
+            to[V, l=$V_f$] 
+        (0,4)
+        	to[short] 
+        (3,4)
+        	to[rmeter, t=A]
+        (3,2) 
+            to[R, l=$R_{sh}$]
+        (3,0)-- (0,0)
+        (3,4) -- (5,4)
+            to[rmeter, t=V] 
+        (5,0) -- (3,0)
+        ;
+    \end{circuitikz}
+    \caption{Medición de corriente y voltaje en un circuito.}
+    \label{fig:circuito}
+\end{figure}
+
+Tome en cuenta lo siguiente:
+\begin{itemize}
+    \item La exactitud se calculará como el mayor error relativo obtenido en cualquier punto de de datos en todas las corridas de medición, en este caso solo hay una corrida.
+    \item La precisión se calculará como la mayor desviación estándar entre todas las corridas de medición, en este caso solo hay una corrida.
+    \item La repetibilidad se calculará de la siguiente manera:
+    \begin{equation*}
+        \mathrm{repetibilidad} = \sqrt{\dfrac{\sum_{i=1}^n(\mathrm{error\,absoluto})^2}{n}}
+    \end{equation*}
+\end{itemize}
+
+\noindent\textbf{Instrucciones}
+\begin{enumerate}
+    \item Usando el estándar \href{http://integrated.cc/cse/Instrumentation_Symbols_and_Identification.pdf}{ANSI/ISA-5.1-2009} realice un diagrama que describa de mejor manera el proceso de medición descrito. El diagrama básico de conexión debe ser como el mostrado en la Figura \ref{fig:simple}. El resto del diagrama debe realizarlo en base a ANSI/ISA-5.1-2009
+    \begin{figure}[H]
+        \centering
+        \begin{circuitikz} 
+            \draw
+            (0,0) 	
+                to[V, l=$V_f$] 
+            (0,3)
+            	to[short] 
+            (3,3)
+                to[R, l=$R_{sh}$]
+            (3,0)-- (0,0)
+            ;
+        \end{circuitikz}
+        \caption{Medición de corriente y voltaje en un circuito.}
+        \label{fig:simple}
+    \end{figure}
+    
+    \begin{table}[H]
+        \centering
+        \caption{Mediciones tomadas a una frecuencia de \SI{1}{\hertz}}
+        \vspace{0.5cm}
+        \begin{tabular}{ccc}%
+        \toprule
+        \bfseries tiempo & \bfseries corriente & \bfseries voltaje \\
+        {[\si{\second}]} & [\si{\ampere}] & [\si{\volt}]\\
+        %\[\si{\second}\] & \[\si{\ampere}\] & \[\si{\volt}\] \\
+        \midrule
+        \csvreader[
+            late after line=\\,
+            late after last line=,
+            before reading={\catcode`\#=12},
+            after reading={\catcode`\#=6}]%
+            {data.csv}{1=\time1,2=\current1,3=\voltage1}{\time1 &\current1 & \voltage1}\\
+            \bottomrule
+        \end{tabular}
+        \label{tab:datos}
+    \end{table}
+
+    \item Se realizó una medición por segundo durante 20 segundos usando el proceso de medición descrito y se obtuvieron los datos mostrados en la Tabla \ref{tab:datos}. Calcule el valor de $R_sh$ para cada uno de los $n$ puntos de datos y realice una tabla que incluya las tres columnas de la Tabla \ref{tab:datos} y una tercera columna para los valores de $R_{sh}$.
+    \item Para el conjunto de valores de $R_{sh}$, calcule lo siguiente e incluya en una tabla:
+    \begin{enumerate}
+        \item El valor promedio, $\overline{R_{sh}}$ 
+        \item La desviación estándar, $\sigma$
+        \item El valor promedio de error relativo tomando \SI{1}{\ohm} como valor real
+        \item El valor de la incertidumbre estándar, $\sigma_x = \sigma / \sqrt{n}$
+        \item La exactitud
+        \item La precisión
+        \item La repetibilidad
+    \end{enumerate}
+
+\end{enumerate}
+
+
+
+
+% \bibliographystyle{IEEEtran}
+% \bibliography{ref_tareas}
 
 \end{document}

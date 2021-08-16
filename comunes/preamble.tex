@@ -3,14 +3,15 @@
 \usepackage{siunitx}
 \usepackage{float}
 \usepackage{tikz}
-\usepackage[american,RPvoltages]{circuitikz}
+\usepackage{url}
+\usepackage[siunitx,american,RPvoltages]{circuitikz}
 \ctikzset{capacitors/scale=0.7}
 \ctikzset{diodes/scale=0.7}
 \usepackage{tabularx}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
 \usepackage{tabu}
-\usepackage[spanish,es-tabla]{babel}
+\usepackage[spanish,es-tabla,activeacute]{babel}
 \usepackage{babelbib}
 \usepackage{booktabs}
 \usepackage{pgfplots}
@@ -23,9 +24,9 @@
 \usepgfplotslibrary{units, fillbetween} 
 \pgfplotsset{compat=1.16}
 \usepackage{bm}
-\usetikzlibrary{arrows, arrows.meta, shapes, 3d, perspective}
+\usetikzlibrary{arrows, arrows.meta, shapes, 3d, perspective, positioning}
 \renewcommand{\sin}{\sen} %change from sin to sen
 \usepackage{bohr}
 \setbohr{distribution-method = quantum,insert-missing = true}
 \usepackage{elements}
-\setbeamertemplate{bibliography item}{[\theenumiv]}
+\usepackage{verbatim}

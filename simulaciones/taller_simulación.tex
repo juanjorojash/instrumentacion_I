@@ -1,0 +1,174 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\input{comunes/preamble}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{42pt}
+
+ 
+\begin{document}
+\lhead{Ingeniería Física \\ Escuela de Física \\ Tecnológico de Costa Rica} 
+\rhead{Instrumentación I \\ \, \\ Taller de simulación} 
+\cfoot{\thepage\ de \pageref{LastPage}}
+
+Realice lo siguiente:
+\begin{enumerate}
+\item Para el circuito de la Figura \ref{fig:T1F1} obtenga la potencia de la fuente de \SI{3}{\volt}, la corriente en la fuente de \SI{4}{\volt} y el voltaje en la resistencia de \SI{6}{\ohm}; para cada uno de los siguientes valores de la resistencia $R$:
+
+\begin{tabularx}{\linewidth}{XXXX}
+    \textbullet{Un corto} & \textbullet{Un abierto} & \textbullet{\SI{1}{\ohm}} & \textbullet{\SI{10}{\ohm}}
+\end{tabularx}
+
+Directivas Spice a utilizar: \verb|.tran|; \verb|.step| y \verb|.meas|.
+
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[scale=1.2] \draw
+        (0,0) 	to[american voltage source, l=3\si{\volt}] (0,2)
+        		to[resistor, l=2\si{\ohm}] (2,2) -- (6,2)
+        		to[resistor, l_=5\si{\ohm}] (6,0) 
+        		to[resistor, l_=2\si{\ohm}] (4,0)
+        		to[resistor, l=1\si{\ohm}] (4,2)
+        (0,0)   to[resistor, l=4\si{\ohm},i<_=$I_x$] (2,0)
+        		to[american current source, l={0,2}\si{\ampere}] (2,2)
+        (4,0)	to[american voltage source, l_=5\si{\volt}] (2,0)
+        (6,2)	to[american controlled current source, l=$I_x$] (8,2)
+        		to[resistor, l_=1\si{\ohm}] (8,0)
+        		to[resistor, l_=3\si{\ohm}] (6,0)
+        (8,2) 	to[resistor, l=3\si{\ohm}] (10,2) -- (10,-2)
+        		to[resistor, l_=$R$] (6,-2)
+        		to[resistor, l_=4\si{\ohm}] (4,-2)
+        (2,-2)	to[american voltage source, l=4\si{\volt}] (4,-2)
+        (6,-2) -- (6,0)
+        (0,0)	to[resistor, l=6\si{\ohm}] (0,-4)
+        (2,0)	-- (2,-4) -- (0,-4)
+        (2,-4) 	to[resistor, l=2\si{\ohm}] (8,-4)
+        (8,0)
+        		to[resistor, l=5\si{\ohm}] (10,0)
+        (10,-2) to[short] (10,-4) -- (8,-4)
+        ;
+    \end{circuitikz}
+    \caption{Primer ejercicio de simulación}
+    \label{fig:T1F1}
+\end{figure}
+
+\item Para el circuito de la Figura \ref{fig:T1F2} encuentre $V_a$. Directivas Spice a utilizar: \verb|.op| y \verb|.meas|.
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[scale=1] \draw
+        (0,0)
+            to[V,l=\SI{5}{\volt}]
+        (0,2)
+            to[cV,l=$5 V_a$]
+        (0,4)
+            to[R,l=\SI{5}{\ohm}]
+        (3,4)
+            to[R,l=\SI{5}{\ohm},v=$V_a$]
+        (6,4)
+            to[R,l=\SI{5}{\ohm}]
+        (6,2)
+            to[V, invert, l=\SI{10}{\volt}]
+        (6,0)
+            to[short]
+        (0,0)
+        (3,0)
+            to[I,l=\SI{1}{\ampere}]
+        (3,4)
+        ;
+    \end{circuitikz}
+    \caption{Segundo ejercicio de simulación}
+    \label{fig:T1F2}
+\end{figure}
+
+\item Para el circuito de la Figura \ref{fig:T1F3} encuentre el valor de $R$ que consuma la máxima potencia. Directivas Spice a utilizar: \verb|.op|; \verb|.step| y \verb|.meas|.
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[scale=1] \draw
+        (0,0)
+            to[V,l=\SI{20}{\volt}]
+        (0,4)
+            to[R,l=\SI{30}{\ohm}]
+        (3,4)
+            to[R,l=$R$]
+        (6,4)
+            to[R,l=\SI{40}{\ohm}]
+        (6,2)
+            to[V, invert, l=\SI{10}{\volt}]
+        (6,0)
+            to[short]
+        (0,0)
+        (3,0)
+            to[I,l=\SI{0.5}{\ampere}]
+        (3,4)
+        ;
+    \end{circuitikz}
+    \caption{Tercer ejercicio de simulación}
+    \label{fig:T1F3}
+\end{figure}
+
+\item Para el circuito de la Figura \ref{fig:T1F4} encuentre el valor de la fuente $V_e$ de tal forma que $V_x$ sea \SI{15}{\volt} y encuentre la resistencia equivalente del circuito visto desde $V_e$. Directivas Spice a utilizar: \verb|.op|; \verb|.step| y \verb|.meas|.
+
+\begin{figure}[H]
+    \begin{circuitikz}[scale=1.2] \draw
+        (0,0)
+            to[V,l=$V_e$]
+        (0,2)
+            to[R,l=\SI{30}{\ohm}]
+        (2,2)
+            to[R,l=\SI{20}{\ohm}]
+        (4,2)
+            to[R,l=\SI{50}{\ohm}]
+        (6,2)
+            to[R,l=\SI{25}{\ohm}]
+        (6,0)
+            to[R,l_=\SI{35}{\ohm}]
+        (4,0)
+            to[R,l=\SI{30}{\ohm}]
+        (2,0)
+            to[short]
+        (0,0)
+        (2,2)
+            to[R,l_=\SI{10}{\ohm},v^=$V_x$]
+        (2,0)
+        (4,0)
+            to[R,l=\SI{70}{\ohm}]
+        (4,2)
+        (4,0)
+            to[R,l=\SI{30}{\ohm}]
+        (6,2)
+        (2,2)
+            to[short]
+        (2,4)
+            to[short]
+        (4,4)
+            to[R,l=\SI{16}{\ohm}]
+        (8,4)
+            to[short]
+        (8,-2)
+            to[R,l_=\SI{40}{\ohm}]
+        (4,-2)
+            to[R,l_=\SI{15}{\ohm}]
+        (2,-2)
+            to[short]
+        (2,0)
+        (4,2)
+            to[R,l=\SI{30}{\ohm}]
+        (4,4)
+        (4,-2)
+            to[short]
+        (4,0)
+        (4,-1) 
+            to[R,l=\SI{60}{\ohm}]
+        (8,-1)
+        ;
+    \end{circuitikz}
+\caption{Cuarto ejercicio de simulación}
+\label{fig:T1F4}
+\end{figure}
+
+\end{enumerate}
+\end{document}

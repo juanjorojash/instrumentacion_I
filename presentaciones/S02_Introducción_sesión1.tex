@@ -1,7 +1,7 @@
 \documentclass[aspectratio=169]{beamer}
 \usetheme{Bruno}
 \input{comunes/preamble}
-\title{Instrumentación I: \\ \emph{Introducción a la}\\ \emph{instrumentación industrial}}
+\title{Instrumentación I: \\ \emph{Introducción a la }\\ \emph{instrumentación industrial.} \\ \emph{Primera sesión}}
 \author{
     Juan J. Rojas, Hugo Sanchez Ortiz
 }
@@ -12,7 +12,7 @@
 \input{comunes/postamble}
 \maketitle
 
-\newcommand{\blackandwhite}{black} %change this at the end
+\newcommand{\blackandwhite}{white} %change this at the end
 
 \begin{frame}{Señales}
     \begin{columns}[c, onlytextwidth]
@@ -101,11 +101,11 @@ Algunos ejemplos de estímulos:
 
 \begin{frame}{Sistemas}
     \begin{columns}[c, onlytextwidth]
-        \begin{column}{0.5\textwidth}
+        \begin{column}{0.4\textwidth}
         Un sistema es una construcción o colección de diferentes elementos que juntos producen resultados que no pueden obtenerse con los elementos por separado\cite{INCOSE}.\\[8pt]
         Un sistema es un objeto o conjunto de objetos cuyas propiedades queremos estudiar\cite{modelica}.
         \end{column}
-        \begin{column}{0.5\textwidth}
+        \begin{column}{0.6\textwidth}
             \begin{center}
                \includegraphics[width=\textwidth]{fig/tostadora.jpg}\\
                \tiny{Tomado de \href{https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design\%3Asystem_diagram}{aquí}}
@@ -116,13 +116,13 @@ Algunos ejemplos de estímulos:
 
 \begin{frame}{Señales de entrada y salida}
     \begin{columns}[c, onlytextwidth]
-        \begin{column}{0.5\textwidth}
+        \begin{column}{0.4\textwidth}
              \begin{itemize}
                 \item Entradas: son las variables que afectan el comportamiento del sistema
                 \item Salidas: son las variables que son definidas por el sistema
              \end{itemize}
         \end{column}
-        \begin{column}{0.5\textwidth}
+        \begin{column}{0.6\textwidth}
             \begin{center}
                \includegraphics[width=\textwidth]{fig/tostadora.jpg}\\
                \tiny{Tomado de \href{https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design\%3Asystem_diagram}{aquí}}
@@ -167,8 +167,7 @@ Algunos ejemplos de estímulos:
         \begin{column}{0.6\textwidth}
         Para los efectos de este curso...\\[8pt]
         \begin{itemize}
-            \item \textbf{Transductor:} dispositivo que convierte una señal de un tipo de energía a una
-            una señal correspondiente pero con un tipo de energía diferente.
+            \item \textbf{Transductor:} dispositivo que convierte una señal de un tipo de energía a una señal correspondiente pero con un tipo de energía diferente.
             \item \textbf{Sensor:} transductor que convierte una señal física a un señal eléctrica
             \item \textbf{Actuador:} transductor que convierte una señal eléctrica a un señal física
         \end{itemize}
@@ -182,48 +181,68 @@ Algunos ejemplos de estímulos:
     \end{columns}
 \end{frame}
 
-\begin{frame}{Sensores y actuadores}
+\begin{frame}{Sensores directos y complejos}
     \begin{columns}[c, onlytextwidth]
-        \begin{column}{0.6\textwidth}
-        Es un dispositivo que convierte una señal de un tipo de energía a una
-        una señal correspondiente pero con un tipo de energía diferente.\\[8pt]
-        \begin{itemize}
-            \item Es un convertidor de energía
-            \item Si convierte una señal física a un señal eléctrica se le llama \textbf{sensor}
-            \item Si convierte una señal eléctrica a un señal física se le llama \textbf{actuador}
-        \end{itemize}
+        \begin{column}{0.5\textwidth}
+        Sensor directo
+            \begin{tikzpicture}
+                \node[draw,minimum width=2cm,minimum height=1.2cm](sensor) {sensor};
+                \draw[>=latex, thick, ->](sensor) --++ (-3,0) -- (sensor);
+                \node[left=1,above] at (sensor.west){\small estímulo};
+                \draw[>=latex, thick, ->](sensor) -- (sensor) --++ (3,0);
+                \node[right=1,above] at (sensor.east){\small señal};
+                \node[right=1,below] at (sensor.east){\small eléctrica};
+                \draw[\blackandwhite] (-3,-1.5) rectangle (3,3);
+            \end{tikzpicture}
         \end{column}
-        \begin{column}{0.4\textwidth}
-            \begin{center}
-               \includegraphics[width=0.8\textwidth]{fig/bourdon.jpg}\\
-               \tiny{Tomado de \href{https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/MAXIMATOR-High-Pressure-Manometer-01a.jpg/1200px-MAXIMATOR-High-Pressure-Manometer-01a.jpg}{aquí}}
-            \end{center}
+        \begin{column}{0.5\textwidth}
+        Sensor complejo
+            \begin{tikzpicture}
+            \node[draw,minimum width=1cm,minimum height=1cm](s1) {trans};
+            \draw[>=latex, thick, ->](s1) --++ (-2,0) -- (s1);
+            \node[left=0.75,above] at (s1.west){\small estímulo};
+            \node[draw,minimum width=1cm,minimum height=1cm,right of=s1,node distance=2cm](s2) {sens};
+            \draw[>=latex, thick, ->](s2) -- (s2) --++ (2,0);
+            \node[right=0.75,above] at (s2.east){\small señal};
+            \node[right=0.75,below] at (s2.east){\small eléctrica};
+            \draw[>=latex, thick, ->](s1) -- (s2);
+            \draw[\blackandwhite] (-2,-1.5) rectangle (4,3);
+            \draw[black, dashed] (0.75,-1) rectangle (4,1.5)node[midway,above=0.7]{\small sensor directo};
+            \end{tikzpicture}
         \end{column}
     \end{columns}
 \end{frame}
 
-\begin{frame}{Sensores y actuadores}
+\begin{frame}{Sensores pasivos y activos}
     \begin{columns}[c, onlytextwidth]
-        \begin{column}{0.6\textwidth}
-        Es un dispositivo que convierte una señal de un tipo de energía a una
-        una señal correspondiente pero con un tipo de energía diferente.\\[8pt]
-        \begin{itemize}
-            \item Transductor: dispositivo que convierte una señal de un tipo de energía a una
-            una señal correspondiente pero con un tipo de energía diferente.
-            \item \textbf{Sensor}: transductor que convierte una señal física a un señal eléctrica
-            \item \textbf{Actuador}Si convierte una señal eléctrica a un señal física se le llama 
-        \end{itemize}
+        \begin{column}{0.5\textwidth}
+        Sensor pasivo
+            \begin{tikzpicture}
+                \node[draw,minimum width=2cm,minimum height=1.2cm](sensor) {sensor};
+                \draw[>=latex, thick, ->](sensor) --++ (-3,0) -- (sensor);
+                \node[left=1,above] at (sensor.west){\small estímulo};
+                \draw[>=latex, thick, ->](sensor) -- (sensor) --++ (3,0);
+                \node[right=1,above] at (sensor.east){\small señal};
+                \node[right=1,below] at (sensor.east){\small eléctrica};
+                \draw[\blackandwhite] (-3,-1.5) rectangle (3,3);
+            \end{tikzpicture}
         \end{column}
-        \begin{column}{0.4\textwidth}
-            \begin{center}
-               \includegraphics[width=0.8\textwidth]{fig/bourdon.jpg}\\
-               \tiny{Tomado de \href{https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/MAXIMATOR-High-Pressure-Manometer-01a.jpg/1200px-MAXIMATOR-High-Pressure-Manometer-01a.jpg}{aquí}}
-            \end{center}
+        \begin{column}{0.5\textwidth}
+        Sensor activo
+            \begin{tikzpicture}
+                \node[draw,minimum width=2cm,minimum height=1.2cm](sensor) {sensor};
+                \draw[>=latex, thick, ->](sensor) --++ (-3,0) -- (sensor);
+                \node[left=1,above] at (sensor.west){\small estímulo};
+                \draw[>=latex, thick, ->](sensor) -- (sensor) --++ (3,0);
+                \node[right=1,above] at (sensor.east){\small señal};
+                \node[right=1,below] at (sensor.east){\small eléctrica};
+                \draw[>=latex, thick, ->](sensor) --++ (0,+2) -- (sensor);
+                \node[above=1.5] at (sensor.north){\small excitación};
+                \draw[\blackandwhite] (-3,-1.5) rectangle (3,3);
+            \end{tikzpicture}
         \end{column}
     \end{columns}
 \end{frame}
-
-
 
 \begin{frame}{Referencias}
 
