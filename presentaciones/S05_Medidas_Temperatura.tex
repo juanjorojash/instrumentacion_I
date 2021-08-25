@@ -96,42 +96,145 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
 \end{frame}
 
 \begin{frame}{Conversión entre escalas}
+\begin{table}[]
+    \centering
+    \begin{tabular}{|c|c|}
+         \hline
+        \textbf{Kelvin a Celsius} & \textbf{Kelvin a Farenheit} \\
+       \Large{$^{\circ}C=^{\circ}K-273.15$} & \Large{$ ^{\circ} F=\frac{9(^{\circ}K-273.15)}{5}+32$} \\
+       \hline
+       \textbf{Farenheit a Celsius} & \textbf{Farenheit a Kelvin} \\
+       \Large{$^{\circ}C=\frac{5(^{\circ}F-32)}{9}$ } & \Large{$^{\circ}K=\frac{5(^{\circ}F-32)}{9}+273.15$}\\
+       \hline
+       \textbf{Celsius a Kelvin} & \textbf{Celsius a Farenheit} \\
+       \Large{$^{\circ}K=^{\circ}C+273.15$ } & \Large{$^{\circ}F=\frac{9(^{\circ}C)}{5}+32$}\\
+       \hline
+    \end{tabular}
+    \caption{Distintas escalas de temperatura\cite{cengel2003termodinamica}}
+    \label{tab:conversi'on}
+\end{table}
+\end{frame}
+
+\begin{frame}{Formas de medición de temperatura}
+\centering\begin{tikzpicture}[mindmap,
+  level 1 concept/.append style={level distance=80,sibling angle=90},
+  extra concept/.append style={text=black}]
+ 
+  % MATERIALES
+  \path[mindmap,concept color=color_mate,text=black]
+  node[concept] {\small{Medición Temperatura}}  [clockwise from=45]
+  
+    %
+    % MATERIALES: PÉTREOS
+    child[concept color= color_petr] {
+      node[concept, inner sep = 0mm ] {Variación Volumen}  [clockwise from=0]
+      child { node[concept] {\footnotesize{Termométros}} }
+    }
+    %
+    % MATERIALES: TEXTILES
+    child[concept color=color_text] {
+      node[concept] {Intensidad Radiación} [clockwise from=0]
+      child { node[concept] {Pirómetros} }
+    }
+    %
+    % MATERIALES: METALES
+    %
+    % MATERIALES: PLÁSTICOS
+    child[concept color=color_plas] { 
+      node[concept] {Variación Resistencia} [clockwise from=180]
+      child { node[concept] {RTD} }
+    }
+    %
+    % MATERIALES: MADERA
+    child[concept color=color_made] { 
+      node[concept] {Generación f.e.m}  [clockwise from=180]
+      child { node[concept] {Termopar} }
+   };
+ 
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Termómetros}
     \begin{columns}[c, onlytextwidth]
-        \begin{column}{0.55\textwidth}
+        \begin{column}{0.5\textwidth}
             \begin{itemize}
-                \item Valor real de un estimulo: es el que se obtendría con una medición perfecta. Sin embargo este valor es indeterminado y por lo tanto se define por algún tipo de convención. 
-                \item Exactitud: es la capacidad de un sensor de dar un resultado cercano al valor real del estímulo medido.
-                \item Precisión: es la capacidad de un sensor de dar el mismo resultado cuando se mide el mismo valor de un estimulo bajo las mismas condiciones. 
+                \item El termómetro es uno de los instrumentos más utilizados para la medición de temperatura. 
+                \item Se compone de dos partes importantes:
+                \begin{itemize}
+                    \item sensor de temperatura
+                    \item escala numérica de conversión
+                \end{itemize}
+                \item Los principios sobre los que operan estos instrumentos son conocidos desde la cultura griega.
             \end{itemize}
         \end{column}
-        \begin{column}{0.40\textwidth}
-            \textbf{Ejemplo}\\[4pt]
-            Marca: Amphenol\\[4pt]
-            Modelo: NovaSensor NPI-19\\[4pt]
-            Estímulo: presión\\[4pt]
-            Tipo: piezoresistivo\\[4pt]
-            Exactitud estática$^*$: $0.1 \%$ \\[10pt]
-            % Exactitud térmica del FSO: $\pm 0.5 \% $\\[4pt]
-            % Exactitud térmica del offset: $\pm 0.5 \% $\\[10pt]
-            \tiny{* Incluye errores de linealidad, histéresis y repetibilidad}\\
-            \tiny{Tomado de \href{https://f.hubspotusercontent40.net/hubfs/9035299/Product\%20Documents/AAS-920-298B-NovaSensor\%20NPI-19-REVISED-061714-web\%20(1).pdf}{aquí}}
+        \begin{column}{0.45\textwidth}
+        \begin{figure}
+            \centering
+            \begin{tikzpicture}[
+            node distance = 0.1cm and 0.1cm,
+            every node/.style = {rectangle, font=\sffamily\bfseries, text=white,
+                                 top color=blue!90!black, bottom color=blue!60!black,
+                                 text width=2cm, align = center, minimum height = 1cm}
+                                 ]
+            \node (MAN)     {\small{Termómetro}};
+            \node (PROD) [below left = of MAN] {\footnotesize{De vidrio}};
+            \node (FIN)  [below right     = of MAN] {\footnotesize{Bimetálicos}};
+            \node (CL)  [below right     = of PROD] {\footnotesize{Clínicos}};
+            \node (IND)  [below    = of CL] {\footnotesize{Industriales}};
+            %
+            \draw [blue,thick]  (MAN) |- (FIN)
+                                (MAN) |- (PROD)
+                                (PROD) |- (CL)
+                                (PROD) |- (IND);
+    \end{tikzpicture}
+            \caption{Tipos de termómetros \cite{sole2005instrumentacion}}
+            \label{fig:term}
+        \end{figure}
+        
         \end{column}
     \end{columns}
 \end{frame}
 
-\begin{frame}{Termómetros Industriales}
+\begin{frame}{Termómetros de vidrio}
     \begin{columns}[c, onlytextwidth]
-        \begin{column}{0.60\textwidth}
+        \begin{column}{0.5\textwidth}
             \begin{itemize}
-                \item Repetibilidad: es una medida de la proximidad de la concordancia entre dos mediciones del mismo valor de un estímulo realizadas por la misma persona, con el mismo método e instrumento, bajo las mismas condiciones y en un periodo corto de tiempo. 
-                \item Reproducibilidad: es una medida del grado de concordancia entre dos mediciones del mismo valor de un estímulo realizadas por diferentes personas, con el mismo método, con diferentes instrumentos y en un periodo largo de tiempo. 
+                \item Contiene un depósito de vidrio que contiene una sustancia, e.g. mercurio, y que al calentarse se expande y sube en el tubo capilar.  
+                \item Márgenes de operación \cite{sole2005instrumentacion}
+                \begin{itemize}
+                    \item Mercurio: $-35^\circ$C hasta $280^\circ$C
+                    \item Mercurio (tubo capilar lleno de gas): $-35^\circ$C hasta $450^\circ$C
+                    \item Pentano: $-200^\circ$C hasta $20^\circ$C
+                    \item Alcohol: $-110^\circ$C hasta $50^\circ$C
+                    \item Tolueno: $-70^\circ$C hasta $100^\circ$C
+                \end{itemize}
             \end{itemize}
         \end{column}
-        \begin{column}{0.35\textwidth}
-            \includegraphics[width=0.9\textwidth]{fig/repeatibility.png}\cite{Fraden_2016}
-            \begin{equation*}
-                \delta_r = \dfrac{\Delta}{FS}\cdot 100\%
-            \end{equation*}
+        \begin{column}{0.45\textwidth}
+            \centering
+            \includegraphics[width=6cm]{fig/TermometroVidrio.jpg}
+             \\ \tiny{Tomado de \href{http://famater.com.ar/?p=611}{aquí}}
+        
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Termómetros bimetálicos}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item Se basan en el distinto coeficiente de dilatación de dos metales diferentes \textit{e.g.}latón y una aleacción de ferroníquel. 
+                \item La diferencia en el coeficiente de expasión de cada metal hace que el elemento bimetálico se doble. 
+                \item La exactitud del instrumento es de $1\%$ y su campo de medida es de $-200^\circ C$ hasta $500^\circ C$
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \centering
+            \includegraphics[width=5cm]{fig/bimetalic.png}
+             \\ \tiny{Tomado de \href{https://natstuk.com/?p=786}{aquí}}
+        \begin{equation*}
+                \alpha = \dfrac{360}{\pi}\cdot \dfrac{a \cdot l}{s}\cdot (t_2-t_1) 
+        \end{equation*}
         \end{column}
     \end{columns}
 \end{frame}
@@ -140,67 +243,355 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.55\textwidth}
             \begin{itemize}
-                \item Linealidad: es una medida de la proximidad entre la curva de calibración (valores medidos) y una linea recta específica.
-                \item Resolución: es el incremento mas pequeño en el valor del estimulo que puede ser medido por el sensor. 
+                \item Se basa en el efecto Seebeck (Thomas Seebeck, 1821). 
+                \item Un termopar, se componen dos metales diferentes cuyas uniones, producen una pequeña tensión cuando la junta se calienta. 
+                \item Está tensión solo depende de las características de los materiales y la temperatura. 
             \end{itemize}
         \end{column}
         \begin{column}{0.40\textwidth}
-            \textbf{Ejemplo}\\[4pt]
-            Marca: PIHER\\[4pt]
-            Modelo: PS2P-LIN\\[4pt]
-            Estímulo: posición\\[4pt]
-            Tipo: magnetico, efecto Hall\\[4pt]
-            Rango del estímulo: $\SI{12}{\milli\meter}$\\[4pt]
-            Salida a escala completa (PWM): $10\% (\SI{-6}{\milli\meter}) \sim 90\% (\SI{6}{\milli\meter})$\\[4pt]
-            Linealidad: $\pm 1 \%$ \\[4pt]
-            Resolución(PWM): $14\,\mathrm{bits}$\\[10pt]
-            \tiny{Tomado de \href{https://www.piher.net/pdf/PS2P-LINIntroduction.pdf}{aquí}}
+        \includegraphics[width=6cm]{fig/seebeekc.png}
+            \tiny{Tomado de \href{https://www.iue.tuwien.ac.at/phd/mwagner/node14.html}{aquí}}
         \end{column}
     \end{columns}
 \end{frame}
+
+\begin{frame}{Termopares(Termocuplas)}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.4\textwidth}
+            \begin{itemize}
+                \item Se caracterizan por tres leyes fundamentales: 
+                \begin{itemize}
+                    \item \textit{Ley de circuito homogéneo}
+                    \item \textit{Ley de los metales intermedios}
+                    \item \textit{Ley de las temperaturas sucesivas}
+                \end{itemize}
+                \item Los terminales de la termocupla si deben ser del mismo material para evitar problemas con la instrumentación electrónica.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=7cm]{fig/termocouple.PNG}
+            \\ \cite{Fraden_2016}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Termopares(Termocuplas)}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.45\textwidth}
+            \begin{itemize}
+                \item El diamétro de los cables varia entre 0.1 y 3mm. A menor diámetro mayor tiempo de respuesta. 
+                \item La selección de los alambres para termopares se hace de forma que tengan una resistencia eléctrica y que el aumento de \textit{f.e.m} sea paralelo al aumento de temperatura.
+                \item Existen distintos tipos de acople de temperatura.
+                
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=6cm]{fig/ensamble_termopar.PNG}
+            \\ \cite{Fraden_2016}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Tipos de termopares}
+\centering
+    \includegraphics[width=11.5cm]{fig/Thermocouple_EMF_Temperature.png}
+     \\ \tiny{Tomado de \href{https://www.akcp.com/blog/what-is-a-k-type-thermocouple/}{aquí}}
+\end{frame}
+
+\begin{frame}{Tipos de termopares}
+  \begin{table}[]
+    \centering
+    \footnotesize{
+    \begin{tabular}{m{0.6cm}|m{2.6cm}|m{2.5cm}|m{2.4cm} | m{3.6cm}}
+     \hline
+         \hline
+        \textbf{Tipo} & \textbf{Material} &\textbf{Rango Medida} & \textbf{Rango Trabajo} & \textbf{Uso} \\
+         \hline
+         \hline
+       \textbf{E} & Cromel-Constatán & $-100 ^{\circ} C$ a $ 1270^{\circ} C$ & $-40 ^{\circ} C$ a $900^{\circ} C$ & Puede usarse en vacío\\
+       \textbf{T} & Cobre-Constatán & $-200 ^{\circ} C$ a $ 371^{\circ} C$ & $-40 ^{\circ} C$ a $350 ^{\circ} C$ & Resistencia a la corrosión\\
+       \textbf{J} & Hierro-Constatán & $-190 ^{\circ} C$ a $ 760^{\circ} C$ & $-40 ^{\circ} C$ a $750 ^{\circ} C$ & Atmósferas inertes. El hierro se oxida rápidamente por encima de $550 ^{\circ}C$\\
+       \textbf{K} & Cobre-Alumel & $-190 ^{\circ} C$ a $ 1260^{\circ} C$ & $-40 ^{\circ} C$ a $1000 ^{\circ} C$ & Atmósferas oxidantes\\
+       \textbf{R} & Platino-Rodio & $0 ^{\circ} C$ a $ 1450^{\circ} C$ & $0 ^{\circ} C$ a $1200 ^{\circ} C$ & Atmósferas oxidantes\\
+       \textbf{S} & Platino-Rodio & $0 ^{\circ} C$ a $ 1450^{\circ} C$ & $0 ^{\circ} C$ a $1200 ^{\circ} C$ & Similar a R\\
+       \textbf{B} & Platino-$30\%$ Rodio/Platino-$6\%$ Rodio, & $0 ^{\circ} C$ a $ 1950^{\circ} C$ & $0 ^{\circ} C$ a $1800 ^{\circ} C$ & Altas Temperaturas\\
+       \textbf{N} & Cobre-Constatán & $0 ^{\circ} C$ a $ 2316^{\circ} C$ & $0 ^{\circ} C$ a $2100 ^{\circ} C$ & Se comienza a utilizar como sustituto de K\\
+    \end{tabular}
+    }
+    \caption{Comparación entre distintos tipos de sensores\cite{sole2005instrumentacion}}
+    \label{tab:Comparacion_termo}
+\end{table}
+\end{frame}
+
+\begin{frame}{Tipos de termopares \tiny{\href{https://srdata.nist.gov/its90/download/download.html}{https://srdata.nist.gov/its90/download/download.html}}}
+\centering
+    \includegraphics[width=11.5cm]{fig/ITS-90.PNG}
+\end{frame}
+
+\begin{frame}{Tipos de termopares}
+\centering
+    \includegraphics[width=7.5cm]{fig/thermometricscorp.png}
+    \\ \tiny{Tomado de \href{https://www.thermometricscorp.com/thermocouple-color-code.html}{aquí}}
+\end{frame}
+
+\begin{frame}{Tubos de protección}
+\centering
+    \includegraphics[width=11cm]{fig/thermocouple-probe-head.png}
+    \\ \tiny{Tomado de \href{https://www.tcaus.com.au/thermocouple/index.html}{aquí}}
+\end{frame}
+
+\begin{frame}{Lectura de datos termocoupla}
+ \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.45\textwidth}
+            \begin{itemize}
+                \item El voltaje de salida es muy bajo, por lo que se requiere un sistema de acondicionamiento de la señal, para amplificar dicha señal.  
+                \item La sensibilidad es muy baja. Pero presentan una respuesta muy lineal. Además no requieren alimentación de ningún tipo.
+                \item El sistema a de acondicionamiento selecciona en función del sensor. 
+                
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=7cm]{fig/thermocouple_circuit.PNG}
+            \\ \cite{Fraden_2016}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Compensación de la unión fría (CJC)}
+ \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.45\textwidth}
+            \begin{itemize}
+                \item Los voltajes de referencia están referidas a una unión fría, por lo que se requiere una compensación.  
+                \item Esta compensación se realiza mediante una resistencia que absorbe la tensión equivalente. La resistencia varía linealmente con la temperatura. 
+                \item Siempre es necesario integrar este tipo de integración de sistemas de adquisición de datos (recientemente se puede realizar de forma digital)
+                
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=8.5cm]{fig/Thermocouple_cjc.png}
+            \\ \tiny{Tomado de \href{https://forumautomation.com/t/what-is-cold-junction-compensation-in-thermocouple/2896}{aquí}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
 
 
 \begin{frame}{Detector de temperatura por Resistencia (RTD)}
     \begin{columns}[c, onlytextwidth]
-        \begin{column}{0.60\textwidth}
+        \begin{column}{0.55\textwidth}
             \begin{itemize}
-                \item Sensibilidad: es la pendiente de la curva de calibración, sin importar si es constante o no en todo el rango de salida.  
-                \item Saturación: es el rango de operación en el que un incremento en el valor del estímulo no produce variaciones en la señal de salida del sensor. 
-                \item Banda muerta: es el rango de operación en el que, sin importar el valor del estímulo, la salida es cercana a cero.
+                \item Estos detectores de temperatura dependen de la variación de la resistencia del material en función de la temperatura.  
+                \item El elemento consiste en un arrollamiento de hilo muy fino del conductor adecuado bobinado entre capas de material aislante y protegido con un revestimiento de vidrio o cerámica. 
+                \item Relación dada por: 
+                \begin{equation*}
+                    R_t=R_0\cdot (1+\alpha \cdot t)
+                \end{equation*}
             \end{itemize}
         \end{column}
-        \begin{column}{0.35\textwidth}
-            \textbf{Ejemplo}\\[4pt]
-            Marca: Allegro\\[4pt]
-            Modelo: ACS723\\[4pt]
-            Estímulo: corriente eléctrica\\[4pt]
-            Tipo: magnetico, efecto Hall\\[4pt]
-            Rango del estímulo: $\SI{10}{\ampere}$\\[4pt]
-            Salida a escala completa: $\SI{0.5}{\volt}(\SI{-5}{\ampere}) \sim \SI{4.5}{\volt}(\SI{5}{\ampere})$\\[4pt]
-            Sensibilidad: $\SI{400}{\milli\volt/\ampere}$ \\[4pt]
-            Saturación: $<\SI{0.5}{\volt}, >\SI{4.5}{\volt}$\\[10pt]
-            \tiny{Tomado de \href{https://www.allegromicro.com/-/media/files/datasheets/acs723-datasheet.ashx}{aquí}}
+        \begin{column}{0.45\textwidth}
+            \includegraphics[width=6cm]{fig/RTD_Circuit.jpg}
+            \\ \tiny{Tomado de \href{https://www.azom.com/article.aspx?ArticleID=5573}{aquí}}
         \end{column}
     \end{columns}
 \end{frame}
+
+\begin{frame}{Fabricación RTD}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.45\textwidth}
+        \includegraphics[width=6.5cm]{fig/rtd_types.jpg}
+            \\ \tiny{Tomado de \href{https://www.designworldonline.com/designing-with-rtd-temperature-sensors/}{aquí}}
+            
+        \end{column}
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item \textbf{Hilo bobinado}: el embobinado de platino es soportado por un vidrio resistente de alta temperatura dentro de un tubo de cerámica.     
+                \item \textbf{Película fina}:Regularmente fabricados de platino y aceros que son depositados en una membrana de silicón.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Características sondas RTD}
+  \begin{table}[]
+    \centering
+    \scriptsize{
+    \begin{tabular}{m{1.1cm}|m{2.2cm}|m{1.5cm}|m{1.8cm} | m{2.6cm}|m{2.6cm}}
+     \hline
+         \hline
+        \textbf{Elemento} & \textbf{Intervalo Útil} &\textbf{Resistencia básica} & \textbf{Sensibilidad [$\Omega/^{\circ} C$ de $0^{\circ} C$ a $100^{\circ} C$]} & \textbf{Ventajas} & \textbf{Desventajas}\\
+         \hline
+         \hline
+       \textbf{Platino} & $-260 ^{\circ} C$ a $ 850^{\circ} C$ & $100\Omega$ a $0 ^{\circ} C$   & 0,39 & Mayor intervalo, mejor estabilidad, buena linealidad & Costo\\
+       \textbf{Cobre} & $-100 ^{\circ} C$ a $ 260^{\circ} C$ & $10\Omega$ a $25 ^{\circ} C$   & 0,04 & Buena linealidad & Baja resistividad\\
+       \textbf{Níquel} &  $-100 ^{\circ} C$ a $ 260^{\circ} C$ & $100\Omega$ a $0 ^{\circ} C$   & 0,62 & Bajo Costo, Alta sensibilidad & Falta de linealidad, variaciones coeficiente de resistencia\\
+       \textbf{Níquel-Hierro} & $-100 ^{\circ} C$ a $ 204^{\circ} C$ & $604\Omega$ a $0 ^{\circ} C$   & 3,13 & Bajo costo, muy alta sensibilidad & Relación reducida\\
+    \end{tabular}
+    }
+    \caption{Comparación entre distintos tipos de sensores\cite{sole2005instrumentacion}}
+    \label{tab:Caracteristicas _rtd}
+\end{table}
+\end{frame}
+
+\begin{frame}{Estándar de tolerancias RTD}
+ \begin{itemize}
+     \item Los RTD son construidos bajo distintos estándares y curvas. La más común es la DIN/IEC 60751.
+     \item Este estándar divide por clases en función de la respuesta de la resistencia del platino por temperatura. 
+     \item \textbf{Clase A}
+     \begin{itemize}
+         \item Tolerancia de Temperatura: $\pm (0.15 + .002|T| ^\circ C)$
+     \end{itemize}
+      \item \textbf{Clase B}
+     \begin{itemize}
+         \item Tolerancia de Temperatura: $\pm (0.30 + .005|T| ^\circ C)$
+         \end{itemize}
+    \item \textbf{Clase C}
+     \begin{itemize}
+         \item Tolerancia de Temperatura: $\pm (1.2 + .005|T| ^\circ C)$
+     \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Algunas consideraciones RTD}
+    \begin{columns}[c, onlytextwidth]
+    \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item Son especiales en precisión en linealidad.      
+                \item No se requieren recalibraciones anuales, y se mantienen estables por muchos años. 
+                \item Requieren una fuente de corriente precisa. 
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+        \includegraphics[width=6.5cm]{fig/RTD Curve.jpg}
+            \\ \tiny{Tomado de \href{http://www.bearingsensor.com/bearing-rtd.html}{aquí}}
+            
+        \end{column}
+        
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Conexiones RTD (2 hilos)}
+    \begin{columns}[c, onlytextwidth]
+    \begin{column}{0.50\textwidth}
+        \includegraphics[width=7cm]{fig/2hilosRTD.PNG}
+            \\ \tiny{Tomado de \href{http://www.bearingsensor.com/bearing-rtd.html}{aquí}}
+            
+        \end{column}
+    \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item Proporciona una conexión eléctrica a la salida de cada elemento.     
+                \item Solución más económica
+                \item Requieren una fuente de corriente precisa. 
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+\begin{frame}{Conexiones RTD (3 hilos)}
+    \begin{columns}[c, onlytextwidth]
+    \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item Se obtiene mayor precisión, ya que se contrarrestra el efecto del puente de \textit{Wheatstone}     
+                \item Es la forma más utilizada en la industria.
+                \item El cable 3 no conduce corriente.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+        \includegraphics[width=7cm]{fig/3hilosRTD.PNG}
+            \\ \tiny{Tomado de \href{http://www.bearingsensor.com/bearing-rtd.html}{aquí}}
+            
+        \end{column}
+        
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Conexiones RTD (4 hilos)}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.45\textwidth}
+        \includegraphics[width=6.5cm]{fig/4hilosRTD.PNG}
+            \\ \tiny{Tomado de \href{http://www.bearingsensor.com/bearing-rtd.html}{aquí}}
+            
+        \end{column}
+    \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item Son especiales en precisión en linealidad.      
+                \item No se requieren recalibraciones anuales, y se mantienen estables por muchos años. 
+                \item Requieren una fuente de corriente precisa. 
+            \end{itemize}
+        \end{column}
+        
+    \end{columns}
+\end{frame}
+
 
 \begin{frame}{Termistores}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.55\textwidth}
             \begin{itemize}
-                \item Valor real: es el valor de salida que se obtendría con una medición perfecta. Debido a que esto es imposible de determinar se utiliza una convención para definir el valor real.  
-                \item Error absoluto: es la diferencia entre una medición y el valor real. 
-                \item Error relativo: es el cociente entre el error absoluto y el valor real
+                \item Es una contracción de las palabras \textit{thermal} y \textbf{resistor} 
+                \item Este tipo de medidores son semiconductores de partículas de óxido de metal. 
+                \item Existen dos grupos: \textit{NTC (Negative Temperature Coeficient) } y \textit{PTC (Positive Temperature Coeficient)}
             \end{itemize}
         \end{column}
         \begin{column}{0.40\textwidth}
-            \begin{equation*}
-                \mathrm{error\,absoluto} = \mathrm{medición} - \mathrm{valor\,real}
-            \end{equation*}
-            \begin{equation*}
-                \mathrm{error\,relativo} = \dfrac{\mathrm{error\,absoluto}}{\mathrm{valor\,real}}
-            \end{equation*}
+           \includegraphics[width=6.5cm]{fig/thermistor_NTC_100K.jpg}
+            \\ \tiny{Tomado de \href{https://spool3d.ca/ntc-100k-thermistor-with-terminal/}{aquí}}
         \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Curvas Termistores}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.55\textwidth}
+             \includegraphics[width=8cm]{fig/Thermistor_Curve.png}
+            \\ \tiny{Tomado de \href{https://www.researchgate.net/publication/309267235_A_Simple_Thermistor_Design_for_Industrial_Temperature_Measurement/figures?lo=1&utm_source=google&utm_medium=organichttps://spool3d.ca/ntc-100k-thermistor-with-terminal/}{aquí}}
+        \end{column}
+        \begin{column}{0.40\textwidth}
+        \begin{equation*}
+            R_t=R_0e^{\beta(\frac{1}{T_1})(\frac{1}{T_2})}
+        \end{equation*}
+        
+        \begin{equation*}
+            \frac{1}{T}=A+B\cdot \ln R_1 + C \cdot (\ln R_1)^3
+        \end{equation*}
+          
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Termistores}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item Se les denominad \textit{Sensor on a chip} por su tamaño reducido y facilidad para encapsular en vidrio o epoxi.
+                \item Su tiempo de respuesta depende de la capacidad térmica y masa del termistor, variando de 0,5 a 10 segundos.  
+                \item La precisión de un termistor se encuentra entre $\pm 0.1 {^\circ} C$ a $\pm 0.2 {^\circ} C$. Con un rango de $-50 {^\circ} C$ a $200 {^\circ} C$.
+                \item Se usan para la protección contra calentamiento de PC, baterías de litio o regular contraste en un LCD. 
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.40\textwidth}
+           \includegraphics[width=6.5cm]{fig/Thermistor_type.PNG}
+            \\ \tiny{Tomado de \href{https://es.made-in-china.com/co_jpsensor/product_Ntc-10K-Thermistor-Collection_reeeohegg.html}{aquí}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Medición de termistores}
+    \begin{columns}[c, onlytextwidth]
+            \begin{column}{0.5\textwidth}
+           \includegraphics[width=7.5cm]{fig/450px-LinealizacionNTC.png}
+            \\ \tiny{Tomado de \href{https://es.made-in-china.com/co_jpsensor/product_Ntc-10K-Thermistor-Collection_reeeohegg.html}{aquí}}
+        \end{column}
+        
+        \begin{column}{0.45\textwidth}
+            \begin{itemize}
+                \item La curva de un termistor no es lineal. 
+                \item Con circuitos sencillos se puede linealizar su característica de forma deseable.
+                \item Se requiere de una fuente de precisión y una resistencia fija de precisión también.
+                \item La fuente puede ser de corriente también.
+            \end{itemize}
+        \end{column}
+
     \end{columns}
 \end{frame}
 
@@ -208,20 +599,84 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.55\textwidth}
             \begin{itemize}
-                \item Valor real: es el valor de salida que se obtendría con una medición perfecta. Debido a que esto es imposible de determinar se utiliza una convención para definir el valor real.  
-                \item Error absoluto: es la diferencia entre una medición y el valor real. 
-                \item Error relativo: es el cociente entre el error absoluto y el valor real
+                \item Este tipo de dispositivos se utiliza por medios eléctricos y sin contacto.
+                \item Se clasifican en función del fenómeno físico: 
+                \begin{itemize}
+                    \item Pirómetros de radiación
+                    \item Pirómetro ópticos
+                    \item De resistencia y termoeléctricos
+                \end{itemize}
             \end{itemize}
         \end{column}
         \begin{column}{0.40\textwidth}
-            \begin{equation*}
-                \mathrm{error\,absoluto} = \mathrm{medición} - \mathrm{valor\,real}
-            \end{equation*}
-            \begin{equation*}
-                \mathrm{error\,relativo} = \dfrac{\mathrm{error\,absoluto}}{\mathrm{valor\,real}}
-            \end{equation*}
+            \includegraphics[width=5.5cm]{fig/Pirometro.jpg}
+            \\ \tiny{Tomado de \href{https://como-funciona.co/un-pirometro/}{aquí}}
         \end{column}
     \end{columns}
+\end{frame}
+
+\begin{frame}{Pirómetros de radiación}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item Se fundan en la ley de Stefan-Boltzmann, que dice que la intensidad de energía radiante emitida por la superficie de un cuerpo aumenta proporcionalmente a la cuarta potencia de la temperatura absoluta (Kelvin) del cuerpo.
+                \begin{equation*}
+                    W= K \times T^4
+                \end{equation*}
+                \item El pirómetro dirigido sobre una superficie incandescente no nos dará su verdadera temperatura si la superficie no es perfectamente negra, es decir, que absorba absolutamente todas las radiaciones y no refleje ninguna.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \includegraphics[width=7cm]{fig/pirometro-basico.jpg}
+            \\ \tiny{Tomado de \href{https://www.ingmecafenix.com/otros/pirometro/}{aquí}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Pirómetros ópticos}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.47\textwidth}
+            \includegraphics[width=8.5cm]{fig/Pirometros-optico-esquema.jpg}
+            \\ \tiny{Tomado de \href{https://como-funciona.co/un-pirometro/}{aquí}}
+        \end{column}
+        \begin{column}{0.50\textwidth}
+            \begin{itemize}
+                \item Se basan en la comparación visual de la luminosidad del objeto radiante con el filamento de una lámpara incandescente.
+                \item El sistema óptico del pirómetro restringe el ancho de onda de $0,65$ a $0,66 micras$ (zona roja del espectro) y dispone de filtros para reducir la intensidad de la radiación recibida, permitiendo la medida de un amplio margen de temperaturas. 
+                \item La exactitud de los pirómetros ópticos es del $\pm 1\%$ al $\pm2\%$ 
+            \end{itemize}
+        \end{column}
+        
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Criterios de Selección}
+
+ \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.40\textwidth}
+        \centering
+            \includegraphics[width=7cm]{fig/Criteria Sensor.PNG}
+            \\ \tiny{Tomado de \href{https://www.variohm.com/news-media/technical-blog-archive/selecting-temperature-sensor-things-to-consider}{aquí}}
+        \end{column}
+        \begin{column}{0.50\textwidth}
+               \centering
+    \diagram{Criterios selección}
+        {- Exactitud \\
+        - Rango \\
+        - Estabilidad \\
+        - Instalación\\
+        - Costo
+        }
+        \end{column}
+    \end{columns}
+
+
+\end{frame}
+
+\begin{frame}{Criterios de Selección}
+    \centering
+    \includegraphics[width=11cm]{fig/Selection_Sensor.PNG}
+            \\ \tiny{Tomado de \href{https://www.mechaterrain.com/lm35-temperature-sensor}{aquí}}
 \end{frame}
 
 \begin{frame}{Criterios de Selección}
