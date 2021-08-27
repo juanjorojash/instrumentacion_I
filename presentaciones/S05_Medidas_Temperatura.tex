@@ -59,11 +59,11 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
                 \item Lo que se necesita para construir una medida de temperatura, son puntos fijos. Es decir, procesos en los cuales la temperatura es constante.
                 \item Existen varias escalas de temperaturas:
                 \begin{itemize}
-                    \item Kelvin` $ ^{\circ} K$
-                    \item Centigrada` $ ^{\circ} C$
-                    \item Farenheit` $ ^{\circ} F$
-                    \item Rankine` $ ^{\circ} R$
-                    \item Reamur` $ ^{\circ} Re$
+                    \item Kelvin` $\si{\kelvin}$
+                    \item Centigrada` $\si{\celsius}$
+                    \item Farenheit` $\si{\degree}\mathrm{F}$
+                    \item Rankine` $\mathrm{R}$
+                    \item Reamur` $\mathrm{R}e$
                 \end{itemize}
             \end{itemize}
         \end{column}
@@ -75,43 +75,43 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
     \end{columns}
 \end{frame}
 
-\begin{frame}{Escala de Temperatura}
-\begin{table}[]
+\begin{frame}{Escalas de Temperatura}
+\begin{table}[c]
     \centering
-    \begin{tabular}{c|c|c|c}
-     \hline
-         \hline
+    \begin{tabular}{cccc}
+        \toprule
         \textbf{Escala} & \textbf{Cero Absoluto} &\textbf{Fusión del hielo} & \textbf{Evaporación} \\
-         \hline
-         \hline
-       \textbf{Kelvin} & 0$ ^{\circ} K$ & 273$ ^{\circ} K$ & 373.2$ ^{\circ} K$ \\
-       \textbf{Rankine} & 0$ ^{\circ} R$ & 491.7$ ^{\circ} R$ & 671.7$ ^{\circ} R$ \\
-         \textbf{Reamur} & -285.5$ ^{\circ} Re$ & 0$ ^{\circ} Re$ & 80$ ^{\circ} Re$ \\
-        \textbf{Centígrada} & -273.2$ ^{\circ} C$ & 0$ ^{\circ} C$ & 100$ ^{\circ} R$ \\
-        \textbf{Farenheit} & -459.7$ ^{\circ} F$ & 32$ ^{\circ} R$ & 212.0$ ^{\circ} F$ \\
+        \midrule
+        \textbf{Kelvin} & 0$\si{\kelvin}$ & 273$\si{\kelvin}$ & 373.2$\si{\kelvin}$ \\
+        \textbf{Rankine} & 0$\mathrm{R}$ & 491.7$\mathrm{R}$ & 671.7$\mathrm{R}$ \\
+        \textbf{Reamur} & -285.5$\mathrm{R}$ & 0$\mathrm{R}$ & 80$\mathrm{R}$ \\
+        \textbf{Centígrada} & -273.2$\si{\celsius}$ & 0$\si{\celsius}$ & 100$\mathrm{R}$ \\
+        \textbf{Farenheit} & -459.7$\si{\degree}\mathrm{F}$ & 32$\mathrm{R}$ & 212.0$\si{\degree}\mathrm{F}$ \\
+        \bottomrule
     \end{tabular}
-    \caption{Distintas escalas de temperatura} \cite{cengel2003termodinamica}
-    \label{tab:my_label}
+    \caption{Distintas escalas de temperatura \cite{cengel2003termodinamica}} 
+    \label{tab:limites}
 \end{table}
 \end{frame}
 
 \begin{frame}{Conversión entre escalas}
-\begin{table}[]
+\setlength{\extrarowheight}{4pt}
+\begin{table}[c]
     \centering
     \begin{tabular}{|c|c|}
-         \hline
-        \textbf{Kelvin a Celsius} & \textbf{Kelvin a Farenheit} \\
-       \Large{$^{\circ}C=^{\circ}K-273.15$} & \Large{$ ^{\circ} F=\frac{9(^{\circ}K-273.15)}{5}+32$} \\
-       \hline
-       \textbf{Farenheit a Celsius} & \textbf{Farenheit a Kelvin} \\
-       \Large{$^{\circ}C=\frac{5(^{\circ}F-32)}{9}$ } & \Large{$^{\circ}K=\frac{5(^{\circ}F-32)}{9}+273.15$}\\
-       \hline
-       \textbf{Celsius a Kelvin} & \textbf{Celsius a Farenheit} \\
-       \Large{$^{\circ}K=^{\circ}C+273.15$ } & \Large{$^{\circ}F=\frac{9(^{\circ}C)}{5}+32$}\\
-       \hline
+        \hline
+        \textbf{Kelvin a Celsius} & \textbf{Kelvin a Farenheit}\\
+        \Large{$\si{\celsius}=\si{\kelvin}-273.15$} & \Large{$\si{\degree}\mathrm{F}=\dfrac{9(\si{\kelvin}-273.15)}{5}+32$}\\[10pt]
+        \hline
+        \textbf{Farenheit a Celsius} & \textbf{Farenheit a Kelvin} \\
+        \Large{$\si{\celsius}=\dfrac{5(\si{\degree}\mathrm{F}-32)}{9}$ } & \Large{$\si{\kelvin}=\dfrac{5(\si{\degree}\mathrm{F}-32)}{9}+273.15$}\\[10pt]
+        \hline
+        \textbf{Celsius a Kelvin} & \textbf{Celsius a Farenheit} \\
+        \Large{$\si{\kelvin}=\si{\celsius}+273.15$ } & \Large{$\si{\degree}\mathrm{F}=\dfrac{9(\si{\celsius})}{5}+32$}\\[10pt]
+        \hline
     \end{tabular}
-    \caption{Distintas escalas de temperatura\cite{cengel2003termodinamica}}
-    \label{tab:conversi'on}
+    \caption{Distintas escalas de temperatura \cite{cengel2003termodinamica}}
+    \label{tab:conversion}
 \end{table}
 \end{frame}
 
@@ -255,6 +255,21 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
     \end{columns}
 \end{frame}
 
+\begin{frame}{Leyes de los termopares}
+
+    Se caracterizan por tres leyes fundamentales:\\[8pt]
+    \begin{itemize}
+        \item \emph{Ley de circuito homogéneo: } En un conductor metálico homogéneo no puede sostenerse la circulación de una corriente eléctrica por la aplicación exclusiva de calor.
+        \item \emph{Ley de los metales intermedios: } En un termopar con las juntas de los metales A y B a las temperaturas T1 y T2 la fem termoeléctrica generada es independiente de las temperaturas intermedias en los conductores A y B.
+        \includegraphics[width=7cm]{fig/ley2.PNG}
+        \item \emph{Ley de las temperaturas sucesivas}
+    \end{itemize}
+    Los terminales de la termocupla si deben ser del mismo material para evitar problemas con la instrumentación electrónica.
+% \includegraphics[width=7cm]{fig/termocouple.PNG}
+% \\ \cite{Fraden_2016}
+
+\end{frame}
+
 \begin{frame}{Termopares(Termocuplas)}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.4\textwidth}
@@ -302,20 +317,20 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
   \begin{table}[]
     \centering
     \footnotesize{
-    \begin{tabular}{m{0.6cm}|m{2.6cm}|m{2.5cm}|m{2.4cm} | m{3.6cm}}
-     \hline
-         \hline
-        \textbf{Tipo} & \textbf{Material} &\textbf{Rango Medida} & \textbf{Rango Trabajo} & \textbf{Uso} \\
-         \hline
-         \hline
-       \textbf{E} & Cromel-Constatán & $-100 ^{\circ} C$ a $ 1270^{\circ} C$ & $-40 ^{\circ} C$ a $900^{\circ} C$ & Puede usarse en vacío\\
-       \textbf{T} & Cobre-Constatán & $-200 ^{\circ} C$ a $ 371^{\circ} C$ & $-40 ^{\circ} C$ a $350 ^{\circ} C$ & Resistencia a la corrosión\\
-       \textbf{J} & Hierro-Constatán & $-190 ^{\circ} C$ a $ 760^{\circ} C$ & $-40 ^{\circ} C$ a $750 ^{\circ} C$ & Atmósferas inertes. El hierro se oxida rápidamente por encima de $550 ^{\circ}C$\\
-       \textbf{K} & Cobre-Alumel & $-190 ^{\circ} C$ a $ 1260^{\circ} C$ & $-40 ^{\circ} C$ a $1000 ^{\circ} C$ & Atmósferas oxidantes\\
-       \textbf{R} & Platino-Rodio & $0 ^{\circ} C$ a $ 1450^{\circ} C$ & $0 ^{\circ} C$ a $1200 ^{\circ} C$ & Atmósferas oxidantes\\
-       \textbf{S} & Platino-Rodio & $0 ^{\circ} C$ a $ 1450^{\circ} C$ & $0 ^{\circ} C$ a $1200 ^{\circ} C$ & Similar a R\\
-       \textbf{B} & Platino-$30\%$ Rodio/Platino-$6\%$ Rodio, & $0 ^{\circ} C$ a $ 1950^{\circ} C$ & $0 ^{\circ} C$ a $1800 ^{\circ} C$ & Altas Temperaturas\\
-       \textbf{N} & Cobre-Constatán & $0 ^{\circ} C$ a $ 2316^{\circ} C$ & $0 ^{\circ} C$ a $2100 ^{\circ} C$ & Se comienza a utilizar como sustituto de K\\
+    \begin{tabular}{m{0.6cm} m{3.4cm} c c m{3.8cm}}
+        \toprule
+        \textbf{Tipo} & \textbf{Material} &\textbf{Rango medida} & \textbf{Rango trabajo} & \textbf{Uso} \\
+        &  &  \centering[\si{\celsius}] & \centering[\si{\celsius}] & \\
+        \midrule
+        \textbf{E} & Cromel-Constatán & $-100\sim 1270$ & $-40\sim 900$ & Puede usarse en vacío\\
+        \textbf{T} & Cobre-Constatán & $-200\sim  371$ & $-40\sim 350$ & Resiste la corrosión\\
+        \textbf{J} & Hierro-Constatán & $-190\sim  760$ & $-40\sim 750$ & Atmósferas inertes.\\
+        \textbf{K} & Cobre-Alumel & $-190\sim  1260$ & $-40\sim 1000$ & Atmósferas oxidantes\\
+        \textbf{R} & Platino-Rodio & $0\sim  1450$ & $0\sim 1200$ & Atmósferas oxidantes\\
+        \textbf{S} & Platino-Rodio & $0\sim  1450$ & $0\sim 1200$ & Similar a R\\
+        \textbf{B} & Platino-Rodio & $0\sim  1950$ & $0\sim 1800$ & Altas Temperaturas\\
+        \textbf{N} & Cobre-Constatán & $0\sim  2316$ & $0\sim 2100$ & Sustituto de K\\
+        \bottomrule
     \end{tabular}
     }
     \caption{Comparación entre distintos tipos de sensores\cite{sole2005instrumentacion}}
@@ -325,7 +340,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
 
 \begin{frame}{Tipos de termopares \tiny{\href{https://srdata.nist.gov/its90/download/download.html}{https://srdata.nist.gov/its90/download/download.html}}}
 \centering
-    \includegraphics[width=11.5cm]{fig/ITS-90.PNG}
+    \includegraphics[width=11cm]{fig/ITS-90.PNG}
 \end{frame}
 
 \begin{frame}{Tipos de termopares}
@@ -418,12 +433,12 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
     \scriptsize{
     \begin{tabular}{m{1.1cm} m{2.2cm} m{1.5cm} m{1.8cm} m{2.6cm} m{2.6cm}}
     \toprule
-        \textbf{Elemento} & \textbf{Intervalo Útil} &\textbf{Resistencia básica} & \textbf{Sensibilidad [$\Omega/^{\circ} C$ de $0^{\circ} C$ a $100^{\circ} C$]} & \textbf{Ventajas} & \textbf{Desventajas}\\
+        \textbf{Elemento} & \textbf{Intervalo Útil} &\textbf{Resistencia básica} & \textbf{Sensibilidad [$\Omega/\si{\celsius}$ de $0\si{\celsius}$ a $100\si{\celsius}$]} & \textbf{Ventajas} & \textbf{Desventajas}\\
     \midrule
-       \textbf{Platino} & $-260 ^{\circ} C$ a $ 850^{\circ} C$ & $100\Omega$ a $0 ^{\circ} C$   & 0,39 & Mayor intervalo, mejor estabilidad, buena linealidad & Costo\\
-       \textbf{Cobre} & $-100 ^{\circ} C$ a $ 260^{\circ} C$ & $10\Omega$ a $25 ^{\circ} C$   & 0,04 & Buena linealidad & Baja resistividad\\
-       \textbf{Níquel} &  $-100 ^{\circ} C$ a $ 260^{\circ} C$ & $100\Omega$ a $0 ^{\circ} C$   & 0,62 & Bajo Costo, Alta sensibilidad & Falta de linealidad, variaciones coeficiente de resistencia\\
-       \textbf{Níquel-Hierro} & $-100 ^{\circ} C$ a $ 204^{\circ} C$ & $604\Omega$ a $0 ^{\circ} C$   & 3,13 & Bajo costo, muy alta sensibilidad & Relación reducida\\
+       \textbf{Platino} & $-260\si{\celsius}$ a $ 850\si{\celsius}$ & $100\Omega$ a $0\si{\celsius}$   & 0,39 & Mayor intervalo, mejor estabilidad, buena linealidad & Costo\\
+       \textbf{Cobre} & $-100\si{\celsius}$ a $ 260\si{\celsius}$ & $10\Omega$ a $25\si{\celsius}$   & 0,04 & Buena linealidad & Baja resistividad\\
+       \textbf{Níquel} &  $-100\si{\celsius}$ a $ 260\si{\celsius}$ & $100\Omega$ a $0\si{\celsius}$   & 0,62 & Bajo Costo, Alta sensibilidad & Falta de linealidad, variaciones coeficiente de resistencia\\
+       \textbf{Níquel-Hierro} & $-100\si{\celsius}$ a $ 204\si{\celsius}$ & $604\Omega$ a $0\si{\celsius}$   & 3,13 & Bajo costo, muy alta sensibilidad & Relación reducida\\
     \bottomrule
     \end{tabular}
     }
@@ -687,10 +702,10 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \textbf{Tipo de Sensor} & \textbf{Exactitud} &\textbf{Rango típico} & \textbf{Tiempo de respuesta} & \textbf{Costo} \\
          \hline
          \hline
-       \textbf{Termopares} & Baja & -200$ ^{\circ} C$ a 1800$ ^{\circ} C$ & 1 $s$ & Bajo\\
-       \textbf{RTD Clase A, Estándar IEC} & Alta & -200$ ^{\circ} C$ a 800$ ^{\circ} C$ & 1-5 $s$ & Alto\\
-         \textbf{Termistor NTC} & Alta & -200$ ^{\circ} C$ a 1800$ ^{\circ} C$ & < 1 $s$ & Alto\\
-        \textbf{Sensores Infrarrojos} & Mediana & -20$ ^{\circ} C$ a 1370$ ^{\circ} C$ & < 1 $s$ & Bajo \\
+       \textbf{Termopares} & Baja & -200$\si{\celsius}$ a 1800$\si{\celsius}$ & 1 $s$ & Bajo\\
+       \textbf{RTD Clase A, Estándar IEC} & Alta & -200$\si{\celsius}$ a 800$\si{\celsius}$ & 1-5 $s$ & Alto\\
+         \textbf{Termistor NTC} & Alta & -200$\si{\celsius}$ a 1800$\si{\celsius}$ & < 1 $s$ & Alto\\
+        \textbf{Sensores Infrarrojos} & Mediana & -20$\si{\celsius}$ a 1370$\si{\celsius}$ & < 1 $s$ & Bajo \\
     \end{tabular}
     \caption{Comparación entre distintos tipos de sensores}
     \label{tab:Comparacion}
