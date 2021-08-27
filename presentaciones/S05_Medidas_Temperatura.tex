@@ -416,16 +416,15 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
   \begin{table}[]
     \centering
     \scriptsize{
-    \begin{tabular}{m{1.1cm}|m{2.2cm}|m{1.5cm}|m{1.8cm} | m{2.6cm}|m{2.6cm}}
-     \hline
-         \hline
+    \begin{tabular}{m{1.1cm} m{2.2cm} m{1.5cm} m{1.8cm} m{2.6cm} m{2.6cm}}
+    \toprule
         \textbf{Elemento} & \textbf{Intervalo Útil} &\textbf{Resistencia básica} & \textbf{Sensibilidad [$\Omega/^{\circ} C$ de $0^{\circ} C$ a $100^{\circ} C$]} & \textbf{Ventajas} & \textbf{Desventajas}\\
-         \hline
-         \hline
+    \midrule
        \textbf{Platino} & $-260 ^{\circ} C$ a $ 850^{\circ} C$ & $100\Omega$ a $0 ^{\circ} C$   & 0,39 & Mayor intervalo, mejor estabilidad, buena linealidad & Costo\\
        \textbf{Cobre} & $-100 ^{\circ} C$ a $ 260^{\circ} C$ & $10\Omega$ a $25 ^{\circ} C$   & 0,04 & Buena linealidad & Baja resistividad\\
        \textbf{Níquel} &  $-100 ^{\circ} C$ a $ 260^{\circ} C$ & $100\Omega$ a $0 ^{\circ} C$   & 0,62 & Bajo Costo, Alta sensibilidad & Falta de linealidad, variaciones coeficiente de resistencia\\
        \textbf{Níquel-Hierro} & $-100 ^{\circ} C$ a $ 204^{\circ} C$ & $604\Omega$ a $0 ^{\circ} C$   & 3,13 & Bajo costo, muy alta sensibilidad & Relación reducida\\
+    \bottomrule
     \end{tabular}
     }
     \caption{Comparación entre distintos tipos de sensores\cite{sole2005instrumentacion}}
