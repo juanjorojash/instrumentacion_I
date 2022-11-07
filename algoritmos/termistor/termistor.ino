@@ -1,6 +1,6 @@
 int azero = 0;
 float v = 0;
-float RT = 10240;
+float RT = 0;
 float T = 0;
 //double prev_time = 0;
 int sec = 0;
