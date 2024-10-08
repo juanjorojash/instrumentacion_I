@@ -30,7 +30,8 @@
 \end{verbatim}
     \item Instale las librerías \emph{pyserial}, \emph{matplotlib}, \emph{drawnow} y \emph{datetime} en Python para ser utilizadas luego.
     \item Copie el siguiente código en su IDE de Python.
-    \lstinputlisting[language=Python,numbers=none]{algoritmos/BMP280/BMP280_lib/BMP280_lib.ino}
+    \lstinputlisting[language=Python,numbers=none]{algoritmos/BMP280/BMP280_lib/serial_read.py}
+    \item Modifique el puerto COM para que coincida con el puerto en el que esta conectado el Arduino UNO R4 MINIMA
 \end{itemize}
 
 \begin{figure}[H]
@@ -53,16 +54,6 @@
         (s.brpin 5) node[above right,rotate=90]{\scriptsize GND}
         (s.brpin 6) node[above right,rotate=90]{\scriptsize VCC}
         ;
-        % \draw
-        % (0,2.5) node[ground]{}
-        %     to[V] 
-        % (0,4.5) node[above,xshift=-11mm]{3.3V} 
-        %     --
-        % (-0.8,4.5)
-        % (0,2.5) node[above,xshift=-11mm]{GND} 
-        %     --
-        % (-0.8,2.5)
-        % ;
         \draw[blue]
         (p.blpin 2)
         -|
