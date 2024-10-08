@@ -20,11 +20,17 @@
 \begin{itemize}
     \item Conecte el sensor BMP280 tal como se muestra en la Figura \ref{fig:pres1}
     \item Copie el siguiente código en el IDE de Arduino (el codigo se puede encontrar en: \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/algoritmos/BMP280/BMP280_lib/BMP280_lib.ino}{GitHub})
-\lstinputlisting[language=Arduino]{}
-\item Analice cada linea de código y cuando entienda su funcionamiento corra el \emph{sketch} usando el botón \emph{Upload}
-\item Haga contacto con el encapsulado del sensor de forma que su dedos calienten el sensor, observe como cambia el valor en la terminal. 
-\item Instale las librerías \emph{pyserial}, \emph{matplotlib}, \emph{drawnow} y \emph{datetime} en Python para ser utilizadas luego.
-\item Copie el siguiente código en su IDE de Python.
+    \lstinputlisting[language=Arduino,numbers=none]{algoritmos/BMP280/BMP280_lib/BMP280_lib.ino}  
+    \item Analice cada linea de código y cuando entienda su funcionamiento corra el \emph{sketch} usando el botón \emph{Upload}
+    \item Haga contacto con el encapsulado del sensor de forma que su dedos calienten el sensor, observe como cambia el valor en la terminal. 
+    \item Modifique el programa de forma que lo que se imprima en la terminal sea algo como esto:
+\begin{verbatim}
+24.8,806.1
+24.7,806.3
+\end{verbatim}
+    \item Instale las librerías \emph{pyserial}, \emph{matplotlib}, \emph{drawnow} y \emph{datetime} en Python para ser utilizadas luego.
+    \item Copie el siguiente código en su IDE de Python.
+    \lstinputlisting[language=Python,numbers=none]{algoritmos/BMP280/BMP280_lib/BMP280_lib.ino}
 \end{itemize}
 
 \begin{figure}[H]
