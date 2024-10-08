@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\input{comunes/preamble}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{csvsimple,booktabs}
+\pagestyle{fancy}
+\setlength{\headheight}{42pt}
+
+ 
+\begin{document}
+\lhead{Ingeniería Física \\ Escuela de Física \\ Tecnológico de Costa Rica} 
+\rhead{Instrumentación I \\ Tarea \#5  \\ Entrega: Semana 13} 
+\cfoot{\thepage\ de \pageref{LastPage}}
+\setlength{\parindent}{0em}
+
+\noindent\textbf{Instrucciones}
+\begin{itemize}
+    \item Instale la aplicación Arduino Science Journal en su teléfono móvil
+    \item Configure una toma de datos de los tres acelerometros ($x,y,z$), donde $z$ es el eje perpendicular al plano de la mesa. 
+    \item Inicie la toma de datos y coloque su teléfono en una mesa plana por un par de segundos para registrar las aceleraciones iniciales, inmediatamente dibuje con su teléfono tres círculos completos sin rotar su teléfono ni levantarlo, vuelva la posición original y espere un par de segundos, finalice la toma de datos
+    \item Exporte los valores registrados en un archivo \emph{.csv}
+    \item Usando la librería \emph{pandas} en Python lea los datos del archivo .csv y limpie los datos de forma que pueda realizar el siguiente paso.   
+    \item Determine la velocidad y la posición del teléfono utilizando los datos discretos de aceleración tomados. Utilice la regla del trapecio para realizar la integración numérica de los datos de aceleración.
+    \item A pesar que el teléfono esta sobre una mesa y no se mueve, el acelerómetro del eje $z$ va a registrar una aceleración de aproximadamente \SI{9.8}{\meter\second\squared}, investigue porque esto es así y repórtelo. Tomando en cuenta lo investigado decida como corregir esto para obtener un resultado realista de la velocidad y la posición del teléfono en el eje $z$
+    \item A pesar de que la mesa parece ser plana, cualquier leve inclinación va a producir errores que se van a acumular en cada medición, investigue sobre esto y concluya cuales son las razones por las que la trayectoria calculada no es igual a la trayectoria real que siguió el teléfono en la mesa.
+\end{itemize}
+
+
+\noindent\textbf{Entregable}
+
+Un solo archivo .zip que contenga lo siguiente
+\begin{itemize}
+    \item Un archivo \emph{.py} que incluya comentarios aclaratorios de los pasos que se realizaron y tres gráficas, una para aceleración que incluya los tres ejes, una para velocidad que incluya los tres ejes y una de posición $x$ vrs $y$
+    \item Un archivo \emph{.pdf} donde se analicen los datos obtenidos.
+    \item Un archivo \emph{.csv} con los datos de los sensores
+\end{itemize}
+
+\noindent\textbf{Tips}
+\begin{itemize}
+    \item Limpiar se refiere a quitar valores no numéricos (NaN), quitar datos que no aportan al análisis como los primeros o los últimos segundos, convertir el tiempo a un valor en segundos iniciando en cero, etc.
+    \item Cinemática calculada para un instante $k$ basado en los datos del instante anterior $k-1$
+    \begin{equation*}
+        v[k] = v[k-1] + \left(\dfrac{a[k]+a[k+1]}{2}\right)(t[k] - t[k-1])
+    \end{equation*}
+    
+    \begin{equation*}
+        x[k] = x[k-1] + \left(\dfrac{v[k]+v[k+1]}{2}\right)(t[k] - t[k-1])
+    \end{equation*}
+\end{itemize}
+
+% \bibliographystyle{IEEEtran}
+% \bibliography{ref_tareas}
+
+\end{document}
