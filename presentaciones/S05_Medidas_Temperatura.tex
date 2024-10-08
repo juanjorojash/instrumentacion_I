@@ -8,10 +8,11 @@
 \institute{Instituto Tecnológico de Costa Rica}
 \date{\today}
 \background{fig/background.jpg}
+% Change vertical spacing
+\renewcommand{\arraystretch}{1.25}
 \begin{document}
 \input{comunes/postamble}
 \maketitle
-
 \newcommand{\blackandwhite}{white} %change this at the end
 
 \begin{frame}{Definición de Temperatura}
@@ -51,7 +52,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Escala de Temperatura}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.50\textwidth}
@@ -59,11 +59,11 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
                 \item Lo que se necesita para construir una medida de temperatura, son puntos fijos. Es decir, procesos en los cuales la temperatura es constante.
                 \item Existen varias escalas de temperaturas:
                 \begin{itemize}
-                    \item Kelvin` $\si{\kelvin}$
-                    \item Centigrada` $\si{\celsius}$
-                    \item Farenheit` $\si{\degree}\mathrm{F}$
-                    \item Rankine` $\mathrm{R}$
-                    \item Reamur` $\mathrm{R}e$
+                    \item Kelvin $\si{\kelvin}$
+                    \item Celsius $\si{\celsius}$
+                    \item Farenheit $\si{\degree}\mathrm{F}$
+                    \item Rankine $\mathrm{R}$
+                    \item Reamur $\mathrm{Re}$
                 \end{itemize}
             \end{itemize}
         \end{column}
@@ -74,7 +74,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Escalas de Temperatura}
 \begin{table}[c]
     \centering
@@ -82,18 +81,17 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \toprule
         \textbf{Escala} & \textbf{Cero Absoluto} &\textbf{Fusión del hielo} & \textbf{Evaporación} \\
         \midrule
-        \textbf{Kelvin} & 0$\si{\kelvin}$ & 273$\si{\kelvin}$ & 373.2$\si{\kelvin}$ \\
-        \textbf{Rankine} & 0$\mathrm{R}$ & 491.7$\mathrm{R}$ & 671.7$\mathrm{R}$ \\
-        \textbf{Reamur} & -285.5$\mathrm{R}$ & 0$\mathrm{R}$ & 80$\mathrm{R}$ \\
-        \textbf{Centígrada} & -273.2$\si{\celsius}$ & 0$\si{\celsius}$ & 100$\mathrm{R}$ \\
-        \textbf{Farenheit} & -459.7$\si{\degree}\mathrm{F}$ & 32$\mathrm{R}$ & 212.0$\si{\degree}\mathrm{F}$ \\
+        \textbf{Kelvin} & $0\si{\kelvin}$ & $273\si{\kelvin}$ & $373.2\si{\kelvin}$ \\
+        \textbf{Rankine} & $0\mathrm{R}$ & $491.7\mathrm{R}$ & $671.7\mathrm{R}$ \\
+        \textbf{Reamur} & $-285.5\mathrm{Re}$ & $0\mathrm{Re}$ & $80\mathrm{Re}$ \\
+        \textbf{Centígrada} & $-273.2\si{\celsius}$ & $0\si{\celsius}$ & $100\si{\celsius}$ \\
+        \textbf{Farenheit} & $-459.7\si{\degree}\mathrm{F}$ & $32\si{\degree}\mathrm{F}$ & $212.0\si{\degree}\mathrm{F}$ \\
         \bottomrule
     \end{tabular}
     \caption{Distintas escalas de temperatura \cite{cengel2003termodinamica}} 
     \label{tab:limites}
 \end{table}
 \end{frame}
-
 \begin{frame}{Conversión entre escalas}
 \setlength{\extrarowheight}{4pt}
 \begin{table}[c]
@@ -114,9 +112,9 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
     \label{tab:conversion}
 \end{table}
 \end{frame}
-
 \begin{frame}{Formas de medición de temperatura}
-\centering\begin{tikzpicture}[mindmap,
+\centering
+\begin{tikzpicture}[mindmap,
   level 1 concept/.append style={level distance=80,sibling angle=90},
   extra concept/.append style={text=black}]
  
@@ -128,7 +126,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
     % MATERIALES: PÉTREOS
     child[concept color= color_petr] {
       node[concept, inner sep = 0mm ] {Variación Volumen}  [clockwise from=0]
-      child { node[concept] {\footnotesize{Termométros}} }
+      child { node[concept, inner sep = 0mm ] {Termomé- tros} }
     }
     %
     % MATERIALES: TEXTILES
@@ -153,7 +151,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
  
 \end{tikzpicture}
 \end{frame}
-
 \begin{frame}{Termómetros}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.5\textwidth}
@@ -161,7 +158,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
                 \item El termómetro es uno de los instrumentos más utilizados para la medición de temperatura. 
                 \item Se compone de dos partes importantes:
                 \begin{itemize}
-                    \item sensor de temperatura
+                    \item transductor de temperatura
                     \item escala numérica de conversión
                 \end{itemize}
                 \item Los principios sobre los que operan estos instrumentos son conocidos desde la cultura griega.
@@ -194,7 +191,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Termómetros de vidrio}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.5\textwidth}
@@ -202,11 +198,11 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
                 \item Contiene un depósito de vidrio que contiene una sustancia, e.g. mercurio, y que al calentarse se expande y sube en el tubo capilar.  
                 \item Márgenes de operación \cite{sole2005instrumentacion}
                 \begin{itemize}
-                    \item Mercurio: $-35^\circ$C hasta $280^\circ$C
-                    \item Mercurio (tubo capilar lleno de gas): $-35^\circ$C hasta $450^\circ$C
-                    \item Pentano: $-200^\circ$C hasta $20^\circ$C
-                    \item Alcohol: $-110^\circ$C hasta $50^\circ$C
-                    \item Tolueno: $-70^\circ$C hasta $100^\circ$C
+                    \item Mercurio: $-35\si{\celsius}$ hasta $280\si{\celsius}$
+                    \item Mercurio (tubo capilar lleno de gas): $-35\si{\celsius}$ hasta $450\si{\celsius}$
+                    \item Pentano: $-200\si{\celsius}$ hasta $20\si{\celsius}$
+                    \item Alcohol: $-110\si{\celsius}$ hasta $50\si{\celsius}$
+                    \item Tolueno: $-70\si{\celsius}$ hasta $100\si{\celsius}$
                 \end{itemize}
             \end{itemize}
         \end{column}
@@ -214,18 +210,16 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
             \centering
             \includegraphics[width=6cm]{fig/TermometroVidrio.jpg}
              \\ \tiny{Tomado de \href{http://famater.com.ar/?p=611}{aquí}}
-        
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Termómetros bimetálicos}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.5\textwidth}
             \begin{itemize}
                 \item Se basan en el distinto coeficiente de dilatación de dos metales diferentes \textit{e.g.}latón y una aleacción de ferroníquel. 
                 \item La diferencia en el coeficiente de expasión de cada metal hace que el elemento bimetálico se doble. 
-                \item La exactitud del instrumento es de $1\%$ y su campo de medida es de $-200^\circ C$ hasta $500^\circ C$
+                \item La exactitud del instrumento es de $1\%$ y su campo de medida es de $-200\si{\celsius}$ hasta $500\si{\celsius}$
             \end{itemize}
         \end{column}
         \begin{column}{0.45\textwidth}
@@ -238,7 +232,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Termopares(Termocuplas)}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.55\textwidth}
@@ -254,42 +247,27 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Leyes de los termopares}
-
     Se caracterizan por tres leyes fundamentales:\\[8pt]
     \begin{itemize}
         \item \emph{Ley de circuito homogéneo: } En un conductor metálico homogéneo no puede sostenerse la circulación de una corriente eléctrica por la aplicación exclusiva de calor.
-        \item \emph{Ley de los metales intermedios: } En un termopar con las juntas de los metales A y B a las temperaturas T1 y T2 la fem termoeléctrica generada es independiente de las temperaturas intermedias en los conductores A y B.
-        \includegraphics[width=7cm]{fig/ley2.PNG}
-        \item \emph{Ley de las temperaturas sucesivas}
+        \item \emph{Ley de las temperaturas intermedias: } En un termopar con las juntas de los metales A y B a las temperaturas T1 y T2 la fem termoeléctrica generada es independiente de las temperaturas intermedias en los conductores A y B.
+        \begin{center}
+            \includegraphics[width=10cm]{fig/ley2.PNG}
+        \end{center}
     \end{itemize}
-    Los terminales de la termocupla si deben ser del mismo material para evitar problemas con la instrumentación electrónica.
-% \includegraphics[width=7cm]{fig/termocouple.PNG}
-% \\ \cite{Fraden_2016}
-
+    \tiny{Tomado de \href{http://laboratorios.fi.uba.ar/lscm/termocuplas01.pdf}{aquí}}
 \end{frame}
-
-\begin{frame}{Termopares(Termocuplas)}
-    \begin{columns}[c, onlytextwidth]
-        \begin{column}{0.4\textwidth}
-            \begin{itemize}
-                \item Se caracterizan por tres leyes fundamentales: 
-                \begin{itemize}
-                    \item \textit{Ley de circuito homogéneo}
-                    \item \textit{Ley de los metales intermedios}
-                    \item \textit{Ley de las temperaturas sucesivas}
-                \end{itemize}
-                \item Los terminales de la termocupla si deben ser del mismo material para evitar problemas con la instrumentación electrónica.
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \includegraphics[width=7cm]{fig/termocouple.PNG}
-            \\ \cite{Fraden_2016}
-        \end{column}
-    \end{columns}
+\begin{frame}{Leyes de los termopares}
+    Continua...\\[8pt]
+    \begin{itemize}
+        \item \emph{Ley de los metales intermedios: } Si en un termopar insertamos un segmento de conductor de un tercer metal C , en alguno de los dos conductores metálicos A ó B, la fem generada será independiente de la existencia de este tercer conductor siempre que las temperaturas de las juntas del mismo sean iguales. 
+        \begin{center}
+            \includegraphics[width=10cm]{fig/ley3.PNG}
+        \end{center}
+    \end{itemize}
+    \tiny{Tomado de \href{http://laboratorios.fi.uba.ar/lscm/termocuplas01.pdf}{aquí}}
 \end{frame}
-
 \begin{frame}{Termopares(Termocuplas)}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.45\textwidth}
@@ -306,13 +284,11 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Tipos de termopares}
 \centering
     \includegraphics[width=11.5cm]{fig/Thermocouple_EMF_Temperature.png}
      \\ \tiny{Tomado de \href{https://www.akcp.com/blog/what-is-a-k-type-thermocouple/}{aquí}}
 \end{frame}
-
 \begin{frame}{Tipos de termopares}
   \begin{table}[]
     \centering
@@ -337,24 +313,20 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
     \label{tab:Comparacion_termo}
 \end{table}
 \end{frame}
-
 \begin{frame}{Tipos de termopares \tiny{\href{https://srdata.nist.gov/its90/download/download.html}{https://srdata.nist.gov/its90/download/download.html}}}
 \centering
     \includegraphics[width=11cm]{fig/ITS-90.PNG}
 \end{frame}
-
 \begin{frame}{Tipos de termopares}
 \centering
     \includegraphics[width=7.5cm]{fig/thermometricscorp.png}
     \\ \tiny{Tomado de \href{https://www.thermometricscorp.com/thermocouple-color-code.html}{aquí}}
 \end{frame}
-
 \begin{frame}{Tubos de protección}
 \centering
     \includegraphics[width=11cm]{fig/thermocouple-probe-head.png}
     \\ \tiny{Tomado de \href{https://www.tcaus.com.au/thermocouple/index.html}{aquí}}
 \end{frame}
-
 \begin{frame}{Lectura de datos termocoupla}
  \begin{columns}[c, onlytextwidth]
         \begin{column}{0.45\textwidth}
@@ -371,15 +343,13 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Compensación de la unión fría (CJC)}
  \begin{columns}[c, onlytextwidth]
         \begin{column}{0.45\textwidth}
             \begin{itemize}
                 \item Los voltajes de referencia están referidas a una unión fría, por lo que se requiere una compensación.  
-                \item Esta compensación se realiza mediante una resistencia que absorbe la tensión equivalente. La resistencia varía linealmente con la temperatura. 
+                \item Esta compensación se puede realizar de varias maneras, incluso en software. 
                 \item Siempre es necesario integrar este tipo de integración de sistemas de adquisición de datos (recientemente se puede realizar de forma digital)
-                
             \end{itemize}
         \end{column}
         \begin{column}{0.5\textwidth}
@@ -388,10 +358,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
     \end{columns}
 \end{frame}
-
-
-
-
 \begin{frame}{Detector de temperatura por Resistencia (RTD)}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.55\textwidth}
@@ -400,7 +366,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
                 \item El elemento consiste en un arrollamiento de hilo muy fino del conductor adecuado bobinado entre capas de material aislante y protegido con un revestimiento de vidrio o cerámica. 
                 \item Relación dada por: 
                 \begin{equation*}
-                    R_t=R_0\cdot (1+\alpha \cdot t)
+                    R_T=R_0\cdot (1+\alpha \cdot T)
                 \end{equation*}
             \end{itemize}
         \end{column}
@@ -410,7 +376,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Fabricación RTD}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.45\textwidth}
@@ -421,12 +386,11 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \begin{column}{0.55\textwidth}
             \begin{itemize}
                 \item \textbf{Hilo bobinado}: el embobinado de platino es soportado por un vidrio resistente de alta temperatura dentro de un tubo de cerámica.     
-                \item \textbf{Película fina}:Regularmente fabricados de platino y aceros que son depositados en una membrana de silicón.
+                \item \textbf{Película fina}:Regularmente fabricados de platino y aceros que son depositados en una membrana de silicio.
             \end{itemize}
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Características sondas RTD}
   \begin{table}[]
     \centering
@@ -446,26 +410,24 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
     \label{tab:Caracteristicas _rtd}
 \end{table}
 \end{frame}
-
 \begin{frame}{Estándar de tolerancias RTD}
  \begin{itemize}
      \item Los RTD son construidos bajo distintos estándares y curvas. La más común es la DIN/IEC 60751.
      \item Este estándar divide por clases en función de la respuesta de la resistencia del platino por temperatura. 
      \item \textbf{Clase A}
      \begin{itemize}
-         \item Tolerancia de Temperatura: $\pm (0.15 + .002|T| ^\circ C)$
+         \item Tolerancia de Temperatura: $\pm (0.15 + .002|T| \si{\celsius} C)$
      \end{itemize}
       \item \textbf{Clase B}
      \begin{itemize}
-         \item Tolerancia de Temperatura: $\pm (0.30 + .005|T| ^\circ C)$
+         \item Tolerancia de Temperatura: $\pm (0.30 + .005|T| \si{\celsius} C)$
          \end{itemize}
     \item \textbf{Clase C}
      \begin{itemize}
-         \item Tolerancia de Temperatura: $\pm (1.2 + .005|T| ^\circ C)$
+         \item Tolerancia de Temperatura: $\pm (1.2 + .005|T| \si{\celsius} C)$
      \end{itemize}
  \end{itemize}
 \end{frame}
-
 \begin{frame}{Algunas consideraciones RTD}
     \begin{columns}[c, onlytextwidth]
     \begin{column}{0.55\textwidth}
@@ -483,7 +445,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         
     \end{columns}
 \end{frame}
-
 \begin{frame}{Conexiones RTD (2 hilos)}
     \begin{columns}[c, onlytextwidth]
     \begin{column}{0.50\textwidth}
@@ -517,7 +478,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         
     \end{columns}
 \end{frame}
-
 \begin{frame}{Conexiones RTD (4 hilos)}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.45\textwidth}
@@ -535,8 +495,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         
     \end{columns}
 \end{frame}
-
-
 \begin{frame}{Termistores}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.55\textwidth}
@@ -552,7 +510,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Curvas Termistores}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.55\textwidth}
@@ -571,15 +528,13 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
     \end{columns}
 \end{frame}
-
-
 \begin{frame}{Termistores}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.55\textwidth}
             \begin{itemize}
                 \item Se les denominad \textit{Sensor on a chip} por su tamaño reducido y facilidad para encapsular en vidrio o epoxi.
                 \item Su tiempo de respuesta depende de la capacidad térmica y masa del termistor, variando de 0,5 a 10 segundos.  
-                \item La precisión de un termistor se encuentra entre $\pm 0.1 {^\circ} C$ a $\pm 0.2 {^\circ} C$. Con un rango de $-50 {^\circ} C$ a $200 {^\circ} C$.
+                \item La precisión de un termistor se encuentra entre $\pm 0.1 {\si{\celsius}}$ a $\pm 0.2 {\si{\celsius}}$. Con un rango de $-50 {\si{\celsius}}$ a $200 {\si{\celsius}}$.
                 \item Se usan para la protección contra calentamiento de PC, baterías de litio o regular contraste en un LCD. 
             \end{itemize}
         \end{column}
@@ -589,7 +544,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Medición de termistores}
     \begin{columns}[c, onlytextwidth]
             \begin{column}{0.5\textwidth}
@@ -608,7 +562,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
 
     \end{columns}
 \end{frame}
-
 \begin{frame}{Pirómetros}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.55\textwidth}
@@ -628,7 +581,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Pirómetros de radiación}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.55\textwidth}
@@ -646,7 +598,6 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
     \end{columns}
 \end{frame}
-
 \begin{frame}{Pirómetros ópticos}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.47\textwidth}
@@ -656,16 +607,14 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \begin{column}{0.50\textwidth}
             \begin{itemize}
                 \item Se basan en la comparación visual de la luminosidad del objeto radiante con el filamento de una lámpara incandescente.
-                \item El sistema óptico del pirómetro restringe el ancho de onda de $0,65$ a $0,66 micras$ (zona roja del espectro) y dispone de filtros para reducir la intensidad de la radiación recibida, permitiendo la medida de un amplio margen de temperaturas. 
+                \item El sistema óptico del pirómetro restringe el ancho de onda de $\SI{0.65}{\micro\meter}$ a $\SI{0.66}{\micro\meter}$ (zona roja del espectro) y dispone de filtros para reducir la intensidad de la radiación recibida, permitiendo la medida de un amplio margen de temperaturas. 
                 \item La exactitud de los pirómetros ópticos es del $\pm 1\%$ al $\pm2\%$ 
             \end{itemize}
         \end{column}
         
     \end{columns}
 \end{frame}
-
 \begin{frame}{Criterios de Selección}
-
  \begin{columns}[c, onlytextwidth]
         \begin{column}{0.40\textwidth}
         \centering
@@ -679,39 +628,34 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         - Rango \\
         - Estabilidad \\
         - Instalación\\
-        - Costo
+        - Costo\\
+        - Ambiente
         }
         \end{column}
     \end{columns}
-
-
 \end{frame}
-
 \begin{frame}{Criterios de Selección}
     \centering
     \includegraphics[width=11cm]{fig/Selection_Sensor.PNG}
             \\ \tiny{Tomado de \href{https://www.mechaterrain.com/lm35-temperature-sensor}{aquí}}
 \end{frame}
-
 \begin{frame}{Criterios de Selección}
   \begin{table}[]
     \centering
-    \begin{tabular}{m{2cm}|m{1.5cm}|m{1.55cm}|m{2cm} | m{1.4cm}}
-     \hline
-         \hline
+    \begin{tabular}{m{2cm} m{1.5cm} m{1.55cm} m{2cm} m{1.4cm}}
+        \toprule
         \textbf{Tipo de Sensor} & \textbf{Exactitud} &\textbf{Rango típico} & \textbf{Tiempo de respuesta} & \textbf{Costo} \\
-         \hline
-         \hline
-       \textbf{Termopares} & Baja & -200$\si{\celsius}$ a 1800$\si{\celsius}$ & 1 $s$ & Bajo\\
-       \textbf{RTD Clase A, Estándar IEC} & Alta & -200$\si{\celsius}$ a 800$\si{\celsius}$ & 1-5 $s$ & Alto\\
-         \textbf{Termistor NTC} & Alta & -200$\si{\celsius}$ a 1800$\si{\celsius}$ & < 1 $s$ & Alto\\
+        \midrule
+        \textbf{Termopares} & Baja & -200$\si{\celsius}$ a 1800$\si{\celsius}$ & 1 $s$ & Bajo\\
+        \textbf{RTD Clase A, Estándar IEC} & Alta & -200$\si{\celsius}$ a 800$\si{\celsius}$ & 1-5 $s$ & Alto\\
+        \textbf{Termistor NTC} & Alta & -200$\si{\celsius}$ a 1800$\si{\celsius}$ & < 1 $s$ & Alto\\
         \textbf{Sensores Infrarrojos} & Mediana & -20$\si{\celsius}$ a 1370$\si{\celsius}$ & < 1 $s$ & Bajo \\
+        \bottomrule
     \end{tabular}
     \caption{Comparación entre distintos tipos de sensores}
     \label{tab:Comparacion}
 \end{table}
 \end{frame}
-
 \begin{frame}{Referencias}
 \bibliographystyle{ieeetr}
 \footnotesize

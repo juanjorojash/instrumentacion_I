@@ -1,0 +1,98 @@
+\chapter{Mediciones de Presión}
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Utilizar un sensor para medir presión absoluta.
+\item Analizar la relación fuerza-presión.
+\end{itemize}
+
+\section{\mat}
+\begin{itemize}
+\item 1 Arduino UNO R4 MINIMA
+\item 1 sensor digital de presión BMP280
+\item 1 mini breadboard de 170 pines
+\item Jumpers macho-macho
+\end{itemize}
+
+
+\section{\pro}
+\subsection{Actividad 1}
+\begin{itemize}
+    \item Conecte el sensor BMP280 tal como se muestra en la Figura \ref{fig:pres1}
+    \item Copie el siguiente código en el IDE de Arduino (el codigo se puede encontrar en: \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/algoritmos/BMP280/BMP280_lib/BMP280_lib.ino}{GitHub})
+\lstinputlisting[language=Arduino]{}
+\item Analice cada linea de código y cuando entienda su funcionamiento corra el \emph{sketch} usando el botón \emph{Upload}
+\item Haga contacto con el encapsulado del sensor de forma que su dedos calienten el sensor, observe como cambia el valor en la terminal. 
+\item Instale las librerías \emph{pyserial}, \emph{matplotlib}, \emph{drawnow} y \emph{datetime} en Python para ser utilizadas luego.
+\item Copie el siguiente código en su IDE de Python.
+\end{itemize}
+
+\begin{figure}[H]
+    \tikzset{comm/.style={muxdemux, muxdemux def={Lh=5, Rh=5, NL=2, NB=0, NR=0, w=2}}}
+    \tikzset{BMP280/.style={muxdemux, muxdemux def={Lh=5, Rh=5, NL=0, NB=0, NR=6, w=2}}}
+    \centering
+    \begin{circuitikz} 
+        \draw (0,3.5) node[comm] (m){\rotatebox{90}{\small communication}}
+        (0,0) node[comm] (p){\rotatebox{90}{\small power}}
+        ;
+        \draw (m.blpin 1) node[above left]{\small SDA};
+        \draw (m.blpin 2) node[above left]{\small SCL};
+        \draw (p.blpin 1) node[above left]{\small GND};
+        \draw (p.blpin 2) node[above left]{\small +3V3};
+        \draw (-5,-3) node[BMP280,rotate=90] (s){\rotatebox{-90}{\small BMP280}}
+        (s.brpin 1) node[above right,rotate=90]{\scriptsize SDO}
+        (s.brpin 2) node[above right,rotate=90]{\scriptsize CSB}
+        (s.brpin 3) node[above right,rotate=90]{\scriptsize SDA}
+        (s.brpin 4) node[above right,rotate=90]{\scriptsize SCL}
+        (s.brpin 5) node[above right,rotate=90]{\scriptsize GND}
+        (s.brpin 6) node[above right,rotate=90]{\scriptsize VCC}
+        ;
+        % \draw
+        % (0,2.5) node[ground]{}
+        %     to[V] 
+        % (0,4.5) node[above,xshift=-11mm]{3.3V} 
+        %     --
+        % (-0.8,4.5)
+        % (0,2.5) node[above,xshift=-11mm]{GND} 
+        %     --
+        % (-0.8,2.5)
+        % ;
+        \draw[blue]
+        (p.blpin 2)
+        -|
+        (s.brpin 6)
+        (p.blpin 2)
+        -|
+        (s.brpin 1)
+        ;
+        \draw[green]
+        (p.blpin 1)
+        -|
+        (s.brpin 5)
+        ;
+        \draw[red]
+        (m.blpin 2)
+        -| 
+        (s.brpin 4)
+        ;
+        \draw[brown]
+        (m.blpin 1)
+        -| 
+        (s.brpin 3)
+        ;
+        \draw[dashed,blue]
+        (-2.5,6) -- (1,6)node[midway, below]{UNO R4 MINIMA} -- (1,-1.5) -- (-2.5,-1.5) -- cycle;
+    \end{circuitikz}
+    \caption{Conexión de sensor de presión absoluta BMP280}
+    \label{fig:pres1}
+\end{figure}
+
+
+\subsection{Análisis}
+\begin{enumerate}
+    \item Determine la presión atmosférica local usando el primer segundo de la toma de datos. ¿Es este valor de presión atmosférica local el esperado para la altitud del campus (1407 msnm)?
+    \item Asuma que tanto el proceso de expansión como el de compresión son procesos isotérmicos. 
+    \item Usando la ley de gases ideales y el valor de presión atmosférica local como presión inicial, calcule teóricamente la presión final del proceso de expansión asumiendo que el volumen inicial de aire es de \SI{500}{\milli\liter}. Compare con el valor registrado, determine el porcentaje de error y analice.
+    \item Usando la ley de gases ideales y el valor de presión medido al final del proceso de expansión como presión inicial, calcule teóricamente la presión final del proceso de compresión asumiendo que el volumen inicial de aire es de \SI{560}{\milli\liter}. Compare con el valor registrado, determine el porcentaje de error y analice.
+    \item Calcule el trabajo realizado en ambos procesos.
+\end{enumerate}

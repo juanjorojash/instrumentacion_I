@@ -21,6 +21,7 @@
 
 \documentclass[12pt,letterpaper]{report}
 \input{comunes/preamble}
+\input{arduinoLanguage.tex}
 \usepackage{csvsimple}
 \usepackage{geometry} 
 \geometry{left=18mm,right=18mm,top=21mm,bottom=21mm,headheight=15pt}
@@ -47,11 +48,9 @@
 \addto\captionsspanish{\renewcommand{\chaptername}{Laboratorio}}
 \addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
 \begin{document}
-
-
+% ------------------------------------------------------------
 \begin{titlepage}
-
-\begin{center}
+    \begin{center}
 \vspace*{1in}
 \begin{figure}[htb]
 \begin{center}
@@ -84,12 +83,11 @@ Versión: 0.1\\
 Realizado por: Juan J. Rojas y Hugo Sanchez Ortiz\\
 \end{large}
 \end{center}
-
 \end{titlepage}
-
+% ------------------------------------------------------------
 \tableofcontents
-
-\chapter{Caracteristicas generales de instrumentos}
+% ------------------------------------------------------------
+\chapter{Características generales de instrumentos}
 \section{\obj}
 \capacidad
 \begin{itemize}
@@ -102,16 +100,17 @@ Realizado por: Juan J. Rojas y Hugo Sanchez Ortiz\\
 \section{\mat}
 \begin{itemize}
 \item 1 fuente de corriente continua
-\item 1 interfaz ScienceWorkshop\,\textregistered\,750
+\item 1 interfaz ScienceWorkshop\,\textsuperscript{\textregistered}\,750
 \item 1 sensor de corriente CI-6556
 \item 1 sensor de voltaje UI-5100
+\item 2 Cables de conexión tipo Banana macho-macho
 \end{itemize}
 
 
 \section{\pro}
 \begin{enumerate}
 \item Realice las conexiones del circuito tal y como se indica en la Figura \ref{fig:L1F1}.
-\item Encienda la interfaz ScienceWorshop\,\textregistered\,750 y realice la configuración en Capstone
+\item Encienda la interfaz ScienceWorshop\,\textsuperscript{\textregistered}\,750 y realice la configuración en Capstone
 \item Configure la toma de datos a una frecuencia de \SI{1}{\hertz}, condición de inicio: ninguna, condición de parada: basada en el tiempo (\SI{21}{\second}) 
 \item Encienda la fuente y colóquela en \SI{0.1}{\volt}
 
@@ -156,13 +155,16 @@ Realizado por: Juan J. Rojas y Hugo Sanchez Ortiz\\
     
 \item Tome en cuenta lo siguiente:
     \begin{itemize}
-        \item La exactitud se calculará como el mayor error relativo obtenido en cualquier punto de de datos en todas las corridas de medición, en este caso solo hay una corrida.
-        \item La precisión se calculará como la mayor desviación estándar entre todas las corridas de medición, en este caso solo hay una corrida.
+        \item La exactitud se calculará como el mayor error relativo obtenido en cualquier punto de los datos en todas las corridas de medición.
+        \item La precisión se calculará como la mayor desviación estándar entre todas las corridas de medición.
         \item La repetibilidad se calculará de la siguiente manera:
         \begin{equation*}
             \mathrm{repetibilidad} = \sqrt{\dfrac{\sum_{i=1}^n(\mathrm{error\,absoluto})^2}{n}}
         \end{equation*}
     \end{itemize}
+
+
+\section{Resultados}
 
 \begin{table}[H]
     \centering
@@ -186,15 +188,507 @@ Realizado por: Juan J. Rojas y Hugo Sanchez Ortiz\\
 \end{table}
 \end{enumerate}
 
+% ------------------------------------------------------------
+\chapter{Mediciones de Temperatura}
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Utilizar sensores para medir temperatura.
+\item Analizar la relación calor-temperatura.
+\end{itemize}
+\section{\mat}
+\begin{itemize}
+\item 1 interfaz ScienceWorkshop\,\textsuperscript{\textregistered} $750$
+\item 1 sensor de temperatura, sonda de acero inoxidable $CI-6605$
+\item Calorímetro de Transferencia de Energía
+\item Beaker, $\SI{250}{\milli\liter}$
+\item Probeta
+\item Termómetro
+\item Plantilla para calentar
+\end{itemize}
+\section{\pro}
+\begin{itemize}
+    \item Inserte el sensor de temperatura de acero inoxidable $CI-6605$ en uno de los canales analógicos de la Interfaz $750$ de PASCO.
+    \item Seleccione la Interfaz \textit{ScienceWorkshop} $750$ en configuración del hardware en \textit{PASCO Capstone}, asegúrese de que el dispositivo esté encendido.
+    \item Configure la toma de datos a una frecuencia de $\SI{1}{\hertz}$, condición de inicio: ninguna, condición de parada: basada en el tiempo ($\SI{300}{\second}$) 
+\end{itemize}
+\subsection{Procedimiento \SI{50}{\milli\liter}}
+
+\begin{enumerate}
+    \item Emplee el beaker para medir ($\SI{50}{\milli\liter}$) de agua. Seguidamente utilice la  plantilla para calentar el agua y con el termómetro mida la temperatura hasta sobre pasar los ($\SI{40}{\celsius}$).
+    \item Una vez alcanzados los ($\SI{40}{\celsius}$), vierta el agua en el calorímetro. Remueva el tapón del calorímetro e introduzca el sensor de temperatura $CI-6605$, para iniciar con la toma de datos. Agite el calorímetro suavemente para que el agua se caliente de manera uniforme.
+    \item En el software de interfaz \textit{PASCO Capstone}, presione el botón de Grabar para que se comience a registrar y representar los datos en el gráfico de Temperatura vs Tiempo. 
+    \item Luego de haber transcurrido $\SI{180}{\second}$ ($\SI{3}{\minute}$), vierta ($\SI{40}{\milli\liter}$)  de agua fría (temperatura ambiente) en el calorímetro y observe el cambio de los datos en el gráfico de Temperatura vs Tiempo.
+    \item Exporte los datos obtenidos en la medición para futuro análisis.
+\end{enumerate}
+
+\subsection{Procedimiento \SI{100}{\milli\liter}}
+\begin{enumerate}
+    \item Emplee el beaker para medir ($\SI{100}{\milli\liter}$) de agua, seguidamente utilice la  plantilla para calentar el agua y con el termómetro mida la temperatura hasta sobre pasar los ($\SI{40}{\celsius}$).
+    \item Una vez alcanzados los ($\SI{40}{\celsius}$), vierta el agua en el calorímetro. Remueva el tapón del calorímetro e introduzca el sensor de temperatura $CI-6605$, para iniciar con la toma de datos. Agite el calorímetro suavemente para que el agua se caliente de manera uniforme.
+    \item En el software de interfaz \textit{PASCO Capstone}, presione el botón de Grabar para que se comience a registrar y representar los datos en el gráfico de Temperatura vs Tiempo. 
+    \item Luego de haber transcurrido $\SI{180}{\second}$ ($\SI{3}{\minute}$), vierta ($\SI{40}{\milli\liter}$) de agua fría (temperatura ambiente) en el calorímetro y observe el cambio de los datos en el gráfico de Temperatura vs Tiempo.
+    \item Exporte los datos obtenidos en la medición para futuro análisis.
+\end{enumerate}
+
+\subsection{Preguntas guia para el análisis}
+\begin{enumerate}
+    \item Utilice las herramientas gráficas para determinar el cambio en la temperatura para cada volumen de agua, $\SI{50}{\milli\liter}$ y $\SI{100}{\milli\liter}$. Anote ambos valores a continuación.
+    \item ¿Cómo se compara el $\Delta T$ de $\SI{50}{\milli\liter}$ de agua con el $\Delta T$ de $\SI{100}{\milli\liter}$ de agua?
+    \item ¿Los $\SI{50}{\milli\liter}$ recibieron más, menos, o la misma cantidad de energía que los $\SI{100}{\milli\liter}$? ¿Por qué?
+    \item Considerando su respuesta a la pregunta anterior, ¿por qué la temperatura final de los $\SI{50}{\milli\liter}$ de agua es superior a los $\SI{100}{\milli\liter}$?
+\end{enumerate}
+
+%	Mediciones de presión
 %----------------------------------------------------------------------------------------
-%	BIBLIOGRAPHY
+
+
+% ------------------------------------------------------------
+\chapter{Mediciones de Presión}
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Utilizar un sensor para medir presión absoluta.
+\item Analizar la relación fuerza-presión.
+\end{itemize}
+
+\section{\mat}
+\begin{itemize}
+\item 1 interfaz ScienceWorkshop\,\textregistered\,750
+\item 1 sensor de presión absoluta, CI-6532A
+\item 1 sensor de temperatura, sonda de acero inoxidable CI-6605
+\item Frasco Erlenmeyer de \SI{500}{\milli\liter}
+\item Tapón para Erlenmeyer con dos orificios
+\item Mangueras varias
+\item Jeringa de \SI{60}{\milli\liter}
+\end{itemize}
+
+
+\section{\pro}
+\subsection{Experimento}
+\begin{itemize}
+    \item Instale dos mangueras en cada uno de los orificios del tapón.
+    \item Coloque el tapón con las mangueras en el orificio del frasco Erlenmeyer
+    \item Acople el sensor de presión absoluta, CI-6532A a una de las mangueras e instale en Interfaz \textit{ScienceWorkshop} 750
+    \item Extraiga todo el aire de la jeringa \SI{60}{\milli\liter} y luego acóplela en la otra manguera
+    \item Instale el sensor de temperatura en la Interfaz \textit{ScienceWorkshop} 750 para registrar la temperatura del experimento
+    \item Seleccione la Interfaz \textit{ScienceWorkshop} 750 en configuración del hardware en \textit{PASCO Capstone}, asegúrese de que el dispositivo esté encendido.
+    \item Configure la toma de datos a una frecuencia de \SI{10}{\hertz}, condición de inicio: ninguna, condición de parada: basada en el tiempo (\SI{40}{\second})
+    \item Inicie la toma de datos, espere dos segundos, a continuación succione aire usando la jeringa hasta que llegue a la marca de los \SI{60}{\milli\liter} y luego libere el émbolo.
+    \item Registre la posición final del émbolo.
+    \item Repita el procedimiento tres veces y guarde los datos en un archivo \emph{.csv}
+    \item Realice el siguiente análisis en las tres tomas de datos. 
+\end{itemize}
+
+
+\subsection{Análisis}
+\begin{enumerate}
+    \item Determine la presión atmosférica local usando el primer segundo de la toma de datos. ¿Es este valor de presión atmosférica local el esperado para la altitud del campus (1407 msnm)?
+    \item Asuma que tanto el proceso de expansión como el de compresión son procesos isotérmicos. 
+    \item Usando la ley de gases ideales y el valor de presión atmosférica local como presión inicial, calcule teóricamente la presión final del proceso de expansión asumiendo que el volumen inicial de aire es de \SI{500}{\milli\liter}. Compare con el valor registrado, determine el porcentaje de error y analice.
+    \item Usando la ley de gases ideales y el valor de presión medido al final del proceso de expansión como presión inicial, calcule teóricamente la presión final del proceso de compresión asumiendo que el volumen inicial de aire es de \SI{560}{\milli\liter}. Compare con el valor registrado, determine el porcentaje de error y analice.
+    \item Calcule el trabajo realizado en ambos procesos.
+\end{enumerate}
+
+
+%	Mediciones de nivel
 %----------------------------------------------------------------------------------------
 
-\bibliographystyle{ieeetr}
 
-\bibliography{referencias}
+% ------------------------------------------------------------
+\chapter{Mediciones de Nivel mediante la presión hidrostática}
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Determinar cómo se relacionada la presión estática con el nivel en una
+columna de agua.
+\item Determinar experimentalmente la relación matemática entre la presión
+estática y el nivel en una columna de agua.
+\end{itemize}
 
+\section{\mat}
+\begin{itemize}
+\item 1 interfaz ScienceWorkshop\,\textregistered\,750
+\item 1 sensor de presión absoluta, CI-6532A
+\item 1 sensor de temperatura, sonda de acero inoxidable CI-6605
+\item Depósito de agua, transparente, por encima de los 30 cm de altura.
+\item Regla
+\item Mangueras varias
+\end{itemize}
+
+
+\section{\pro}
+\subsection{Experimento}
+\begin{enumerate}
+    
+    \item Corte el tubo plástico un 1/4", a una longitud aproximada correspondiente a la altura de la profundidad del depósito de agua, y conecte el tubo a la válvula en el sensor de Presión CI-6532A,usando el conector rápido para ajustarlo al sensor.
+    \item Cree un nuevo archivo en el software “Pasco Capstone” con gráfico que muestre presión (KPa) en el eje de ordenadas y nivel (cm) en el eje de las abscisas. Además, cree una tabla con las mismas variables. Para ello, seleccione el apartado de Datos del Sensor-> Muestreo Manual.
+    \item Llene el depósito de agua con agua destilada a 3/4 de la capacidad total.
+    \item Sostenga el sensor de Presión CI-6532A y mantenga el tubo por encima del nivel de agua en el depósito. Luego, registre la primera medición de presión, correspondiente a un nivel de 0 cm en la tabla. 
+    \item Sumerja el extremo del final abierto del tubo, proveniente del sensor de Presión PASCO CI-6532A dentro del agua, descienda el extremo final del tubo a un nivel de 4 cm de profundidad. Como se muestra en la Figura \ref{fig:altura}.
+    \begin{figure} [!ht]
+        \centering
+        \includegraphics{fig/Nivel/Altura.PNG}
+        \caption{Medición de Nivel}
+        \label{fig:altura}
+    \end{figure}
+    \item Registre la presión P (KPa) y el nivel h (cm) como se indica en la tabla No. 1. Además registre la temperatura ambiente. 
+    \begin{table}[!ht]
+        \centering
+        \begin{tabular}{c|c}
+            \textbf{Nivel[cm]} & \textbf{Presión[kPa]} \\
+            \hline
+             0 & \\
+             4 & \\
+             8 & \\
+             12 & \\
+             16 & \\
+             20 & \\
+             24 & \\
+             28 & \\
+        \end{tabular}
+        \caption{Presión vs nivel en una columna de agua}
+        \label{tab:my_label}
+    \end{table}
+    \item Descienda el tubo dentro del agua cuatro centímetros adicionales.
+    \item Repita el paso anterior hasta que haya registrado presiones para seis niveles: 0 cm, 4 cm, 8 cm, 12 cm, 16 cm y 20 cm.
+    \item Guarde los datos en un archivo \emph{.csv} y genere el mismo gráfico visto en el software "Pasco Capstone" durante el experimento.
+    \item Realice el siguiente análisis en las tres tomas de datos.
+\end{enumerate}
+
+
+\subsection{Análisis}
+\begin{enumerate}
+    \item Genere la curva de mejor ajuste realizada en el punto i del apartado de procedimiento. Determine y anote la ecuación de la línea.
+    \item ¿El gráfico de presión versus nivel produce una relación lineal? Explique. 
+    \item La presión estática está relacionada con el nivel mediante la ecuación:
+    \begin{equation}
+        P=P_0+\rho * h * g
+    \end{equation}
+    
+    Donde $P$ es la presión, $P_0$ es la presión inicial, $rho$ es la densidad del fluido, $g$ es la aceleración de la gravedad y $h$ es el nivel/profundidad. A partir del gráfico lineal que relaciona la presión con el nivel, extrapole el valor para la densidad del valor del fluido en el depósito (agua). Muestre su cálculo.
+    \item Si el valor teórico de la densidad de agua es 1,000 kg/m3, calcule el porcentaje de error entre el valor experimental y el valor actual
+    \begin{equation}
+        Porcentaje_{error}=\frac{|Actual-Experimental|}{Actual}\times 100
+    \end{equation}
+    \item Si se realiza el mismo experimento utilizando yodo líquido (densidad ≈ 4,900 kg/m3) en lugar de agua, ¿cómo sería diferente un gráfico de presión versus nivel?
+\end{enumerate}
+
+%	Mediciones de nivel
 %----------------------------------------------------------------------------------------
 
 
+% ------------------------------------------------------------
+\chapter{Medición de aceleración}
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Medir la aceleración lineal de un cuerpo.
+\item Determinar la velocidad y la posición a partir de los datos de aceleración
+\end{itemize}
+
+\section{\mat}
+\begin{itemize}
+\item 1 interfaz ScienceWorkshop\,\textregistered\,750
+\item 1 sensor de aceleración, CI-6558
+\item 1 nivel
+\item 1 riel para carrito PASCO
+\item 1 carrito ME-9454, con hilo de nylon
+\item 3 masas de 50 gramos
+\end{itemize}
+
+
+\section{\pro}
+\subsection{Experimento}
+\begin{enumerate}
+    
+    \item Arme el riel y procure que quede a nivel, coloque el limite para el carrito a los 100cm
+    \item Fije el sensor de aceleración al carrito
+    \item Conecte el sensor a la interfaz
+    \item Fije la masa al cable de nylon
+    \item Configure la toma de datos a una frecuencia de 1kHz, condición de inicio: aumenta por encima de 0.1, condición de parada: cae por debajo de -1
+    \item Presione el botón registrar y luego utilice la pesa pequeña para liberar el carrito
+    \item Repita la toma 3 veces, una por cada masa
+    \item Guarde los datos en un archivo \emph{.csv}
+    \item Realice el siguiente análisis en las tres tomas de datos.
+\end{enumerate}
+
+
+\subsection{Análisis}
+\begin{enumerate}
+    \item Genere los gráficos de aceleración vrs. tiempo, velocidad vrs. tiempo y desplazamiento vrs. tiempo usando los datos de las tomas anteriores
+    \item ¿Es el comportamiento esperado? Analice.
+    \item Compare con el desplazamiento real realizado y discuta a que se debe la diferencia. 
+    \item ¿Porque se produce oscilación en los valores del sensor al inicio de la toma de datos? Explique. 
+\end{enumerate}
+
+% ------------------------------------------------------------
+\chapter{Medición de óptica}
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Comprender el funcionamiento de los sensores ópticos. 
+\item Estudiar de forma experimental cómo la intensidad de luz cambia con la distancia.
+\end{itemize}
+
+\section{\mat}
+\begin{itemize}
+\item 1 interfaz ScienceWorkshop\,\textregistered\,750
+\item 1 sensor de luz, CI-6504A
+\item 1 nivel
+\item 1 riel para carrito PASCO
+\item 1 carrito, ME-9439
+\item 1 diodo laser
+\item Laminas de madera
+\end{itemize}
+
+
+\section{\pro}
+\subsection{Montaje}
+\begin{enumerate}
+    
+    \item Inserte el sensor de luz CI-6504A en uno de los canales analógicos de la Interfaz 750 de \textit{PASCO}
+    \item Seleccione la Interfaz \textit{ScienceWorkshop} 750 en configuración del hardware en PASCO Capstone, asegúrese de que el dispositivo esté encendido
+    \item Haga click en el canal analógico donde está conectado el sensor de luz CI-6504A. Seguidamente seleccione \textit{Sensor de luz}.
+    \item Configure el riel de baja fricción. Coloque el carrito de baja fricción y encima del carrito, coloque una lámina de madera. Seguidamente, ubique el sensor de luz, CI-6504A. Coloque dos laminas adicionales en el riel de baja fricción, y ubique el Diodo Láser sobre dichas laminas. \textbf{Recomendación:} puede fijar el sensor utilizando doble cinta. 
+    \item Cree una tabla y un gráfico en el software \textit{Pasco Capstone}, para observar en tiempo real la recolección de los datos, con Intensidad de Luz en el eje de las ordenadas y Distancia en el eje de las abscisas. En este punto del procedimiento, el sistema recolector de datos deberá estar configurado en el modo de muestreo manual, con la entrada manual de datos. Titule la entrada manual de datos como “Distancia” con unidades de metros (m).
+    \item Muestre la intensidad de luz en una pantalla digital (display) del software \textit{Pasco Capstone}.
+    \item Si el sensor cuenta con rangos diferentes de ajustes, comience con el rango medio, accionando la perilla con la que cuenta el sensor en uno de los costados.
+    \item Encienda la fuente de luz. \textbf{Nota:} Al conectar el diodo láser se deberá tener mucho cuidado con no apuntar a la cara de de otros miembros.
+    \item Deslice el sensor de luz, sobre el riel de baja fricción, hacia adelante y atrás, para determinar el punto donde los valores de intensidad de luz comiencen a cambiar. Esta, va a ser la distancia mínima en la que el sensor de luz debe estar alejado de la fuente de luz. Usted puede necesitar cambiar la sensibilidad del sensor de luz, si obtiene una distancia mayor a los 50 cm desde la fuente de luz. \textbf{Recomendación}: Comience probando con una distancia inicial de separación de 20 cm entre el sensor y la fuente de luz.
+\end{enumerate}
+
+\subsection{Toma de datos}
+\begin{enumerate}
+    \item Inicie la recolección manual de datos. 
+    \item En el punto e del apartado de Montaje se especificó la elaboración de un gráfico de Intensidad de Luz versus Distancia, el cual se debería estar observando en tiempo real.
+    \item Registre el primer punto de datos muestreados manualmente y luego digite la distancia correspondiente, en metros, entre el Diodo laser y el elemento sensor en el sensor de luz. \textbf{Nota:} El elemento sensor de luz en el sensor de luz está justo detrás del extremo inferior del tubo negro en la parte frontal del sensor.
+    \item Aleje el sensor de luz 2.0 cm de la fuente de luz y luego registre otro dato manualmente. Digite la distancia correspondiente, en metros, entre el Diodo laser y el elemento sensor en el sensor de luz.
+    \item Repita el paso anterior hasta que se hayan recolectado al menos 10 datos distintos.
+\end{enumerate}
+
+\subsection{Análisis}
+\begin{enumerate}
+    \item Describa el gráfico obtenido durante la recolección de datos. Sea sintético en su descripción. Incluya observaciones tales como: ¿La intensidad aumentó o disminuyo conforme se alejaba el sensor de la fuente de luz, y el gráfico fue lineal o curvo? Si fue curvo, ¿cuál es la relación matemática que produce la forma del gráfico?
+    \item Investigue sobre la Ley del cuadrado inverso. Deduzca la expresión matemática que ejemplifica la ley (la intensidad de la luz es inversamente proporcional al cuadrado de la distancia de la fuente de luz).
+    \item Copie los datos obtenidos en la tabla efectuada anteriormente en un procesador matemático y cree dos nuevos sets de datos, para los inversos de la distancia: $\frac{1}{[Distancia(m)]}$ y $\frac{1}{[Distancia(m)]^2}$.
+    \item De los datos generados anteriormente, realice los siguientes dos gráficos: uno con Intensidad de Luz en el eje de las ordenas y el inverso de la distancia, $\frac{1}{[Distancia(m)]}$, en el eje de las abscisas. Adicionalmente, con Intensidad de Luz en el eje de las ordenas y el inverso de la distancia al cuadrado, $\frac{1}{[Distancia(m)]^2}$, en el eje de las abscisas.
+    \item ¿Alguno de los gráficos produce una línea recta? ¿Cuál es el significado de su respuesta?
+\end{enumerate}
+
+\renewcommand{\appendixname}{Taller}
+\renewcommand{\appendixtocname}{Taller}
+\renewcommand{\appendixpagename}{Taller}
+
+\appendix
+\renewcommand{\thechapter}{\Roman{chapter}}
+
+%	Taller de sensores analógicos
+%----------------------------------------------------------------------------------------
+
+
+% ------------------------------------------------------------
+\chapter{Sensores digitales}
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Adquirir datos de distancia usando un sensor de tiempo de viaje (ToF) conectado a una tarjeta de desarrollo Arduino Mega 2560.
+\item Definir el tiempo entre mediciones usando una interrupción de \SI{0.1}{\second}.
+\item Leer los datos de distancia enviados por medio de comunicación serial usando Python y graficar en tiempo real.
+\item Utilizar una declaración \emph{match-case} en Python para realizar la decodificación de los valores de distancia
+\end{itemize}
+
+\section{Introducción}
+
+Un sensor de distancia de tiempo de vuelo (time-of-flight) es un dispositivo utilizado para estimar la distancia a un cuerpo calculando el tiempo de vuelo de un haz de luz generada por un laser, esto es, el tiempo transcurrido entre la emisión y la recepción del haz. Para esta experiencia se utilizará un sensor VL53LOX. 
+
+La conexión con el Arduino MEGA 2560 se muestra en la Figura \ref{fig:e2f1}, el sensor envia los datos usando el protocolo de comunicación I2C    
+
+
+\section{\mat}
+\begin{itemize}
+\item 1 Arduino Mega 2560.
+\item 1 breadboard.
+\item 1 sensor de distancia VL53LOX.
+\item Cables de conexión macho-macho.
+\end{itemize}
+
+\section{\pro}
+\begin{enumerate}
+\item Realice las conexiones del circuito tal y como se indica en la Figura \ref{fig:e2f1}.
+
+\begin{figure}[H]
+    \tikzset{comm/.style={muxdemux, muxdemux def={Lh=5, Rh=5, NL=2, NB=0, NR=0, w=2}}}
+    \tikzset{VL53LOX/.style={muxdemux, muxdemux def={Lh=5, Rh=5, NL=0, NB=0, NR=6, w=2}}}
+    \centering
+    \begin{circuitikz} 
+        \draw (0,0) node[comm] (m){\rotatebox{90}{\small communication}}
+        ;
+        \draw (m.blpin 1) node[above left]{\small SDA (20)};
+        \draw (m.blpin 2) node[above left]{\small SCL (21)};
+        \draw (-5,-3) node[VL53LOX,rotate=90] (s){\rotatebox{-90}{\small VL53LOX}}
+        (s.brpin 1) node[above right,rotate=90]{\scriptsize Vin}
+        (s.brpin 2) node[above right,rotate=90]{\scriptsize GND}
+        (s.brpin 3) node[above right,rotate=90]{\scriptsize SCL}
+        (s.brpin 4) node[above right,rotate=90]{\scriptsize SDA}
+        (s.brpin 5) node[above right,rotate=90]{\scriptsize GPIO1}
+        (s.brpin 6) node[above right,rotate=90]{\scriptsize XSHUT}
+        ;
+        \draw
+        (0,2.5) node[ground]{}
+            to[V] 
+        (0,4.5) node[above,xshift=-11mm]{5V} 
+            --
+        (-0.8,4.5)
+        (0,2.5) node[above,xshift=-11mm]{GND} 
+            --
+        (-0.8,2.5)
+        ;
+        \draw[blue]
+        (-0.8,4.5)
+            -|
+        (s.brpin 1)
+        ;
+        \draw[green]
+        (-0.8,2.5)
+            -|
+        (s.brpin 2)
+        ;
+        \draw[red]
+        (m.blpin 1) --++ (-2,0) -| (s.brpin 4)
+        ;
+        \draw[brown]
+        (m.blpin 2) --++ (-2,0) -| (s.brpin 3)
+        ;
+        \draw[dashed,blue]
+        (-2.5,6) -- (1,6)node[midway, below]{MEGA 2560} -- (1,-1.5) -- (-2.5,-1.5) -- cycle;
+    \end{circuitikz}
+    \caption{Conexión de módulo de lectura de termopar basado en MAX31855.}
+    \label{fig:e2f1}
+\end{figure}
+
+\item Instale la librería \emph{Adafruit\_VL53L0X} usando el administrador de librerias de Arduino IDE. 
+\item Instale la librería \emph{TimerInterrupt.h} usando el administrador de librerias de Arduino IDE.
+
+
+
+\item Copie el siguiente código en el IDE de Arduino (el codigo se puede encontrar en: \href{https://github.com/DeltaLabo/talleres}{talleres})
+\begin{lstlisting}[language=Arduino,numbers=none, showstringspaces=false]
+// Incluir librería para el sensor
+#include "Adafruit_VL53L0X.h"
+// Hacer un #define para que la libreria TimerInterrupt cargue el Timer3
+#define USE_TIMER_3     true
+// Incluir librería para interrupciones basadas en tiempo
+#include "TimerInterrupt.h"
+
+// Definir variable para guardar la medición del sensor
+int distance = 0;
+// Definir variable para levantar la bandera del timer
+bool timer_flag = true;
+// Definir el encabezado y la cola del la trama que se enviará por serial
+uint8_t header[2]={0xAA,0xDD};
+uint8_t footer[2]={0xAA,0xFF};  
+
+// Definir el intervalo del timer en milisegundos
+#define TIMER_INTERVAL_MS        100
+
+// Definir una instacia del sensor del tipo "Adafruit_VL530X" y con el nombre "sensor"
+Adafruit_VL53L0X sensor = Adafruit_VL53L0X();
+
+void setup() {
+  // Inicializar el puerto serial
+  Serial.begin(9600);
+  // Inicializar el sensor
+  if (!sensor.begin()) {
+    Serial.println("No se ha podido iniciar el sensor.");
+    while(1);
+  }
+  // Iniciar medición continua
+  sensor.startRangeContinuous();
+  // Inicializar el Timer 3
+  ITimer3.init();
+  // Asignar una interrupción por tiempo que ejecuta la función "TimerHandler"
+  if (ITimer3.attachInterruptInterval(TIMER_INTERVAL_MS, TimerHandler))
+  {
+    Serial.print(F("Starting  ITimer3 OK, millis() = ")); Serial.println(millis());
+  }
+  else
+    Serial.println(F("Can't set ITimer3. Select another freq. or timer"));
+}
+
+void TimerHandler()
+{
+  // Cuando se activa la función se sube la bandera
+  timer_flag = true;
+}
+
+void loop() {
+  if (timer_flag)
+  {
+    // Se realiza medición y se convierte a centimetros
+    distance = sensor.readRange()/10;
+    // Se establece como máximo 150 cm en caso que se alcance
+    if (distance >= 150) distance = 150;
+    // Se construye una trama con los datos:
+    // OxAA 0xDD (4 bytes con el dato medido, MSBF) OxAA 0xFF
+    Serial.write(header,2);
+    Serial.write( (distance>>8) & 0xFF);
+    Serial.write( (distance) & 0xFF);
+    Serial.write(footer,2);
+    // Se baja la bandera del timer
+    timer_flag = 0;
+  }
+}
+\end{lstlisting}
+\item Analice cada linea de código y cuando entienda su funcionamiento corra el \emph{sketch} usando el botón \emph{Upload}
+\item Haga contacto con el encapsulado del sensor de forma que su dedos calienten el sensor, observe como cambia el valor en la terminal. 
+\item Instale las librerías \emph{pyserial}, \emph{matplotlib}, \emph{drawnow} y \emph{datetime} en Python para ser utilizadas luego.
+\item Copie el siguiente código en su IDE de Python.
+
+\begin{lstlisting}[language=Python, numbers=none, showstringspaces=false]
+import serial
+import matplotlib.pyplot as plt
+from drawnow import drawnow
+from datetime import datetime
+
+ser = serial.Serial('COM11', baudrate=9600,
+bytesize=8, parity='N', stopbits=1, timeout=1.5)
+ser.close()
+ser.open()
+ser.flush()
+distance = 0
+past_time = datetime.now()
+seconds = 0
+
+time_data = []
+dist_data = []
+
+plt.ion()
+fig = plt.figure()
+
+def dist_figure():
+    ax1 = plt.subplot()
+    plt.plot(time_data[-100:],dist_data[-100:])
+    ax1.set(xlabel='time (s)', ylabel='distance (cm)',
+       title='VL53LOX measurements')
+
+
+while(True):
+    recep = ser.read(1)
+    match recep:
+        case b'\xAA':
+            if ser.read(1) == b'\xDD':
+                distance = int.from_bytes(ser.read(2), 'big')
+                tiempo_actual = datetime.now()
+                deltat = (tiempo_actual - past_time).total_seconds()
+                past_time = tiempo_actual
+                seconds += deltat
+                time_data.append(seconds)
+                dist_data.append(distance)
+                drawnow(dist_figure)
+
+\end{lstlisting}
+\item Asegurese de utilizar el mismo puerto común tanto en Arduino como en Python. En caso de ser distintos, modifique en la línea 6 del código de Phyton.
+
+\end{enumerate}
 \end{document}

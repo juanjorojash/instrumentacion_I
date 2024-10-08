@@ -3,6 +3,7 @@
 \input{comunes/preamble}
 \usepackage{lastpage}
 \usepackage{fancyhdr}
+\usepackage{enumitem}
 \usepackage{csvsimple,booktabs}
 \pagestyle{fancy}
 \setlength{\headheight}{42pt}
@@ -14,7 +15,13 @@
 \cfoot{\thepage\ de \pageref{LastPage}}
 \setlength{\parindent}{0em}
 
-Asuma que cuenta con los siguientes equipos
+\begin{enumerate}[label=(\Alph*)]
+
+\item Investigue el principio de funcionamiento de la Balance de Kibble, y comente su importancia en la redefinición del kilogramo.
+
+\item El Sistema Internacional de Unidades constituido por siete unidades básicas que definen a las correspondientes magnitudes físicas fundamentales: metro, kilogramo, segundo, kelvin, amperio, mol y candela. Investigue cómo ha evolucionado la definición de cada una de las unidade básicas desde su incorporación al Sistema hasta el día de hoy. 
+
+\item Asuma que cuenta con los siguientes equipos
 \begin{itemize}
     \item Una fuente de corriente directa configurable para entregar voltaje constante o corriente constante según se requiera. 
     \item Un equipo registrador de mediciones con conexiones para varios tipos de sensores
@@ -59,8 +66,8 @@ Tome en cuenta lo siguiente:
         \mathrm{repetibilidad} = \sqrt{\dfrac{\sum_{i=1}^n(\mathrm{error\,absoluto})^2}{n}}
     \end{equation*}
 \end{itemize}
-
-\noindent\textbf{Instrucciones}
+\newpage
+\noindent\textbf{Determine:}
 \begin{enumerate}
     \item Usando el estándar \href{http://integrated.cc/cse/Instrumentation_Symbols_and_Identification.pdf}{ANSI/ISA-5.1-2009} realice un diagrama que describa de mejor manera el proceso de medición descrito. El diagrama básico de conexión debe ser como el mostrado en la Figura \ref{fig:simple}. El resto del diagrama debe realizarlo en base a ANSI/ISA-5.1-2009
     \begin{figure}[H]
@@ -70,7 +77,7 @@ Tome en cuenta lo siguiente:
             (0,0) 	
                 to[V, l=$V_f$] 
             (0,3)
-            	to[short] 
+            	to
             (3,3)
                 to[R, l=$R_{sh}$]
             (3,0)-- (0,0)
@@ -101,7 +108,7 @@ Tome en cuenta lo siguiente:
         \label{tab:datos}
     \end{table}
 
-    \item Se realizó una medición por segundo durante 20 segundos usando el proceso de medición descrito y se obtuvieron los datos mostrados en la Tabla \ref{tab:datos}. Calcule el valor de $R_sh$ para cada uno de los $n$ puntos de datos y realice una tabla que incluya las tres columnas de la Tabla \ref{tab:datos} y una tercera columna para los valores de $R_{sh}$.
+    \item Se realizó una medición por segundo durante 20 segundos usando el proceso de medición descrito y se obtuvieron los datos mostrados en la Tabla \ref{tab:datos}. Calcule el valor de $R_{sh}$ para cada uno de los $n$ puntos de datos y realice una tabla que incluya las tres columnas de la Tabla \ref{tab:datos} y una tercera columna para los valores de $R_{sh}$.
     \item Para el conjunto de valores de $R_{sh}$, calcule lo siguiente e incluya en una tabla:
     \begin{enumerate}
         \item El valor promedio, $\overline{R_{sh}}$ 
@@ -112,7 +119,7 @@ Tome en cuenta lo siguiente:
         \item La precisión
         \item La repetibilidad
     \end{enumerate}
-
+\end{enumerate}
 \end{enumerate}
 
 
