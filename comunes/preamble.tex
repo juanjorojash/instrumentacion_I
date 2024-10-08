@@ -3,6 +3,7 @@
 \usepackage{siunitx}
 \usepackage{float}
 \usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
 \usepackage{url}
 \usepackage[siunitx,american,RPvoltages]{circuitikz}
 \ctikzset{capacitors/scale=0.7}
@@ -24,21 +25,22 @@
 \usepgfplotslibrary{units, fillbetween} 
 \pgfplotsset{compat=1.16}
 \usepackage{bm}
-\usetikzlibrary{arrows, arrows.meta, shapes, 3d, perspective, positioning}
+\usetikzlibrary{arrows, arrows.meta, shapes, 3d, perspective, positioning,mindmap,trees,backgrounds}
 \renewcommand{\sin}{\sen} %change from sin to sen
 \usepackage{bohr}
 \setbohr{distribution-method = quantum,insert-missing = true}
 \usepackage{elements}
 \usepackage{verbatim}
-\usetikzlibrary{mindmap,trees,backgrounds}
- 
+\usepackage[edges]{forest}
+\usepackage{etoolbox}
+\usepackage{schemata}
+\usepackage{appendix}
+\usepackage{listings}
+
 \definecolor{color_mate}{RGB}{255,255,128}
 \definecolor{color_plas}{RGB}{255,128,255}
 \definecolor{color_text}{RGB}{128,255,255}
 \definecolor{color_petr}{RGB}{255,192,192}
 \definecolor{color_made}{RGB}{192,255,192}
 \definecolor{color_meta}{RGB}{192,192,255}
-\usepackage[edges]{forest}
-\usepackage{etoolbox}
-\usepackage{schemata}
 \newcommand\diagram[2]{\schema{\schemabox{#1}}{\schemabox{#2}}}
