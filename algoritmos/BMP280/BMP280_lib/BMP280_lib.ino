@@ -16,7 +16,7 @@ void setup() {
 void loop() {
   // Read the values
   temperature = bmp.readTemperature();
-  pressure = bmp.readPressure();
+  pressure = bmp.readPressure()/100; //hectopascales
   // Print to the Serial Monitor
   Serial.print(temperature);
   Serial.print(",");
