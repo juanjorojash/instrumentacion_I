@@ -18,14 +18,8 @@ void loop() {
   temperature = bmp.readTemperature();
   pressure = bmp.readPressure();
   // Print to the Serial Monitor
-  Serial.print("Temperature: ");
   Serial.print(temperature);
-  Serial.println(" °C");
-
-  Serial.print("Pressure: ");
-  Serial.print(pressure);
-  Serial.println(" hPa");
-
-  Serial.println();
+  Serial.print(",");
+  Serial.println(pressure);
   delay(1000);
 }
