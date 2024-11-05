@@ -12,6 +12,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   if (timer_flag){
     Serial.println("paso 1 segundo");
+    timer_flag = false;
   }
 
 }
