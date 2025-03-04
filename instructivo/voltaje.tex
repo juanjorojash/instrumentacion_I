@@ -42,20 +42,28 @@
         \draw (p.blpin 1) node[above left]{\small 5V};
         \draw (p.blpin 2) node[above left]{\small GND};
         \draw
-        (-4,4)
+        (-4,6)
             to[american potentiometer,n=mypot, l_=0$\sim$\SI{10}{\kilo\ohm},i=$i$]
-        (-4,2) 
+        (-4,4) 
         (mypot.wiper) |- (p.blpin 1)
-        (-4,2)
-            to[R, l_=\SI{200}{\ohm}, v^=$v$]
-        (-4,-1) -- ++(1.5,0)
+        (-4,4)
+            to[R, l_=\SI{4.7}{\kilo\ohm}, v^=$v$]
+        (-4,1) 
+            to[R, l_=\SI{4.7}{\kilo\ohm}, v^=$v_2$]
+        (-4,-2)
+        -- ++(1.8,0)
         |-
         (p.blpin 2)
         ;
         \draw[orange]
-        (-4,1.8) -- ++(1,0)
+        (-4,3.8) -- ++ (1.5,0)
         |-
         (m.blpin 1)
+        ;
+        \draw[brown]
+        (-4,0.8) -- ++ (1.2,0)
+        |-
+        (m.blpin 2)
         ;
         \draw[dashed,blue]
         (-2,6) -- (1.5,6)node[midway, below, align=center]{ARDUINO UNO\\ R4 MINIMA} -- (1.5,-1.5) -- (-2,-1.5) -- cycle;
