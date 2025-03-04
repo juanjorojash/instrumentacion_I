@@ -17,12 +17,9 @@ void setup() {
 }
 
 int a0value = 0;
-float vmeas = 0;
-float cmeas = 0;
 
 void loop() {
   a0value = analogRead(A0);
-
   Serial.print("A0 (10bits): ");
   Serial.println(a0value);
 }
