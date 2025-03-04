@@ -1,0 +1,100 @@
+\chapter{Características generales de instrumentos}
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Utilizar la fuente de tensión en voltaje continuo.
+\item Utilizar un registrador para tomar datos de sensores.
+\item Utilizar sensores para medir corriente y voltaje.
+\item Aplicar los conocimientos relacionados a los instrumentos de medición, para el cálculo de valores tales como: exactitud, precisión, error porcentual, desviación estándar, incertidumbre, repetibilidad.
+\end{itemize}
+
+\section{\mat}
+\begin{itemize}
+\item 1 fuente de corriente continua
+\item 1 interfaz ScienceWorkshop\,\textsuperscript{\textregistered}\,750
+\item 1 sensor de corriente CI-6556
+\item 1 sensor de voltaje UI-5100
+\item 2 Cables de conexión tipo Banana macho-macho
+\end{itemize}
+
+
+\section{\pro}
+\begin{enumerate}
+\item Realice las conexiones del circuito tal y como se indica en la Figura \ref{fig:L1F1}.
+\item Encienda la interfaz ScienceWorshop\,\textsuperscript{\textregistered}\,750 y realice la configuración en Capstone
+\item Configure la toma de datos a una frecuencia de \SI{1}{\hertz}, condición de inicio: ninguna, condición de parada: basada en el tiempo (\SI{21}{\second}) 
+\item Encienda la fuente y colóquela en \SI{0.1}{\volt}
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz} 
+        \draw
+        (0,0) 	
+            to[V, l=$V_f$] 
+        (0,4)
+        	to[short] 
+        (3,4)
+        	to[rmeter, t=A]
+        (3,2) 
+            to[R, l=$R_{sh}$]
+        (3,0)-- (0,0)
+        (3,4) -- (5,4)
+            to[rmeter, t=V] 
+        (5,0) -- (3,0)
+        ;
+        \draw[dashed,blue]
+        (2,3.8) -- (4,3.8) -- (4,0.2) -- (2,0.2) -- (2,3.8);
+    \end{circuitikz}
+    \caption{Medición de corriente y voltaje en un circuito.}
+    \label{fig:L1F1}
+\end{figure}
+
+\item Inicie la toma de datos y proceda a incrementar el valor del voltaje poco a poco de forma que a los 10 segundos no haya sobrepasado los \SI{0.9}{\ampere} luego baje lentamente de hasta llegar a \SI{0.1}{\volt}
+\item Repita la medición tres veces siguiendo el mismo procedimiento, tome en cuenta que los resultados no tienen que ser iguales, complete la Tabla \ref{tab:L1T1}
+\item Calcule indirectamente (Ley de Ohm) para cada caso el valor de $R_{sh}$.
+\item Realice otra tabla con los valores de $R_{sh}$ para cada corrida y grafique los resultados obtenidos.
+\item Para el conjunto de valores de $R_{sh}$, calcule lo siguiente e incluya en una tabla:
+    \begin{itemize}
+        \item El valor promedio, $\overline{R_{sh}}$ 
+        \item La desviación estándar, $\sigma$
+        \item El valor promedio de error relativo tomando \SI{1}{\ohm} como valor real
+        \item El valor de la incertidumbre estándar, $\sigma_x = \sigma / \sqrt{n}$
+        \item La exactitud
+        \item La precisión
+        \item La repetibilidad
+    \end{itemize}
+    
+\item Tome en cuenta lo siguiente:
+    \begin{itemize}
+        \item La exactitud se calculará como el mayor error relativo obtenido en cualquier punto de los datos en todas las corridas de medición.
+        \item La precisión se calculará como la mayor desviación estándar entre todas las corridas de medición.
+        \item La repetibilidad se calculará de la siguiente manera:
+        \begin{equation*}
+            \mathrm{repetibilidad} = \sqrt{\dfrac{\sum_{i=1}^n(\mathrm{error\,absoluto})^2}{n}}
+        \end{equation*}
+    \end{itemize}
+
+
+\section{Resultados}
+
+\begin{table}[H]
+    \centering
+    \caption{Mediciones tomadas a una frecuencia de \SI{1}{\hertz}}
+    \vspace{0.5cm}
+    \begin{tabular}{ccccccc}%
+    \toprule
+    \bfseries &  \multicolumn{2}{c}{\textbf{corrida 1}} & \multicolumn{2}{c}{\textbf{corrida 2}} & \multicolumn{2}{c}{\textbf{corrida 3}}\\
+    \bfseries tiempo & \bfseries corriente & \bfseries voltaje & \bfseries corriente & \bfseries voltaje & \bfseries corriente & \bfseries voltaje\\
+    {[\si{\second}]} & [\si{\ampere}] & [\si{\volt}] & [\si{\ampere}] & [\si{\volt}] & [\si{\ampere}] & [\si{\volt}]\\
+    \midrule
+    \csvreader[
+        late after line=\\,
+        late after last line=,
+        before reading={\catcode`\#=12},
+        after reading={\catcode`\#=6}]%
+        {data.csv}{1=\t,2=\ci,3=\vi,4=\cii,5=\vii,6=\ciii,7=\viii}{\t &\ci & \vi &\cii & \vii &\ciii & \viii}\\
+        \bottomrule
+    \end{tabular}
+    \label{tab:L1T1}
+\end{table}
+\end{enumerate}
