@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage[margin=1in]{geometry} 
-\input{comunes/preamble}
+\input{../comunes/preamble.tex}
 \usepackage{lastpage}
 \usepackage{fancyhdr}
 \usepackage{enumitem}
@@ -15,117 +15,23 @@
 \cfoot{\thepage\ de \pageref{LastPage}}
 \setlength{\parindent}{0em}
 
-\begin{enumerate}[label=(\Alph*)]
-
-\item Investigue el principio de funcionamiento de la Balance de Kibble, y comente su importancia en la redefinición del kilogramo.
-
-\item El Sistema Internacional de Unidades constituido por siete unidades básicas que definen a las correspondientes magnitudes físicas fundamentales: metro, kilogramo, segundo, kelvin, amperio, mol y candela. Investigue cómo ha evolucionado la definición de cada una de las unidade básicas desde su incorporación al Sistema hasta el día de hoy. 
-
-\item Asuma que cuenta con los siguientes equipos
-\begin{itemize}
-    \item Una fuente de corriente directa configurable para entregar voltaje constante o corriente constante según se requiera. 
-    \item Un equipo registrador de mediciones con conexiones para varios tipos de sensores
-    \item Un sensor de corriente con resistencia interna $R_{sh}$ conectado al equipo registrador
-    \item Un sensor de voltaje conectado al equipo registrador
-\end{itemize}
-El \href{https://www.ee.iitb.ac.in/~spilab/Tips/ansii_graphic_symbols_for_electrical_and_electronics_daigrams_1993.pdf}{IEEE Std 315-1975} define la forma en que se representan los diagramas eléctricos, en base a ese estándar se diagrama el circuito tal como se muestra en la Figura \ref{fig:circuito}. Este diagrama contiene varias inexactitudes, entre ellas:
-\begin{itemize}
-    \item No existe una representación de un registrador de mediciones
-    \item El sensor de corriente se representa como un amperímetro y no hay nada que indique su conexión con el registrador
-    \item El sensor de voltaje se representa como un voltímetro y no hay nada que indique su conexión con el registrador
-\end{itemize}
-
+A partir del diagrama incluido en la Figura \ref{t1f1} y usando el estándar \href{http://integrated.cc/cse/Instrumentation_Symbols_and_Identification.pdf}{ANSI/ISA-5.1-2009}.
+Realice los siguiente:
+\begin{enumerate}
+    \item Para cada uno de los elementos de la figura que estan incluidos en el estándar incluya*: 
+    \begin{enumerate}
+        \item Símbolo
+        \item Breve descripción
+        \item Variable a medir o controlar en caso de instrumentos de medición o control
+        \item Tabla de la norma donde aparece. Por ejemplo: Tabla 5.2.4        
+    \end{enumerate}
+    \item Indique al menos dos mejoras que usted incluiría en el digrama según el estándar
+\end{enumerate}
 \begin{figure}[H]
     \centering
-    \begin{circuitikz} 
-        \draw
-        (0,0) 	
-            to[V, l=$V_f$] 
-        (0,4)
-        	to[short] 
-        (3,4)
-        	to[rmeter, t=A]
-        (3,2) 
-            to[R, l=$R_{sh}$]
-        (3,0)-- (0,0)
-        (3,4) -- (5,4)
-            to[rmeter, t=V] 
-        (5,0) -- (3,0)
-        ;
-    \end{circuitikz}
-    \caption{Medición de corriente y voltaje en un circuito.}
-    \label{fig:circuito}
+    \includegraphics[width = 0.6\linewidth]{fig/diagrama1.png}
+    \caption{Separador de tres fases}
+    \label{t1f1}
 \end{figure}
-
-Tome en cuenta lo siguiente:
-\begin{itemize}
-    \item La exactitud se calculará como el mayor error relativo obtenido en cualquier punto de de datos en todas las corridas de medición, en este caso solo hay una corrida.
-    \item La precisión se calculará como la mayor desviación estándar entre todas las corridas de medición, en este caso solo hay una corrida.
-    \item La repetibilidad se calculará de la siguiente manera:
-    \begin{equation*}
-        \mathrm{repetibilidad} = \sqrt{\dfrac{\sum_{i=1}^n(\mathrm{error\,absoluto})^2}{n}}
-    \end{equation*}
-\end{itemize}
-\newpage
-\noindent\textbf{Determine:}
-\begin{enumerate}
-    \item Usando el estándar \href{http://integrated.cc/cse/Instrumentation_Symbols_and_Identification.pdf}{ANSI/ISA-5.1-2009} realice un diagrama que describa de mejor manera el proceso de medición descrito. El diagrama básico de conexión debe ser como el mostrado en la Figura \ref{fig:simple}. El resto del diagrama debe realizarlo en base a ANSI/ISA-5.1-2009
-    \begin{figure}[H]
-        \centering
-        \begin{circuitikz} 
-            \draw
-            (0,0) 	
-                to[V, l=$V_f$] 
-            (0,3)
-            	to
-            (3,3)
-                to[R, l=$R_{sh}$]
-            (3,0)-- (0,0)
-            ;
-        \end{circuitikz}
-        \caption{Medición de corriente y voltaje en un circuito.}
-        \label{fig:simple}
-    \end{figure}
-    
-    \begin{table}[H]
-        \centering
-        \caption{Mediciones tomadas a una frecuencia de \SI{1}{\hertz}}
-        \vspace{0.5cm}
-        \begin{tabular}{ccc}%
-        \toprule
-        \bfseries tiempo & \bfseries corriente & \bfseries voltaje \\
-        {[\si{\second}]} & [\si{\ampere}] & [\si{\volt}]\\
-        %\[\si{\second}\] & \[\si{\ampere}\] & \[\si{\volt}\] \\
-        \midrule
-        \csvreader[
-            late after line=\\,
-            late after last line=,
-            before reading={\catcode`\#=12},
-            after reading={\catcode`\#=6}]%
-            {data.csv}{1=\time1,2=\current1,3=\voltage1}{\time1 &\current1 & \voltage1}\\
-            \bottomrule
-        \end{tabular}
-        \label{tab:datos}
-    \end{table}
-
-    \item Se realizó una medición por segundo durante 20 segundos usando el proceso de medición descrito y se obtuvieron los datos mostrados en la Tabla \ref{tab:datos}. Calcule el valor de $R_{sh}$ para cada uno de los $n$ puntos de datos y realice una tabla que incluya las tres columnas de la Tabla \ref{tab:datos} y una tercera columna para los valores de $R_{sh}$.
-    \item Para el conjunto de valores de $R_{sh}$, calcule lo siguiente e incluya en una tabla:
-    \begin{enumerate}
-        \item El valor promedio, $\overline{R_{sh}}$ 
-        \item La desviación estándar, $\sigma$
-        \item El valor promedio de error relativo tomando \SI{1}{\ohm} como valor real
-        \item El valor de la incertidumbre estándar, $\sigma_x = \sigma / \sqrt{n}$
-        \item La exactitud
-        \item La precisión
-        \item La repetibilidad
-    \end{enumerate}
-\end{enumerate}
-\end{enumerate}
-
-
-
-
-% \bibliographystyle{IEEEtran}
-% \bibliography{ref_tareas}
-
+* Si algún elemento aparece varias veces se debe incluir una sola vez
 \end{document}
