@@ -1,0 +1,83 @@
+\chapter{Mediciones de temperatura}
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Utilizar un microcontrolador para realizar mediciones de temperatura.
+\item Realizar un algoritmo básico para obtener mediciones e imprimirlas en la terminal.
+\end{itemize}
+
+\section{\mat}
+\textbf{A suministrar por la Escuela:}
+\begin{itemize}
+\item 1 Arduino UNO R4 MINIMA
+\item 1 termistor de \SI{10}{\kilo\ohm} \href{https://www.tdk-electronics.tdk.com/inf/50/db/ntc/NTC_Leaded_disks_K164.pdf}{NTC} marca TDK 
+\item 1 breadboard
+\item Cables de conexión macho-macho
+\end{itemize}
+
+\section{\pro}
+\begin{enumerate}
+
+\item Arme el circuito tal como se muestra en la Figura \ref{fig:L3F1}. 
+
+\begin{figure}[H]
+    \tikzset{dig/.style={muxdemux, muxdemux def={Lh=5, Rh=5, NL=2, NB=0, NR=0, w=2}}}
+    \centering
+    \begin{circuitikz} 
+        \draw 
+        (0,3.5) 
+        node[dig] (p){\rotatebox{90}{\small POWER}}
+        (0,0) 
+        node[dig] (m){\rotatebox{90}{\small ANALOG IN}};
+        \draw (m.blpin 1) node[above left]{\small A0};
+        \draw (m.blpin 2) node[above left]{\small A1};
+        \draw (p.blpin 1) node[above left]{\small 5V};
+        \draw (p.blpin 2) node[above left]{\small GND};
+        \draw
+        (p.blpin 1)
+        -|
+        (-4,4)
+            to[R, l_=$R_0$]
+        (-4,1) 
+            to[sR, l_=$R$, v^=$v$]
+        (-4,-2)
+        -- ++(1.8,0)
+        |-
+        (p.blpin 2)
+        ;
+        \draw[orange]
+        (-4,0.8) -- ++ (1.2,0)
+        |-
+        (m.blpin 1)
+        ;
+        \draw[dashed,blue]
+        (-2,6) -- (1.5,6)node[midway, below, align=center]{ARDUINO UNO\\ R4 MINIMA} -- (1.5,-1.5) -- (-2,-1.5) -- cycle;
+    \end{circuitikz}
+    \caption{Conexión de circuito para el Laboratorio 3}
+    \label{fig:L3F1}
+\end{figure}
+\item Usando la formula del divisor de voltaje y simplificando se llega a que:
+\begin{equation*}
+    \dfrac{R_0}{R} = \dfrac{5}{v} - 1
+\end{equation*}
+\item Realice un sketch de Arduino IDE que le permita obtener el valor de R
+\item Busque en la \href{https://www.tdk-electronics.tdk.com/inf/50/db/ntc/NTC_Leaded_disks_K164.pdf}{hoja de datos} del termistor el valor de $B_{25/100}$. El valor de la temperatura se puede aproximar usando la siguiente ecuación
+\begin{equation*}
+    \dfrac{1}{T}=\dfrac{1}{T_R} + \dfrac{1}{B_{25/100}} \ln{\left( \dfrac{R}{R_R} \right)}
+\end{equation*}
+donde $T$ es la temperatura del termistor en \si{\kelvin}, $T_R$ es la temperatura de referencia en \si{\kelvin} y $R_R$ es la resistencia de referencia en \si{\ohm}
+\item Realice una función en el mismo sketch en Arduino IDE que permita calcular el valor de $T$ a partir de los valores de $B_{25/100}$, $T_R$, $R_R$ y $R$
+\item Suponga que su sensor será utilizado para medir la temperatura de la piel (\SI{20}{\celsius} a \SI{40}{\celsius}), para reducir el error en la medición utilice lo mostrado en la sección 2.3 de \href{https://www.tdk-electronics.tdk.com/download/2999750/740594dd4ec109808826d1b5c774b3f6/ntc-thermistors-readout-trimming-an.pdf}{este documento} para determinar $C0$, $C1$ y $C3$
+\item Realice una función en el mismo sketch en Arduino IDE que permita calcular el valor de $T$ a partir de los valores de $C_0$, $C_1$, $C_3$ y $R$ usando la ecuación de Steinhart-Hart
+\item Imprima en la terminal los valores de $v$, $T_1$ y $T_2$ y léalos usando un script de Python. Realice tres mediciones de 20 segundos cada una en las que toque el sensor para provocar cambios en la temperatura, deje enfiar entre cada medición. 
+\item Usando el código del sensor (B57164K0103) genere una tabla de valores de resistencia usando este \href{https://tools.tdk-electronics.tdk.com/ntc/}{software}, use $\Delta R / R$ de 5\% y \SI{1}{\celsius} de resolución, exporte los datos.
+\item Utilizando Python y los datos obtenidos en las tres mediciones calcule $T_3$ para cada valor de $R$ usando interpolación lineal entre los puntos obtenidos por medio del software 
+\item Para cada una de las mediciones realice una gráfica que muestre $T_1$, $T_2$ y $T_3$
+\section{Análisis}
+\begin{itemize}
+    \item ¿Cual le parece que es el mejor método de aproximación? ¿Porqué?
+    \item ¿Que tan importante es la precisión de la resistencia $R_0$?
+    \item ¿Que tan importante es la precisión de la referencia del ADC?
+\end{itemize}
+
+\end{enumerate}
