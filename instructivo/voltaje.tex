@@ -47,9 +47,9 @@
         (-4,4) 
         (mypot.wiper) |- (p.blpin 1)
         (-4,4)
-            to[R, l_=\SI{4.7}{\kilo\ohm}, v^=$v$]
+            to[R, l_=\SI{4.7}{\kilo\ohm}, v^=$v_1$]
         (-4,1) 
-            to[R, l_=\SI{4.7}{\kilo\ohm}, v^=$v_2$]
+            to[R, l_=\SI{2.2}{\kilo\ohm}, v^=$v_2$]
         (-4,-2)
         -- ++(1.8,0)
         |-
@@ -78,18 +78,22 @@
 }
 
 \item Modifique el programa de forma que se imprima \lstinline{a0value} una vez por segundo aproximadamente.
-\item Modifique el programa de forma que se calcule y se imprima el voltaje $v$ que se muestra en la Figura \ref{fig:L1F1}.
+\item Modifique el programa de forma que se calcule y se imprima el voltaje $v_1$ y el voltaje $v_2$ que se muestra en la Figura \ref{fig:L1F1}.
 \item Modifique el programa de forma que se incremente una variable con el valor de los segundos y se imprima.
-\item Modifique el programa de forma que se imprima el valor de los segundos y el valor del voltaje $v$ ambos separados por comas y con un salto de linea después de cada medición.
+\item Calcule $i$ usando:
+\begin{equation*}
+    i = \dfrac{v_2}{\SI{2.2}{\kilo\ohm}}
+\end{equation*}
+\item Modifique el programa de forma que se imprima el valor de los segundos, el valor del voltaje $v_1$, el valor del voltaje $v_2$, y el valor calculado de $i$, todos separados por comas y con un salto de linea después de cada medición.
 \item Modifique el programa para que cuando se cumplan 20 segundos se detenga la ejecución
 \item Realice una medición de 20 segundos y modifique suave pero constantemente el valor del potenciómetro, después de cada medición copie los valores obtenidos en un archivo $.csv$
 \item Repita la medición tres veces siguiendo el mismo procedimiento, tome en cuenta que los resultados no tienen que ser iguales, complete la Tabla \ref{tab:L1T1}
-\item Calcule indirectamente (Ley de Ohm) para cada caso el valor de $i$.
-\item Para el conjunto de valores de $i$, calcule lo siguiente e incluya en una tabla:
+\item Calcule indirectamente (Ley de Ohm) para cada caso el valor de $R$.
+\item Para el conjunto de valores de $R$, calcule lo siguiente e incluya en una tabla:
     \begin{itemize}
-        \item El valor promedio, $\overline{i}$ 
+        \item El valor promedio, $\overline{R}$ 
         \item La desviación estándar, $\sigma$
-        % \item El valor promedio de error relativo tomando \SI{1}{\ohm} como valor real
+        \item El valor promedio de error relativo tomando \SI{4.7}{\kilo\ohm} como valor real
         \item El valor de la incertidumbre estándar, $\sigma_x = \sigma / \sqrt{n}$
         \item La exactitud
         \item La precisión
@@ -116,7 +120,7 @@
     \begin{tabular}{ccccccc}%
     \toprule
     \bfseries &  \multicolumn{2}{c}{\textbf{corrida 1}} & \multicolumn{2}{c}{\textbf{corrida 2}} & \multicolumn{2}{c}{\textbf{corrida 3}}\\
-    \bfseries tiempo & \bfseries corriente & \bfseries voltaje & \bfseries corriente & \bfseries voltaje & \bfseries corriente & \bfseries voltaje\\
+    \bfseries $t$ & \bfseries $i$ & \bfseries $v_1$ & \bfseries $i$ & \bfseries $v_1$ & \bfseries $i$ & \bfseries $v_1$\\
     {[\si{\second}]} & [\si{\ampere}] & [\si{\volt}] & [\si{\ampere}] & [\si{\volt}] & [\si{\ampere}] & [\si{\volt}]\\
     \midrule
     \csvreader[

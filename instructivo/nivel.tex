@@ -1,25 +1,26 @@
-\chapter{Mediciones de presión}
+\chapter{Mediciones de nivel}
 \section{\obj}
 \capacidad
 \begin{itemize}
-\item Utilizar un sensor para medir presión absoluta.
-\item Analizar la relación fuerza-presión.
+\item Utilizar un sensor para medir nivel.
+\item Determinar la curva de calibración para medición de volumen.
 \end{itemize}
 
 \section{\mat}
 \begin{itemize}
 \item 1 Arduino UNO R4 MINIMA
-\item 1 sensor digital de presión BMP280
-\item 1 mini breadboard de 170 pines
-\item Jumpers macho-macho
+\item 1 sensor ultrasónico HC-SR04
+\item 1 mini breadboard de 55 pines
+\item 1 beaker de 250 ml
+\item Jumpers macho-macho y hembra-hembra
 \end{itemize}
 
 \section{Actividad 1}
 \subsection{\pro}
 \begin{enumerate}
-    \item Conecte el sensor BMP280 tal como se muestra en la Figura \ref{fig:pres1}
+    \item Conecte el sensor HC-SR04 tal como se muestra en la Figura \ref{fig:nive1}
     \item Copie el siguiente código en el IDE de Arduino (el codigo se puede encontrar en: \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/algoritmos/BMP280/BMP280_lib/BMP280_lib.ino}{GitHub})
-    \lstinputlisting[language=Arduino,numbers=none]{algoritmos/BMP280/BMP280_lib/BMP280_lib.ino}  
+    \lstinputlisting[language=Arduino,numbers=none]{algoritmos/nivel/nivel.ino}  
     \item Analice cada linea de código y cuando entienda su funcionamiento corra el \emph{sketch} usando el botón \emph{Upload}
     \item Haga contacto con el encapsulado del sensor de forma que su dedos calienten el sensor, observe como cambia el valor en la terminal. 
     \item Modifique el programa de forma que lo que se imprima en la terminal sea algo como esto:
@@ -81,8 +82,8 @@
         \draw[dashed,blue]
         (-2.5,6) -- (1,6)node[midway, below]{UNO R4 MINIMA} -- (1,-1.5) -- (-2.5,-1.5) -- cycle;
     \end{circuitikz}
-    \caption{Conexión de sensor de presión absoluta BMP280}
-    \label{fig:pres1}
+    \caption{Conexión de sensor ultrasónico de distancia}
+    \label{fig:nive1}
 \end{figure}
 
 \subsection{Análisis}
