@@ -3,7 +3,7 @@
 \input{comunes/preamble}
 \title{Instrumentación I: \\ \emph{Introducción a la }\\ \emph{instrumentación industrial.} \\ \emph{Primera sesión}}
 \author{
-    Juan J. Rojas, Hugo Sanchez Ortiz
+    Juan J. Rojas
 }
 \institute{Instituto Tecnológico de Costa Rica}
 \date{\today}
@@ -17,7 +17,7 @@
 \begin{frame}{Señales}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.6\textwidth}
-        Cantidad física que varia con una o mas variables independientes y que porta información relevante.\\[8pt]
+        Una \textbf{señal} es la representación de una medición de una magnitud física que varía con una o más variables independientes y que porta información relevante.\\[8pt]
         Características: 
             \begin{itemize}
                 \item Escalar o vectorial 
@@ -78,7 +78,7 @@
                         x label style={anchor=west},
                         y label style={anchor=south},
                         ]
-                        \addplot[color=blue,mark=none,thick] {rand}
+                        \addplot[color=red,mark=none,thick] {rand}
                     	;
                     \end{axis}
                 \draw[\blackandwhite] (-0.5,-3.2) rectangle (4,2.5);
@@ -88,8 +88,8 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Estímulo}
-Es la cantidad, propiedad o condición que se desea medir.\\[8pt]
+\begin{frame}{Estímulos}
+Magnitud física, del entorno o del sistema en estudio, que actúa sobre un sensor y que puede ser medida para generar una señal.\\[8pt]
 Algunos ejemplos de estímulos: 
     \begin{itemize}
         \item Aceleración 
@@ -131,7 +131,7 @@ Algunos ejemplos de estímulos:
     \end{columns}
 \end{frame}
 
-\begin{frame}{Modelos}
+\begin{frame}{Modelos y simulaciones}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.5\textwidth}
         Un modelo es una abstracción matemática de un sistema.\\[8pt]
@@ -140,6 +140,8 @@ Algunos ejemplos de estímulos:
             \item Es una simplificación del sistema real
             \item Solo es valido en ciertas condiciones y/o rangos
         \end{itemize}
+        Una simulación es un experimento que se realiza en el modelo de un sistema.
+        
         \end{column}
         \begin{column}{0.5\textwidth}
             \begin{center}

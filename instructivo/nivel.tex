@@ -19,47 +19,38 @@
 \subsection{\pro}
 \begin{enumerate}
     \item Conecte el sensor HC-SR04 tal como se muestra en la Figura \ref{fig:nive1}
-    \item Copie el siguiente código en el IDE de Arduino (el codigo se puede encontrar en: \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/algoritmos/BMP280/BMP280_lib/BMP280_lib.ino}{GitHub})
+    \item Copie el siguiente código en el IDE de Arduino (el codigo se puede encontrar en: \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/algoritmos/nivel/nivel.ino}{GitHub})
     \lstinputlisting[language=Arduino,numbers=none]{algoritmos/nivel/nivel.ino}  
     \item Analice cada linea de código y cuando entienda su funcionamiento corra el \emph{sketch} usando el botón \emph{Upload}
-    \item Haga contacto con el encapsulado del sensor de forma que su dedos calienten el sensor, observe como cambia el valor en la terminal. 
-    \item Modifique el programa de forma que lo que se imprima en la terminal sea algo como esto:
-\begin{verbatim}
-24.8,806.1
-24.7,806.3
-\end{verbatim}
-    \item Instale las librerías \emph{pyserial}, \emph{matplotlib}, \emph{drawnow} y \emph{datetime} en Python para ser utilizadas luego.
-    \item Copie el siguiente código en su IDE de Python. (el codigo se puede encontrar en: \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/algoritmos/BMP280/BMP280_lib/serial_read.py}{GitHub})
-    \lstinputlisting[language=Python,numbers=none]{algoritmos/BMP280/BMP280_lib/serial_read.py}
-    \item Modifique el puerto COM para que coincida con el puerto en el que esta conectado el Arduino UNO R4 MINIMA
-    \item Modifique el código para que cada toma de datos se almacene en un archivo $.csv$ y para que se genere una gráfica en tiempo real.
-    \item Realice tres tomas de datos de 60 segundos cada una
+    \item Fije el sensor en el aditamento plástico y coloquelo en la parte superior del beaker  
+    \item Realice una medición de distancia para poder calibrar el valor cero.
+    \item Calibre el sensor en cero de forma que pueda medir la altura desde la base el beaker
+    \item Llene el beaker hasta 50ml, tome 10 datos y utilice el promedio para relacionar altura y volumen en ese punto
+    \item Llene el beaker hasta 150ml, tome 10 datos y utilice el promedio para relacionar altura y volumen en ese punto
+    \item Calcule la curva de calibración de volumen usando esos dos puntos
+    \item Vacie el beaker
+    \item Llene el beaker a 50, 100, 150 y 200ml y en cada uno de esos puntos tome el promedio de 10 datos de volumen como valor medido
 \end{enumerate}
 
 \begin{figure}[H]
     \tikzset{comm/.style={muxdemux, muxdemux def={Lh=5, Rh=5, NL=2, NB=0, NR=0, w=2}}}
-    \tikzset{BMP280/.style={muxdemux, muxdemux def={Lh=5, Rh=5, NL=0, NB=0, NR=6, w=2}}}
+    \tikzset{sensor/.style={muxdemux, muxdemux def={Lh=5, Rh=5, NL=0, NB=0, NR=4, w=2}}}
     \centering
     \begin{circuitikz} 
-        \draw (0,3.5) node[comm] (m){\rotatebox{90}{\small communication}}
+        \draw (0,3.5) node[comm] (m){\rotatebox{90}{\small digital}}
         (0,0) node[comm] (p){\rotatebox{90}{\small power}}
         ;
-        \draw (m.blpin 1) node[above left]{\small SDA};
-        \draw (m.blpin 2) node[above left]{\small SCL};
+        \draw (m.blpin 1) node[above left]{\small 9};
+        \draw (m.blpin 2) node[above left]{\small 10};
         \draw (p.blpin 1) node[above left]{\small GND};
-        \draw (p.blpin 2) node[above left]{\small +3V3};
-        \draw (-5,-3) node[BMP280,rotate=90] (s){\rotatebox{-90}{\small BMP280}}
-        (s.brpin 1) node[above right,rotate=90]{\scriptsize SDO}
-        (s.brpin 2) node[above right,rotate=90]{\scriptsize CSB}
-        (s.brpin 3) node[above right,rotate=90]{\scriptsize SDA}
-        (s.brpin 4) node[above right,rotate=90]{\scriptsize SCL}
-        (s.brpin 5) node[above right,rotate=90]{\scriptsize GND}
-        (s.brpin 6) node[above right,rotate=90]{\scriptsize VCC}
+        \draw (p.blpin 2) node[above left]{\small 5V};
+        \draw (-5,-3) node[sensor,rotate=90] (s){\rotatebox{-90}{\small HC-SR04}}
+        (s.brpin 1) node[above right,rotate=90]{\scriptsize VCC}
+        (s.brpin 2) node[above right,rotate=90]{\scriptsize Trig}
+        (s.brpin 3) node[above right,rotate=90]{\scriptsize Echo}
+        (s.brpin 4) node[above right,rotate=90]{\scriptsize GND}
         ;
         \draw[blue]
-        (p.blpin 2)
-        -|
-        (s.brpin 6)
         (p.blpin 2)
         -|
         (s.brpin 1)
@@ -67,17 +58,17 @@
         \draw[green]
         (p.blpin 1)
         -|
-        (s.brpin 5)
+        (s.brpin 4)
         ;
         \draw[red]
         (m.blpin 2)
-        -| 
-        (s.brpin 4)
+        -|
+        (s.brpin 3)
         ;
         \draw[brown]
         (m.blpin 1)
         -| 
-        (s.brpin 3)
+        (s.brpin 2)
         ;
         \draw[dashed,blue]
         (-2.5,6) -- (1,6)node[midway, below]{UNO R4 MINIMA} -- (1,-1.5) -- (-2.5,-1.5) -- cycle;
@@ -88,18 +79,17 @@
 
 \subsection{Análisis}
 \begin{enumerate}
-    \item Determine la presión atmosférica local usando el promedio de las mediciones que las tres tomas de datos, incluya la precisión de la medición 
-    \item Determine la altitud local usando el valor de presión calculado ¿Es este valor cercano al esperado para la altitud del campus (1407 msnm)?
+    \item Compare los valores medidos con los valores teóricos para 50, 100, 150 y 200ml 
+    \item Determine la incertidumbre aproximada de la medición de volumen
 \end{enumerate}
 
 \section{Actividad 2}
 \subsection{\pro}
 \begin{enumerate}
-    \item Usando la misma configuración anterior, realice una nueva toma de datos de 60s en la que lleve el sensor lo mas cerca del piso posible y luego lo mas alto posible lentamente y repita durante los 60 segundos de la toma
+    \item Usando la misma configuración anterior, realice una nueva toma de datos de 15 segundos en la que inicie con el beaker vacío y lo llene hasta aproximadamente 200ml
 \end{enumerate}
 \subsection{Análisis}
 \begin{enumerate}
-    \item ¿Se puede observar el cambio de altura en las mediciones?
-    \item Según la hoja de datos del sensor ¿Debería detectar estos cambios?
-    \item ¿El tiempo entre mediciones es realmente un segundo?
+    \item Incluya una gráfica del proceso de llenado
+    \item ¿Se observar algún tipo de distorsión en la medición? Si es así, ¿a que se debe?
 \end{enumerate}

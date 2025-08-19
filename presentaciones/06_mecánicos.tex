@@ -1,0 +1,304 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Bruno}
+\input{comunes/preamble}
+\title{Instrumentación I: \\ \emph{Transductores mecánicos}}
+\author{
+    Juan J. Rojas
+}
+\institute{Instituto Tecnológico de Costa Rica}
+\date{\today}
+\background{fig/background.jpg}
+\begin{document}
+\input{comunes/postamble}
+\maketitle
+
+\newcommand{\blackandwhite}{white} %change this at the end
+
+\begin{frame}[t]{Deformación unitaria (strain)}
+    Cambio en longitud respecto a la longitud original al aplicar una fuerza
+    \vspace{0.5cm}
+    \begin{equation*}
+        \varepsilon = \dfrac{\Delta L }{L_0}
+    \end{equation*}
+    donde:\\
+    $\epsilon$ es la deformación unitaria, adimensional,\\
+    $\Delta L$ es el cambio en la longitud después de aplicar la fuerza, y\\ 
+    $L_0$ es la longitud original antes de aplicar la fuerza
+\end{frame}
+
+\begin{frame}[t]{Esfuezo (stress)}
+    Presión interna en un material
+    \vspace{0.5cm}
+    \begin{equation*}
+        \sigma = \dfrac{F}{A}
+    \end{equation*}
+    donde:\\
+    $\sigma$ es el esfuerzo en \si{\newton\meter^{-2}}\\
+    $F$ es la fuerza en \si{\newton}, y\\ 
+    $A$ es el área trasversal en  \si{\meter^{2}}
+\end{frame}
+
+\begin{frame}[t]{Módulo de elasticidad (Young module)}
+    Relación entre esfuerzo y deformación en una dirección. Usando esto podemos escribir la Ley de Hooke
+    \vspace{0.5cm}
+    \begin{equation*}
+        \sigma = E\varepsilon
+    \end{equation*}
+    donde:\\
+    $\sigma$ es el esfuerzo en \si{\newton\meter^{-2}}\\
+    $E$ es el módulo de elasticidad en \si{\newton\meter^{-2}}, y\\ 
+    $\epsilon$ es la deformación unitaria, adimensional,\\
+\end{frame}
+
+\begin{frame}{¿Como medir fuerza?}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item Balanceando la fuerza a medir con la fuerza de una masa estándar
+                \item Midiendo la aceleración que la fuerza a medir imprime sobre un masa conocida
+                \item Balanceando la fuerza a medir con una fuerza generada por medios electromagnéticos
+                \item Convirtiendo la fuerza en presión de fluido y midiendo esta presión
+                \item Midiendo la deformación producida por la fuerza a medir en un elemento elástico
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \centering
+            \includegraphics[width = 0.8\linewidth]{fig/Fuerza_Vibracion/fuerza1.JPG}
+            \includegraphics[width = 0.8\linewidth]{fig/Fuerza_Vibracion/fuerza2.JPG}
+            \vspace{0.5cm}
+            
+            \tiny{Tomado de \cite{Fraden_2016}}
+            
+            \tiny{LVDT: linear variable differential transformer}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Tipos de sensores de fuerza}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item En la mayoría de los casos el sensor no es directo sino complejo
+                \item Por ejemplo se puede hacer transducción de fuerza a distancia y luego medir la distancia con un sensor directo, como en el ejemplo de arriba. 
+                \item Se puede hacer transducción de fuerza a presión y medir la presión con un sensor directo, como en el ejemplo de abajo. 
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \centering
+            \includegraphics[width = 0.8\linewidth]{fig/Fuerza_Vibracion/fuerza1.JPG}
+            \includegraphics[width = 0.8\linewidth]{fig/Fuerza_Vibracion/fuerza2.JPG}
+            \vspace{0.5cm}
+            
+            \tiny{Tomado de \cite{Fraden_2016}}
+            
+            \tiny{LVDT: linear variable differential transformer}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Galgas extensométricas}
+    La resistencia es una función de la deformación aplicada.
+    La relación entre la resistencia y la fuerza aplicada está definida por:
+    \begin{equation*}
+        \dfrac{dR}{R} = g \varepsilon
+    \end{equation*}
+    donde:\\
+    $g$ es la sensibilidad o factor de galga, adimensional\\
+    $\varepsilon$ es la deformación unitaria, adimensional, y\\
+    $R$ es la resistencia en $\si{\ohm}$
+\end{frame}
+
+\begin{frame}{Galgas extensométricas: tipo lámina}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.55\textwidth}
+            \begin{tabular}{ll}
+            \toprule
+            \textbf{Parámetro} & \textbf{Valor} \\
+            \midrule
+            Modelo & BF350-3 AA \\
+            Resistencia & \SI{350}{\ohm} \\
+            Material base & Fenólico \\
+            Espesor & \SI{32}{\micro\meter} \\
+            Material res. & Constantán \\
+            Resistencia aisl. & \SI{10}{\kilo\ohm}\\
+            Sensibilidad ($g$) & $2.1 \pm 1\%$\\
+            Coeficiente transv & $0.4\%$ \\
+            Deformación max & $2.0\%$ \\
+            Tamaño ($\si{\milli\meter}$) & $7.1 \times 4.5$ \\
+            % Temperatura de operación & -30$^\circ$C $\sim$ +80$^\circ$C \\
+            % Compensación térmica & Aluminio \\
+            % Coeficiente de compensación térmica & 9, 11, 16, 23, 27 \\
+            \bottomrule
+            \end{tabular}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+        \centering
+        \includegraphics[width = \linewidth]{fig/06_mecánicos/foil_strain_gauge.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Galgas extensométricas: semiconductor}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.55\textwidth}
+            \begin{tabular}{ll}
+            \toprule
+            \textbf{Parámetro} & \textbf{Valor} \\
+            \midrule
+            Resistencia & desconocida \\
+            Material base & SiO \\
+            Espesor & \SI{10}{\micro\meter} \\
+            Material res. & Si \\
+            Sensibilidad ($g$) & $103$ c/u\\
+            Tamaño ($\si{\micro\meter}$) & $15 \times 300$ \\
+            % Temperatura de operación & -30$^\circ$C $\sim$ +80$^\circ$C \\
+            % Compensación térmica & Aluminio \\
+            % Coeficiente de compensación térmica & 9, 11, 16, 23, 27 \\
+            \bottomrule
+            \end{tabular}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+        \centering
+        \includegraphics[width = 0.8\linewidth]{fig/06_mecánicos/mems_strain_gauge.png}
+        \includegraphics[width = \linewidth]{fig/06_mecánicos/mems_strain_fig.png}
+        \tiny{Han, Ji-Hoon, Sung Joon Min, Joon Hyub Kim, and Nam Ki Min. 2023. "Reciprocating Arc Silicon Strain Gauges" Sensors 23, no. 3: 1381. https://doi.org/10.3390/s23031381}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% \begin{frame}[t]{Celdas de carga}
+%     La resistencia es una función de la deformación aplicada.
+%     La relación entre la resistencia y la fuerza aplicada está definida por el effecto \emph{piezorresistivo}:
+%     \begin{equation*}
+%         \dfrac{dR}{R} = g \varepsilon
+%     \end{equation*}
+%     donde:\\
+%     $g$ es la sensibilidad o factor de galga, adimensional\\
+%     $\varepsilon$ es la deformación unitaria, adimensional, y\\
+%     $R$ es la resistencia en $\si{\ohm}$
+% \end{frame}
+
+\begin{frame}{Sensores magnetoelásticos}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item La inducción magnética $\mathbf{B}$ y el campo magnético $\mathbf{H}$ están relacionados por:
+                \begin{equation*}
+                    \mathbf{B} = \mu \mathbf{H}
+                \end{equation*}
+                donde $\mu$ es la permeabilidad magnética del material en \si{\henry/\meter}
+                \item En un sensor magnetoelástico se mide la diferencia en la permeabilidad magnetica del material al ser sometido a una fuerza externa
+
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.40\textwidth}
+            \centering
+            \includegraphics[width = 0.5\linewidth]{fig/Fuerza_Vibracion/magnetoelastico.JPG}
+            
+            \tiny{Tomado de \cite{pallas2012sensors}}
+            
+            \includegraphics[width = 0.6\linewidth]{fig/Fuerza_Vibracion/Torque-Sensor.png}
+            
+            \tiny{Tomado de \href{https://www.methodesensor.com/industries/industrial/torque-sensing/}{acá}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Acelerómetros}
+    \begin{itemize}
+        \item La vibración es un fenómeno mecánico dinámico en el que existe un movimiento oscilatorio periódico en torno a una posición de referencia 
+        \item En algunos casos se puede medir aceleración no vibratoria como la que se obtiene en un impacto o un movimiento lineal
+    \end{itemize}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item Los sensores que se utilizan para medir aceleración consisten en un sistema masa resorte amortiguado
+                \item El acelerómetro debe ser usado en la parte plana de su curva de respuesta, lejos de su frecuencia natural
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \centering
+            \includegraphics[width = 1\linewidth]{fig/Fuerza_Vibracion/acel.JPG}
+
+            \tiny{Tomado de \cite{Fraden_2016}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Acelerómetros capacitivos}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.65\textwidth}
+            \begin{itemize}
+                \item Estos sensores consisten de una placa estática y otra placa que esta conectada a una masa inercial, estas dos placas forman un capacitor
+                \item La membrana es a su vez la masa inercial, cuando se mueve modifica la capacitancia y esto se relaciona con la aceleración
+                \item Típicamente se integran dos capacitores en un solo sensor para incrementar la precisión
+                \item A la derecha se muestra su fabricación como sensor MEMS en silicio, con dos capacitores, uno entre la masa el \emph{cap} y otro entre la masa y la \emph{base}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.35\textwidth}
+            \centering
+            \includegraphics[width = 0.8\linewidth]{fig/Fuerza_Vibracion/memscapacc.JPG}
+            
+            \includegraphics[width = 0.8\linewidth]{fig/Fuerza_Vibracion/memscapacc2.JPG}
+
+            \tiny{Tomado de \cite{Fraden_2016}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Acelerómetros piezoresistivos}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.65\textwidth}
+            \begin{itemize}
+                \item Estos sensores consisten en galgas extensométricas que miden la deformación en los resortes del sistema masa-resorte
+                \item Su precisión es mucho mayor cuando son microfabricados (MEMS)
+                \item A la derecha se muestra su fabricación como sensor convencional, cuando la aceleración se aplica sobre el eje sensible la masa inercial gira en torno a la bizagra, al mismo tiempo las galgas experimentan deformación que se relaciona con la aceleración experimentada por la masa inercial
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.35\textwidth}
+            \centering
+            \includegraphics[width = 0.8\linewidth]{fig/Fuerza_Vibracion/memspiezoacc.JPG}
+            
+            \tiny{Tomado de \cite{Fraden_2016}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Acelerómetros piezoeléctricos}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item Estos sensores consisten de un cristal piezoeléctrico intercalado entre la base y la masa inercial, la fuerza producida por la masa en el piezoeléctrico produce una señal eléctrica entre los electrodos
+                \item Es un sensor directo, la energía mecanica se convierte directamente energía eléctrica
+                \item Los materiales mas comunes son los materiales ceramicos piezoelectricos como el titanato de bario, el circonato-titanato de plomo (PZT) y la metaniobita de plomo
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \centering
+            \includegraphics[width = 1\linewidth]{fig/Fuerza_Vibracion/piezo.jpg}
+            
+            \tiny{Tomado de \href{www.instrumentationtoday.com}{acá}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Acelerómetros de gas caliente}
+            \begin{itemize}
+                \item Estos sensores usan un gas caliente como masa inercial
+                \item El gas se calienta en el centro del sensor y se mide la temperatura en dos extremos equidistantes, los cambios de temperatura entre los extremos representan aceleración de la masa de gas, pues sin aceleración la distribución de la temperatura debe ser uniforme
+                \item Estos sensores son microfabricados (MEMS)
+            \end{itemize}
+            \centering
+            \includegraphics[width = 0.5\linewidth]{fig/Fuerza_Vibracion/memsheatedgasacc.JPG}
+            \tiny{Tomado de \cite{Fraden_2016}}
+\end{frame}
+
+\begin{frame}{Referencias}
+\bibliographystyle{ieeetr}
+\footnotesize
+\bibliography{comunes/referencias}
+\end{frame}
+
+\end{document}
