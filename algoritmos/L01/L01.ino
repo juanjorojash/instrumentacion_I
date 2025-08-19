@@ -32,13 +32,13 @@ void setup() {
   Serial.println(ina219.isCalibrated());
   Serial.print("CLSB:\t");
   Serial.println(ina219.getCurrentLSB());
+  Serial.println("press any key");
+  while (!Serial.available()) {
+  }
 }
 
 void loop() {
-  if (!Serial.available()) {
-    Serial.println("press any key");
-    while (1){ delay(1000); }
-  }
+
   float curre = 0;
   float volta = 0;
   float power = 0;
