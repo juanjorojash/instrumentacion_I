@@ -37,28 +37,34 @@ void setup() {
   }
 }
 
+float curre = 0;
+float volta = 0;
+float power = 0;
+float shunt = 0;
+int counter = 0;
+// Here we set the oversampling
+int samples = 100;
+int delayTime = 1000/samples;
+
 void loop() {
-
-  float curre = 0;
-  float volta = 0;
-  float power = 0;
-  float shunt = 0;
-
-  curre = ina219.getCurrent_mA();
-
-  volta = ina219.getBusVoltage();
-
-  power = ina219.getPower_mW();
-
-  shunt = ina219.getShuntVoltage_mV();
-
-  delay(1000);
-
-  Serial.print(curre);
-  Serial.print(",");
-  Serial.print(volta);
-  Serial.print(",");
-  Serial.print(power);
-  Serial.print(",");
-  Serial.println(shunt);
+  counter++;
+  curre += ina219.getCurrent_mA();
+  volta += ina219.getBusVoltage();
+  power += ina219.getPower_mW();
+  shunt += ina219.getShuntVoltage_mV();
+  if (counter >= samples) {
+    Serial.print(curre/samples);
+    Serial.print(",");
+    Serial.print(volta/samples);
+    Serial.print(",");
+    Serial.print(power/samples);
+    Serial.print(",");
+    Serial.println(shunt/samples);
+    counter = 0;
+    curre = 0;
+    volta = 0;
+    power = 0;
+    shunt = 0;
+  }
+  delay(delayTime);
 }
