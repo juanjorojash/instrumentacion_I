@@ -13,13 +13,13 @@ void setup() {
     Serial.println("INA219 not found");
     while (1){ delay(10); }}
   Serial.println("INA219 initialized");
-  //Set Max current of 5 volts and 0.1 shunt
-  ina219.setMaxCurrentShunt(5, 0.1);    //  adjust if needed
+  //Here we can set max current shunt value to calibrate the Calibration Register (8.5.1)
+  ina219.setMaxCurrentShunt(1, 0.1);    //  adjust if needed
   Serial.print("Shunt value:\t");
   Serial.println(ina219.getShunt(), 4);
   Serial.print("Max current:\t");
   Serial.println(ina219.getMaxCurrent(), 4);
-  //Set gain
+  //Set gain based on desired range 
   ina219.setGain(1);
   Serial.print("Gain:\t");
   Serial.println(ina219.getGain());

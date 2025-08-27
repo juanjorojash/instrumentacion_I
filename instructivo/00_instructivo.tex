@@ -20,7 +20,10 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass[12pt,letterpaper]{report}
-\input{../comunes/preamble.tex}
+\makeatletter
+\def\input@path{{../comunes/}{../instructivo/}{../data/}{../algoritmos/}}
+\makeatother
+\input{preamble}
 \input{arduinoLanguage.tex}
 \usepackage{csvsimple}
 \usepackage{geometry} 
@@ -34,7 +37,7 @@
 
 %----------------------------------------------------------------------------------------
 \lhead{Instructivo de Laboratorio de Instrumentación I}
-\rhead{\begin{picture}(0,0) \put(-60,0){\includegraphics[width=20mm]{../fig/logo.png}} \end{picture}}
+\rhead{\begin{picture}(0,0) \put(-60,0){\includegraphics[width=20mm]{logo.png}} \end{picture}}
 \newcommand{\obj}{Objetivos}
 \newcommand{\mat}{Materiales y equipo}
 \newcommand{\pro}{Procedimiento}
@@ -54,7 +57,7 @@
 \vspace*{1in}
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width=11cm]{../fig/logo.png}
+\includegraphics[width=11cm]{logo.png}
 \end{center}
 \end{figure}
 \vspace*{0.4in}
@@ -87,10 +90,10 @@ Realizado por: Juan J. Rojas\\
 % ------------------------------------------------------------
 \tableofcontents
 % ------------------------------------------------------------
-\input{../instructivo/voltaje}
-\input{../instructivo/presion}
-\input{../instructivo/temperatura}
-\input{../instructivo/nivel}
+\input{01_electricas}
+% \input{presion}
+% \input{temperatura}
+% \input{nivel}
 
 
 \end{document}

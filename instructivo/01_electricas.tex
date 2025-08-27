@@ -1,0 +1,122 @@
+\chapter{Medición de estímulos eléctricos}
+\section{\obj}
+\capacidad
+\begin{itemize}
+    \item Configurar un sensor digital para lograr una medición eléctrica con la mayor resolución posible.
+    \item Calcular el error asociado a la medición utilizando una multimetro digital de alta precisión.
+\end{itemize}
+
+\section{\mat}
+\textbf{A suministrar por la Escuela:}
+\begin{itemize}
+    \item 1 ARDUINO UNO R4 MINIMA
+    \item 1 sensor digital de voltaje, corriente y potencia (INA219)
+    \item 1 mini breadboard
+    \item Cables de interconexión (jumpers) macho-macho
+\end{itemize}
+
+\section{\pro}
+\begin{enumerate}
+        
+    \item Realice las conexiones del circuito tal y como se indica en la Figura \ref{fig:L1F1}.
+    \item Abra el programa Arduino IDE
+
+    \begin{figure}[H]
+        \tikzset{dig/.style={muxdemux, muxdemux def={Lh=5, Rh=5, NL=2, NB=0, NR=0, w=2}}}
+        \centering
+        \begin{circuitikz} 
+            \draw 
+            (0,3.5) 
+            node[dig] (p){\rotatebox{90}{\small POWER}}
+            (0,0) 
+            node[dig] (m){\rotatebox{90}{\small ANALOG IN}};
+            \draw (m.blpin 1) node[above left]{\small A0};
+            \draw (m.blpin 2) node[above left]{\small A1};
+            \draw (p.blpin 1) node[above left]{\small 5V};
+            \draw (p.blpin 2) node[above left]{\small GND};
+            \draw
+            (-4,6)
+                to[american potentiometer,n=mypot, l_=0$\sim$\SI{10}{\kilo\ohm},i=$i$]
+            (-4,4) 
+            (mypot.wiper) |- (p.blpin 1)
+            (-4,4)
+                to[R, l_=\SI{4.7}{\kilo\ohm}, v^=$v_1$]
+            (-4,1) 
+                to[R, l_=\SI{2.2}{\kilo\ohm}, v^=$v_2$]
+            (-4,-2)
+            -- ++(1.8,0)
+            |-
+            (p.blpin 2)
+            ;
+            \draw[orange]
+            (-4,3.8) -- ++ (1.5,0)
+            |-
+            (m.blpin 1)
+            ;
+            \draw[brown]
+            (-4,0.8) -- ++ (1.2,0)
+            |-
+            (m.blpin 2)
+            ;
+            \draw[dashed,blue]
+            (-2,6) -- (1.5,6)node[midway, below, align=center]{ARDUINO UNO\\ R4 MINIMA} -- (1.5,-1.5) -- (-2,-1.5) -- cycle;
+        \end{circuitikz}
+        \caption{Conexión de circuito para el Laboratorio 1}
+        \label{fig:L1F1}
+    \end{figure}
+
+    \item Incluya el siguiente código en el Arduino IDE
+    {\scriptsize 
+        \lstinputlisting[language=Arduino, numbers=none, showstringspaces=false]{L01/L01.ino}
+    }
+
+    \item Tomando en cuenta el valor de la resistencia que se le asignó, calcule el valor de la corriete esperada en el circuito utilizando la Ley de Ohm.
+    \item Investigue en el datasheet que significa el parametro PGA y como se relaciona con el rango del sensor. Ver 8.5.1
+    \item Configure el sensor para que el rango de medición sea el más adecuado para la resistencia que se le asignó, suba el código modificado al Arduino.
+    \item Realice tres mediciones de 20s de duración con una frecuencia de 1Hz al mismo tiempo que mide la corriente con un multímetro digital de alta precisión.
+    \item Calibre el sensor utilizando un multímetro digital de alta precisión y cambie nuevamente el código para que el valor medido por el sensor sea lo más cercano posible al valor medido por el multímetro. Ver 8.5.2.1. Suba el código modificado al Arduino.
+    \item Realice tres mediciones de 20s de duración con una frecuencia de 1Hz al mismo tiempo que mide la corriente con un multímetro digital de alta precisión.
+    \item Para cada ser de medicines calcule lo siguiente e incluya en una tabla:
+        \begin{itemize}
+            \item El valor promedio, $\overline{R}$ 
+            \item La desviación estándar, $\sigma$
+            \item El valor de la incertidumbre estándar, $\sigma_x = \sigma / \sqrt{n}$
+            \item La exactitud
+            \item La precisión
+            \item La repetibilidad
+        \end{itemize}
+        
+    \item Tome en cuenta lo siguiente:
+        \begin{itemize}
+            \item La exactitud se calculará como el mayor error relativo obtenido en cualquier punto de los datos en todas las corridas de medición.
+            \item La precisión se calculará como la mayor desviación estándar entre todas las corridas de medición.
+            \item La repetibilidad se calculará de la siguiente manera:
+            \begin{equation*}
+                \mathrm{repetibilidad} = \sqrt{\dfrac{\sum_{i=1}^n(\mathrm{error\,absoluto})^2}{n}}
+            \end{equation*}
+        \end{itemize}
+
+
+    % \section{Resultados}
+
+    % \begin{table}[H]
+    %     \centering
+    %     \caption{Mediciones tomadas a una frecuencia de \SI{1}{\hertz}}
+    %     \vspace{0.5cm}
+    %     \begin{tabular}{ccccccc}%
+    %     \toprule
+    %     \bfseries &  \multicolumn{2}{c}{\textbf{corrida 1}} & \multicolumn{2}{c}{\textbf{corrida 2}} & \multicolumn{2}{c}{\textbf{corrida 3}}\\
+    %     \bfseries $t$ & \bfseries $i$ & \bfseries $v_1$ & \bfseries $i$ & \bfseries $v_1$ & \bfseries $i$ & \bfseries $v_1$\\
+    %     {[\si{\second}]} & [\si{\ampere}] & [\si{\volt}] & [\si{\ampere}] & [\si{\volt}] & [\si{\ampere}] & [\si{\volt}]\\
+    %     \midrule
+    %     \csvreader[
+    %         late after line=\\,
+    %         late after last line=,
+    %         before reading={\catcode`\#=12},
+    %         after reading={\catcode`\#=6}]%
+    %         {data.csv}{1=\t,2=\ci,3=\vi,4=\cii,5=\vii,6=\ciii,7=\viii}{\t &\ci & \vi &\cii & \vii &\ciii & \viii}\\
+    %         \bottomrule
+    %     \end{tabular}
+    %     \label{tab:L1T1}
+    % \end{table}
+\end{enumerate}

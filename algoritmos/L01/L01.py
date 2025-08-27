@@ -3,6 +3,7 @@ import csv
 from datetime import datetime
 
 arduino = serial.Serial('COM3')
+nombre = "ina219_gain2"
 narchivo = 1
 mediciones = 10
 
@@ -21,7 +22,7 @@ for i in range(mediciones):
 
 
 # Guardar en CSV
-with open(f"mediciones_{narchivo}.csv", "w", newline="") as f:
+with open(f"{nombre}_{narchivo}.csv", "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(["timestamp", "corriente", "voltage", "potencia", "shunt"])  # encabezados
     writer.writerows(datos)
