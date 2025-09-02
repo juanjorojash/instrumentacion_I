@@ -1,15 +1,18 @@
 \documentclass[aspectratio=169]{beamer}
+\makeatletter
+\def\input@path{{../common/}{../guide/}{../data/}{../code/}}
+\makeatother
 \usetheme{Bruno}
-\input{comunes/preamble}
+\input{preamble}
 \title{Instrumentación I: \\ \emph{Introducción a la }\\ \emph{instrumentación industrial.} \\ \emph{Primera sesión}}
 \author{
     Juan J. Rojas
 }
 \institute{Instituto Tecnológico de Costa Rica}
 \date{\today}
-\background{fig/background.jpg}
+\background{background.jpg}
 \begin{document}
-\input{comunes/postamble}
+\input{postamble}
 \maketitle
 
 \newcommand{\blackandwhite}{white} %change this at the end
@@ -107,7 +110,7 @@ Algunos ejemplos de estímulos:
         \end{column}
         \begin{column}{0.6\textwidth}
             \begin{center}
-               \includegraphics[width=\textwidth]{fig/tostadora.jpg}\\
+               \includegraphics[width=\textwidth]{01_intro/tostadora.jpg}\\
                \tiny{Tomado de \href{https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design\%3Asystem_diagram}{aquí}}
             \end{center}
         \end{column}
@@ -124,7 +127,7 @@ Algunos ejemplos de estímulos:
         \end{column}
         \begin{column}{0.6\textwidth}
             \begin{center}
-               \includegraphics[width=\textwidth]{fig/tostadora.jpg}\\
+               \includegraphics[width=\textwidth]{01_intro/tostadora.jpg}\\
                \tiny{Tomado de \href{https://deseng.ryerson.ca/dokuwiki/_detail/design:toasterarchitecture.jpg?id=design\%3Asystem_diagram}{aquí}}
             \end{center}
         \end{column}
@@ -176,7 +179,7 @@ Algunos ejemplos de estímulos:
         \end{column}
         \begin{column}{0.4\textwidth}
             \begin{center}
-               \includegraphics[width=0.8\textwidth]{fig/bourdon.jpg}\\
+               \includegraphics[width=0.8\textwidth]{presion/bourdon.png}\\
                \tiny{Tomado de \href{https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/MAXIMATOR-High-Pressure-Manometer-01a.jpg/1200px-MAXIMATOR-High-Pressure-Manometer-01a.jpg}{aquí}}
             \end{center}
         \end{column}
@@ -250,7 +253,7 @@ Algunos ejemplos de estímulos:
 
 \bibliographystyle{ieeetr}
 \footnotesize
-\bibliography{comunes/referencias}
+\bibliography{common/referencias}
 
 \end{frame}
 
