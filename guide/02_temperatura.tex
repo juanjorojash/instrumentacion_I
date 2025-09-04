@@ -60,7 +60,10 @@
 \begin{equation*}
     \dfrac{R_0}{R} = \dfrac{5}{v} - 1
 \end{equation*}
-\item Realice un sketch de Arduino IDE que le permita obtener el valor de R
+\item Realice un sketch de Arduino IDE que le permita obtener el valor de R, tome como base el siguiente código y agregue las relaciones necesarias para ejecutarlo.
+    {\scriptsize 
+        \lstinputlisting[language=Arduino, numbers=none, showstringspaces=false]{L02/L02.ino}
+    }
 \item Busque en la \href{https://www.tdk-electronics.tdk.com/inf/50/db/ntc/NTC_Leaded_disks_K164.pdf}{hoja de datos} del termistor el valor de $B_{25/100}$. El valor de la temperatura se puede aproximar usando la siguiente ecuación
 \begin{equation*}
     \dfrac{1}{T}=\dfrac{1}{T_R} + \dfrac{1}{B_{25/100}} \ln{\left( \dfrac{R}{R_R} \right)}
