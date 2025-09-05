@@ -28,19 +28,18 @@ void loop() {
 
 
 // convertir en resistencia
-  //Definir RT que es la relación entre R0 y R
+  //Calcular R0/R y asignarlo a RT
   RT = (5/v) - 1;
 
-  //Despejar R (definirla otra vez como RT)
+  //Calcular R y asignarlo a RT
   RT = RR/RT;
 
   // convertir en temperatura con la ecuación proporcionada
-
-  // Despeje la ecuación para T
-
-  //  Simplifique la ecuación para obtener el numerador y denominador por separado
-
+  // Despejar la ecuación para T
+  //  Simplificar la ecuación para obtener el numerador y denominador
+  //Calcular el denominador y asignarlo a T
   T = BETA + T0 * log(RT/RR);
+  // numerador/denominador y asignarlo a T
   T = (BETA * T0) / T;
 
   // Convertir a grados Celsius 
