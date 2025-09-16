@@ -2,11 +2,6 @@ int azero = 0;
 float v = 0;
 float RT = 0;
 float T = 0;
-//double prev_time = 0;
-int sec = 0;
-int min = 0;
-int hou = 0; 
-char time_stamp[50];
 
 #define R0 10240
 #define BETA 4100
@@ -43,7 +38,7 @@ void loop() {
   T = (BETA * T0) / T;
 
   // Convertir a grados Celsius 
- T = T - zero;
+  T = T - zero;
 
   // Acá se debe incluir el código para calcular T2 e imprimir R, T1 y T2 en la terminal
 }
