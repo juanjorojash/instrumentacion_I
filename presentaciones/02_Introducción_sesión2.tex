@@ -1,15 +1,18 @@
 \documentclass[aspectratio=169]{beamer}
+\makeatletter
+\def\input@path{{../common/}{../guide/}{../data/}{../code/}}
+\makeatother
 \usetheme{Bruno}
-\input{comunes/preamble}
+\input{preamble}
 \title{Instrumentación I: \\ \emph{Introducción a la }\\ \emph{instrumentación industrial.} \\ \emph{Segunda sesión}}
 \author{
     Juan J. Rojas, Hugo Sanchez Ortiz
 }
 \institute{Instituto Tecnológico de Costa Rica}
 \date{\today}
-\background{fig/background.jpg}
+\background{background.jpg}
 \begin{document}
-\input{comunes/postamble}
+\input{postamble}
 \maketitle
 
 \newcommand{\blackandwhite}{white} %change this at the end
@@ -89,7 +92,7 @@
             \end{itemize}
         \end{column}
         \begin{column}{0.35\textwidth}
-            \includegraphics[width=0.9\textwidth]{fig/repeatibility.png}\cite{Fraden_2016}
+            \includegraphics[width=0.9\textwidth]{repeatibility.png}\cite{Fraden_2016}
             \begin{equation*}
                 \delta_r = \dfrac{\Delta}{FS}\cdot 100\%
             \end{equation*}
@@ -168,7 +171,7 @@
 \begin{frame}{Referencias}
 \bibliographystyle{ieeetr}
 \footnotesize
-\bibliography{comunes/referencias}
+\bibliography{referencias}
 \end{frame}
 
 \end{document}

@@ -45,21 +45,7 @@ void loop() {
   // Convertir a grados Celsius 
  T = T - zero;
 
-  sprintf(time_stamp,"%02d:%02d:%02d,", hou, min, sec);
-  Serial.print(time_stamp);
-  Serial.println(T); 
-  //prev_time = millis();
-  delay(1000);        // esperar un segundo 
-  sec++;
-  //sec += (int)((millis() - prev_time)/1000);
-    if (sec >= 60){
-      sec = 0;
-      min++;
-    }
-    if (min >= 60){
-      min = 0;
-      hou++;
-    }
+  // Acá se debe incluir el código para calcular T2 e imprimir R, T1 y T2 en la terminal
 }
 
 
