@@ -48,6 +48,11 @@
         \draw[orange]
         (-4,0.8) -- ++ (1.2,0)
         |-
+        (m.blpin 2)
+        ;
+        \draw[red]
+        (-4,3.8) -- ++ (1.4,0)
+        |-
         (m.blpin 1)
         ;
         \draw[dashed,blue]
@@ -60,19 +65,19 @@
 \begin{equation*}
     \dfrac{R_0}{R} = \dfrac{5}{v} - 1
 \end{equation*}
-\item Realice un sketch de Arduino IDE que le permita obtener el valor de R, tome como base el siguiente código y agregue las relaciones necesarias para ejecutarlo.
-    {\scriptsize 
-        \lstinputlisting[language=Arduino, numbers=none, showstringspaces=false]{L02/L02.ino}
-    }
-\item Busque en la \href{https://www.tdk-electronics.tdk.com/inf/50/db/ntc/NTC_Leaded_disks_K164.pdf}{hoja de datos} del termistor el valor de $B_{25/100}$. El valor de la temperatura se puede aproximar usando la siguiente ecuación
+\item El valor de la temperatura se puede aproximar usando la siguiente ecuación:
 \begin{equation*}
     \dfrac{1}{T}=\dfrac{1}{T_R} + \dfrac{1}{B_{25/100}} \ln{\left( \dfrac{R}{R_R} \right)}
 \end{equation*}
 donde $T$ es la temperatura del termistor en \si{\kelvin}, $T_R$ es la temperatura de referencia en \si{\kelvin} y $R_R$ es la resistencia de referencia en \si{\ohm}
-\item Realice una función en el mismo sketch en Arduino IDE que permita calcular el valor de $T$ a partir de los valores de $B_{25/100}$, $T_R$, $R_R$ y $R$
-\item Suponga que su sensor será utilizado para medir la temperatura de la piel (\SI{20}{\celsius} a \SI{40}{\celsius}), para reducir el error en la medición utilice lo mostrado en la sección 2.3 de \href{https://www.tdk-electronics.tdk.com/download/2999750/740594dd4ec109808826d1b5c774b3f6/ntc-thermistors-readout-trimming-an.pdf}{este documento} para determinar $C0$, $C1$ y $C3$
-\item Realice una función en el mismo sketch en Arduino IDE que permita calcular el valor de $T$ a partir de los valores de $C_0$, $C_1$, $C_3$ y $R$ usando la ecuación de Steinhart-Hart
-\item Imprima en la terminal los valores de $v$, $T_1$ y $T_2$ y léalos usando un script de Python. Realice tres mediciones de 20 segundos cada una en las que toque el sensor para provocar cambios en la temperatura, deje enfiar entre cada medición. 
+\item Según la \href{https://www.tdk-electronics.tdk.com/inf/50/db/ntc/NTC_Leaded_disks_K164.pdf}{hoja de datos} del termistor el valor de $B_{25/100}$ es igual a 4300.  
+\item El siguiente \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/code/L02/L02.ino}{sketch} de Arduino IDE implementa las ecuaciones anteriores en dos funciones, una que calcula la resistencia ($R$) y otra que calcula la temperatura usando el valor de $B_{25/100}$ ($T_1$).
+    {\scriptsize 
+        \lstinputlisting[language=Arduino, numbers=none, showstringspaces=false]{L02/L02.ino}
+    }
+\item Suponga que su sensor será utilizado para medir la temperatura de la piel (\SI{20}{\celsius} a \SI{40}{\celsius}), para reducir el error en la medición utilice lo mostrado en la sección 2.3 de \href{https://www.tdk-electronics.tdk.com/download/2999750/740594dd4ec109808826d1b5c774b3f6/ntc-thermistors-readout-trimming-an.pdf}{este documento} para determinar $C0$, $C1$ y $C3$.
+\item Realice una función en el mismo sketch en Arduino IDE que permita calcular el valor de $T_2$ a partir de los valores de $C_0$, $C_1$, $C_3$ y $R$ usando la ecuación de Steinhart-Hart
+\item Imprima en la terminal los valores de $R$, $T_1$ y $T_2$ y léalos usando un script de Python. Realice tres mediciones de 20 segundos cada una en las que toque el sensor para provocar cambios en la temperatura, deje enfiar entre cada medición. 
 \item Usando el código del sensor (B57164K0103) genere una tabla de valores de resistencia usando este \href{https://tools.tdk-electronics.tdk.com/ntc/}{software}, use $\Delta R / R$ de 5\% y \SI{1}{\celsius} de resolución, exporte los datos.
 \item Utilizando Python y los datos obtenidos en las tres mediciones calcule $T_3$ para cada valor de $R$ usando interpolación lineal entre los puntos obtenidos por medio del software 
 \item Para cada una de las mediciones realice una gráfica que muestre $T_1$, $T_2$ y $T_3$

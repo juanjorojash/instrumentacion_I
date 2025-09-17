@@ -1,13 +1,13 @@
 float V = 0;
+float Vin = 0;
+float vR = 0;
 float R = 0;
-float aR = 0;
 float T1 = 0;
 float T2 = 0;
 int counter = 0;
 int samples = 100;
 int delayTime = 1000/samples;
 
-#define vVin 4.754
 #define vR0 4587.0
 #define vBETA 4300
 #define vTR 298.15
@@ -35,18 +35,19 @@ void setup() {
 
 void loop() {
   counter++;
-  V = (analogRead(A0) / 1023.0) * 5;
-  R = calc_R(V, vVin, vR0);
-  aR = aR + R;
-  T1 += calc_T1(R, vRR, vTR, vZero, vBETA);
+  V = (analogRead(A1) / 1023.0) * 5;
+  Vin = (analogRead(A0) / 1023.0) * 5;
+  vR = calc_R(V, Vin, vR0);
+  R = R + vR;
+  T1 += calc_T1(vR, vRR, vTR, vZero, vBETA);
   if (counter >= samples) {
-    Serial.print(aR/samples);
+    Serial.print(R/samples);
     Serial.print(",");
     Serial.print(T1/samples);
     Serial.print(",");
     Serial.println(T2/samples);
     counter = 0;
-    aR = 0;
+    R = 0;
     T1 = 0;
     T2 = 0;
   }
