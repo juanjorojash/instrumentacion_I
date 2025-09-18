@@ -1,10 +1,8 @@
 \documentclass[12pt]{article}
-\usepackage[margin=1in]{geometry} 
-\input{../comunes/preamble.tex}
-\usepackage{lastpage}
-\usepackage{fancyhdr}
-\usepackage{enumitem}
-\usepackage{csvsimple,booktabs}
+\makeatletter
+\def\input@path{{../common/}{../guide/}{../data/}{../code/}}
+\makeatother
+\input{preamble}
 \pagestyle{fancy}
 \setlength{\headheight}{42pt}
 

@@ -1,12 +1,10 @@
 \documentclass[12pt]{article}
-\usepackage[margin=1in]{geometry} 
-\input{comunes/preamble}
-\usepackage{lastpage}
-\usepackage{fancyhdr}
-\usepackage{csvsimple,booktabs}
+\makeatletter
+\def\input@path{{../common/}{../guide/}{../data/}{../code/}}
+\makeatother
+\input{preamble}
 \pagestyle{fancy}
 \setlength{\headheight}{42pt}
-
  
 \begin{document}
 \lhead{Ingeniería Física \\ Escuela de Física \\ Tecnológico de Costa Rica} 
@@ -15,8 +13,8 @@
 \setlength{\parindent}{0em}
 
 \noindent\textbf{Problema a resolver}
-\newline
-\newline
+
+\vspace{0.5cm}
 Se desea crear un altímetro a partir de sensor de presión absoluta modelo:\href{https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=MS5803-02BA&DocType=Data+Sheet&DocLang=English}{MS5803-02BA} de TE Connectivity, un microcontrolador y una pantalla. Este sensor entrega un dato digital entre 1000 y 120000 que corresponde a 10mbar y 1200mbar respectivamente, es totalmente lineal. 
 
 \vspace{0.5cm}

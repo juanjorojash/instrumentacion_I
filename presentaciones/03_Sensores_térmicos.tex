@@ -1,17 +1,20 @@
 \documentclass[aspectratio=169]{beamer}
+\makeatletter
+\def\input@path{{../common/}{../guide/}{../data/}{../code/}}
+\makeatother
 \usetheme{Bruno}
-\input{comunes/preamble}
+\input{preamble}
 \title{Instrumentación I: \\ \emph{Mediciones de}\\ \emph{Temperatura}}
 \author{
     Juan J. Rojas, Hugo Sanchez Ortiz
 }
 \institute{Instituto Tecnológico de Costa Rica}
 \date{\today}
-\background{fig/background.jpg}
+\background{background.jpg}
 % Change vertical spacing
 \renewcommand{\arraystretch}{1.25}
 \begin{document}
-\input{comunes/postamble}
+\input{postamble}
 \maketitle
 \newcommand{\blackandwhite}{white} %change this at the end
 
@@ -68,7 +71,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
             \end{itemize}
         \end{column}
         \begin{column}{0.5\textwidth}
-            \includegraphics[width=7cm]{fig/temperature_scales.png}
+            \includegraphics[width=7cm]{temperature_scales.png}
             \newline
             \tiny{Tomado de \href{https://glossary.periodni.com/dictionary.php?en=logaritamska+skala}{aquí}}
         \end{column}
@@ -208,7 +211,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
         \begin{column}{0.45\textwidth}
             \centering
-            \includegraphics[width=6cm]{fig/TermometroVidrio.jpg}
+            \includegraphics[width=6cm]{TermometroVidrio.jpg}
              \\ \tiny{Tomado de \href{http://famater.com.ar/?p=611}{aquí}}
         \end{column}
     \end{columns}
@@ -224,7 +227,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \end{column}
         \begin{column}{0.45\textwidth}
             \centering
-            \includegraphics[width=5cm]{fig/bimetalic.png}
+            \includegraphics[width=5cm]{bimetalic.png}
              \\ \tiny{Tomado de \href{https://natstuk.com/?p=786}{aquí}}
         \begin{equation*}
                 \alpha = \dfrac{360}{\pi}\cdot \dfrac{a \cdot l}{s}\cdot (t_2-t_1) 
@@ -242,7 +245,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
             \end{itemize}
         \end{column}
         \begin{column}{0.40\textwidth}
-        \includegraphics[width=6cm]{fig/seebeekc.png}
+        \includegraphics[width=6cm]{seebeekc.png}
             \tiny{Tomado de \href{https://www.iue.tuwien.ac.at/phd/mwagner/node14.html}{aquí}}
         \end{column}
     \end{columns}
@@ -253,7 +256,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
         \item \emph{Ley de circuito homogéneo: } En un conductor metálico homogéneo no puede sostenerse la circulación de una corriente eléctrica por la aplicación exclusiva de calor.
         \item \emph{Ley de las temperaturas intermedias: } En un termopar con las juntas de los metales A y B a las temperaturas T1 y T2 la fem termoeléctrica generada es independiente de las temperaturas intermedias en los conductores A y B.
         \begin{center}
-            \includegraphics[width=10cm]{fig/ley2.PNG}
+            \includegraphics[width=10cm]{ley2.PNG}
         \end{center}
     \end{itemize}
     \tiny{Tomado de \href{http://laboratorios.fi.uba.ar/lscm/termocuplas01.pdf}{aquí}}
@@ -263,7 +266,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
     \begin{itemize}
         \item \emph{Ley de los metales intermedios: } Si en un termopar insertamos un segmento de conductor de un tercer metal C , en alguno de los dos conductores metálicos A ó B, la fem generada será independiente de la existencia de este tercer conductor siempre que las temperaturas de las juntas del mismo sean iguales. 
         \begin{center}
-            \includegraphics[width=10cm]{fig/ley3.PNG}
+            \includegraphics[width=10cm]{ley3.PNG}
         \end{center}
     \end{itemize}
     \tiny{Tomado de \href{http://laboratorios.fi.uba.ar/lscm/termocuplas01.pdf}{aquí}}
@@ -279,14 +282,14 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
             \end{itemize}
         \end{column}
         \begin{column}{0.5\textwidth}
-            \includegraphics[width=6cm]{fig/ensamble_termopar.PNG}
+            \includegraphics[width=6cm]{ensamble_termopar.PNG}
             \\ \cite{Fraden_2016}
         \end{column}
     \end{columns}
 \end{frame}
 \begin{frame}{Tipos de termopares}
 \centering
-    \includegraphics[width=11.5cm]{fig/Thermocouple_EMF_Temperature.png}
+    \includegraphics[width=11.5cm]{Thermocouple_EMF_Temperature.png}
      \\ \tiny{Tomado de \href{https://www.akcp.com/blog/what-is-a-k-type-thermocouple/}{aquí}}
 \end{frame}
 \begin{frame}{Tipos de termopares}
@@ -315,16 +318,16 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
 \end{frame}
 \begin{frame}{Tipos de termopares \tiny{\href{https://srdata.nist.gov/its90/download/download.html}{https://srdata.nist.gov/its90/download/download.html}}}
 \centering
-    \includegraphics[width=11cm]{fig/ITS-90.PNG}
+    \includegraphics[width=11cm]{ITS-90.PNG}
 \end{frame}
 \begin{frame}{Tipos de termopares}
 \centering
-    \includegraphics[width=7.5cm]{fig/thermometricscorp.png}
+    \includegraphics[width=7.5cm]{thermometricscorp.png}
     \\ \tiny{Tomado de \href{https://www.thermometricscorp.com/thermocouple-color-code.html}{aquí}}
 \end{frame}
 \begin{frame}{Tubos de protección}
 \centering
-    \includegraphics[width=11cm]{fig/thermocouple-probe-head.png}
+    \includegraphics[width=11cm]{thermocouple-probe-head.png}
     \\ \tiny{Tomado de \href{https://www.tcaus.com.au/thermocouple/index.html}{aquí}}
 \end{frame}
 \begin{frame}{Lectura de datos termocoupla}
@@ -338,7 +341,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
             \end{itemize}
         \end{column}
         \begin{column}{0.5\textwidth}
-            \includegraphics[width=7cm]{fig/thermocouple_circuit.PNG}
+            \includegraphics[width=7cm]{thermocouple_circuit.PNG}
             \\ \cite{Fraden_2016}
         \end{column}
     \end{columns}
@@ -353,7 +356,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
             \end{itemize}
         \end{column}
         \begin{column}{0.5\textwidth}
-            \includegraphics[width=8.5cm]{fig/Thermocouple_cjc.png}
+            \includegraphics[width=8.5cm]{Thermocouple_cjc.png}
             \\ \tiny{Tomado de \href{https://forumautomation.com/t/what-is-cold-junction-compensation-in-thermocouple/2896}{aquí}}
         \end{column}
     \end{columns}
@@ -371,7 +374,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
             \end{itemize}
         \end{column}
         \begin{column}{0.45\textwidth}
-            \includegraphics[width=6cm]{fig/RTD_Circuit.jpg}
+            \includegraphics[width=6cm]{RTD_Circuit.jpg}
             \\ \tiny{Tomado de \href{https://www.azom.com/article.aspx?ArticleID=5573}{aquí}}
         \end{column}
     \end{columns}
@@ -379,7 +382,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
 \begin{frame}{Fabricación RTD}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.45\textwidth}
-        \includegraphics[width=6.5cm]{fig/rtd_types.jpg}
+        \includegraphics[width=6.5cm]{rtd_types.jpg}
             \\ \tiny{Tomado de \href{https://www.designworldonline.com/designing-with-rtd-temperature-sensors/}{aquí}}
             
         \end{column}
@@ -438,7 +441,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
             \end{itemize}
         \end{column}
         \begin{column}{0.45\textwidth}
-        \includegraphics[width=6.5cm]{fig/RTD Curve.jpg}
+        \includegraphics[width=6.5cm]{RTD Curve.jpg}
             \\ \tiny{Tomado de \href{http://www.bearingsensor.com/bearing-rtd.html}{aquí}}
             
         \end{column}
@@ -448,7 +451,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
 \begin{frame}{Conexiones RTD (2 hilos)}
     \begin{columns}[c, onlytextwidth]
     \begin{column}{0.50\textwidth}
-        \includegraphics[width=7cm]{fig/2hilosRTD.PNG}
+        \includegraphics[width=7cm]{2hilosRTD.PNG}
             \\ \tiny{Tomado de \href{http://www.bearingsensor.com/bearing-rtd.html}{aquí}}
             
         \end{column}
@@ -471,7 +474,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
             \end{itemize}
         \end{column}
         \begin{column}{0.45\textwidth}
-        \includegraphics[width=7cm]{fig/3hilosRTD.PNG}
+        \includegraphics[width=7cm]{3hilosRTD.PNG}
             \\ \tiny{Tomado de \href{http://www.bearingsensor.com/bearing-rtd.html}{aquí}}
             
         \end{column}
@@ -481,7 +484,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
 \begin{frame}{Conexiones RTD (4 hilos)}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.45\textwidth}
-        \includegraphics[width=6.5cm]{fig/4hilosRTD.PNG}
+        \includegraphics[width=6.5cm]{4hilosRTD.PNG}
             \\ \tiny{Tomado de \href{http://www.bearingsensor.com/bearing-rtd.html}{aquí}}
             
         \end{column}
@@ -505,7 +508,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
             \end{itemize}
         \end{column}
         \begin{column}{0.40\textwidth}
-           \includegraphics[width=6.5cm]{fig/thermistor_NTC_100K.jpg}
+           \includegraphics[width=6.5cm]{thermistor_NTC_100K.jpg}
             \\ \tiny{Tomado de \href{https://spool3d.ca/ntc-100k-thermistor-with-terminal/}{aquí}}
         \end{column}
     \end{columns}
@@ -513,7 +516,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
 \begin{frame}{Curvas Termistores}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.55\textwidth}
-             \includegraphics[width=8cm]{fig/Thermistor_Curve.png}
+             \includegraphics[width=8cm]{Thermistor_Curve.png}
             \\ \tiny{Tomado de \href{https://www.researchgate.net/publication/309267235_A_Simple_Thermistor_Design_for_Industrial_Temperature_Measurement/figures?lo=1&utm_source=google&utm_medium=organichttps://spool3d.ca/ntc-100k-thermistor-with-terminal/}{aquí}}
         \end{column}
         \begin{column}{0.40\textwidth}
@@ -539,7 +542,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
             \end{itemize}
         \end{column}
         \begin{column}{0.40\textwidth}
-           \includegraphics[width=6.5cm]{fig/Thermistor_type.PNG}
+           \includegraphics[width=6.5cm]{Thermistor_type.PNG}
             \\ \tiny{Tomado de \href{https://es.made-in-china.com/co_jpsensor/product_Ntc-10K-Thermistor-Collection_reeeohegg.html}{aquí}}
         \end{column}
     \end{columns}
@@ -547,7 +550,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
 \begin{frame}{Medición de termistores}
     \begin{columns}[c, onlytextwidth]
             \begin{column}{0.5\textwidth}
-           \includegraphics[width=7.5cm]{fig/450px-LinealizacionNTC.png}
+           \includegraphics[width=7.5cm]{450px-LinealizacionNTC.png}
             \\ \tiny{Tomado de \href{https://es.made-in-china.com/co_jpsensor/product_Ntc-10K-Thermistor-Collection_reeeohegg.html}{aquí}}
         \end{column}
         
@@ -576,7 +579,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
             \end{itemize}
         \end{column}
         \begin{column}{0.40\textwidth}
-            \includegraphics[width=5.5cm]{fig/Pirometro.jpg}
+            \includegraphics[width=5.5cm]{Pirometro.jpg}
             \\ \tiny{Tomado de \href{https://como-funciona.co/un-pirometro/}{aquí}}
         \end{column}
     \end{columns}
@@ -593,7 +596,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
             \end{itemize}
         \end{column}
         \begin{column}{0.45\textwidth}
-            \includegraphics[width=7cm]{fig/pirometro-basico.jpg}
+            \includegraphics[width=7cm]{pirometro-basico.jpg}
             \\ \tiny{Tomado de \href{https://www.ingmecafenix.com/otros/pirometro/}{aquí}}
         \end{column}
     \end{columns}
@@ -601,7 +604,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
 \begin{frame}{Pirómetros ópticos}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.47\textwidth}
-            \includegraphics[width=8.5cm]{fig/Pirometros-optico-esquema.jpg}
+            \includegraphics[width=8.5cm]{Pirometros-optico-esquema.jpg}
             \\ \tiny{Tomado de \href{https://como-funciona.co/un-pirometro/}{aquí}}
         \end{column}
         \begin{column}{0.50\textwidth}
@@ -618,7 +621,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
  \begin{columns}[c, onlytextwidth]
         \begin{column}{0.40\textwidth}
         \centering
-            \includegraphics[width=7cm]{fig/Criteria Sensor.PNG}
+            \includegraphics[width=7cm]{Criteria Sensor.PNG}
             \\ \tiny{Tomado de \href{https://www.variohm.com/news-media/technical-blog-archive/selecting-temperature-sensor-things-to-consider}{aquí}}
         \end{column}
         \begin{column}{0.50\textwidth}
@@ -636,7 +639,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
 \end{frame}
 \begin{frame}{Criterios de Selección}
     \centering
-    \includegraphics[width=11cm]{fig/Selection_Sensor.PNG}
+    \includegraphics[width=11cm]{Selection_Sensor.PNG}
             \\ \tiny{Tomado de \href{https://www.mechaterrain.com/lm35-temperature-sensor}{aquí}}
 \end{frame}
 \begin{frame}{Criterios de Selección}
@@ -659,7 +662,7 @@ snode/.style={rectangle, draw=white, fill=white, very thick, minimum size=15mm},
 \begin{frame}{Referencias}
 \bibliographystyle{ieeetr}
 \footnotesize
-\bibliography{comunes/referencias}
+\bibliography{common/referencias}
 \end{frame}
 
 \end{document}

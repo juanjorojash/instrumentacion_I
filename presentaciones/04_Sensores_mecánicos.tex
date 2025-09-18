@@ -1,15 +1,18 @@
 \documentclass[aspectratio=169]{beamer}
+\makeatletter
+\def\input@path{{../common/}{../guide/}{../data/}{../code/}}
+\makeatother
 \usetheme{Bruno}
-\input{comunes/preamble}
-\title{Instrumentación I: \\ \emph{Transductores mecánicos}}
+\input{preamble}
+\title{Instrumentación I: \\ \emph{Sensores mecánicos}}
 \author{
     Juan J. Rojas
 }
 \institute{Instituto Tecnológico de Costa Rica}
 \date{\today}
-\background{fig/background.jpg}
+\background{background.jpg}
 \begin{document}
-\input{comunes/postamble}
+\input{postamble}
 \maketitle
 
 \newcommand{\blackandwhite}{white} %change this at the end
@@ -50,52 +53,52 @@
     $\epsilon$ es la deformación unitaria, adimensional,\\
 \end{frame}
 
-\begin{frame}{¿Como medir fuerza?}
-    \begin{columns}[c, onlytextwidth]
-        \begin{column}{0.55\textwidth}
-            \begin{itemize}
-                \item Balanceando la fuerza a medir con la fuerza de una masa estándar
-                \item Midiendo la aceleración que la fuerza a medir imprime sobre un masa conocida
-                \item Balanceando la fuerza a medir con una fuerza generada por medios electromagnéticos
-                \item Convirtiendo la fuerza en presión de fluido y midiendo esta presión
-                \item Midiendo la deformación producida por la fuerza a medir en un elemento elástico
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.45\textwidth}
-            \centering
-            \includegraphics[width = 0.8\linewidth]{fig/Fuerza_Vibracion/fuerza1.JPG}
-            \includegraphics[width = 0.8\linewidth]{fig/Fuerza_Vibracion/fuerza2.JPG}
-            \vspace{0.5cm}
+% \begin{frame}{¿Como medir fuerza?}
+%     \begin{columns}[c, onlytextwidth]
+%         \begin{column}{0.55\textwidth}
+%             \begin{itemize}
+%                 \item Balanceando la fuerza a medir con la fuerza de una masa estándar
+%                 \item Midiendo la aceleración que la fuerza a medir imprime sobre un masa conocida
+%                 \item Balanceando la fuerza a medir con una fuerza generada por medios electromagnéticos
+%                 \item Convirtiendo la fuerza en presión de fluido y midiendo esta presión
+%                 \item Midiendo la deformación producida por la fuerza a medir en un elemento elástico
+%             \end{itemize}
+%         \end{column}
+%         \begin{column}{0.45\textwidth}
+%             \centering
+%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza1.JPG}
+%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza2.JPG}
+%             \vspace{0.5cm}
             
-            \tiny{Tomado de \cite{Fraden_2016}}
+%             \tiny{Tomado de \cite{Fraden_2016}}
             
-            \tiny{LVDT: linear variable differential transformer}
-        \end{column}
-    \end{columns}
-\end{frame}
+%             \tiny{LVDT: linear variable differential transformer}
+%         \end{column}
+%     \end{columns}
+% \end{frame}
 
 
-\begin{frame}{Tipos de sensores de fuerza}
-    \begin{columns}[c, onlytextwidth]
-        \begin{column}{0.55\textwidth}
-            \begin{itemize}
-                \item En la mayoría de los casos el sensor no es directo sino complejo
-                \item Por ejemplo se puede hacer transducción de fuerza a distancia y luego medir la distancia con un sensor directo, como en el ejemplo de arriba. 
-                \item Se puede hacer transducción de fuerza a presión y medir la presión con un sensor directo, como en el ejemplo de abajo. 
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.45\textwidth}
-            \centering
-            \includegraphics[width = 0.8\linewidth]{fig/Fuerza_Vibracion/fuerza1.JPG}
-            \includegraphics[width = 0.8\linewidth]{fig/Fuerza_Vibracion/fuerza2.JPG}
-            \vspace{0.5cm}
+% \begin{frame}{Tipos de sensores de fuerza}
+%     \begin{columns}[c, onlytextwidth]
+%         \begin{column}{0.55\textwidth}
+%             \begin{itemize}
+%                 \item En la mayoría de los casos el sensor no es directo sino complejo
+%                 \item Por ejemplo se puede hacer transducción de fuerza a distancia y luego medir la distancia con un sensor directo, como en el ejemplo de arriba. 
+%                 \item Se puede hacer transducción de fuerza a presión y medir la presión con un sensor directo, como en el ejemplo de abajo. 
+%             \end{itemize}
+%         \end{column}
+%         \begin{column}{0.45\textwidth}
+%             \centering
+%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza1.JPG}
+%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza2.JPG}
+%             \vspace{0.5cm}
             
-            \tiny{Tomado de \cite{Fraden_2016}}
+%             \tiny{Tomado de \cite{Fraden_2016}}
             
-            \tiny{LVDT: linear variable differential transformer}
-        \end{column}
-    \end{columns}
-\end{frame}
+%             \tiny{LVDT: linear variable differential transformer}
+%         \end{column}
+%     \end{columns}
+% \end{frame}
 
 \begin{frame}[t]{Galgas extensométricas}
     La resistencia es una función de la deformación aplicada.
@@ -134,7 +137,7 @@
         \end{column}
         \begin{column}{0.45\textwidth}
         \centering
-        \includegraphics[width = \linewidth]{fig/06_mecánicos/foil_strain_gauge.png}
+        \includegraphics[width = \linewidth]{06_mecánicos/foil_strain_gauge.png}
         \end{column}
     \end{columns}
 \end{frame}
@@ -160,24 +163,24 @@
         \end{column}
         \begin{column}{0.45\textwidth}
         \centering
-        \includegraphics[width = 0.8\linewidth]{fig/06_mecánicos/mems_strain_gauge.png}
-        \includegraphics[width = \linewidth]{fig/06_mecánicos/mems_strain_fig.png}
+        \includegraphics[width = 0.8\linewidth]{06_mecánicos/mems_strain_gauge.png}
+        \includegraphics[width = \linewidth]{06_mecánicos/mems_strain_fig.png}
         \tiny{Han, Ji-Hoon, Sung Joon Min, Joon Hyub Kim, and Nam Ki Min. 2023. "Reciprocating Arc Silicon Strain Gauges" Sensors 23, no. 3: 1381. https://doi.org/10.3390/s23031381}
         \end{column}
     \end{columns}
 \end{frame}
 
-% \begin{frame}[t]{Celdas de carga}
-%     La resistencia es una función de la deformación aplicada.
-%     La relación entre la resistencia y la fuerza aplicada está definida por el effecto \emph{piezorresistivo}:
-%     \begin{equation*}
-%         \dfrac{dR}{R} = g \varepsilon
-%     \end{equation*}
-%     donde:\\
-%     $g$ es la sensibilidad o factor de galga, adimensional\\
-%     $\varepsilon$ es la deformación unitaria, adimensional, y\\
-%     $R$ es la resistencia en $\si{\ohm}$
-% \end{frame}
+\begin{frame}[t]{Celdas de carga}
+    La resistencia es una función de la deformación aplicada.
+    La relación entre la resistencia y la fuerza aplicada está definida por el effecto \emph{piezorresistivo}:
+    \begin{equation*}
+        \dfrac{dR}{R} = g \varepsilon
+    \end{equation*}
+    donde:\\
+    $g$ es la sensibilidad o factor de galga, adimensional\\
+    $\varepsilon$ es la deformación unitaria, adimensional, y\\
+    $R$ es la resistencia en $\si{\ohm}$
+\end{frame}
 
 \begin{frame}{Sensores magnetoelásticos}
     \begin{columns}[c, onlytextwidth]
@@ -194,11 +197,11 @@
         \end{column}
         \begin{column}{0.40\textwidth}
             \centering
-            \includegraphics[width = 0.5\linewidth]{fig/Fuerza_Vibracion/magnetoelastico.JPG}
+            \includegraphics[width = 0.5\linewidth]{Fuerza_Vibracion/magnetoelastico.JPG}
             
             \tiny{Tomado de \cite{pallas2012sensors}}
             
-            \includegraphics[width = 0.6\linewidth]{fig/Fuerza_Vibracion/Torque-Sensor.png}
+            \includegraphics[width = 0.6\linewidth]{Fuerza_Vibracion/Torque-Sensor.png}
             
             \tiny{Tomado de \href{https://www.methodesensor.com/industries/industrial/torque-sensing/}{acá}}
         \end{column}
@@ -220,7 +223,7 @@
         \end{column}
         \begin{column}{0.45\textwidth}
             \centering
-            \includegraphics[width = 1\linewidth]{fig/Fuerza_Vibracion/acel.JPG}
+            \includegraphics[width = 1\linewidth]{Fuerza_Vibracion/acel.JPG}
 
             \tiny{Tomado de \cite{Fraden_2016}}
         \end{column}
@@ -239,9 +242,9 @@
         \end{column}
         \begin{column}{0.35\textwidth}
             \centering
-            \includegraphics[width = 0.8\linewidth]{fig/Fuerza_Vibracion/memscapacc.JPG}
+            \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/memscapacc.JPG}
             
-            \includegraphics[width = 0.8\linewidth]{fig/Fuerza_Vibracion/memscapacc2.JPG}
+            \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/memscapacc2.JPG}
 
             \tiny{Tomado de \cite{Fraden_2016}}
         \end{column}
@@ -259,7 +262,7 @@
         \end{column}
         \begin{column}{0.35\textwidth}
             \centering
-            \includegraphics[width = 0.8\linewidth]{fig/Fuerza_Vibracion/memspiezoacc.JPG}
+            \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/memspiezoacc.JPG}
             
             \tiny{Tomado de \cite{Fraden_2016}}
         \end{column}
@@ -277,7 +280,7 @@
         \end{column}
         \begin{column}{0.4\textwidth}
             \centering
-            \includegraphics[width = 1\linewidth]{fig/Fuerza_Vibracion/piezo.jpg}
+            \includegraphics[width = 1\linewidth]{Fuerza_Vibracion/piezo.jpg}
             
             \tiny{Tomado de \href{www.instrumentationtoday.com}{acá}}
         \end{column}
@@ -291,14 +294,14 @@
                 \item Estos sensores son microfabricados (MEMS)
             \end{itemize}
             \centering
-            \includegraphics[width = 0.5\linewidth]{fig/Fuerza_Vibracion/memsheatedgasacc.JPG}
+            \includegraphics[width = 0.5\linewidth]{Fuerza_Vibracion/memsheatedgasacc.JPG}
             \tiny{Tomado de \cite{Fraden_2016}}
 \end{frame}
 
 \begin{frame}{Referencias}
 \bibliographystyle{ieeetr}
 \footnotesize
-\bibliography{comunes/referencias}
+\bibliography{common/referencias}
 \end{frame}
 
 \end{document}
