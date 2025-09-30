@@ -15,6 +15,15 @@
 \input{postamble}
 \maketitle
 
+% 6. Transductores mecánicos
+% 6.1. Galgas extensiometricas
+% 6.2. Celdas de carga
+% 6.3. Acelerómetros
+% 6.4. Sensores de presión
+% 6.5. Velocidad
+% 6.6. Giroscopios
+
+
 \newcommand{\blackandwhite}{white} %change this at the end
 
 \begin{frame}[t]{Deformación unitaria (strain)}
@@ -53,53 +62,6 @@
     $\epsilon$ es la deformación unitaria, adimensional,\\
 \end{frame}
 
-% \begin{frame}{¿Como medir fuerza?}
-%     \begin{columns}[c, onlytextwidth]
-%         \begin{column}{0.55\textwidth}
-%             \begin{itemize}
-%                 \item Balanceando la fuerza a medir con la fuerza de una masa estándar
-%                 \item Midiendo la aceleración que la fuerza a medir imprime sobre un masa conocida
-%                 \item Balanceando la fuerza a medir con una fuerza generada por medios electromagnéticos
-%                 \item Convirtiendo la fuerza en presión de fluido y midiendo esta presión
-%                 \item Midiendo la deformación producida por la fuerza a medir en un elemento elástico
-%             \end{itemize}
-%         \end{column}
-%         \begin{column}{0.45\textwidth}
-%             \centering
-%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza1.JPG}
-%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza2.JPG}
-%             \vspace{0.5cm}
-            
-%             \tiny{Tomado de \cite{Fraden_2016}}
-            
-%             \tiny{LVDT: linear variable differential transformer}
-%         \end{column}
-%     \end{columns}
-% \end{frame}
-
-
-% \begin{frame}{Tipos de sensores de fuerza}
-%     \begin{columns}[c, onlytextwidth]
-%         \begin{column}{0.55\textwidth}
-%             \begin{itemize}
-%                 \item En la mayoría de los casos el sensor no es directo sino complejo
-%                 \item Por ejemplo se puede hacer transducción de fuerza a distancia y luego medir la distancia con un sensor directo, como en el ejemplo de arriba. 
-%                 \item Se puede hacer transducción de fuerza a presión y medir la presión con un sensor directo, como en el ejemplo de abajo. 
-%             \end{itemize}
-%         \end{column}
-%         \begin{column}{0.45\textwidth}
-%             \centering
-%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza1.JPG}
-%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza2.JPG}
-%             \vspace{0.5cm}
-            
-%             \tiny{Tomado de \cite{Fraden_2016}}
-            
-%             \tiny{LVDT: linear variable differential transformer}
-%         \end{column}
-%     \end{columns}
-% \end{frame}
-
 \begin{frame}[t]{Galgas extensométricas}
     La resistencia es una función de la deformación aplicada.
     La relación entre la resistencia y la fuerza aplicada está definida por:
@@ -123,7 +85,7 @@
             Resistencia & \SI{350}{\ohm} \\
             Material base & Fenólico \\
             Espesor & \SI{32}{\micro\meter} \\
-            Material res. & Constantán \\
+            Material res. & constantán \\
             Resistencia aisl. & \SI{10}{\kilo\ohm}\\
             Sensibilidad ($g$) & $2.1 \pm 1\%$\\
             Coeficiente transv & $0.4\%$ \\
@@ -298,10 +260,58 @@
             \tiny{Tomado de \cite{Fraden_2016}}
 \end{frame}
 
+
+% \begin{frame}{¿Como medir fuerza?}
+%     \begin{columns}[c, onlytextwidth]
+%         \begin{column}{0.55\textwidth}
+%             \begin{itemize}
+%                 \item Balanceando la fuerza a medir con la fuerza de una masa estándar
+%                 \item Midiendo la aceleración que la fuerza a medir imprime sobre un masa conocida
+%                 \item Balanceando la fuerza a medir con una fuerza generada por medios electromagnéticos
+%                 \item Convirtiendo la fuerza en presión de fluido y midiendo esta presión
+%                 \item Midiendo la deformación producida por la fuerza a medir en un elemento elástico
+%             \end{itemize}
+%         \end{column}
+%         \begin{column}{0.45\textwidth}
+%             \centering
+%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza1.JPG}
+%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza2.JPG}
+%             \vspace{0.5cm}
+            
+%             \tiny{Tomado de \cite{Fraden_2016}}
+            
+%             \tiny{LVDT: linear variable differential transformer}
+%         \end{column}
+%     \end{columns}
+% \end{frame}
+
+
+% \begin{frame}{Tipos de sensores de fuerza}
+%     \begin{columns}[c, onlytextwidth]
+%         \begin{column}{0.55\textwidth}
+%             \begin{itemize}
+%                 \item En la mayoría de los casos el sensor no es directo sino complejo
+%                 \item Por ejemplo se puede hacer transducción de fuerza a distancia y luego medir la distancia con un sensor directo, como en el ejemplo de arriba. 
+%                 \item Se puede hacer transducción de fuerza a presión y medir la presión con un sensor directo, como en el ejemplo de abajo. 
+%             \end{itemize}
+%         \end{column}
+%         \begin{column}{0.45\textwidth}
+%             \centering
+%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza1.JPG}
+%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza2.JPG}
+%             \vspace{0.5cm}
+            
+%             \tiny{Tomado de \cite{Fraden_2016}}
+            
+%             \tiny{LVDT: linear variable differential transformer}
+%         \end{column}
+%     \end{columns}
+% \end{frame}
+
 \begin{frame}{Referencias}
 \bibliographystyle{ieeetr}
 \footnotesize
-\bibliography{common/referencias}
+\bibliography{../common/referencias.bib}
 \end{frame}
 
 \end{document}
