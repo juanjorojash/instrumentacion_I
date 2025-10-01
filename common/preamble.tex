@@ -1,8 +1,8 @@
 \usepackage{fontspec}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
-\setmonofont{Courier New}
 \usepackage{amsmath}
+\usepackage{physics}
 \usepackage{amssymb}
 \usepackage{siunitx}
 \usepackage{float}
@@ -16,7 +16,9 @@
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
 \usepackage[spanish,es-tabla,activeacute]{babel}
-\usepackage{babelbib}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{../common/referencias.bib}
 \usepackage{booktabs}
 \usepackage{pgfplots}
 \usepackage{hyperref}

@@ -4,6 +4,8 @@
 \makeatother
 \usetheme{Bruno}
 \input{preamble}
+\input{beamer_preamble}
+
 \title{Instrumentación I: \\ \emph{Sensores mecánicos}}
 \author{
     Juan J. Rojas
@@ -62,19 +64,42 @@
     $\epsilon$ es la deformación unitaria, adimensional,\\
 \end{frame}
 
-\begin{frame}[t]{Galgas extensométricas}
-    La resistencia es una función de la deformación aplicada.
-    La relación entre la resistencia y la fuerza aplicada está definida por:
+\begin{frame}{Sensibilidad a la deformación en un resistor}
+    En algunos metales y semiconductores la resistencia cambia al ser deformados. Tomando en cuenta que: 
     \begin{equation*}
-        \dfrac{dR}{R} = g \varepsilon
+        R = \rho \dfrac{L}{A}
+    \end{equation*}   
+    donde: $\rho$ es la resistividad del material en \si{\ohm\meter}, $L$ es la longitud en \si{\meter} y, $A$ es el área trasversal \si{\meter\squared}\\[8pt]
+    Si aplicamos el logaritmo y derivamos, obtenemos:
+    \begin{equation*}
+        \dfrac{\dd R}{R} = \dfrac{\dd \rho}{\rho} + \dfrac{\dd L/A}{L/A}
+    \end{equation*} 
+    con esto podemos ver que el cambio total tiene una contribucion debido al cambio en la resistividad (efecto piezorresitivo) y otra debido a cambios en la geometría del resistor
+\end{frame}
+
+\begin{frame}{Efecto dominante según el material}
+    Respecto a la ecuación:
+    \begin{equation*}
+        \dfrac{\dd R}{R} = \dfrac{\dd \rho}{\rho} + \dfrac{\dd L/A}{L/A}
+    \end{equation*} 
+    \begin{itemize}
+        \item En los metales el efecto dominante es el cambio en la geometría del resistor
+        \item En los semiconductores el efecto dominante es el cambio en la resistividad del material
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Galgas extensométricas}
+    Si integramos los efectos piezorresistivo y geométrico, obtenemos la relación entre la resistencia y la deformación aplicada:
+    \begin{equation*}
+        \dfrac{dR}{R} = S_s \varepsilon
     \end{equation*}
     donde:\\
-    $g$ es la sensibilidad o factor de galga, adimensional\\
+    $S_s$ es la sensibilidad o factor de galga, adimensional\\
     $\varepsilon$ es la deformación unitaria, adimensional, y\\
     $R$ es la resistencia en $\si{\ohm}$
 \end{frame}
 
-\begin{frame}{Galgas extensométricas: tipo lámina}
+\begin{frame}{Galgas extensométricas: metálica, tipo lámina}
     \begin{columns}[c, onlytextwidth]
         \begin{column}{0.55\textwidth}
             \begin{tabular}{ll}
@@ -91,15 +116,31 @@
             Coeficiente transv & $0.4\%$ \\
             Deformación max & $2.0\%$ \\
             Tamaño ($\si{\milli\meter}$) & $7.1 \times 4.5$ \\
-            % Temperatura de operación & -30$^\circ$C $\sim$ +80$^\circ$C \\
-            % Compensación térmica & Aluminio \\
-            % Coeficiente de compensación térmica & 9, 11, 16, 23, 27 \\
+            Temp. oper. & -30$^\circ$C $\sim$ +80$^\circ$C \\
             \bottomrule
+            {\footnotesize \href{https://www.elumiled.com/datasheets/BF350-3AA.pdf}{Hoja de datos}}
             \end{tabular}
         \end{column}
         \begin{column}{0.45\textwidth}
         \centering
         \includegraphics[width = \linewidth]{06_mecánicos/foil_strain_gauge.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Galgas extensométricas: metálica, tipo lámina}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.60\textwidth}
+            La galga BF350-3 AA tiene una sensibilidad $S_s$ de $2.1$ y un coeficiente transversal $k_t$  de $0.4\%$, esto significa que la deformación trasversal $\varepsilon_t$ también afecta la resistencia medida. 
+            \begin{equation*}
+                \dfrac{dR}{R} = S_s (\varepsilon_l + k_t \varepsilon_t)
+            \end{equation*}
+            idealmente el coeficiente transversal debe ser lo menor posible, en su defecto, se debe corregir la medición.
+        \end{column}
+        \begin{column}{0.40\textwidth}
+        \centering
+        \includegraphics[width = \linewidth]{06_mecánicos/long_trans.png}
+        \tiny{Tomado de \href{https://www.elumiled.com/datasheets/BF350-3AA.pdf}{acá}}
         \end{column}
     \end{columns}
 \end{frame}
@@ -111,37 +152,60 @@
             \toprule
             \textbf{Parámetro} & \textbf{Valor} \\
             \midrule
-            Resistencia & desconocida \\
+            Resistencia & $\sim$ \SI{10}{\kilo\ohm} \\
             Material base & SiO \\
             Espesor & \SI{10}{\micro\meter} \\
             Material res. & Si \\
             Sensibilidad ($g$) & $103$ c/u\\
             Tamaño ($\si{\micro\meter}$) & $15 \times 300$ \\
-            % Temperatura de operación & -30$^\circ$C $\sim$ +80$^\circ$C \\
-            % Compensación térmica & Aluminio \\
-            % Coeficiente de compensación térmica & 9, 11, 16, 23, 27 \\
             \bottomrule
             \end{tabular}
         \end{column}
         \begin{column}{0.45\textwidth}
-        \centering
-        \includegraphics[width = 0.8\linewidth]{06_mecánicos/mems_strain_gauge.png}
-        \includegraphics[width = \linewidth]{06_mecánicos/mems_strain_fig.png}
-        \tiny{Han, Ji-Hoon, Sung Joon Min, Joon Hyub Kim, and Nam Ki Min. 2023. "Reciprocating Arc Silicon Strain Gauges" Sensors 23, no. 3: 1381. https://doi.org/10.3390/s23031381}
+            \includegraphics[width = 0.8\linewidth]{06_mecánicos/mems_strain_gauge.png}
+            \includegraphics[width = \linewidth]{06_mecánicos/mems_strain_fig.png}
+
+            \tiny{Han, Ji-Hoon, Sung Joon Min, Joon Hyub Kim, and Nam Ki Min. 2023. "Reciprocating Arc Silicon Strain Gauges" Sensors 23, no. 3: 1381. https://doi.org/10.3390/s23031381}
         \end{column}
     \end{columns}
 \end{frame}
 
-\begin{frame}[t]{Celdas de carga}
-    La resistencia es una función de la deformación aplicada.
-    La relación entre la resistencia y la fuerza aplicada está definida por el effecto \emph{piezorresistivo}:
-    \begin{equation*}
-        \dfrac{dR}{R} = g \varepsilon
-    \end{equation*}
-    donde:\\
-    $g$ es la sensibilidad o factor de galga, adimensional\\
-    $\varepsilon$ es la deformación unitaria, adimensional, y\\
-    $R$ es la resistencia en $\si{\ohm}$
+\begin{frame}{Celdas de carga}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.60\textwidth}
+            \begin{itemize}
+                \item Convierte la deformación mecánica aplicada sobre un elemento elástico en una señal eléctrica proporcional.
+                \item Las más comunes utilizan galgas extensiométricas adheridas al elemento elástico.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.40\textwidth}
+            \includegraphics[width = \linewidth]{06_mecánicos/load_cell.png}
+
+            \tiny{Tomado de \href{https://www.flintec.com/}{acá}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Celdas de carga: aplicaciones}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.5\textwidth}
+            Algunas aplicaciones comunes de las celdas de carga:
+            \begin{itemize}
+                \item Medición de fuerza y peso
+                \item Medición de presión y nivel
+            \end{itemize}
+            \centering
+            \includegraphics[width = 0.8\linewidth]{06_mecánicos/load_cell_button.png}
+
+            \tiny{Tomado de \href{https://www.flintec.com/}{acá}}
+        \end{column}
+        \begin{column}{0.5\textwidth}    
+            \centering        
+            \includegraphics[width = 0.8\linewidth]{06_mecánicos/load_cell_pressure.png}
+            \includegraphics[width = 0.8\linewidth]{06_mecánicos/load_cell_weight.png}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Sensores magnetoelásticos}
@@ -154,7 +218,6 @@
                 \end{equation*}
                 donde $\mu$ es la permeabilidad magnética del material en \si{\henry/\meter}
                 \item En un sensor magnetoelástico se mide la diferencia en la permeabilidad magnetica del material al ser sometido a una fuerza externa
-
             \end{itemize}
         \end{column}
         \begin{column}{0.40\textwidth}
@@ -260,58 +323,26 @@
             \tiny{Tomado de \cite{Fraden_2016}}
 \end{frame}
 
+\begin{frame}{Sensores de presión}
+    \begin{columns}[c, onlytextwidth]
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item Utilizan un diafragma que se deforma ante de la presión aplicada
+                \item La deformación del diafragma se puede medir con galgas extensiométricas, sensores capacitivos, sensores piezoeléctricos o sensores piezorresistivos
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \centering
+            \includegraphics[width = 0.8\linewidth]{06_mecánicos/pressure_sensor.jpg}
 
-% \begin{frame}{¿Como medir fuerza?}
-%     \begin{columns}[c, onlytextwidth]
-%         \begin{column}{0.55\textwidth}
-%             \begin{itemize}
-%                 \item Balanceando la fuerza a medir con la fuerza de una masa estándar
-%                 \item Midiendo la aceleración que la fuerza a medir imprime sobre un masa conocida
-%                 \item Balanceando la fuerza a medir con una fuerza generada por medios electromagnéticos
-%                 \item Convirtiendo la fuerza en presión de fluido y midiendo esta presión
-%                 \item Midiendo la deformación producida por la fuerza a medir en un elemento elástico
-%             \end{itemize}
-%         \end{column}
-%         \begin{column}{0.45\textwidth}
-%             \centering
-%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza1.JPG}
-%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza2.JPG}
-%             \vspace{0.5cm}
-            
-%             \tiny{Tomado de \cite{Fraden_2016}}
-            
-%             \tiny{LVDT: linear variable differential transformer}
-%         \end{column}
-%     \end{columns}
-% \end{frame}
-
-
-% \begin{frame}{Tipos de sensores de fuerza}
-%     \begin{columns}[c, onlytextwidth]
-%         \begin{column}{0.55\textwidth}
-%             \begin{itemize}
-%                 \item En la mayoría de los casos el sensor no es directo sino complejo
-%                 \item Por ejemplo se puede hacer transducción de fuerza a distancia y luego medir la distancia con un sensor directo, como en el ejemplo de arriba. 
-%                 \item Se puede hacer transducción de fuerza a presión y medir la presión con un sensor directo, como en el ejemplo de abajo. 
-%             \end{itemize}
-%         \end{column}
-%         \begin{column}{0.45\textwidth}
-%             \centering
-%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza1.JPG}
-%             \includegraphics[width = 0.8\linewidth]{Fuerza_Vibracion/fuerza2.JPG}
-%             \vspace{0.5cm}
-            
-%             \tiny{Tomado de \cite{Fraden_2016}}
-            
-%             \tiny{LVDT: linear variable differential transformer}
-%         \end{column}
-%     \end{columns}
-% \end{frame}
+            \tiny{Tomado de \href{https://www.processindustryforum.com/article/tips-effective-maintenance-pressure-sensors}{acá}}
+        \end{column}
+    \end{columns}
+\end{frame}
 
 \begin{frame}{Referencias}
-\bibliographystyle{ieeetr}
 \footnotesize
-\bibliography{../common/referencias.bib}
+\printbibliography[heading=none]
 \end{frame}
 
 \end{document}
