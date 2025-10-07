@@ -1,30 +1,29 @@
 import serial
-import matplotlib.pyplot as plt
-from drawnow import drawnow
+import csv
+from datetime import datetime
 
-#Serial takes these two parameters: serial device and baudrate
-ser = serial.Serial('COM8', 9600)
+arduino = serial.Serial('COM8', 9600)
+nombre = "term"
+narchivo = 1
+mediciones = 20
 
-file = open("data.csv","w")
-header = "timestamp,temperature\n"
-file.write(header)
+datos = []
 
-time_data = []
-T_data = []
+arduino.write(b'0')
 
-def data_fig():
-    plt.plot(time_data,T_data)
+for i in range(mediciones):
+    dato = arduino.readline()[:-2].decode('utf-8').split(',')
+    print(dato)
+    datos.append([datetime.now().strftime(format="%Y-%m-%d %H:%M:%S"),
+                  float(dato[0]),
+                  float(dato[1]),
+                  float(dato[2])])
 
-with open("data.csv", "a", buffering=1) as file:
-    while True:
-        rawdata = (ser.readline().decode('ascii').strip('\n'))
-        hou = int(rawdata[0:2])
-        min = int(rawdata[3:5])
-        sec = int(rawdata[6:8])
-        time = hou*3600 + min*60 + sec
-        T = float(rawdata[9:14])
-        time_data.append(time)
-        T_data.append(T)
-        file.write(rawdata)
-        print(rawdata)
-        drawnow(data_fig)
+
+# Guardar en CSV
+with open(f"{nombre}_{narchivo}.csv", "w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(["timestamp", "R", "T1", "T2"])  # encabezados
+    writer.writerows(datos)
+
+print("Datos guardados en el archivo .csv")
