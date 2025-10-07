@@ -3,7 +3,6 @@
 \capacidad
 \begin{itemize}
 \item Utilizar un sensor para medir presión absoluta.
-\item Analizar la relación fuerza-presión.
 \end{itemize}
 
 \section{\mat}
@@ -18,7 +17,7 @@
 \subsection{\pro}
 \begin{enumerate}
     \item Conecte el sensor BMP280 tal como se muestra en la Figura \ref{fig:pres1}
-    \item Copie el siguiente código en el IDE de Arduino (el codigo se puede encontrar en: \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/algoritmos/BMP280/BMP280_lib/BMP280_lib.ino}{GitHub})
+    \item Copie el siguiente código en el IDE de Arduino (el codigo se puede encontrar en: \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/code/L03/L03.ino}{GitHub})
     \lstinputlisting[language=Arduino,numbers=none]{../code/L03/L03.ino}  
     \item Analice cada linea de código y cuando entienda su funcionamiento corra el \emph{sketch} usando el botón \emph{Upload}
     \item Haga contacto con el encapsulado del sensor de forma que su dedos calienten el sensor, observe como cambia el valor en la terminal. 
@@ -28,8 +27,8 @@
 24.7,806.3
 \end{verbatim}
     \item Instale las librerías \emph{pyserial}, \emph{matplotlib}, \emph{drawnow} y \emph{datetime} en Python para ser utilizadas luego.
-    \item Copie el siguiente código en su IDE de Python. (el codigo se puede encontrar en: \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/algoritmos/BMP280/BMP280_lib/serial_read.py}{GitHub})
-    \lstinputlisting[language=Python,numbers=none]{../code/L03/L03.ino}
+    \item Copie el siguiente código en su IDE de Python. (el codigo se puede encontrar en: \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/code/L03/L03.py}{GitHub})
+    \lstinputlisting[language=Python,numbers=none]{../code/L03/L03.py}
     \item Modifique el puerto COM para que coincida con el puerto en el que esta conectado el Arduino UNO R4 MINIMA
     \item Modifique el código para que cada toma de datos se almacene en un archivo $.csv$ y para que se genere una gráfica en tiempo real.
     \item Realice tres tomas de datos de 60 segundos cada una
