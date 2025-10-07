@@ -31,16 +31,18 @@ from drawnow import drawnow
 #         print(rawdata)
 #         drawnow(data_fig)
 
-arduino = serial.Serial('COM3')
+arduino = serial.Serial('COM14')
 nombre = "bmp280"
 narchivo = 1
 mediciones = 10
 
 def data_fig():
-    plt.plot(datos[0],datos[1])
+    plt.plot(sec,pres)
 
 
 datos = []
+sec = []
+pres = []
 
 arduino.write(b'0')
 
@@ -49,14 +51,17 @@ for i in range(mediciones):
     print(dato)
     datos.append([datetime.now().strftime(format="%Y-%m-%d %H:%M:%S"),
                   float(dato[0]),
-                  float(dato[1]),])
+                  float(dato[1])])
+    sec.append(i)
+    pres.append(float(dato[1]))
     drawnow(data_fig)
 
+seguir = input("Cualquier tecla")
 
 # Guardar en CSV
 with open(f"{nombre}_{narchivo}.csv", "w", newline="") as f:
     writer = csv.writer(f)
-    writer.writerow(["timestamp", "corriente", "voltage", "potencia", "shunt"])  # encabezados
+    writer.writerow(["timestamp", "Temperatura", "Presión"])  # encabezados
     writer.writerows(datos)
 
 print("Datos guardados en mediciones.csv")
