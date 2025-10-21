@@ -1,143 +1,97 @@
-\chapter{Medición de Peso con HX711 y Menú Interactivo}
-\obj
-Implementar un sistema de medición de peso utilizando el módulo HX711 con calibración multipunto, promediado de lecturas y menú interactivo por monitor serial.
-
-\mat
+\chapter{Sensores de peso}
+\section{\obj}
+\capacidad
 \begin{itemize}
-  \item Arduino Uno
-  \item Módulo HX711
+\item Implementar un sistema de medición de peso utilizando el módulo HX711 con calibración multipunto
+\end{itemize}
+
+\section{\mat}
+\begin{itemize}
+\item 1 Arduino UNO R4 MINIMA
+\item 1 sensor digital de presión BMP280
   \item Celda de carga de \SI{1}{\kilogram}
-  \item Biblioteca \texttt{HX711\_MP} de Rob Tillaart
   \item Pesas de referencia (500g, 1000g, 1500g)
   \item Cable USB y computadora con Arduino IDE
 \end{itemize}
 
-\pro
+\section{Actividad 1}
+\subsection{\pro}
 \begin{enumerate}
-  \item Conectar el HX711 a los pines digitales 2 (SCK) y 3 (DT) del Arduino.
-  \item Cargar el código con menú interactivo.
-  \item Abrir el monitor serial a 9600 baudios.
-  \item Usar las siguientes teclas para interactuar:
-  
-    \begin{itemize}
-      \item \texttt{r} → Registrar punto de calibración (ingresa el peso y presiona una tecla para capturar).
-      \item \texttt{p} → Mostrar peso promedio (10 lecturas).
-      \item \texttt{c} → Mostrar lectura cruda del HX711.
-      \item \texttt{t} → Aplicar tara.
-      \item \texttt{l} → Listar puntos de calibración registrados.
-    \end{itemize}
-    
-  \item Registrar al menos tres puntos de calibración. Para ello,  escriba el comando \texttt{r} cuando el menú aparece, luego ingresar el peso en gramos y presiona cualquier tecla cuando el peso esté colocado.
-
-  \item Puedes repetir este proceso para los otros puntos de calibración.
-  
-  \item Usa \texttt{p} para verificar la estabilidad de las lecturas.
-  
-  \item Usa \texttt{l} para revisar los puntos registrados. Puede anotar o tomar fotografía de estos valores como referencia futura.
-  
-
-%%% Densidad del agua
-
-\item Realizar el cálculo de la densidad de agua de la muestra brindada:
-
-  \begin{enumerate}
-
-    \item Utilizar una pequeña taza de medida (por ejemplo, de \SI{100}{\milli\liter}) como recipiente.
-  
-    \item Aplicar tara con la taza vacía sobre la celda de carga.
-  
-    \item Verter un volumen conocido de agua (por ejemplo, \SI{50}{\milli\liter}) utilizando un vaso medidor.
-  
-    \item Medir el peso del agua utilizando el menú interactivo (\texttt{p}).
-  
-    \item Calcular la densidad experimental del agua usando:
-  
-  \[
-  \rho = \frac{m}{V}
-  \]
-
-  donde $m$ es la masa medida en gramos y $V$ el volumen en mililitros (convertido a cm\textsuperscript{3} si se desea en g/cm\textsuperscript{3}).
-  
-    \item Comparar el valor obtenido con la densidad teórica del agua a temperatura ambiente (\SI{1.00}{\gram\per\centi\meter\cubed}).
-
-  \end{enumerate}
-
-  \end{enumerate}
-
-
-
-%%% Código de arduino
-
-\section*{Código Arduino}
-\lstinputlisting[language=C++]{../code/hx711_menu_interactivo.ino}
-
-
-
-\section*{Preguntas de análisis en clase}
-
-\begin{enumerate}
-  \item ¿Cuál es la principal ventaja de utilizar calibración multipunto con el HX711?
-  \begin{itemize}
-    \item[a)] Mejora la precisión al interpolar entre varios puntos de referencia.
-    \item[b)] Evita el uso de resistencias externas.
-    \item[c)] Reduce el ruido eléctrico del sistema.
-    \item[d)] Permite medir voltajes directamente.
-  \end{itemize}
-
-  \item ¿Qué función se utiliza para registrar un nuevo punto de calibración en la biblioteca HX711\_MP?
-  \begin{itemize}
-    \item[a)] \texttt{scale.addCalibratePoint()}
-    \item[b)] \texttt{scale.set\_scale()}
-    \item[c)] \texttt{scale.tare()}
-    \item[d)] \texttt{scale.getWeight()}
-  \end{itemize}
-
-  \item ¿Qué ocurre si se registran puntos de calibración con errores o valores inconsistentes?
-  \begin{itemize}
-    \item[a)] El sistema entra en modo de calibración forzada.
-    \item[b)] El HX711 se reinicia por seguridad.
-    \item[c)] El sistema ignora los puntos incorrectos automáticamente.
-    \item[d)] La interpolación puede generar lecturas erróneas.
-  \end{itemize}
-
-  \item ¿Cuál es el propósito de aplicar una tara en el sistema de medición?
-  \begin{itemize}
-    \item[a)] Reducir el consumo de energía del HX711.
-    \item[b)] Calibrar automáticamente todos los puntos.
-    \item[c)] Establecer un punto de referencia cero antes de medir.
-    \item[d)] Eliminar el peso de la celda de carga.
-  \end{itemize}
-
-  \item ¿Qué ventaja ofrece el uso de lecturas promediadas en el sistema?
-  \begin{itemize}
-    \item[a)] Reduce el consumo de memoria.
-    \item[b)] Aumenta la velocidad de lectura.
-    \item[c)] Permite calibrar sin pesas de referencia.
-    \item[d)] Minimiza el ruido y mejora la estabilidad de la medición.
-  \end{itemize}
-
+    \item Conecte el sensor BMP280 tal como se muestra en la Figura \ref{fig:pes1}
+    \item Copie el siguiente código en el IDE de Arduino (el codigo se puede encontrar en: \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/code/L04/L04.ino}{GitHub})
+    \lstinputlisting[language=Arduino,numbers=none]{../code/L04/L04.ino}  
+    \item Analice cada linea de código y cuando entienda su funcionamiento corra el \emph{sketch} usando el botón \emph{Upload}
+    % \item Copie el siguiente código en su IDE de Python. (el codigo se puede encontrar en: \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/code/L03/L03.py}{GitHub})
+    % \lstinputlisting[language=Python,numbers=none]{../code/L03/L03.py}
+    % \item Modifique el puerto COM para que coincida con el puerto en el que esta conectado el Arduino UNO R4 MINIMA
+    % \item Modifique el código para que cada toma de datos se almacene en un archivo $.csv$ y para que se genere una gráfica en tiempo real.
+    % \item Realice tres tomas de datos de 60 segundos cada una
 \end{enumerate}
 
+\begin{figure}[H]
+    \tikzset{comm/.style={muxdemux, muxdemux def={Lh=5, Rh=5, NL=2, NB=0, NR=0, w=2}}}
+    \tikzset{BMP280/.style={muxdemux, muxdemux def={Lh=5, Rh=5, NL=0, NB=0, NR=6, w=2}}}
+    \centering
+    \begin{circuitikz} 
+        \draw (0,3.5) node[comm] (m){\rotatebox{90}{\small communication}}
+        (0,0) node[comm] (p){\rotatebox{90}{\small power}}
+        ;
+        \draw (m.blpin 1) node[above left]{\small SDA};
+        \draw (m.blpin 2) node[above left]{\small SCL};
+        \draw (p.blpin 1) node[above left]{\small GND};
+        \draw (p.blpin 2) node[above left]{\small +3V3};
+        \draw (-5,-3) node[BMP280,rotate=90] (s){\rotatebox{-90}{\small BMP280}}
+        (s.brpin 1) node[above right,rotate=90]{\scriptsize SDO}
+        (s.brpin 2) node[above right,rotate=90]{\scriptsize CSB}
+        (s.brpin 3) node[above right,rotate=90]{\scriptsize SDA}
+        (s.brpin 4) node[above right,rotate=90]{\scriptsize SCL}
+        (s.brpin 5) node[above right,rotate=90]{\scriptsize GND}
+        (s.brpin 6) node[above right,rotate=90]{\scriptsize VCC}
+        ;
+        \draw[blue]
+        (p.blpin 2)
+        -|
+        (s.brpin 6)
+        (p.blpin 2)
+        -|
+        (s.brpin 1)
+        ;
+        \draw[green]
+        (p.blpin 1)
+        -|
+        (s.brpin 5)
+        ;
+        \draw[red]
+        (m.blpin 2)
+        -| 
+        (s.brpin 4)
+        ;
+        \draw[brown]
+        (m.blpin 1)
+        -| 
+        (s.brpin 3)
+        ;
+        \draw[dashed,blue]
+        (-2.5,6) -- (1,6)node[midway, below]{UNO R4 MINIMA} -- (1,-1.5) -- (-2.5,-1.5) -- cycle;
+    \end{circuitikz}
+    \caption{Conexión de sensor de presión absoluta BMP280}
+    \label{fig:pres1}
+\end{figure}
 
-
-\section*{Preguntas de análisis para el informe}
-
+\subsection{Análisis}
 \begin{enumerate}
-
-  \item ¿Cuál es la resolución teórica del módulo HX711 si trabaja con un convertidor de 24 bits y una celda de carga de \SI{10}{\kilogram}? ¿Qué implicaciones tiene esto en la medición de masas pequeñas? Como recomendación, utilizar la siguiente ecuación:
-
-  \[
-  \text{Resolución} = \frac{Capacidad de la celda}{2^{Número de bits}}
-  \]
-
-  \item ¿Cómo afecta el ruido eléctrico a la estabilidad de las lecturas? ¿Qué estrategias se implementaron en el código para mitigar este efecto?
-
-  \item ¿Qué diferencia hay entre una lectura cruda y una lectura calibrada? ¿Qué ocurre si se utiliza la lectura cruda para una medición?
-
-  \item ¿Qué papel juega la tara en la reducción de errores sistemáticos? ¿En qué casos podría no ser suficiente?
-
-  \item ¿Qué ventajas ofrece la interpolación multipunto frente a una calibración basada en regresión lineal global? ¿En qué casos convendría cada una?
-
-  
+    \item Determine la presión atmosférica local usando el promedio de las mediciones que las tres tomas de datos, incluya la precisión de la medición 
+    \item Determine la altitud local usando el valor de presión calculado ¿Es este valor cercano al esperado para la altitud del campus (1407 msnm)?
 \end{enumerate}
-  
+
+\section{Actividad 2}
+\subsection{\pro}
+\begin{enumerate}
+    \item Usando la misma configuración anterior, realice una nueva toma de datos de 60s en la que lleve el sensor lo mas cerca del piso posible y luego lo mas alto posible lentamente y repita durante los 60 segundos de la toma
+\end{enumerate}
+\subsection{Análisis}
+\begin{enumerate}
+    \item ¿Se puede observar el cambio de altura en las mediciones?
+    \item Según la hoja de datos del sensor ¿Debería detectar estos cambios?
+    \item ¿El tiempo entre mediciones es realmente un segundo?
+\end{enumerate}
