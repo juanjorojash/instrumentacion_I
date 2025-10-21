@@ -1,103 +1,55 @@
-#include "HX711_MP.h"
+#include "HX711.h"
 
-HX711_MP scale;
+HX711 scale;
 
-const int pinDT = 3;
-const int pinSCK = 2;
-const int nLecturas = 10;
+#define DATAPIN 6 
+#define CLOCKPIN 7
 
-void setup() {
-  Serial.begin(9600);
-  scale.begin(pinDT, pinSCK);
-  Serial.println("=== Menú Interactivo HX711_MP ===");
-  Serial.println("Comandos:");
-  Serial.println("  r - Registrar punto de calibración");
-  Serial.println("  p - Mostrar peso promedio");
-  Serial.println("  c - Mostrar lectura cruda");
-  Serial.println("  t - Tara");
-  Serial.println("  l - Listar puntos de calibración");
-  Serial.println("==================================");
+void setup()
+{
+  Serial.begin(115200);
+  delay(1000);
+
+  scale.begin(DATAPIN, CLOCKPIN);
 }
 
-void loop() {
-  if (Serial.available()) {
-    char opcion = Serial.read();
 
-    switch (opcion) {
-      case 'r':
-        registrarPunto();
-        break;
-      case 'p':
-        mostrarPesoPromedio();
-        break;
-      case 'c':
-        mostrarLecturaCruda();
-        break;
-      case 't':
-        scale.tare();
-        Serial.println("Tara aplicada.");
-        break;
-      case 'l':
-        listarPuntos();
-        break;
-      default:
-        Serial.println("Opción no válida.");
-        break;
-    }
-  }
-}
+String input = "a";
+String maxt = "500";
+int maxn = 500;
+float value = 0.0;
+float units = 0.0;
 
-void esperarTecla() {
-  Serial.println("Presiona cualquier tecla para capturar...");
-  while (!Serial.available()) {}
-  Serial.read(); // Limpia el buffer
-}
 
-void registrarPunto() {
-  Serial.println("Ingresa el peso real en gramos:");
-  while (!Serial.available()) {}
-  float peso = Serial.parseFloat();
-
-  Serial.print("Coloca ");
-  Serial.print(peso);
-  Serial.println(" g sobre la celda.");
-  esperarTecla(); // Espera confirmación del usuario
-
-  long lectura = scale.read();
-  scale.addCalibratePoint(lectura, peso);
-
-  Serial.print("Registrado: ");
-  Serial.print(lectura);
-  Serial.print(" → ");
-  Serial.print(peso);
-  Serial.println(" g");
-}
-
-void mostrarPesoPromedio() {
-  float suma = 0;
-  for (int i = 0; i < nLecturas; i++) {
-    suma += scale.getWeight();
-    delay(50);
-  }
-  float promedio = suma / nLecturas;
-  Serial.print("Peso promedio: ");
-  Serial.print(promedio, 2);
-  Serial.println(" g");
-}
-
-void mostrarLecturaCruda() {
-  long lectura = scale.read();
-  Serial.print("Lectura cruda: ");
-  Serial.println(lectura);
-}
-
-void listarPuntos() {
-  Serial.println("Puntos de calibración:");
-  for (int i = 0; i < scale.getCalibratePoints(); i++) {
-    Serial.print("  ");
-    Serial.print(scale.getCalibrateRaw(i));
-    Serial.print(" → ");
-    Serial.print(scale.getCalibrateWeight(i));
-    Serial.println(" g");
+void loop()
+{
+  value = scale.get_value(2);
+  units = scale.get_units(10);
+  Serial.print(value);
+  Serial.print(",");
+  Serial.println(units);
+  delay(250);
+  while(Serial.available()) input = Serial.readStringUntil('\n');
+  if (input == "c") {
+    Serial.println("***Calibration***");
+    Serial.println("\nEmpty the scale, press a key to continue");
+    while(!Serial.available());
+    while(Serial.available()) Serial.read();
+    scale.tare();
+    Serial.print("Weight: ");
+    Serial.println(scale.get_units(10));
+    Serial.println("\nSet max weight");
+    while(!Serial.available());
+    while(Serial.available()) maxt = Serial.readStringUntil('\n');
+    maxn = maxt.toInt();
+    Serial.print("\nPut ");
+    Serial.print(maxn);
+    Serial.println(" gram in the scale, press a key to continue");
+    while(!Serial.available());
+    while(Serial.available()) Serial.read();
+    scale.calibrate_scale(maxn, 10);
+    Serial.print("Weight: ");
+    Serial.println(scale.get_units(10));   
+    input = "n";
   }
 }

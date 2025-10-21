@@ -3,8 +3,8 @@ import csv
 from datetime import datetime
 
 arduino = serial.Serial('COM9')
-nombre = "scale500_100"
-narchivo = 1
+nombre = "scale900_900"
+narchivo = 2
 mediciones = 20
 
 datos = []
