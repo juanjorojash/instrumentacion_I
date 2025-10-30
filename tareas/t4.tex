@@ -1,50 +1,52 @@
 \documentclass[12pt]{article}
-\usepackage[margin=1in]{geometry} 
-\input{comunes/preamble}
-\usepackage{lastpage}
-\usepackage{fancyhdr}
-\usepackage{csvsimple,booktabs}
+\makeatletter
+\def\input@path{{../common/}{../guide/}{../data/}{../code/}}
+\makeatother
+\input{preamble}
 \pagestyle{fancy}
 \setlength{\headheight}{42pt}
 
- 
+
 \begin{document}
 \lhead{Ingeniería Física \\ Escuela de Física \\ Tecnológico de Costa Rica} 
-\rhead{Instrumentación I \\ Tarea \#4  \\ Entrega: Semana 11} 
+\rhead{Instrumentación I \\ Tarea \#4  \\ Entrega: Semana 14} 
 \cfoot{\thepage\ de \pageref{LastPage}}
 \setlength{\parindent}{0em}
 
-\noindent\textbf{Problema a resolver}
-\newline
-\newline
-Como ingenieros físicos, se encuentran a cargo mantener activa la \href{https://www.nacion.com/economia/politica-economica/video-franklin-chang-de-ad-astra-rocket-explica/871a4a67-9142-45cd-8df2-d6f4e88f6d81/video/}{línea de producción de hidrógeno como forma de almacenamiento de energía.} El proceso utilizado es la \href{https://en.wikipedia.org/wiki/Electrolysis_of_water}{electrólisis de agua}. Para garantizar que el proceso de producción se mantenga activo, será necesario desarrollar un sistema de medición de nivel de agua para el almacenamiento de agua. 
+La \href{https://www.osha.gov/}{Occupational Safety and Health Administration (OSHA)}, de los EEUU, es uno de los principales entes rectores en temas de salud ocupacional.
+Un aspecto a destacar es la iluminación requerida en los puestos de trabajo de acuerdo a la actividad, que está regulado en el estándar \href{https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.56}{1926.56.}
 
-Para ello, se disponen de varios sensores disponibles: 
+Para oficinas de trabajo, la iluminación mínima requerida es 323 \si{\lux}. 
+Considerando la popularización del teletrabajo se proponer verificar la iluminancia de el lugar de trabajo del estudiante.
+
+Para ello:
+
 \begin{itemize}
-    \item \href{https://www.pce-iberica.es/hoja-datos/hoja-datos-pce-ulm-10.pdf}{PCE-ULM 10}
-    \item \href{https://www.gavasa.com/wp-content/uploads/2020/09/Wika_LF-1.pdf}{WIKA LM 40.0}
-    \item \href{http://www.contrall.com.co/pdf-productos/E2KL.pdf}{E2KL}
-    \item \href{https://irp-cdn.multiscreensite.com/964ff6b3/files/uploaded/LTM-2_50061_1.2_pt_eu.pdf}{LTM-2}
-    \item \href{https://www.binmaster.com/_resources/dyn/files/75755645zd70b61f0/_fn/PT500_SpecSheet_ES631219062.pdf}{PT-500}
-     \item \href{https://www.bermad.com/app/uploads/2016/06/ww-750-80-x-spanish.pdf}{Bermad Modelo 750-80-X}
-     \item \href{https://www.burkert.com/en/Media/plm/DTS/DS/DS8189-standard-EU-EN.pdf?id=DTS0000000000000001000244852ENE}{Burket Type 8189}
+    \item Instale la aplicación \textit{Arduino Science Journal} en su teléfono móvil
+    \item Configure una toma de datos con el sensor de luz.
+    \item Antes de arrancar la medición, asegúrese su teléfono está completamente acomodado en la mesa, ya que las orientaciones del teléfono pueden dar datos erróneos.
+    \item Realice cinco juegos de mediciones con al menos 30s de duración cada una: 
+    \begin{itemize}
+        \item De mañana con luz natural
+        \item De mañana con luz natural y artificial
+        \item En la tarde con luz natural
+        \item En la tarde con luz natural y artificial
+        \item En la noche con luz artificial
+    \end{itemize}
+    \item Exporte los valores registrados en un archivo \emph{.csv}
+    \item Usando la librería \emph{pandas} en Python lea los datos del archivo .csv y limpie los datos de forma que pueda realizar el siguiente paso.   
+    \item Determine el promedio y la desviación estandar de cada set de iluminancia.
+    \item Usando como valor base lo determinado por \textit{OSHA}, calcule la diferencia entre lo medido y lo recomendado como un error relativo.
+    \item Discuta los resultados obtenidos y proponga recomendaciones para mejorar la iluminación en su lugar de trabajo en caso de ser necesario.
 \end{itemize}
- 
 
-\vspace{0.5cm}
-\noindent\textbf{Requerimientos:}
+\noindent\textbf{Entregable}
+
+Un solo archivo .zip que contenga lo siguiente
 \begin{itemize}
-    \item Al menos deberá medir una altura 3m en el tanque. 
-    \item Un tiempo de respuesta menor a 100 \si{\milli s}.
-    \item Deberá poderse integrar a sistemas de medición industrial .
+    \item Un archivo \emph{.py} que incluya comentarios aclaratorios de los pasos que se realizaron y cinco gráficas. Una por cada set de medición.
+    \item Un archivo \emph{.pdf} donde se analicen los datos obtenidos.
+    \item Cinco archivos \emph{.csv} con los datos de las mediciones
 \end{itemize}
 
-\noindent\textbf{Responda lo siguiente:}
-
-\begin{enumerate}
-    \item Según lo visto en clase y la información disponible en la hoja de datos. ¿Qué tipos de sensores corresponden cada uno?
-    \item Genere una tabla que permita comparar las principales características de los sensores. Tome en cuenta los parámetros vistos y consideraciones vistas en clase.
-    \item ¿Cuál de los sensores es la mejor opción para la aplicación requerida? ¿Por qué?
-    \item Los sensores de medición por radar, son bastante prácticos dado su facilidad de acople a sistemas de producción. Sin embargo, las olas que puede generar un fluido puede generar una frecuencia de Doppler. ¿En qué consiste está frecuencia? ¿Cómo se elimina este efecto en este tipo de sensores?
-\end{enumerate}
 \end{document}
