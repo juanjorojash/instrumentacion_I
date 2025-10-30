@@ -1,0 +1,103 @@
+\chapter{Sensores de presión}
+\section{\obj}
+\capacidad
+\begin{itemize}
+\item Utilizar un sensor para medir presión absoluta.
+\end{itemize}
+
+\section{\mat}
+\begin{itemize}
+\item 1 Arduino UNO R4 MINIMA
+\item 1 sensor digital de presión BMP280
+\item 1 mini breadboard de 170 pines
+\item Jumpers macho-macho
+\end{itemize}
+
+\section{Actividad 1}
+\subsection{\pro}
+\begin{enumerate}
+    \item Conecte el sensor BMP280 tal como se muestra en la Figura \ref{fig:pres1}
+    \item Copie el siguiente código en el IDE de Arduino (el codigo se puede encontrar en: \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/code/L03/L03.ino}{GitHub})
+    \lstinputlisting[language=Arduino,numbers=none]{../code/L03/L03.ino}  
+    \item Analice cada linea de código y cuando entienda su funcionamiento corra el \emph{sketch} usando el botón \emph{Upload}
+    \item Haga contacto con el encapsulado del sensor de forma que su dedos calienten el sensor, observe como cambia el valor en la terminal. 
+    \item Modifique el programa de forma que lo que se imprima en la terminal sea algo como esto:
+\begin{verbatim}
+24.8,806.1
+24.7,806.3
+\end{verbatim}
+    \item Instale las librerías \emph{pyserial}, \emph{matplotlib}, \emph{drawnow} y \emph{datetime} en Python para ser utilizadas luego.
+    \item Copie el siguiente código en su IDE de Python. (el codigo se puede encontrar en: \href{https://github.com/juanjorojash/instrumentacion_I/blob/master/code/L03/L03.py}{GitHub})
+    \lstinputlisting[language=Python,numbers=none]{../code/L03/L03.py}
+    \item Modifique el puerto COM para que coincida con el puerto en el que esta conectado el Arduino UNO R4 MINIMA
+    \item Modifique el código para que cada toma de datos se almacene en un archivo $.csv$ y para que se genere una gráfica en tiempo real.
+    \item Realice tres tomas de datos de 60 segundos cada una
+\end{enumerate}
+
+\begin{figure}[H]
+    \tikzset{comm/.style={muxdemux, muxdemux def={Lh=5, Rh=5, NL=2, NB=0, NR=0, w=2}}}
+    \tikzset{BMP280/.style={muxdemux, muxdemux def={Lh=5, Rh=5, NL=0, NB=0, NR=6, w=2}}}
+    \centering
+    \begin{circuitikz} 
+        \draw (0,3.5) node[comm] (m){\rotatebox{90}{\small communication}}
+        (0,0) node[comm] (p){\rotatebox{90}{\small power}}
+        ;
+        \draw (m.blpin 1) node[above left]{\small SDA};
+        \draw (m.blpin 2) node[above left]{\small SCL};
+        \draw (p.blpin 1) node[above left]{\small GND};
+        \draw (p.blpin 2) node[above left]{\small +3V3};
+        \draw (-5,-3) node[BMP280,rotate=90] (s){\rotatebox{-90}{\small BMP280}}
+        (s.brpin 1) node[above right,rotate=90]{\scriptsize SDO}
+        (s.brpin 2) node[above right,rotate=90]{\scriptsize CSB}
+        (s.brpin 3) node[above right,rotate=90]{\scriptsize SDA}
+        (s.brpin 4) node[above right,rotate=90]{\scriptsize SCL}
+        (s.brpin 5) node[above right,rotate=90]{\scriptsize GND}
+        (s.brpin 6) node[above right,rotate=90]{\scriptsize VCC}
+        ;
+        \draw[blue]
+        (p.blpin 2)
+        -|
+        (s.brpin 6)
+        (p.blpin 2)
+        -|
+        (s.brpin 1)
+        ;
+        \draw[green]
+        (p.blpin 1)
+        -|
+        (s.brpin 5)
+        ;
+        \draw[red]
+        (m.blpin 2)
+        -| 
+        (s.brpin 4)
+        ;
+        \draw[brown]
+        (m.blpin 1)
+        -| 
+        (s.brpin 3)
+        ;
+        \draw[dashed,blue]
+        (-2.5,6) -- (1,6)node[midway, below]{UNO R4 MINIMA} -- (1,-1.5) -- (-2.5,-1.5) -- cycle;
+    \end{circuitikz}
+    \caption{Conexión de sensor de presión absoluta BMP280}
+    \label{fig:pres1}
+\end{figure}
+
+\subsection{Análisis}
+\begin{enumerate}
+    \item Determine la presión atmosférica local usando el promedio de las mediciones que las tres tomas de datos, incluya la precisión de la medición 
+    \item Determine la altitud local usando el valor de presión calculado ¿Es este valor cercano al esperado para la altitud del campus (1407 msnm)?
+\end{enumerate}
+
+\section{Actividad 2}
+\subsection{\pro}
+\begin{enumerate}
+    \item Usando la misma configuración anterior, realice una nueva toma de datos de 60s en la que lleve el sensor lo mas cerca del piso posible y luego lo mas alto posible lentamente y repita durante los 60 segundos de la toma
+\end{enumerate}
+\subsection{Análisis}
+\begin{enumerate}
+    \item ¿Se puede observar el cambio de altura en las mediciones?
+    \item Según la hoja de datos del sensor ¿Debería detectar estos cambios?
+    \item ¿El tiempo entre mediciones es realmente un segundo?
+\end{enumerate}
