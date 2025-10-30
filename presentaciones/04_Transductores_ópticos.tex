@@ -1,0 +1,63 @@
+\documentclass[aspectratio=169]{beamer}
+\makeatletter
+\def\input@path{{../common/}{../guide/}{../data/}{../code/}}
+\makeatother
+\usetheme{Bruno}
+\input{preamble}
+\input{beamer_preamble}
+
+\title{Transductores \\ \emph{ópticos}}
+\author{
+    Juan J. Rojas
+}
+\institute{Instituto Tecnológico de Costa Rica}
+\date{\today}
+\background{background.jpg}
+\begin{document}
+\input{postamble}
+\maketitle
+
+% Transductores ópticos
+% 4.1. Fotoconductores
+% 4.2. Fotodiodos
+% 4.3. Fototransistores
+% 4.4. Fotovoltaicos
+% 4.5. Piroeléctricos y termopilas para radiación térmica
+
+
+\newcommand{\blackandwhite}{white} %change this at the end
+
+\begin{frame}[t]{Unidades ópticas}
+    \begin{itemize}
+        \item Steradian [sr] = ángulo sólido 
+        \item Candela [cd] [W/sr] = intensidad luminosa, potencia irradiada por unidad de ángulo sólido
+        \item Lumen [cd\cdot sr] = flujo luminoso, potencia irradiada
+        \item Lux [cd\cdot sr/m\textsuperscript{2}] = iluminancia, flujo luminoso por unidad de área
+        \item Candela por metro cuadrado [cd/m\textsuperscript{2}] = luminancia, intensidad luminosa por unidad de área
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Fotoconductores}
+    \begin{columns}[T, onlytextwidth]
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item Aa
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+        \centering
+        \includegraphics[width = \linewidth]{08_químicos/metal_oxido.png}
+        \vspace*{1cm}
+        \includegraphics[width = 0.8\linewidth]{08_químicos/metal_oxido_sens.png}
+
+        \tiny{Tomado de \cite{ida2013sensors}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Referencias}
+\footnotesize
+\printbibliography[heading=none]
+\end{frame}
+
+\end{document}
