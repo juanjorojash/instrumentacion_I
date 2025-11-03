@@ -60,7 +60,7 @@
 \begin{frame}{Electroquímicos: oxidos metálicos}
     \begin{columns}[T, onlytextwidth]
         \begin{column}{0.55\textwidth}
-            La resistencia ($R$) del sensor se puede expresar como
+            La resistencia ($R$) del sensor se puede expresar como:
             \begin{equation*} 
                 R = aP^{-\alpha}
             \end{equation*}
@@ -83,17 +83,71 @@
         \begin{column}{0.55\textwidth}
             \begin{itemize}
                 \item Consiste en una celda galvánica, cuyos electrodos están en contacto
-                con dos ambientes gaseosos a diferentes concentraciones
+                con dos ambientes con diferentes concentraciones de algún gas
                 \item El electrolito es un sólido cerámico que permite el paso de iones
                 \item Los electrodos son metalicos, usualmente de platino
                 \item Un ejemplo común es el sensor de oxígeno en gases de escape automotriz
+                \item Otro ejemplo es el sensor de oxigeno para metalurgia
             \end{itemize}
         \end{column}
         \begin{column}{0.45\textwidth}
         \centering
-        \includegraphics[width = \linewidth]{08_químicos/electrolito_solido_1.png}
-        \vspace*{1cm}
-        \includegraphics[width = 0.8\linewidth]{08_químicos/electrolito_solido_3.png}
+        \includegraphics[width = 0.7\linewidth]{08_químicos/electrolito_solido_3.png}
+
+        \tiny{Tomado de \cite{ida2013sensors}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Electroquímicos: electrolito solido}
+    \begin{columns}[T, onlytextwidth]
+        \begin{column}{0.55\textwidth}
+            Para el sensor de escape automotriz, la $fem$ del sensor se puede expresar como:
+            \begin{equation*} 
+                emf = \dfrac{R T}{4 F}\ln\left(\dfrac{P^1_{O_2}}{P^2_{O_2}}\right)
+            \end{equation*}
+            donde $R$ es la constante universal de los gases (\SI{8.314}{\joule/\mole\kelvin}), 
+            $T$ es temperatura en \si{\kelvin}, y $F$ es la constante de Faraday (\SI{96.487}{\coulomb/\mole}),
+            $P^1_{O_2}$ y $P^2_{O_2}$ son las concentraciones de oxígeno en ambos ambientes.            
+        \end{column}
+        \begin{column}{0.45\textwidth}
+        \centering
+        \includegraphics[width = 0.9\linewidth]{08_químicos/electrolito_solido_1.png}
+        \tiny{Tomado de \cite{ida2013sensors}}
+
+        \includegraphics[width = 0.7\linewidth]{08_químicos/electrolito_solido_2.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Electroquímicos: metal oxido semiconductor}
+    \begin{columns}[T, onlytextwidth]
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item Tiene la misma estructura de un MOSFET
+                \item La compuerta se utiliza como elemento sensible
+                \item Por ejemplo, una compuerta de paladio puede usarse para medir hidrógeno
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+        \centering
+        \includegraphics[width = 0.9\linewidth]{08_químicos/metal_oxido_semiconductor.png}
+
+        \tiny{Tomado de \cite{ida2013sensors}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Potenciométricos: membrana de vidrio}
+    \begin{columns}[T, onlytextwidth]
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item Muy común para medir pH
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+        \centering
+        \includegraphics[width = 0.9\linewidth]{08_químicos/metal_oxido_semiconductor.png}
 
         \tiny{Tomado de \cite{ida2013sensors}}
         \end{column}
