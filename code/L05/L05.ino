@@ -25,7 +25,7 @@ void loop() {
   // distance = 7.96 - distance;
   // volume = 32.05 * distance + 29.492;
   Serial.print("H: ");
-  Serial.print(distance);
+  Serial.println(distance);
   // Serial.print(" V:");
   // Serial.println(volume);
   delay(100);
