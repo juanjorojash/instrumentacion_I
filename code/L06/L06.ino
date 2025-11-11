@@ -32,4 +32,5 @@ void loop()
   S = 0;
   R = 0;
   input = "x";
+  Qp = Qa;
 }
