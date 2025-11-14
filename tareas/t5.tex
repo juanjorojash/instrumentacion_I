@@ -1,16 +1,13 @@
 \documentclass[12pt]{article}
-\usepackage[margin=1in]{geometry} 
-\input{comunes/preamble}
-\usepackage{lastpage}
-\usepackage{fancyhdr}
-\usepackage{csvsimple,booktabs}
+\makeatletter
+\def\input@path{{../common/}{../guide/}{../data/}{../code/}}
+\makeatother
+\input{preamble}
 \pagestyle{fancy}
 \setlength{\headheight}{42pt}
-
- 
 \begin{document}
 \lhead{Ingeniería Física \\ Escuela de Física \\ Tecnológico de Costa Rica} 
-\rhead{Instrumentación I \\ Tarea \#5  \\ Entrega: Semana 13} 
+\rhead{Instrumentación I \\ Tarea \#5  \\ Entrega: Semana 15} 
 \cfoot{\thepage\ de \pageref{LastPage}}
 \setlength{\parindent}{0em}
 
@@ -48,8 +45,5 @@ Un solo archivo .zip que contenga lo siguiente
         x[k] = x[k-1] + \left(\dfrac{v[k]+v[k+1]}{2}\right)(t[k] - t[k-1])
     \end{equation*}
 \end{itemize}
-
-% \bibliographystyle{IEEEtran}
-% \bibliography{ref_tareas}
 
 \end{document}
